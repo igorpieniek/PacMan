@@ -7,6 +7,7 @@
 #include "MapCell.h"
 #include <vector>
 #include <utility>
+#include <iostream>
 
 
 using Board = std::vector<MapCell>;
@@ -17,8 +18,8 @@ public:
 	MapManager(Board& map);
 
 	bool isOccupied(Position& pos);
-	Board& getAllMap();
-	Board getNeighbour(Position& pos, int radius);
+	//Board& getAllMap();
+	//Board getNeighbour(Position& pos, int radius);
 	
 private:
 	Board mapBoard;

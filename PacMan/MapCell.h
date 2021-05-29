@@ -7,6 +7,7 @@
 #include "Position.h"
 class MapCell :public Position{
 public:
+	using Position::operator==;
 	enum class Category {
 		FREE,
 		OBSTACLE
@@ -17,6 +18,8 @@ public:
 
 	bool getPoint();
 	bool isObstacle();
+
+
 
 private:
 	Category category;

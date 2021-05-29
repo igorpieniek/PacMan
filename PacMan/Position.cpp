@@ -10,6 +10,6 @@ double Position::distance(Position& pos){
 	return sqrt(pow(x - pos.x, 2) + pow(y - pos.y, 2));
 }
 
-bool Position::operator==(Position& pos){
-	return x == pos.x && y == pos.y;
+bool Position::operator==(const Position& pos){
+	return this->x == pos.x && this->y == pos.y;
 }
