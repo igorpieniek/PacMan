@@ -1,0 +1,8 @@
+*.vs
+*.sln
+/PacMan/Debug
+*.vcxproj*
+*.ilk
+*.pdb
+
+
