@@ -8,16 +8,16 @@
 
 class Position{
 public:
-	Position(float xx = { }, float yy = {}) : x(xx), y(yy) {};
+	Position(int xx = { }, int yy = {}) : x(xx), y(yy) {};
 
 	void move(Position& pos);
-	float distance(Position& pos);
+	double distance(Position& pos);
 
 	bool operator==(Position& pos);
 
 private:
-	float x;
-	float y;
+	int x;
+	int y;
 };
 
 

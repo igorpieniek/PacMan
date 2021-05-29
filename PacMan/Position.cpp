@@ -6,10 +6,8 @@ void Position::move(Position& pos)
 	y += pos.y;
 }
 
-float Position::distance(Position& pos){
-	float diff_x =  x - pos.x;
-	float diff_y =  y - pos.y;
-	return sqrtf(powf(diff_x, 2) + powf(diff_y, 2));
+double Position::distance(Position& pos){
+	return sqrt(pow(x - pos.x, 2) + pow(y - pos.y, 2));
 }
 
 bool Position::operator==(Position& pos){
