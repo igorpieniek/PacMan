@@ -6,10 +6,7 @@
 #include <math.h>
 
 
-
-
-class Position
-{
+class Position{
 public:
 	Position(float xx = { }, float yy = {}) : x(xx), y(yy) {};
 
@@ -17,7 +14,6 @@ public:
 	float distance(Position& pos);
 
 	bool operator==(Position& pos);
-
 
 private:
 	float x;
