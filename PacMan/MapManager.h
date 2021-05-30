@@ -8,6 +8,8 @@
 #include <vector>
 #include <utility>
 #include <iostream>
+#include <map>
+#include <algorithm>
 
 
 using Board = std::vector<MapCell>;
@@ -25,14 +27,21 @@ public:
 		NORTH,
 		EAST,
 		SOUTH,
-		WEST  
+		WEST
 	};
 
-	bool isCorner();
+
+	bool isCorner(Position& pos);
 	std::vector<Direction> getAllPossibleDirections(Position& pos);
+
+	
+	
 	
 private:
 	Board mapBoard;
+
+	
+
 };
 
 

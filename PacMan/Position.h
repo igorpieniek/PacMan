@@ -16,6 +16,7 @@ public:
 	int getX()const { return x; };
 	int getY()const { return y; };
 	bool operator==(const Position& pos);
+	Position operator+(const Position& pos);
 
 private:
 	int x;

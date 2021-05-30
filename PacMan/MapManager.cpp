@@ -34,11 +34,45 @@ Board MapManager::getNeighbours(Position& pos, int radius){
 	return resultMap;
 }
 
-bool MapManager::isCorner(){
+bool MapManager::isCorner(Position& pos){
+	std::vector<MapManager::Direction> possible = getAllPossibleDirections(pos);
+	if (possible.size() != 2) return false;
+	
+	std::sort(possible.begin(), possible.end());
+	//check next elements
+	for (auto it = possible.begin(); it != possible.end()-1; it++) {
+		int current = static_cast<int>(*it);
+		int next = static_cast<int>(*(it+1));
+		if ((next - current) == 1) return true;
+	}
+	//check last and first
+	int front = static_cast<int>(possible.front());
+	int back =  static_cast<int>(possible.back());
+	if ((back - front) == 1) return true;
+
 	return false;
 }
 
 std::vector<MapManager::Direction> 
 MapManager::getAllPossibleDirections(Position& pos){
-	return std::vector<MapManager::Direction>();
+	std::vector<MapManager::Direction> result;
+	std::map<MapManager::Direction, Position> check = {
+		{Direction::NORTH, {0, 1}},
+		{Direction::SOUTH, {0,-1}},
+		{Direction::EAST,  {1, 0}},
+		{Direction::WEST,  {-1,0}},
+	};
+
+	for (auto const& x : check) {
+		Board::iterator iter = std::find(mapBoard.begin(),
+										 mapBoard.end(),
+										 pos + x.second);
+		if (iter != mapBoard.end()) {
+			if (!iter->isObstacle()) result.push_back(x.first);
+		}
+	}
+	return result;
 }
+
+
+
