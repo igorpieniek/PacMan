@@ -1,4 +1,5 @@
 #include "Position.h"
+#include <iostream>
 
 
 void Position::move(Position& pos){
@@ -19,6 +20,11 @@ Position Position::operator+(const Position& pos){
 }
 
 Position& Position::operator+=(const Position& rPos){
-	operator+(rPos);
+	*this = operator+(rPos);
 	return *this;
+}
+
+std::ostream& operator<<(std::ostream& os, const Position& pos)
+{
+	return os << "(" << pos.x << ", " << pos.y << ")";
 }

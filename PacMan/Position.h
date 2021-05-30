@@ -4,6 +4,7 @@
 #define __POSITION_H__
 
 #include <math.h>
+#include <iostream>
 
 
 class Position{
@@ -19,10 +20,12 @@ public:
 	bool operator==(const Position& pos);
 	Position operator+(const Position& pos);
 	Position& operator+=(const Position& rPos);
+	
 
 private:
 	int x;
 	int y;
+	friend std::ostream& operator<<(std::ostream& os, const Position& pos);
 };
 
 
