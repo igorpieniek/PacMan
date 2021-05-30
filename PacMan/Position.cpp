@@ -1,7 +1,7 @@
 #include "Position.h"
 
-void Position::move(Position& pos)
-{
+
+void Position::move(Position& pos){
 	x += pos.x;
 	y += pos.y;
 }
@@ -16,4 +16,9 @@ bool Position::operator==(const Position& pos){
 
 Position Position::operator+(const Position& pos){
 	return Position(x + pos.x, y + pos.y);
+}
+
+Position& Position::operator+=(const Position& rPos){
+	operator+(rPos);
+	return *this;
 }
