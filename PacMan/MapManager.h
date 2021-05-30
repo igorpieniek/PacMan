@@ -33,14 +33,9 @@ public:
 
 	bool isCorner(Position& pos);
 	std::vector<Direction> getAllPossibleDirections(Position& pos);
-
-	
-	
 	
 private:
 	Board mapBoard;
-
-	
 
 };
 
