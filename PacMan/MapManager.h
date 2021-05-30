@@ -18,8 +18,18 @@ public:
 	MapManager(Board& map);
 
 	bool isOccupied(Position& pos);
-	//Board& getAllMap();
-	//Board getNeighbour(Position& pos, int radius);
+	Board& getAllMap();
+	Board getNeighbours(Position& pos, int radius);
+
+	enum class Direction {
+		NORTH,
+		EAST,
+		SOUTH,
+		WEST  
+	};
+
+	bool isCorner();
+	std::vector<Direction> getAllPossibleDirections(Position& pos);
 	
 private:
 	Board mapBoard;

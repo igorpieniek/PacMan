@@ -13,7 +13,8 @@ public:
 	void move(Position& pos);
 	double distance(Position& pos);
 
-	//bool operator==(Position& pos);
+	int getX()const { return x; };
+	int getY()const { return y; };
 	bool operator==(const Position& pos);
 
 private:
