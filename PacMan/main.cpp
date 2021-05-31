@@ -1,6 +1,8 @@
 
 #include <iostream>
 #include <iostream>
+#include <fstream>
+#include <string>
 
 #include "Position.h"
 #include "Movement.h"
@@ -21,6 +23,26 @@ void printMap(std::vector<MapCell>& mp) {
 		else std::cout << '*';
 		
 	}
+}
+
+std::vector<MapCell> readMap(std::string file) {
+	std::ifstream infile(file);
+	std::string line;
+	int lineNumber = 0;
+	std::vector<MapCell> mp;
+	while (std::getline(infile, line)) {
+		for (auto i = 0; i < line.size(); i++) {
+			if (line[i] == '1') {
+				mp.push_back({ {lineNumber,i}, MapCell::Category::OBSTACLE });
+			}
+			else if (line[i] == '0') {
+				mp.push_back({ {lineNumber,i}, MapCell::Category::FREE});
+			}
+		}
+		lineNumber++;
+	}
+
+	return mp;
 }
 
 
@@ -70,6 +92,11 @@ int main() {
 	printMap(nb);
 
 
+
+	std::vector<MapCell> res =  readMap("mapa.txt");
+	std::cout << "\n";
+	std::cout << "\n";
+	printMap(res);
 
 
 }
