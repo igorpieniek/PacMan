@@ -70,33 +70,21 @@ int main() {
 	std::cout << pos << std::endl;
 
 
-	const int boardSize = 10;
-	std::vector<MapCell> mc;
-	for (int y = 0; y < 10; y++) {
-		for (int x = 0; x < 10; x++) {
-			if (x % 2) {
-				mc.push_back({ {x,y} , MapCell::Category::FREE });
-			}
-			else {
-				mc.push_back({ {x,y} , MapCell::Category::OBSTACLE });
-			}
-		}
-	}
-	printMap(mc);
-
-
-	MapManager mapManager { mc };
-	Position test{ 24,45 };
-	std::vector<MapCell> nb = mapManager.getNeighbours(test, 1);
-	std::cout << "\n";
-	printMap(nb);
-
-
 
 	std::vector<MapCell> res =  readMap("mapa.txt");
 	std::cout << "\n";
-	std::cout << "\n";
+
 	printMap(res);
+
+	std::vector<MapCell> cp = res;
+	MapManager mapManager2{ res };
+
+	std::cout << "\n";
+	for (auto c : cp) {
+		if (mapManager2.isCorner(c)) {
+			std::cout << "Corner found for point " << c << std::endl;
+		}
+	}
 
 
 }
