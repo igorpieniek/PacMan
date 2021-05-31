@@ -1,7 +1,7 @@
 #include "MapManager.h"
 
 MapManager::MapManager(Board& map){
-	std::move(map.begin(), map.end(), mapBoard.begin());
+	mapBoard = std::move(map);
 }
 
 bool MapManager::isOccupied(Position& pos){
@@ -19,8 +19,8 @@ Board& MapManager::getAllMap(){
 Board MapManager::getNeighbours(Position& pos, int radius){
 	Board resultMap;
 
-	for (int w = pos.getX() + radius; w <= pos.getX() + radius; w++) {
-		for (int k = pos.getY() + radius; k <= pos.getY() + radius; k++) {
+	for (int k = pos.getY() - radius; k <= pos.getY() + radius; k++) {
+		for (int w = pos.getX() - radius; w <= pos.getX() + radius; w++){
 			Board::iterator iter = std::find(mapBoard.begin(), mapBoard.end(), Position{ w,k });
 			if (iter != mapBoard.end()) {
 				resultMap.push_back(*iter);
