@@ -4,6 +4,10 @@ MapManager::MapManager(Board& map){
 	mapBoard = std::move(map);
 }
 
+MapManager::MapManager(std::string fileName){
+	mapBoard = readMapFromFile(fileName);
+}
+
 bool MapManager::isOccupied(Position& pos){
 	auto foundIter = std::find(mapBoard.begin(), mapBoard.end(), pos);
 	if (foundIter != mapBoard.end()) {
@@ -70,6 +74,23 @@ MapManager::getAllPossibleDirections(Position& pos){
 		if (iter != mapBoard.end()) {
 			if (!iter->isObstacle()) result.push_back(x.first);
 		}
+	}
+	return result;
+}
+
+Board MapManager::readMapFromFile(std::string fileName){
+	std::vector<MapCell> result;
+	std::ifstream file(fileName);
+	std::string line;
+	int lineNumber = 0;
+	while ( std::getline(file, line)) {
+		for (auto i = 0; i < line.size(); i++) {
+			auto it = mapBindings.find(line[i]);
+			if (it != mapBindings.end()) {
+				result.push_back({ {lineNumber,i}, it->second });
+			}
+		}
+		++lineNumber;
 	}
 	return result;
 }

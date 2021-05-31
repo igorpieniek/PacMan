@@ -10,6 +10,9 @@
 #include <iostream>
 #include <map>
 #include <algorithm>
+#include <string>
+#include <fstream>
+#include <map>
 
 
 using Board = std::vector<MapCell>;
@@ -18,6 +21,7 @@ class MapManager{
 public:
 	MapManager();
 	MapManager(Board& map);
+	MapManager(std::string fileName);
 
 	bool isOccupied(Position& pos);
 	Board& getAllMap();
@@ -36,6 +40,12 @@ public:
 	
 private:
 	Board mapBoard;
+	Board readMapFromFile(std::string fileName);
+
+	const std::map<char, MapCell::Category> mapBindings = {
+		{'1', MapCell::Category::OBSTACLE},
+		{'0', MapCell::Category::FREE},
+	};
 
 };
 
