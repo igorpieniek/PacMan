@@ -22,9 +22,9 @@ public:
 	void moveLeft(Position& pos);
 	void moveRight(Position& pos);
 
+	void moveInDir(Position& pos, Direction dir);
+
 	void setStepSize(int siz);
-
-
 
 private:
 	int stepSize;

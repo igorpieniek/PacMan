@@ -6,12 +6,13 @@
 #include "MoveAlgorithm.h"
 #include "Movement.h"
 #include <cstdlib>
+#include <vector>
+#include <algorithm>
 
 class RandMove: public MoveAlgorithm{
 public:
 	RandMove(MapManager* manag, int step=1) :MoveAlgorithm(manag), moveTool(step) {
 		currentDirection = Direction::NORTH;
-		
 	};
 
 	Position getNextPosition(Position& current) override;
@@ -20,8 +21,6 @@ public:
 private:
 	int getRandomValue(int min, int max);
 
-
-	
 	Position getPositionInDirection(Position& center, Direction dir);
 	Direction getBestDirection(Position& center);
 

@@ -8,6 +8,7 @@
 #include "MapManager.h"
 
 
+
 class MoveAlgorithm{
 public:
 	virtual Position getNextPosition(Position& current) = 0;
@@ -15,9 +16,8 @@ public:
 protected:
 
 	MoveAlgorithm(MapManager* manag) : mapManager(manag) {};
-
-private:
-	const MapManager* mapManager;
+	MapManager* mapManager;
+	
 };
 
 

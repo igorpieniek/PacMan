@@ -28,11 +28,19 @@ int RandMove::getRandomValue(int min, int max){
 
 Position RandMove::getPositionInDirection(Position& center, Direction dir){
     Position newPos = center;
-
-    return Position();
+    moveTool.moveInDir(newPos, dir);
+    return newPos;
 }
 
 Direction RandMove::getBestDirection(Position& center){
+    std::vector<Direction> directions = mapManager->getAllPossibleDirections(center);
+    if (directions.size() == 1) return directions[0];
+    
+    directions.erase(std::remove(directions.begin(), directions.end(), currentDirection), 
+                     directions.end());
 
-    return Direction();
+    if (directions.size() == 1) return directions[0];
+
+    int randIndex = getRandomValue(0, directions.size());
+    return directions[randIndex];
 }
