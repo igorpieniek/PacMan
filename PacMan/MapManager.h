@@ -5,6 +5,7 @@
 
 
 #include "MapCell.h"
+#include "Movement.h"
 #include <vector>
 #include <utility>
 #include <iostream>
@@ -27,12 +28,7 @@ public:
 	Board& getAllMap();
 	Board getNeighbours(Position& pos, int radius);
 
-	enum class Direction {
-		NORTH,
-		EAST,
-		SOUTH,
-		WEST
-	};
+	
 
 
 	bool isCorner(Position& pos);

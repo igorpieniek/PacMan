@@ -39,7 +39,7 @@ Board MapManager::getNeighbours(Position& pos, int radius){
 }
 
 bool MapManager::isCorner(Position& pos){
-	std::vector<MapManager::Direction> possible = getAllPossibleDirections(pos);
+	std::vector<Direction> possible = getAllPossibleDirections(pos);
 	if (possible.size() != 2) return false;
 	
 	std::sort(possible.begin(), possible.end());
@@ -57,10 +57,10 @@ bool MapManager::isCorner(Position& pos){
 	return false;
 }
 
-std::vector<MapManager::Direction> 
+std::vector<Direction> 
 MapManager::getAllPossibleDirections(Position& pos){
-	std::vector<MapManager::Direction> result;
-	std::map<MapManager::Direction, Position> check = {
+	std::vector<Direction> result;
+	std::map<Direction, Position> check = {
 		{Direction::NORTH, {0, 1}},
 		{Direction::SOUTH, {0,-1}},
 		{Direction::EAST,  {1, 0}},
