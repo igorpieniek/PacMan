@@ -37,7 +37,7 @@ Direction RandMove::getBestDirection(Position& center) {
 
     if (isInitialized) {
         std::cout << '\n' << center;
-        auto iter = std::find(directions.begin(), directions.end(), currentDirection);
+        auto iter = std::find(directions.begin(), directions.end(), getOpprositeDirection(currentDirection));
         if (iter != directions.end()) {
             std::cout << "Direction deleted "<<static_cast<int>(*iter) << '\n';
             directions.erase(iter);
