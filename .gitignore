@@ -4,5 +4,6 @@
 *.vcxproj*
 *.ilk
 *.pdb
+*.txt
 
 

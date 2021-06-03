@@ -22,11 +22,10 @@ public:
 private:
 	int getRandomValue(int min, int max);
 
-	Position getPositionInDirection(Position& center, Direction dir);
 	Direction getBestDirection(Position& center);
 
-	Position firstMoveProcess(Position& pos);
-	Position normalMoveProcess(Position& pos);
+	void deleteCurrentDirection(std::vector<Direction>& dir);
+	Position moveProcess(Position& pos);
 
 
 	Direction currentDirection;
