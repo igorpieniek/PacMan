@@ -13,6 +13,9 @@ enum class Direction {
 	WEST
 };
 
+Direction getOpprositeDirection(const Direction& dir);
+void printDirection(const Direction& dir);
+
 class Movement{
 public:
 

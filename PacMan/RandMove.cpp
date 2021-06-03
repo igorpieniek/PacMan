@@ -27,9 +27,11 @@ Direction RandMove::getBestDirection(Position& center) {
     std::vector<Direction> directions = mapManager->getAllPossibleDirections(center);
     std::cout << '\n'<< center;
     for (auto const dir : directions) {
-        std::cout << static_cast<int>(dir) << " ";
+        printDirection(dir);
+        std::cout << " ";
     }
-    std::cout << " cd = " << reinterpret_cast<int>(currentDirection) << std::endl;
+    printDirection(currentDirection);
+    std::cout << std::endl;
 
     if (directions.size() == 1) return directions[0];
 
@@ -66,18 +68,4 @@ Position RandMove::normalMoveProcess(Position& pos){
     return checkPos;
 }
 
-Direction RandMove::getOpositeDirection(Direction& dir)
-{
-    switch (dir){
-    case Direction::NORTH:
-        return Direction::SOUTH;
-    case Direction::SOUTH:
-        return Direction::NORTH;
 
-    case Direction::NORTH:
-        return Direction::SOUTH;
-    default:
-        break;
-    }
-    return Direction();
-}
