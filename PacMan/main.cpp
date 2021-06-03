@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 
+#include <windows.h>
+
 #include "Position.h"
 #include "Movement.h"
 #include "MapCell.h"
@@ -12,16 +14,19 @@
 
 
 
-void printMap(std::vector<MapCell>& mp) {
+void printMap(std::vector<MapCell>& mp , Position* pos) {
 	int last = 0;
 	for (auto cell : mp) {
 		if (cell.getX() < last) std::cout << '\n';
 		last = cell.getX();
 
 		if (cell.isObstacle()) {
-			std::cout << 'o';
+			std::cout << " o";
 		}
-		else std::cout << '*';
+		else if (pos != NULL && *pos == cell) {
+			std::cout << " +";
+		}
+		else std::cout << " .";
 		
 	}
 }
@@ -61,9 +66,12 @@ int main() {
 
 	Position p{ 1,2 };
 	
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 40; i++) {
 		std::cout << p << std::endl;
+		printMap(res.getAllMap(), &p);
 		p = rm.getNextPosition(p);
+		Sleep(400);
+		system("CLS");
 	}
 	
 	/*

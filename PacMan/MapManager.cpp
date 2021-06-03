@@ -87,7 +87,7 @@ Board MapManager::readMapFromFile(std::string fileName){
 		for (auto i = 0; i < line.size(); i++) {
 			auto it = mapBindings.find(line[i]);
 			if (it != mapBindings.end()) {
-				result.push_back({ {lineNumber,i}, it->second });
+				result.push_back({ {i,lineNumber}, it->second });
 			}
 		}
 		++lineNumber;

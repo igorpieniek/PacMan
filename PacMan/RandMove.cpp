@@ -3,11 +3,12 @@
 Position RandMove::getNextPosition(Position& current){
     Position pos;
     if (isInitialized) {
-        pos = normalMoveProcess(current);
+        //pos = normalMoveProcess(current);
+        pos = firstMoveProcess(current);
     }
     else {
-        isInitialized = false;
         pos = firstMoveProcess(current);
+        isInitialized = true;
     }
     return pos;
 }
@@ -22,17 +23,25 @@ Position RandMove::getPositionInDirection(Position& center, Direction dir){
     return newPos;
 }
 
-Direction RandMove::getBestDirection(Position& center){
+Direction RandMove::getBestDirection(Position& center) {
     std::vector<Direction> directions = mapManager->getAllPossibleDirections(center);
+    std::cout << '\n'<< center;
+    for (auto const dir : directions) {
+        std::cout << static_cast<int>(dir) << " ";
+    }
+    std::cout << " cd = " << reinterpret_cast<int>(currentDirection) << std::endl;
+
     if (directions.size() == 1) return directions[0];
 
-    auto iter = std::find(directions.begin(), directions.end(), currentDirection);
-    if (iter != directions.end()) {
-        directions.erase(iter);
+    if (isInitialized) {
+        std::cout << '\n' << center;
+        auto iter = std::find(directions.begin(), directions.end(), currentDirection);
+        if (iter != directions.end()) {
+            std::cout << "Direction deleted "<<static_cast<int>(*iter) << '\n';
+            directions.erase(iter);
+        }
     }
     
-    directions.erase(std::remove(directions.begin(), directions.end(), currentDirection), 
-                     directions.end());
 
     if (directions.size() == 1) return directions[0];
 
@@ -41,11 +50,9 @@ Direction RandMove::getBestDirection(Position& center){
 }
 
 Position RandMove::firstMoveProcess(Position& pos){
-    int randIndex = getRandomValue(0, 3);
-    currentDirection = static_cast<Direction>(randIndex);
-    Direction dir = getBestDirection(pos);
+    currentDirection = getBestDirection(pos);
     Position resultPos = pos;
-    moveTool.moveInDir(resultPos, dir);
+    moveTool.moveInDir(resultPos, currentDirection);
     return resultPos;
 }
 
@@ -57,4 +64,20 @@ Position RandMove::normalMoveProcess(Position& pos){
         moveTool.moveInDir(checkPos, currentDirection);
     }
     return checkPos;
+}
+
+Direction RandMove::getOpositeDirection(Direction& dir)
+{
+    switch (dir){
+    case Direction::NORTH:
+        return Direction::SOUTH;
+    case Direction::SOUTH:
+        return Direction::NORTH;
+
+    case Direction::NORTH:
+        return Direction::SOUTH;
+    default:
+        break;
+    }
+    return Direction();
 }

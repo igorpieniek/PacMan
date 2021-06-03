@@ -28,6 +28,8 @@ private:
 	Position firstMoveProcess(Position& pos);
 	Position normalMoveProcess(Position& pos);
 
+	Direction getOpositeDirection(Direction& dir);
+
 	Direction currentDirection;
 	Movement moveTool;
 	bool isInitialized = false;
