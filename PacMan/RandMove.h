@@ -18,11 +18,15 @@ public:
 	Position getNextPosition(Position& current) override;
 
 
+
 private:
 	int getRandomValue(int min, int max);
 
 	Position getPositionInDirection(Position& center, Direction dir);
 	Direction getBestDirection(Position& center);
+
+	Position firstMoveProcess(Position& pos);
+	Position normalMoveProcess(Position& pos);
 
 	Direction currentDirection;
 	Movement moveTool;

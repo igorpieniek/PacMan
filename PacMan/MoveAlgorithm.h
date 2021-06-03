@@ -12,7 +12,7 @@
 class MoveAlgorithm{
 public:
 	virtual Position getNextPosition(Position& current) = 0;
-	virtual ~MoveAlgorithm();
+	virtual ~MoveAlgorithm() {};
 protected:
 
 	MoveAlgorithm(MapManager* manag) : mapManager(manag) {};

@@ -8,6 +8,7 @@
 #include "Movement.h"
 #include "MapCell.h"
 #include "MapManager.h"
+#include "RandMove.h"
 
 
 
@@ -56,9 +57,15 @@ int main() {
 	MapManager res("mapa.txt");
 	std::cout << "\n";
 
-	
-	MapManager mapManager2 = res;
+	RandMove rm(&res);
 
+	Position p{ 1,2 };
+	
+	for (int i = 0; i < 10; i++) {
+		std::cout << p << std::endl;
+		p = rm.getNextPosition(p);
+	}
+	
 	/*
 	std::cout << "\n";
 	for (auto c : cp) {
