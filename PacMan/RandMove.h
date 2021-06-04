@@ -16,8 +16,7 @@ public:
 	};
 
 	Position getNextPosition(Position& current) override;
-
-
+	void setStepResolution(int res) override;
 
 private:
 	int getRandomValue(int min, int max);
@@ -31,9 +30,6 @@ private:
 	Direction currentDirection;
 	Movement moveTool;
 	bool isInitialized = false;
-
-
-
 };
 
 #endif // __RANDMOVE_H__

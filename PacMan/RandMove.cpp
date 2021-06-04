@@ -8,6 +8,10 @@ Position RandMove::getNextPosition(Position& current){
     return pos;
 }
 
+void RandMove::setStepResolution(int res){
+    moveTool.setStepSize(res);
+}
+
 
 Position RandMove::moveProcess(Position& pos) {
     currentDirection = getBestDirection(pos);
