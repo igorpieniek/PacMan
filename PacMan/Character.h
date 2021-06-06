@@ -9,16 +9,16 @@ class Character{
 public:
 	using SpeedType = int;
 	Position getPosition()const { return currentPostion; };
-	void setPosition(Position& pos) { currentPostion = pos; };
 
+	virtual void update() = 0;
 	virtual void draw() = 0;
+	
 	virtual ~Character() {};
 
 protected:
 	Character(SpeedType s, Position startPos) : speed(s), currentPostion(startPos) {};
 	SpeedType speed;
 	Position currentPostion;
-
 
 };
 
