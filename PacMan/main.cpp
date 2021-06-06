@@ -29,7 +29,7 @@ void printMap(std::vector<MapCell>& mp , Position* pos) {
 		else if (pos != NULL && *pos == cell) {
 			std::cout << " +";
 		}
-		else std::cout << " .";
+		else std::cout << "  ";
 		
 	}
 }
@@ -49,7 +49,7 @@ void printAll(std::vector<MapCell>& mp, std::vector<Oponent>& ops) {
 		else if (iter != ops.end()) {
 			iter->draw();
 		}
-		else std::cout << " .";
+		else std::cout << "  ";
 
 	}
 }
@@ -67,20 +67,25 @@ int main() {
 
 	RandMove rm2(&res);
 	Behaviour beh2{ &rm2 };
+
+	RandMove rm3(&res);
+	Behaviour beh3{ &rm3 };
+
 	std::vector<Oponent> ops = {
 		Oponent(Position{1,2}, &beh, 1, "g"),
-		Oponent(Position{7,1}, &beh2, 2, "@")
+		Oponent(Position{7,1}, &beh2, 1, "@"),
+		Oponent(Position{8,6}, &beh3, 1, "D")
 	};
 
 	
 	
-	for (int i = 0; i < 40; i++) {
+	for (int i = 0; i < 200; i++) {
 		printAll(res.getAllMap(), ops);
 		for (auto& oponent : ops) {
 			oponent.update();
 		}
 
-		Sleep(400);
+		Sleep(70);
 		system("CLS");
 	}
 

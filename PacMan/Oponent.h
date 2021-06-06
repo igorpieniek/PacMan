@@ -12,7 +12,10 @@
 class Oponent: public Character{
 public:
 	Oponent(Position startPos, Behaviour* beh, SpeedType sp, std::string sym = {"q"}) :
-		Character(sp, startPos), behaviour(beh), symbol(sym) {};
+		Character(sp, startPos), behaviour(beh), symbol(sym) 
+	{
+		behaviour->setStepSpeed(speed);
+	};
 
 
 	void draw() override;
