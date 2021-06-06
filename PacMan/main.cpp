@@ -14,6 +14,7 @@
 #include "RandMove.h"
 #include "Behaviour.h"
 #include "Oponent.h"
+#include "Player.h"
 
 
 
@@ -34,20 +35,25 @@ void printMap(std::vector<MapCell>& mp , Position* pos) {
 	}
 }
 
-void printAll(std::vector<MapCell>& mp, std::vector<Oponent>& ops) {
+void printAll(std::vector<MapCell>& mp, std::vector<Oponent>& ops, Player& pl) {
 	int last = 0;
 	for (auto cell : mp) {
 		if (cell.getX() < last) std::cout << '\n';
 		last = cell.getX();
 
 		auto pred = [&cell](const Oponent& oponent) {return oponent.getPosition() == cell; };
-		auto iter = find_if(ops.begin(), ops.end(), pred);
+		auto oponentIter = find_if(ops.begin(), ops.end(), pred);
+
+
 
 		if (cell.isObstacle()) {
 			std::cout << " o";
 		}
-		else if (iter != ops.end()) {
-			iter->draw();
+		else if (oponentIter != ops.end()) {
+			oponentIter->draw();
+		}
+		else if (pl.getPosition() == cell) {
+			pl.draw();
 		}
 		else std::cout << "  ";
 
@@ -77,20 +83,23 @@ int main() {
 		Oponent(Position{8,6}, &beh3, 1, "D")
 	};
 
-	
+	Player pl(Position{ 1,2 }, 1, &res);
+
 	
 	for (int i = 0; i < 200; i++) {
-		printAll(res.getAllMap(), ops);
+		printAll(res.getAllMap(), ops, pl);
+
 		for (auto& oponent : ops) {
 			oponent.update();
 		}
+		pl.update();
 
 		Sleep(70);
 		system("CLS");
 	}
 
 	/*
-	* Position p{ 1,2 };
+	Position p{ 1,2 };
 	for (int i = 0; i < 40; i++) {
 		std::cout << p << std::endl;
 		printMap(res.getAllMap(), &p);
