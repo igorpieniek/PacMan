@@ -6,6 +6,7 @@
 
 #include "Position.h"
 
+
 enum class Direction {
 	NORTH,
 	EAST,
@@ -20,12 +21,12 @@ class Movement{
 public:
 
 	Movement(int step = {1}) : stepSize(step) {};
-	void moveUp(Position& pos);
-	void moveDown(Position& pos);
-	void moveLeft(Position& pos);
-	void moveRight(Position& pos);
+	virtual void moveUp(Position& pos);
+	virtual void moveDown(Position& pos);
+	virtual void moveLeft(Position& pos);
+	virtual void moveRight(Position& pos);
 
-	void moveInDir(Position& pos, Direction dir);
+	virtual void moveInDir(Position& pos, Direction dir);
 
 	void setStepSize(int siz);
 
@@ -33,5 +34,9 @@ private:
 	int stepSize;
 
 };
+
+
+
+
 
 #endif //__MOVEMENT_H__

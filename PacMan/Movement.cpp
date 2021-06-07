@@ -75,4 +75,3 @@ void Movement::setStepSize(int siz){
 	stepSize = siz;
 }
 
-
