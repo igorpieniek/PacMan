@@ -1,11 +1,17 @@
 #include "MapManager.h"
 
-MapManager::MapManager(Board& map){
+
+MapManager& MapManager::instance(){
+	static MapManager inst;
+	return inst;
+}
+
+void MapManager::addMap(Board& map){
 	mapBoard = std::move(map);
 }
 
-MapManager::MapManager(std::string fileName){
-	mapBoard = readMapFromFile(fileName);
+void MapManager::addMap(std::string filename){
+	mapBoard = readMapFromFile(filename);
 }
 
 bool MapManager::isOccupied(Position& pos){

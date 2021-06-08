@@ -20,9 +20,11 @@ using Board = std::vector<MapCell>;
 
 class MapManager{
 public:
-	MapManager();
-	MapManager(Board& map);
-	MapManager(std::string fileName);
+
+	static MapManager& instance();
+
+	void addMap(Board& map);
+	void addMap(std::string filename);
 
 	bool isOccupied(Position& pos);
 	Board& getAllMap();
@@ -30,8 +32,13 @@ public:
 
 	bool isCorner(Position& pos);
 	std::vector<Direction> getAllPossibleDirections(Position& pos);
+
+	MapManager(MapManager const&) = delete;
+	void operator=(MapManager const&) = delete;
 	
 private:
+	MapManager() {};
+
 	Board mapBoard;
 	Board readMapFromFile(std::string fileName);
 
@@ -41,6 +48,5 @@ private:
 	};
 
 };
-
 
 #endif //__MAPMANAGER_H__
