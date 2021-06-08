@@ -65,29 +65,29 @@ void printAll(std::vector<MapCell>& mp, std::vector<Oponent>& ops, Player& pl) {
 
 int main() {
 
-	MapManager res("mapa.txt");
+	MapManager::instance().addMap("mapa.txt");
 	std::cout << "\n";
 
-	RandMove rm(&res);
+	RandMove rm;
 	Behaviour beh{ &rm };
 
-	RandMove rm2(&res);
+	RandMove rm2;
 	Behaviour beh2{ &rm2 };
 
-	RandMove rm3(&res);
+	RandMove rm3;
 	Behaviour beh3{ &rm3 };
 
 	std::vector<Oponent> ops = {
 		Oponent(Position{1,2}, &beh, 1, "g"),
-		Oponent(Position{7,1}, &beh2, 1, "@"),
-		Oponent(Position{8,6}, &beh3, 1, "D")
+		Oponent(Position{7,4}, &beh2, 1, "@"),
+		Oponent(Position{14,5}, &beh3, 1, "D")
 	};
 
-	Player pl(Position{ 1,2 }, 1, &res);
+	Player pl(Position{ 1,2 }, 1);
 
 	
 	for (int i = 0; i < 200; i++) {
-		printAll(res.getAllMap(), ops, pl);
+		printAll(MapManager::instance().getAllMap(), ops, pl);
 
 		for (auto& oponent : ops) {
 			oponent.update();

@@ -18,8 +18,8 @@
 
 class Player :public Character{
 public:
-	Player(Position startPos, SpeedType sp, MapManager* mapmanag, std::string sym = { "p" }) :
-		Character(sp, startPos), symbol(sym), mapManager(mapmanag)
+	Player(Position startPos, SpeedType sp, std::string sym = { "p" }) :
+		Character(sp, startPos), symbol(sym)
 	{
 		moveTool.setStepSize(sp);
 	};
@@ -31,7 +31,6 @@ public:
 private:
 	std::string symbol;
 	Movement moveTool;
-	MapManager* mapManager;
 
 	int numberOfLives = 3;
 	int numberOfPoints = 0;

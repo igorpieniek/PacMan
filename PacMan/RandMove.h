@@ -5,13 +5,14 @@
 
 #include "MoveAlgorithm.h"
 #include "Movement.h"
+#include "MapManager.h"
 #include <cstdlib>
 #include <vector>
 #include <algorithm>
 
 class RandMove: public MoveAlgorithm{
 public:
-	RandMove(MapManager* manag, int step=1) :MoveAlgorithm(manag), moveTool(step) {
+	RandMove(int step = 1) : moveTool(step) {
 		currentDirection = Direction::NORTH;
 	};
 

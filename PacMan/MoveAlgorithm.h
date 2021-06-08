@@ -5,7 +5,6 @@
 
 #include "Position.h"
 #include "MapCell.h"
-#include "MapManager.h"
 
 
 
@@ -16,8 +15,8 @@ public:
 	virtual ~MoveAlgorithm() {};
 protected:
 
-	MoveAlgorithm(MapManager* manag) : mapManager(manag) {};
-	MapManager* mapManager;
+	MoveAlgorithm(){};
+
 	
 };
 

@@ -29,7 +29,7 @@ void Player::update(){
 void Player::move(Direction dir){
     Position temp = currentPostion;
     moveTool.moveInDir(temp, dir);
-    if (!mapManager->isOccupied(temp)) {
+    if (!MapManager::instance().isOccupied(temp)) {
         currentPostion = temp;
     }
 }

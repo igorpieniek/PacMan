@@ -87,6 +87,9 @@ MapManager::getAllPossibleDirections(Position& pos){
 Board MapManager::readMapFromFile(std::string fileName){
 	std::vector<MapCell> result;
 	std::ifstream file(fileName);
+	if (file.fail()) {
+		std::cout << "Map file open error!" << std::endl;
+	}
 	std::string line;
 	int lineNumber = 0;
 	while ( std::getline(file, line)) {

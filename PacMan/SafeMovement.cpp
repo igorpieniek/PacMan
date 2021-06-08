@@ -24,6 +24,6 @@ void SafeMovement::moveInDir(Position& pos, Direction dir){
 
 bool SafeMovement::isNextPositionFree(Position pos, Direction dir){
 	Movement::moveInDir(pos, dir);
-	if (mapManager->isOccupied(pos)) return false;
+	if (MapManager::instance().isOccupied(pos)) return false;
 	else return true;
 }

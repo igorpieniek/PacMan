@@ -9,8 +9,8 @@
 
 class SafeMovement : public Movement {
 public:
-	SafeMovement(MapManager* mapManag, int step = { 1 }) :
-		Movement(step), mapManager(mapManag) {};
+	SafeMovement(int step = { 1 }) :
+		Movement(step) {};
 
 	void moveUp(Position& pos) override;
 	void moveDown(Position& pos) override;
@@ -20,7 +20,6 @@ public:
 	void moveInDir(Position& pos, Direction dir) override;
 
 private:
-	MapManager* mapManager;
 	bool isNextPositionFree(Position pos, Direction dir);
 };
 

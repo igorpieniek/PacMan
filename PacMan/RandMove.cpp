@@ -20,8 +20,9 @@ Position RandMove::moveProcess(Position& pos) {
     return resultPos;
 }
 
+
 Direction RandMove::getBestDirection(Position& center) {
-    std::vector<Direction> directions = mapManager->getAllPossibleDirections(center);
+    std::vector<Direction> directions = MapManager::instance().getAllPossibleDirections(center);
 
     if (directions.size() == 1) return directions[0];
 
