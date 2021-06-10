@@ -33,6 +33,9 @@ public:
 	bool isCorner(Position& pos);
 	std::vector<Direction> getAllPossibleDirections(Position& pos);
 
+	int getMapXSize() const { return mapBoard.back().getX(); };
+	int getMapYSize() const { return mapBoard.back().getY(); };
+
 	MapManager(MapManager const&) = delete;
 	void operator=(MapManager const&) = delete;
 	
@@ -41,6 +44,7 @@ private:
 
 	Board mapBoard;
 	Board readMapFromFile(std::string fileName);
+
 
 	const std::map<char, MapCell::Category> mapBindings = {
 		{'1', MapCell::Category::OBSTACLE},

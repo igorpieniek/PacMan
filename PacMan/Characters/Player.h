@@ -23,6 +23,13 @@ public:
 
 	void draw() override;
 
+	void moveUp();
+	void moveDown();
+	void moveLeft();
+	void moveRight();
+
+	void addPoints(int p);
+
 private:
 	std::string symbol;
 	SafeMovement moveTool;

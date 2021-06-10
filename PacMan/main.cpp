@@ -75,10 +75,10 @@ int main() {
 	Behaviour beh{ &rm };
 
 	RandMove rm2;
-	Behaviour beh2{ &rm2 };
+	Behaviour beh2{ &rm };
 
 	RandMove rm3;
-	Behaviour beh3{ &rm3 };
+	Behaviour beh3{ &rm };
 
 	std::vector<Oponent> ops = {
 		Oponent(Position{1,2}, &beh, 1, "g"),
