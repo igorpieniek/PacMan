@@ -25,6 +25,18 @@ void OponentManager::drawAll() {
 	}
 }
 
+void OponentManager::deactivateAll(){
+	for (auto& oponent : ops) {
+		oponent.disable();
+	}
+}
+
+void OponentManager::activeteAll(){
+	for (auto& oponent : ops) {
+		oponent.enable();
+	}
+}
+
 bool OponentManager::isOponentsAndDraw(Position& pos){
 	auto pred = [&pos](const Oponent& oponent) {return oponent.getPosition() == pos; };
 	auto oponentIter = find_if(ops.begin(), ops.end(), pred);
