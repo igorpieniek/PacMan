@@ -17,6 +17,10 @@ public:
 	
 	OponentManager(int numberOfOps = { 4 }) : numberOfOponents(numberOfOps) {};
 
+	void updateAll();
+	void drawAll();
+
+	bool checkOponentsAndDraw(Position& pos); //temporary to see results
 
 private:
 	int numberOfOponents;
@@ -32,7 +36,6 @@ private:
 	std::vector<Algorithm_Beh> algbeh;
 
 	void createOponents();
-
 	Position getRandPosition();
 
 };
