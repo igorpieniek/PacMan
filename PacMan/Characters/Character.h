@@ -16,8 +16,8 @@ public:
 	virtual ~Character() {};
 
 protected:
-	Character(SpeedType s, Position startPos) : speed(s), currentPostion(startPos) {};
-	SpeedType speed;
+	Character( Position startPos) : currentPostion(startPos) {};
+
 	Position currentPostion;
 
 };

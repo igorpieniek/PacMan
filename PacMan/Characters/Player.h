@@ -5,8 +5,8 @@
 #define __PLAYER_H__
 
 #include "Character.h"
-#include "Movement.h"
 #include "MapManager.h"
+#include "SafeMovement.h"
 #include <string>
 #include <iostream>
 #include <conio.h>
@@ -19,23 +19,18 @@
 class Player :public Character{
 public:
 	Player(Position startPos, SpeedType sp, std::string sym = { "p" }) :
-		Character(sp, startPos), symbol(sym)
-	{
-		moveTool.setStepSize(sp);
-	};
+		Character(startPos), moveTool(sp), symbol(sym){};
 
 	void draw() override;
-	void update() override;
-
 
 private:
 	std::string symbol;
-	Movement moveTool;
+	SafeMovement moveTool;
 
 	int numberOfLives = 3;
 	int numberOfPoints = 0;
 
-	void move(Direction dir);
+	void update() override {}; // in private to delete
 };
 
 #endif //__PLAYER_H__

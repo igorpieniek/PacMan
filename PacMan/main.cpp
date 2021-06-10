@@ -95,7 +95,7 @@ int main() {
 		for (auto& oponent : ops) {
 			oponent.update();
 		}
-		pl.update();
+		//pl.update();
 
 		Sleep(70);
 		system("CLS");
