@@ -8,13 +8,16 @@
 #include <windows.h>
 
 #include "Position.h"
-#include "Movement.h"
 #include "MapCell.h"
 #include "MapManager.h"
+#include "MoveAlgorithm.h"
 #include "RandMove.h"
 #include "Behaviour.h"
+
 #include "Oponent.h"
 #include "Player.h"
+
+
 
 
 
