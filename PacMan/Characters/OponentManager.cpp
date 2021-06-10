@@ -2,18 +2,13 @@
 
 
 void OponentManager::createOponents(){
-
-	for (int i = 0; i < numberOfOponents; ++i) {
-		MoveAlg alg{};
-		Behaviour beh{ &alg };
-		algbeh.push_back({ alg, beh });
-	}
-
+	char symbol = 'A';
 	for (int i = 0; i < numberOfOponents; ++i) {
 		ops.push_back({ getRandPosition(),
-						 &algbeh[i].beh,
+						 new Behaviour{new MoveAlg},
 						  1,
-						  "G" });
+						  {symbol} });
+		symbol++;
 	}
 }
 
@@ -43,7 +38,6 @@ bool OponentManager::isOponentsAndDraw(Position& pos){
 
 
 Position OponentManager::getRandPosition() {
-	Position pos{ 0,0 };
 	while (true) {
 		int randX = std::rand() % MapManager::instance().getMapXSize();
 		int randY = std::rand() % MapManager::instance().getMapYSize();

@@ -15,12 +15,15 @@
 class OponentManager{
 public:
 	
-	OponentManager(int numberOfOps = { 4 }) : numberOfOponents(numberOfOps) {};
+	OponentManager(int numberOfOps = { 4 }) : numberOfOponents(numberOfOps) 
+	{
+		createOponents();
+	};
 
 	void updateAll();
 	void drawAll();
 
-	bool checkOponentsAndDraw(Position& pos); //temporary to see results
+	bool isOponentsAndDraw(Position& pos); //temporary to see results
 
 private:
 	int numberOfOponents;
@@ -28,15 +31,9 @@ private:
 	
 	using MoveAlg = RandMove;
 
-	struct Algorithm_Beh {
-		MoveAlg alg;
-		Behaviour beh;
-	};
-
-	std::vector<Algorithm_Beh> algbeh;
-
 	void createOponents();
 	Position getRandPosition();
+
 
 };
 
