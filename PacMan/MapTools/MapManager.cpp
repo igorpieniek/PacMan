@@ -84,6 +84,8 @@ MapManager::getAllPossibleDirections(Position& pos){
 	return result;
 }
 
+
+
 Board MapManager::readMapFromFile(std::string fileName){
 	std::vector<MapCell> result;
 	std::ifstream file(fileName);
@@ -97,6 +99,7 @@ Board MapManager::readMapFromFile(std::string fileName){
 			auto it = mapBindings.find(line[i]);
 			if (it != mapBindings.end()) {
 				result.push_back({ {i,lineNumber}, it->second });
+				incrementFreePos(it->second);
 			}
 		}
 		++lineNumber;
@@ -105,4 +108,8 @@ Board MapManager::readMapFromFile(std::string fileName){
 }
 
 
-
+void MapManager::incrementFreePos(MapCell::Category cat) {
+	if (cat == MapCell::Category::FREE) {
+		freePositionsAmount++;
+	}
+}

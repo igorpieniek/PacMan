@@ -1,6 +1,8 @@
 #include "PointsManager.h"
 
-PointsManager::PointsManager(){
+/*
+PointsManager::PointsManager(int specialAmount){
 	// get map from mapmanager
 	// calculate number of all posible
 }
+*/

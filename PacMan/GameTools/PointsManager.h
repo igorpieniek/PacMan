@@ -4,14 +4,23 @@
 #define __POINTSMANAGER_H__
 
 #include "MapManager.h"
+#include "CellPoint.h"
+#include <vector>
+#include <cstdlib>
 
 class PointsManager{
 public:
-	PointsManager();
+	PointsManager(int specialAmount) : specialPointsAmount(specialAmount) {};
 	
 private:
-	int maxAmountFreePositions;
 	int currentPoints;
+	int specialPointsAmount;
+	std::vector<CellPoint> cellPoints;
+
+
+	void createCellPointArray();
+
+
 };
 
 #endif // __POINTSMANAGER_H__

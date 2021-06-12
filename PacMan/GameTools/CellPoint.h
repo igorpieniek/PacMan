@@ -5,8 +5,6 @@
 
 #include "MapCell.h"
 
-
-
 enum class PointCat : int {
 	ZER0  = 0,
 	NORMAL = 1,

@@ -35,6 +35,7 @@ public:
 
 	int getMapXSize() const { return mapBoard.back().getX(); };
 	int getMapYSize() const { return mapBoard.back().getY(); };
+	int getFreePosAmount()const { return freePositionsAmount; };
 
 	MapManager(MapManager const&) = delete;
 	void operator=(MapManager const&) = delete;
@@ -44,7 +45,8 @@ private:
 
 	Board mapBoard;
 	Board readMapFromFile(std::string fileName);
-
+	int freePositionsAmount;
+	void incrementFreePos(MapCell::Category cat);
 
 	const std::map<char, MapCell::Category> mapBindings = {
 		{'1', MapCell::Category::OBSTACLE},
