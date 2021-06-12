@@ -22,6 +22,8 @@ public:
 
 	void updateAll();
 	void drawAll();
+	void deactivateAll();
+	void activeteAll();
 
 	bool isOponentsAndDraw(Position& pos); //temporary to see results
 

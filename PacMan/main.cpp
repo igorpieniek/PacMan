@@ -58,17 +58,16 @@ void printAll(std::vector<MapCell>& mp, OponentManager* op, Player& pl) {
 
 
 
-
 int main() {
 
 	MapManager::instance().addMap("mapa.txt");
 	std::cout << "\n";
 	
-	OponentManager opManag{ 5 };
+	OponentManager opManag{ 4 };
 	Player pl(Position{ 1,2 }, 1);
 
 	
-	for (int i = 0; i < 200; i++) {
+	for (int i = 0; i < 250; i++) {
 		printAll(MapManager::instance().getAllMap(), &opManag, pl);
 
 		opManag.updateAll();
