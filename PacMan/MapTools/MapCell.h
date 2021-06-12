@@ -14,17 +14,12 @@ public:
 	};
 
 	MapCell() = default;
-	MapCell(Position pos, Category cat) : Position(pos), category(cat), point(true) {};
+	MapCell(Position pos, Category cat) : Position(pos), category(cat){};
 
-	bool getPoint();
 	bool isObstacle();
-
-
 
 private:
 	Category category;
-	bool point;
-
 	using Position::move; //hiding method
 };
 

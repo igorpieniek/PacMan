@@ -1,11 +1,5 @@
 #include "MapCell.h"
 
-bool MapCell::getPoint(){
-    if (point) {
-        point = false;
-    }
-    return point;
-}
 
 bool MapCell::isObstacle()
 {
