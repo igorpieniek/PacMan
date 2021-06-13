@@ -16,7 +16,7 @@ public:
 	MapCell() = default;
 	MapCell(Position pos, Category cat) : Position(pos), category(cat){};
 
-	bool isObstacle();
+	bool isObstacle() const;
 
 private:
 	Category category;

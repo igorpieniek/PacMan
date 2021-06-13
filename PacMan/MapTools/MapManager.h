@@ -45,7 +45,7 @@ private:
 
 	Board mapBoard;
 	Board readMapFromFile(std::string fileName);
-	int freePositionsAmount;
+	int freePositionsAmount = 0;
 	void incrementFreePos(MapCell::Category cat);
 
 	const std::map<char, MapCell::Category> mapBindings = {

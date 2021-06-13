@@ -6,11 +6,13 @@
 #include "MapManager.h"
 #include "CellPoint.h"
 #include <vector>
-#include <cstdlib>
 
 class PointsManager{
 public:
-	PointsManager(int specialAmount) : specialPointsAmount(specialAmount) {};
+	PointsManager(int specialAmount) : specialPointsAmount(specialAmount) 
+	{
+		createCellPointArray();
+	};
 	
 private:
 	int currentPoints;
