@@ -30,35 +30,29 @@
 #define KEY_RIGHT 77
 
 
-void printMap(std::vector<MapCell>& mp , Position* pos) {
+
+void printAll(std::vector<MapCell>& mp, OponentManager* op, Player& pl, PointsManager& points) {
 	int last = 0;
 	for (auto cell : mp) {
 		if (cell.getX() < last) std::cout << '\n';
 		last = cell.getX();
 
-		if (cell.isObstacle()) {
-			std::cout << " o";
-		}
-		else if (pos != NULL && *pos == cell) {
-			std::cout << " +";
-		}
-		else std::cout << "  ";
-		
-	}
-}
-
-void printAll(std::vector<MapCell>& mp, OponentManager* op, Player& pl) {
-	int last = 0;
-	for (auto cell : mp) {
-		if (cell.getX() < last) std::cout << '\n';
-		last = cell.getX();
+		PointCat cat;
 
 		if (cell.isObstacle()) {
 			std::cout << " o";
-		}
-		else if (op->isOponentsAndDraw(cell)){}
+		}		
 		else if (pl.getPosition() == cell) {
 			pl.draw();
+		}
+		else if (op->isOponentsAndDraw(cell)) {}
+		else if (points.getPointCat(&cat, cell)) {
+			if (cat == PointCat::NORMAL) {
+				std::cout << " .";
+			}
+			else { //special
+				std::cout << " ,";
+			}
 		}
 		else std::cout << "  ";
 
@@ -67,27 +61,31 @@ void printAll(std::vector<MapCell>& mp, OponentManager* op, Player& pl) {
 }
 
 static Player pl(Position{ 11,3 }, 1);
+static bool movePermission = true;
 
 static void userInput_thread(void)
 {
 	while (true) {
-		int key = _getch();
-		switch (key){
-		case KEY_UP:
-			pl.moveDown();
-			break;
-		case KEY_DOWN:
-			pl.moveUp();
-			break;
-		case KEY_LEFT:
-			pl.moveRight();
-			break;
-		case KEY_RIGHT:
-			pl.moveLeft();
-			break;
+		if (movePermission) {
+			movePermission = false;
+			int key = _getch();
+			switch (key) {
+			case KEY_UP:
+				pl.moveDown();
+				break;
+			case KEY_DOWN:
+				pl.moveUp();
+				break;
+			case KEY_LEFT:
+				pl.moveRight();
+				break;
+			case KEY_RIGHT:
+				pl.moveLeft();
+				break;
 
-		default:
-			break;
+			default:
+				break;
+			}
 		}
 	}
 }
@@ -96,23 +94,24 @@ static void app_thread(void) {
 	MapManager::instance().addMap("mapa.txt");
 	std::cout << "\n";
 
-	PointsManager points{ 5 };
-	OponentManager opManag{ 2 };
+	PointsManager points{ 10 };
+	OponentManager opManag{ 4 };
 
 
 	GameRules gameRules({ &points, &opManag, &pl });
 
 	while (true) {
+		movePermission = true;
 		std::cout << "Player position = " << pl.getPosition() 
 			      << ", lifes = " << pl.getAmountOfLifes()
 				  << ", points = "<< points.getPoints()  <<std::endl;
 
-		printAll(MapManager::instance().getAllMap(), &opManag, pl);
+		printAll(MapManager::instance().getAllMap(), &opManag, pl, points);
 		opManag.updateAll();
 		Position playerPos = pl.getPosition();
 		gameRules.notifyPlayerPosition(playerPos);
 		
-
+		
 		Sleep(200);
 		system("CLS");
 	}

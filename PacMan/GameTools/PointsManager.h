@@ -21,6 +21,9 @@ public:
 
 	void notify(Event evt) override;
 	void notifyPlayerPosition(Position& pos) override;
+
+	//debug functions
+	bool getPointCat(PointCat* cat, Position& pos);
 	
 private:
 	int currentPoints;

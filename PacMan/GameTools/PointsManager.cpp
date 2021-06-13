@@ -1,5 +1,18 @@
 #include "PointsManager.h"
 
+
+//debug
+bool PointsManager::getPointCat(PointCat* cat, Position& pos) {
+	auto it = std::find(cellPoints.begin(), cellPoints.end(), pos);
+	if (it != cellPoints.end()) {
+		*cat = it->getPointClass();
+		return true;
+	}
+	cat = nullptr;
+	return false;
+}
+
+
 void PointsManager::createCellPointArray(){
 	int counter = 0;
 	int divider = (int)(MapManager::instance().getFreePosAmount() / specialPointsAmount);
