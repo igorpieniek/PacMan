@@ -4,6 +4,7 @@
 #define __GAMERULES_H__
 
 #include "Mediator.h"
+#include <iostream>
 #include <vector>
 
 class GameRules: public GameMediator{
@@ -16,6 +17,8 @@ public:
 
 private:
 	std::vector<GameMediatorComponent*> components;
+
+	void notifyAll(Event evt);
 };
 
 #endif // __GAMERULES_H__
