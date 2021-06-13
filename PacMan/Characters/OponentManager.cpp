@@ -12,7 +12,6 @@ void OponentManager::createOponents(){
 	}
 }
 
-
 void OponentManager::updateAll() {
 	for (auto& oponent : ops) {
 		oponent.update();
@@ -47,6 +46,29 @@ bool OponentManager::isOponentsAndDraw(Position& pos){
 	return false;
 }
 
+void OponentManager::notify(Event evt){
+	switch (evt){
+	case Event::DISABLE_ALL_OPONENTS:
+		deactivateAll();
+		break;
+	case Event::ENABLE_ALL_OPONENTS:
+		activeteAll();
+		break;
+	}
+}
+
+void OponentManager::notifyPlayerPosition(Position& pos){
+	if (isPlayerPosReached(pos)) {
+		mediator->notify(Event::PLAYER_CATCHED);
+	}
+}
+
+bool OponentManager::isPlayerPosReached(Position& pos){
+	for (const auto& op : ops) {
+		if (op.getPosition() == pos) return true;
+	}
+	return false;
+}
 
 Position OponentManager::getRandPosition() {
 	while (true) {
@@ -60,13 +82,3 @@ Position OponentManager::getRandPosition() {
 	}
 	return Position{};
 }
-
-
-void OponentManager::notify(Event evt)
-{
-}
-
-void OponentManager::notifyPlayerPosition(Position& pos)
-{
-}
-

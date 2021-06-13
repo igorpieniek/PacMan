@@ -40,6 +40,7 @@ private:
 
 	void createOponents();
 	Position getRandPosition();
+	bool isPlayerPosReached(Position& pos);
 
 
 };
