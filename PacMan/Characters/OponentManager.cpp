@@ -51,16 +51,18 @@ void OponentManager::notify(Event evt){
 	case Event::DISABLE_ALL_OPONENTS:
 		std::cout << "OponentManager: DISABLE ALL\n";
 		deactivateAll();
+		active = false;
 		break;
 	case Event::ENABLE_ALL_OPONENTS:
 		std::cout << "OponentManager: ENABLE ALL\n";
 		activeteAll();
+		active = true;
 		break;
 	}
 }
 
 void OponentManager::notifyPlayerPosition(Position& pos){
-	if (isPlayerPosReached(pos)) {
+	if (active && isPlayerPosReached(pos)) {
 		mediator->notify(Event::PLAYER_CATCHED);
 	}
 }

@@ -24,6 +24,8 @@ public:
 	void moveLeft();
 	void moveRight();
 
+	int getAmountOfLifes()const { return numberOfLifes; };
+
 	void notify(Event evt) override;
 
 	//unused but have to exist

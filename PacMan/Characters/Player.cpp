@@ -20,10 +20,6 @@ void Player::moveRight(){
 	moveTool.moveRight(currentPostion);
 }
 
-void Player::addPoints(int p){
-	numberOfPoints += p;
-}
-
 void Player::notify(Event evt){
 	if (evt == Event::LIFE_LOST) {
 		--numberOfLifes;		

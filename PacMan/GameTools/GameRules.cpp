@@ -15,15 +15,12 @@ void GameRules::notify(Event evt){
 	case Event::PLAYER_CATCHED:
 		//decrement live
 		std::cout << "GameRules: PLAYER_CATCHED\n";
-		notifyAll(evt);
+		notifyAll(Event::LIFE_LOST);
 		break;
 	case Event::END_OF_LIVES:
 		//exit - lose
 		std::cout << "GameRules: END_OF_LIVES:\n";
-		break;
-	case Event::LIFE_LOST:
-		std::cout << "GameRules: LIFE_LOST:\n";
-		notifyAll(evt);
+		exit(EXIT_SUCCESS);
 		break;
 	default:
 		//usused events
@@ -40,5 +37,11 @@ void GameRules::notifyPlayerPosition(Position& playerPos){
 void GameRules::notifyAll(Event evt) {
 	for (auto& comp : components) {
 		comp->notify(evt);
+	}
+}
+
+void GameRules::setComponentsMediator(){
+	for (auto& comp : components) {
+		comp->setMediator(this);
 	}
 }

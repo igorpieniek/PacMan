@@ -36,6 +36,7 @@ public:
 private:
 	int numberOfOponents;
 	std::vector<Oponent> ops;
+	bool active = true;
 	
 	using MoveAlg = RandMove;
 
