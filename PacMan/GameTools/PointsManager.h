@@ -9,10 +9,14 @@
 
 class PointsManager{
 public:
-	PointsManager(int specialAmount) : specialPointsAmount(specialAmount) 
+	PointsManager(int specialAmount) : 
+		specialPointsAmount{ specialAmount },
+		currentPoints{ 0 }
 	{
 		createCellPointArray();
 	};
+
+	int getPoints()const { return currentPoints; };
 	
 private:
 	int currentPoints;
@@ -21,7 +25,7 @@ private:
 
 
 	void createCellPointArray();
-
+	void addPoints(Position& pos);
 
 };
 

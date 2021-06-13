@@ -23,3 +23,12 @@ void PointsManager::createCellPointArray(){
 		}
 	}
 }
+
+void PointsManager::addPoints(Position& pos){
+	auto iter = std::find(cellPoints.begin(), cellPoints.end(), pos);
+	if (iter != cellPoints.end()) {
+		currentPoints += iter->getPoints();
+		cellPoints.erase(iter);
+	}
+}
+
