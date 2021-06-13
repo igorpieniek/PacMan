@@ -97,7 +97,6 @@ static void app_thread(void) {
 	PointsManager points{ 10 };
 	OponentManager opManag{ 4 };
 
-
 	GameRules gameRules({ &points, &opManag, &pl });
 
 	while (true) {
@@ -112,7 +111,7 @@ static void app_thread(void) {
 		gameRules.notifyPlayerPosition(playerPos);
 		
 		
-		Sleep(200);
+		Sleep(50);
 		system("CLS");
 	}
 }
@@ -125,26 +124,5 @@ int main() {
 	thInput.join();
 	thApp.join();
 	
-
-	/*
-	Position p{ 1,2 };
-	for (int i = 0; i < 40; i++) {
-		std::cout << p << std::endl;
-		printMap(res.getAllMap(), &p);
-		p = rm.getNextPosition(p);
-		Sleep(400);
-		system("CLS");
-	}
-	
-	
-	std::cout << "\n";
-	for (auto c : cp) {
-		if (mapManager2.isCorner(c)) {
-			std::cout << "Corner found for point " << c << std::endl;
-		}
-	}
-
-	*/
-
 
 }
