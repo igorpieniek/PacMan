@@ -16,7 +16,9 @@ public:
 	CellPoint(Position pos, PointCat points) : MapCell(pos, Category::FREE),
 										  point(points) {};
 	
-	int getPoints();
+	PointCat getPointClass() const;
+	int getPoints() const;
+	int takePoints();
 
 private:
 	PointCat  point;

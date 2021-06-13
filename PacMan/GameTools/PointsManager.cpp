@@ -24,17 +24,48 @@ void PointsManager::createCellPointArray(){
 	}
 }
 
-void PointsManager::addPoints(Position& pos){
-	auto iter = std::find(cellPoints.begin(), cellPoints.end(), pos);
-	if (iter != cellPoints.end()) {
-		currentPoints += iter->getPoints();
-		cellPoints.erase(iter);
+void PointsManager::notifyPlayerPosition(Position& pos) {
+	if (isAllPointsReached()) {
+		mediator->notify(Event::ALL_POINTS_COLLECTED);
+		return;
+	}
+
+	auto it = getCellPointIter(pos);
+	if (it != cellPoints.end()) {
+		addPoints(it);
+		checkSpecialPoint(it);
+		removeCellPoint(it);
 	}
 }
 
-void PointsManager::notify(Event evt){
+bool PointsManager::isAllPointsReached() {
+	return cellPoints.empty();
 }
 
-void PointsManager::notifyPlayerPosition(Position& pos)
-{
+PointsManager::CellPointIter PointsManager::getCellPointIter(Position& pos) {
+	return std::find(cellPoints.begin(), cellPoints.end(), pos);
 }
+
+void  PointsManager::addPoints(CellPointIter& it) {	
+	currentPoints += it->getPoints();
+}
+
+void PointsManager::checkSpecialPoint(CellPointIter& it) {
+	if (it->getPointClass() == PointCat::SPECIAL) {
+		mediator->notify(Event::SPECIAL_POINT_REACHED);
+	}
+}
+
+void PointsManager::removeCellPoint(CellPointIter& it){
+	cellPoints.erase(it);
+}
+
+
+void PointsManager::notify(Event evt){
+
+}
+
+
+
+
+

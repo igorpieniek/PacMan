@@ -27,9 +27,15 @@ private:
 	int specialPointsAmount;
 	std::vector<CellPoint> cellPoints;
 
+	using CellPointIter = std::vector<CellPoint>::iterator;
 
+
+	bool isAllPointsReached();
 	void createCellPointArray();
-	void addPoints(Position& pos);
+	void addPoints(CellPointIter& it);
+	void removeCellPoint(CellPointIter& it);
+	void checkSpecialPoint(CellPointIter& it);
+	CellPointIter getCellPointIter(Position& pos);
 
 };
 

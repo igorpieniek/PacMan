@@ -32,6 +32,8 @@ public:
 	void addPoints(int p);
 
 	void notify(Event evt) override;
+
+	//unused but have to exist
 	void notifyPlayerPosition(Position& playerPos) override {};
 
 private:
