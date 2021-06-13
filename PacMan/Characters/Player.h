@@ -10,12 +10,7 @@
 #include "Mediator.h"
 #include <string>
 #include <iostream>
-#include <conio.h>
 
-#define KEY_UP 72
-#define KEY_DOWN 80
-#define KEY_LEFT 75
-#define KEY_RIGHT 77
 
 class Player :public Character, public GameMediatorComponent{
 public:
@@ -29,8 +24,6 @@ public:
 	void moveLeft();
 	void moveRight();
 
-	void addPoints(int p);
-
 	void notify(Event evt) override;
 
 	//unused but have to exist
@@ -41,7 +34,6 @@ private:
 	SafeMovement moveTool;
 
 	int numberOfLifes = 3;
-	int numberOfPoints = 0;
 
 	void update() override {}; // in private to delete
 };

@@ -49,9 +49,11 @@ bool OponentManager::isOponentsAndDraw(Position& pos){
 void OponentManager::notify(Event evt){
 	switch (evt){
 	case Event::DISABLE_ALL_OPONENTS:
+		std::cout << "OponentManager: DISABLE ALL\n";
 		deactivateAll();
 		break;
 	case Event::ENABLE_ALL_OPONENTS:
+		std::cout << "OponentManager: ENABLE ALL\n";
 		activeteAll();
 		break;
 	}

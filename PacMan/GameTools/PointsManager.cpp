@@ -1,12 +1,5 @@
 #include "PointsManager.h"
 
-/*
-PointsManager::PointsManager(int specialAmount){
-	// get map from mapmanager
-	// calculate number of all posible
-}
-*/
-
 void PointsManager::createCellPointArray(){
 	int counter = 0;
 	int divider = (int)(MapManager::instance().getFreePosAmount() / specialPointsAmount);

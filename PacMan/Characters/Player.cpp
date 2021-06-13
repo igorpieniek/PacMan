@@ -26,10 +26,11 @@ void Player::addPoints(int p){
 
 void Player::notify(Event evt){
 	if (evt == Event::LIFE_LOST) {
-		--numberOfLifes;
+		--numberOfLifes;		
 		if (numberOfLifes == 0) {
 			mediator->notify(Event::END_OF_LIVES);
 		}
+		std::cout << "Player : LIFE_LOST - remaining: " << numberOfLifes << std::endl;
 	}
 }
 

@@ -11,6 +11,7 @@
 #include <vector>
 #include <map>
 #include <cstdlib>
+#include <iostream>
 
 
 class OponentManager: public GameMediatorComponent{
