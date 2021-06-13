@@ -18,12 +18,34 @@ void SafeMovement::moveRight(Position& pos){
 
 void SafeMovement::moveInDir(Position& pos, Direction dir){
 	if (isNextPositionFree(pos, dir)) {
-		Movement::moveInDir(pos, dir);
+		moveInDirDanger(pos, dir);
 	}
 }
 
-bool SafeMovement::isNextPositionFree(Position pos, Direction dir){
-	Movement::moveInDir(pos, dir);
-	if (MapManager::instance().isOccupied(pos)) return false;
+bool SafeMovement::isNextPositionFree(Position& pos, Direction dir){
+	Position temp = pos;
+	moveInDirDanger(temp, dir);
+	if (MapManager::instance().isOccupied(temp)) return false;
 	else return true;
+}
+
+void SafeMovement::moveInDirDanger(Position& pos, Direction dir){
+	switch (dir)
+	{
+	case Direction::NORTH:
+		Movement::moveUp(pos);
+		break;
+	case Direction::EAST:
+		Movement::moveLeft(pos);
+		break;
+	case Direction::SOUTH:
+		Movement::moveDown(pos);
+		break;
+	case Direction::WEST:
+		Movement::moveRight(pos);
+		break;
+	default:
+		break;
+	}
+
 }

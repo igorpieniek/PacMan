@@ -20,7 +20,8 @@ public:
 	void moveInDir(Position& pos, Direction dir) override;
 
 private:
-	bool isNextPositionFree(Position pos, Direction dir);
+	bool isNextPositionFree(Position& pos, Direction dir);
+	void moveInDirDanger(Position& pos, Direction dir);
 };
 
 #endif //__SAFEMOVEMENT_H__

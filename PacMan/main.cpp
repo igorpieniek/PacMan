@@ -8,6 +8,7 @@
 #include <windows.h>
 
 #include <thread>
+#include <conio.h>
 
 #include "Position.h"
 #include "MapCell.h"
@@ -70,21 +71,19 @@ static Player pl(Position{ 11,3 }, 1);
 static void userInput_thread(void)
 {
 	while (true) {
-		int key = std::getchar();
+		int key = _getch();
 		switch (key){
-		case 'w':
-			std::cout << "up pressed\n";
+		case KEY_UP:
 			pl.moveDown();
 			break;
-		case 's':
+		case KEY_DOWN:
 			pl.moveUp();
 			break;
-		case 'a':
-			std::cout << "left pressed\n";
-			pl.moveLeft();
-			break;
-		case 'd':
+		case KEY_LEFT:
 			pl.moveRight();
+			break;
+		case KEY_RIGHT:
+			pl.moveLeft();
 			break;
 
 		default:
@@ -97,26 +96,24 @@ static void app_thread(void) {
 	MapManager::instance().addMap("mapa.txt");
 	std::cout << "\n";
 
-	
-
 	PointsManager points{ 5 };
-	OponentManager opManag{ 4 };
+	OponentManager opManag{ 2 };
 
 
 	GameRules gameRules({ &points, &opManag, &pl });
 
 	while (true) {
 		std::cout << "Player position = " << pl.getPosition() 
-			      << ", lifes = " << pl.getAmountOfLifes() << std::endl;
+			      << ", lifes = " << pl.getAmountOfLifes()
+				  << ", points = "<< points.getPoints()  <<std::endl;
 
 		printAll(MapManager::instance().getAllMap(), &opManag, pl);
-
 		opManag.updateAll();
 		Position playerPos = pl.getPosition();
 		gameRules.notifyPlayerPosition(playerPos);
 		
 
-		Sleep(500);
+		Sleep(200);
 		system("CLS");
 	}
 }
