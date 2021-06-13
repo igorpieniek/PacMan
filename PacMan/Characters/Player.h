@@ -40,7 +40,7 @@ private:
 	std::string symbol;
 	SafeMovement moveTool;
 
-	int numberOfLives = 3;
+	int numberOfLifes = 3;
 	int numberOfPoints = 0;
 
 	void update() override {}; // in private to delete
