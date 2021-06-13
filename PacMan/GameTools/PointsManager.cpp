@@ -32,3 +32,9 @@ void PointsManager::addPoints(Position& pos){
 	}
 }
 
+void PointsManager::notify(Event evt){
+}
+
+void PointsManager::notifyPlayerPosition(Position& pos)
+{
+}

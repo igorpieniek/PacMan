@@ -24,5 +24,9 @@ void Player::addPoints(int p){
 	numberOfPoints += p;
 }
 
+void Player::notify(Event evt)
+{
+}
+
 
 

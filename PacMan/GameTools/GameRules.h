@@ -14,7 +14,6 @@ public:
 	void notify(Event evt) override;
 	void notifyPlayerPosition(Position& playerPos) override;
 
-
 private:
 	std::vector<GameMediatorComponent*> components;
 };

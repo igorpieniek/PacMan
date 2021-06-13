@@ -7,6 +7,7 @@
 #include "Character.h"
 #include "MapManager.h"
 #include "SafeMovement.h"
+#include "Mediator.h"
 #include <string>
 #include <iostream>
 #include <conio.h>
@@ -16,7 +17,7 @@
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 
-class Player :public Character{
+class Player :public Character, public GameMediatorComponent{
 public:
 	Player(Position startPos, SpeedType sp, std::string sym = { "p" }) :
 		Character(startPos), moveTool(sp), symbol(sym){};
@@ -29,6 +30,9 @@ public:
 	void moveRight();
 
 	void addPoints(int p);
+
+	void notify(Event evt) override;
+	void notifyPlayerPosition(Position& playerPos) override {};
 
 private:
 	std::string symbol;

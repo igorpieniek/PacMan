@@ -48,7 +48,6 @@ bool OponentManager::isOponentsAndDraw(Position& pos){
 }
 
 
-
 Position OponentManager::getRandPosition() {
 	while (true) {
 		int randX = std::rand() % MapManager::instance().getMapXSize();
@@ -61,3 +60,13 @@ Position OponentManager::getRandPosition() {
 	}
 	return Position{};
 }
+
+
+void OponentManager::notify(Event evt)
+{
+}
+
+void OponentManager::notifyPlayerPosition(Position& pos)
+{
+}
+

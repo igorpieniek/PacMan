@@ -7,12 +7,13 @@
 #include "Player.h"
 #include "RandMove.h"
 #include "MapManager.h"
+#include "Mediator.h"
 #include <vector>
 #include <map>
 #include <cstdlib>
 
 
-class OponentManager{
+class OponentManager: public GameMediatorComponent{
 public:
 	
 	OponentManager(int numberOfOps = { 4 }) : numberOfOponents(numberOfOps) 
@@ -26,6 +27,10 @@ public:
 	void activeteAll();
 
 	bool isOponentsAndDraw(Position& pos); //temporary to see results
+
+	void notify(Event evt) override;
+	void notifyPlayerPosition(Position& pos) override;
+
 
 private:
 	int numberOfOponents;

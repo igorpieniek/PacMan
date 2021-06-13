@@ -4,10 +4,11 @@
 #define __POINTSMANAGER_H__
 
 #include "MapManager.h"
+#include "Mediator.h"
 #include "CellPoint.h"
 #include <vector>
 
-class PointsManager{
+class PointsManager: public GameMediatorComponent{
 public:
 	PointsManager(int specialAmount) : 
 		specialPointsAmount{ specialAmount },
@@ -17,6 +18,9 @@ public:
 	};
 
 	int getPoints()const { return currentPoints; };
+
+	void notify(Event evt) override;
+	void notifyPlayerPosition(Position& pos) override;
 	
 private:
 	int currentPoints;
