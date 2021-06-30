@@ -8,7 +8,7 @@ Position RandMove::getNextPosition(Position& current){
     return pos;
 }
 
-void RandMove::setStepResolution(int res){
+void RandMove::setStepResolution(CoordType res){
     moveTool.setStepSize(res);
 }
 

@@ -14,7 +14,7 @@
 
 class Player :public Character, public GameMediatorComponent{
 public:
-	Player(Position startPos, SpeedType sp, std::string sym = { "p" }) :
+	Player(Position startPos, CoordType sp, std::string sym = { "p" }) :
 		Character(startPos), moveTool(sp), symbol(sym){};
 
 	void draw() override;

@@ -11,7 +11,7 @@ public:
 	Behaviour(MoveAlgorithm* malg): moveAlg(malg) {};
 
 	void move(Position& pos);
-	void setStepSpeed(int speed);
+	void setStepSpeed(CoordType speed);
 
 private:
 	MoveAlgorithm* moveAlg;

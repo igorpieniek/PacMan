@@ -32,7 +32,7 @@
 
 
 void printAll(std::vector<MapCell>& mp, OponentManager* op, Player& pl, PointsManager& points) {
-	int last = 0;
+	CoordType last = 0;
 	for (auto cell : mp) {
 		if (cell.getX() < last) std::cout << '\n';
 		last = cell.getX();

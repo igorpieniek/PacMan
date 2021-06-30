@@ -7,7 +7,6 @@
 
 class Character{
 public:
-	using SpeedType = CoordType;
 	Position getPosition()const { return currentPostion; };
 	void restoreInitialPosition() { currentPostion = initPositionSnapshot; };
 

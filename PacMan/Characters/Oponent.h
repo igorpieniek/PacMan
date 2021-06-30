@@ -11,7 +11,7 @@
 
 class Oponent: public Character{
 public:
-	Oponent(Position startPos, Behaviour* beh, SpeedType speed, std::string sym = {"q"}) :
+	Oponent(Position startPos, Behaviour* beh, CoordType speed, std::string sym = {"q"}) :
 		Character(startPos), behaviour(beh), symbol(sym) 
 	{
 		behaviour->setStepSpeed(speed);

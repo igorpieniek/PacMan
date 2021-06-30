@@ -12,12 +12,12 @@
 
 class RandMove: public MoveAlgorithm{
 public:
-	RandMove(int step = 1) : moveTool(step) {
+	RandMove(CoordType step = 1) : moveTool(step) {
 		currentDirection = Direction::NORTH;
 	};
 
 	Position getNextPosition(Position& current) override;
-	void setStepResolution(int res) override;
+	void setStepResolution(CoordType res) override;
 
 private:
 	int getRandomValue(int min, int max);
