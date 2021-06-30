@@ -9,6 +9,7 @@ class Character{
 public:
 	using SpeedType = int;
 	Position getPosition()const { return currentPostion; };
+	void restoreInitialPosition() { currentPostion = initPositionSnapshot; };
 
 	virtual void update() = 0;
 	virtual void draw() = 0;
@@ -16,9 +17,11 @@ public:
 	virtual ~Character() {};
 
 protected:
-	Character( Position startPos) : currentPostion(startPos) {};
+	Character( Position startPos) : currentPostion(startPos),
+								    initPositionSnapshot(startPos){};
 
 	Position currentPostion;
+	Position initPositionSnapshot;
 
 };
 

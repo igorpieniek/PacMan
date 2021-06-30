@@ -16,6 +16,7 @@ void GameRules::notify(Event evt){
 		//decrement live
 		std::cout << "GameRules: PLAYER_CATCHED\n";
 		notifyAll(Event::LIFE_LOST);
+		notifyAll(Event::RESTART_POSITIONS);
 		break;
 	case Event::END_OF_LIVES:
 		//exit - lose

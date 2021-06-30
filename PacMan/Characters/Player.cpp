@@ -28,6 +28,9 @@ void Player::notify(Event evt){
 		}
 		std::cout << "Player : LIFE_LOST - remaining: " << numberOfLifes << std::endl;
 	}
+	if (evt == Event::RESTART_POSITIONS) {
+		restoreInitialPosition();
+	}
 }
 
 

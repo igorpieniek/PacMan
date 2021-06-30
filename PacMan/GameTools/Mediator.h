@@ -13,6 +13,7 @@ enum class Event {
 	PLAYER_CATCHED,
 	END_OF_LIVES,
 	LIFE_LOST,
+	RESTART_POSITIONS
 };
 
 

@@ -58,6 +58,10 @@ void OponentManager::notify(Event evt){
 		activeteAll();
 		active = true;
 		break;
+	case Event::RESTART_POSITIONS:
+		for (auto& oponent : ops) {
+			oponent.restoreInitialPosition();
+		}
 	}
 }
 
