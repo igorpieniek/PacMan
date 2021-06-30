@@ -18,6 +18,8 @@
 
 using Board = std::vector<MapCell>;
 
+
+// Singleton class
 class MapManager{
 public:
 
@@ -33,9 +35,9 @@ public:
 	bool isCorner(Position& pos);
 	std::vector<Direction> getAllPossibleDirections(Position& pos);
 
-	int getMapXSize() const { return mapBoard.back().getX(); };
-	int getMapYSize() const { return mapBoard.back().getY(); };
-	int getFreePosAmount()const { return freePositionsAmount; };
+	CoordType getMapXSize() const { return mapBoard.back().getX(); };
+	CoordType getMapYSize() const { return mapBoard.back().getY(); };
+	int getFreePosAmount() const { return freePositionsAmount; };
 
 	MapManager(MapManager const&) = delete;
 	void operator=(MapManager const&) = delete;

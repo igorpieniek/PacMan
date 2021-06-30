@@ -71,7 +71,7 @@ void Movement::moveInDir(Position& pos, Direction dir){
 	}
 }
 
-void Movement::setStepSize(int siz){
+void Movement::setStepSize(CoordType siz){
 	stepSize = siz;
 }
 

@@ -24,7 +24,6 @@ Position& Position::operator+=(const Position& rPos){
 	return *this;
 }
 
-std::ostream& operator<<(std::ostream& os, const Position& pos)
-{
+std::ostream& operator<<(std::ostream& os, const Position& pos){
 	return os << "(" << pos.x << ", " << pos.y << ")";
 }

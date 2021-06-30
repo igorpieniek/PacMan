@@ -29,8 +29,8 @@ Board& MapManager::getAllMap(){
 Board MapManager::getNeighbours(Position& pos, int radius){
 	Board resultMap;
 
-	for (int k = pos.getY() - radius; k <= pos.getY() + radius; k++) {
-		for (int w = pos.getX() - radius; w <= pos.getX() + radius; w++){
+	for (CoordType k = pos.getY() - radius; k <= pos.getY() + radius; ++k) {
+		for (CoordType w = pos.getX() - radius; w <= pos.getX() + radius; ++w){
 			Board::iterator iter = std::find(mapBoard.begin(), mapBoard.end(), Position{ w,k });
 			if (iter != mapBoard.end()) {
 				resultMap.push_back(*iter);
@@ -95,10 +95,10 @@ Board MapManager::readMapFromFile(std::string fileName){
 	std::string line;
 	int lineNumber = 0;
 	while ( std::getline(file, line)) {
-		for ( int i = 0; i < line.length(); i++) {
+		for ( int i = 0; i < (int)line.length(); i++) {
 			auto it = mapBindings.find(line[i]);
 			if (it != mapBindings.end()) {
-				result.push_back({ {i,lineNumber}, it->second });
+				result.push_back({ { (CoordType)i, (CoordType)lineNumber}, it->second });
 				incrementFreePos(it->second);
 			}
 		}

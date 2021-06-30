@@ -20,7 +20,7 @@ void printDirection(const Direction& dir);
 class Movement{
 public:
 
-	Movement(int step = {1}) : stepSize(step) {};
+	Movement(CoordType step = {1}) : stepSize(step) {};
 	virtual void moveUp(Position& pos);
 	virtual void moveDown(Position& pos);
 	virtual void moveLeft(Position& pos);
@@ -28,10 +28,10 @@ public:
 
 	virtual void moveInDir(Position& pos, Direction dir);
 
-	void setStepSize(int siz);
+	void setStepSize(CoordType siz);
 
 private:
-	int stepSize;
+	CoordType stepSize;
 
 };
 

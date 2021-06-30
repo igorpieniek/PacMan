@@ -80,8 +80,8 @@ bool OponentManager::isPlayerPosReached(Position& pos){
 
 Position OponentManager::getRandPosition() {
 	while (true) {
-		int randX = std::rand() % MapManager::instance().getMapXSize();
-		int randY = std::rand() % MapManager::instance().getMapYSize();
+		CoordType randX = std::rand() % static_cast<int>( MapManager::instance().getMapXSize() );
+		CoordType randY = std::rand() % static_cast<int>( MapManager::instance().getMapYSize() );
 
 		Position pos{ randX,randY };
 		if (!MapManager::instance().isOccupied(pos)) {

@@ -9,7 +9,7 @@
 
 class SafeMovement : public Movement {
 public:
-	SafeMovement(int step = { 1 }) :
+	SafeMovement(CoordType step = { 1 }) :
 		Movement(step) {};
 
 	void moveUp(Position& pos) override;
