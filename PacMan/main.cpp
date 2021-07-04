@@ -43,7 +43,7 @@ void printAll(std::vector<MapCell>& mp, OponentManager* op, Player& pl, PointsMa
 			std::cout << " o";
 		}		
 		else if (pl.getPosition() == cell) {
-			pl.draw();
+			//pl.draw();
 		}
 		else if (op->isOponentsAndDraw(cell)) {}
 		else if (points.getPointCat(&cat, cell)) {

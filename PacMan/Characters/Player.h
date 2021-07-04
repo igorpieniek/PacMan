@@ -14,10 +14,10 @@
 
 class Player :public Character, public GameMediatorComponent{
 public:
-	Player(Position startPos, CoordType sp, std::string sym = { "p" }) :
-		Character(startPos), moveTool(sp), symbol(sym){};
+	Player(Position startPos, CoordType sp) :
+		Character(startPos), moveTool(sp){};
 
-	void draw() override;
+
 
 	void moveUp();
 	void moveDown();
@@ -32,7 +32,6 @@ public:
 	void notifyPlayerPosition(Position& playerPos) override {};
 
 private:
-	std::string symbol;
 	SafeMovement moveTool;
 
 	int numberOfLifes = 3;

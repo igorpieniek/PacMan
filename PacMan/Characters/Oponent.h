@@ -11,14 +11,13 @@
 
 class Oponent: public Character{
 public:
-	Oponent(Position startPos, Behaviour* beh, CoordType speed, std::string sym = {"q"}) :
-		Character(startPos), behaviour(beh), symbol(sym) 
+	Oponent(Position startPos, Behaviour* beh, CoordType speed) :
+		Character(startPos), behaviour(beh)
 	{
 		behaviour->setStepSpeed(speed);
 	};
 
 
-	void draw() override;
 	void update() override;
 
 
@@ -28,7 +27,6 @@ public:
 private:
 	bool active = true;
 	Behaviour* behaviour;
-	std::string symbol;
 };
 
 #endif // __OPONENT_H__

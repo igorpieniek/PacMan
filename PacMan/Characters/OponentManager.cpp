@@ -2,13 +2,10 @@
 
 
 void OponentManager::createOponents(){
-	char symbol = 'A';
 	for (int i = 0; i < numberOfOponents; ++i) {
 		ops.push_back({ getRandPosition(),
 						 new Behaviour{new MoveAlg},
-						  1,
-						  {symbol} });
-		symbol++;
+						 1 });
 	}
 }
 
@@ -20,7 +17,7 @@ void OponentManager::updateAll() {
 
 void OponentManager::drawAll() {
 	for (auto& oponent : ops) {
-		oponent.draw();
+		//oponent.draw();
 	}
 }
 
@@ -40,7 +37,7 @@ bool OponentManager::isOponentsAndDraw(Position& pos){
 	auto pred = [&pos](const Oponent& oponent) {return oponent.getPosition() == pos; };
 	auto oponentIter = find_if(ops.begin(), ops.end(), pred);
 	if (oponentIter != ops.end()) {
-		oponentIter->draw();
+		//oponentIter->draw();
 		return true;
 	}
 	return false;

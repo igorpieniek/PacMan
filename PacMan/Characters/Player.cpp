@@ -1,8 +1,5 @@
 #include "Player.h"
 
-void Player::draw(){
-	std::cout << " " + symbol;
-}
 
 void Player::moveUp(){
 	moveTool.moveUp(currentPostion);

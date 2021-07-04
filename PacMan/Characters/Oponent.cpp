@@ -2,10 +2,6 @@
 
 
 
-void Oponent::draw(){
-	std::cout << " " + symbol;
-}
-
 void Oponent::update(){
 	behaviour->move(currentPostion);
 }
