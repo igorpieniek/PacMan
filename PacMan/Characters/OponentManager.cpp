@@ -33,6 +33,13 @@ void OponentManager::activeteAll(){
 	}
 }
 
+Oponent* OponentManager::getOponent(int index){
+	if (index < 0 || index >= ops.size()) {
+		return &ops[index];
+	}
+	return nullptr;
+}
+
 bool OponentManager::isOponentsAndDraw(Position& pos){
 	auto pred = [&pos](const Oponent& oponent) {return oponent.getPosition() == pos; };
 	auto oponentIter = find_if(ops.begin(), ops.end(), pred);

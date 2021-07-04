@@ -10,5 +10,6 @@ public:
 };
 
 class DrawInterfaceFactory {
+public:
 	virtual DrawInterface* getInstance() = 0;
 };

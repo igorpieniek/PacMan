@@ -5,15 +5,23 @@
 #include "OponentManager.h"
 #include "DrawInterface.h"
 
+#include <unordered_map>
+
 class DrawManager{
 public:
-	DrawManager(DrawInterfaceFactory* drawFactor) : factor(drawFactor) {};
-	void addPlayer(const Player* pl) { player = pl; };
-	void addOponentManager(const OponentManager* op) { oponentManager = op; };
+	DrawManager(DrawInterface* playerDrafter, DrawInterfaceFactory* oponentDrawFactor) : 
+		playerDrafter(playerDrafter), oponentDrafterFactor(oponentDrawFactor) {};
+	void addPlayer(const Player* pl);
+	void addOponentManager(OponentManager* op);
+	void drawAll();
 
 private:
 	const Player* player = nullptr;
-	const OponentManager* oponentManager = nullptr;
-	DrawInterfaceFactory* factor;
+	OponentManager* oponentManager = nullptr;
+	DrawInterfaceFactory* oponentDrafterFactor;
+	DrawInterface* playerDrafter;
+
+	std::unordered_map<Oponent*, DrawInterface*> oponentDrafter;
+
 };
 
