@@ -9,19 +9,19 @@
 
 class DrawManager{
 public:
-	DrawManager(DrawInterface* playerDrafter, DrawInterfaceFactory* oponentDrawFactor) : 
+	DrawManager(std::shared_ptr<DrawInterface> playerDrafter, std::shared_ptr <DrawInterfaceFactory> oponentDrawFactor) :
 		playerDrafter(playerDrafter), oponentDrafterFactor(oponentDrawFactor) {};
-	void addPlayer(const Player* pl);
-	void addOponentManager(OponentManager* op);
+	void addPlayer(std::shared_ptr<Player> pl);
+	void addOponentManager(std::shared_ptr<OponentManager> op);
 	void drawAll();
 
 private:
-	const Player* player = nullptr;
-	OponentManager* oponentManager = nullptr;
-	DrawInterfaceFactory* oponentDrafterFactor;
-	DrawInterface* playerDrafter;
+	std::shared_ptr<Player> player;
+	std::shared_ptr<OponentManager> oponentManager = nullptr;
+	std::shared_ptr<DrawInterfaceFactory> oponentDrafterFactor;
+	std::shared_ptr<DrawInterface> playerDrafter;
 
-	std::unordered_map<Oponent*, DrawInterface*> oponentDrafter;
+	std::unordered_map<std::shared_ptr<Oponent>, std::shared_ptr<DrawInterface>> oponentDrafter;
 
 };
 

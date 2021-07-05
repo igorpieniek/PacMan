@@ -26,7 +26,7 @@ public:
 	void drawAll();
 	void deactivateAll();
 	void activeteAll();
-	Oponent* getOponent(int index);
+	std::shared_ptr<Oponent> getOponent(int index);
 
 
 	bool isOponentsAndDraw(Position& pos); //temporary to see results

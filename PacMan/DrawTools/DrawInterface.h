@@ -11,5 +11,5 @@ public:
 
 class DrawInterfaceFactory {
 public:
-	virtual DrawInterface* getInstance() = 0;
+	virtual std::shared_ptr<DrawInterface> getInstance() = 0;
 };
