@@ -4,6 +4,8 @@ GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
 								   const std::shared_ptr<OponentManager> oponentManag)
 	: GraphicManagerInterface(pl,oponentManag)
 {
+	Render2D::instance().init();
+	Drafter ghost1;
 	// initialize PlayerDrafter object
 	// initialize GhostDrafter objects:
 	//		add to map  like 'oponentsWithDrafter' <Oponent*, GhostDrafter>

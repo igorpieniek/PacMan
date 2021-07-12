@@ -12,7 +12,8 @@ public:
 
 	std::vector<float> getData()const {
 		if (size == 4) return { r, g, b, alph };
-		else if(size == 3) return { r, g, b };
+		else if (size == 3) return { r, g, b };
+		else return {};
 	}
 private:
 	float r, g, b, alph;

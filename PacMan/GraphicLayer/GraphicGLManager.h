@@ -1,5 +1,8 @@
 #pragma once
 #include "GraphicManagerInterface.h"
+#include "Render2D.h"
+#include "Drafter.h"
+
 class GraphicGLManager :public GraphicManagerInterface{
 public:
 	GraphicGLManager(const std::shared_ptr<Player> pl,
