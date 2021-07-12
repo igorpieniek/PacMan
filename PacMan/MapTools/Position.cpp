@@ -24,6 +24,14 @@ Position& Position::operator+=(const Position& rPos){
 	return *this;
 }
 
+Position Position::operator/(const CoordType& b) const{
+	return { x / b, y / b };
+}
+
+Position Position::operator*(const CoordType& b) const{
+	return {x*b, y*b};
+}
+
 std::ostream& operator<<(std::ostream& os, const Position& pos){
 	return os << "(" << pos.x << ", " << pos.y << ")";
 }

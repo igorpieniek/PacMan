@@ -22,9 +22,12 @@
 
 #include "GameRules.h"
 #include "PointsManager.h"
-
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
+
+#include "GraphicLayer/GraphicGLManager.h"
+
+
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -129,6 +132,16 @@ int main() {
 
 	//thInput.join();
 	//thApp.join();
+
+	MapManager::instance().addMap("mapa.txt");
+	std::cout << "\n";
+
+	PointsManager points{ 10 };
+	OponentManager opManag{ 4 };
+
+	GameRules gameRules({ &points, &opManag, &pl });
+	
+
 	GLFWwindow* window;
 
 	/* Initialize the library */
@@ -160,15 +173,18 @@ int main() {
 		std::cout << "GLEW PROBLEM\n";
 	}
 
-
+	GraphicGLManager graphManag(std::make_shared<Player>(pl), std::make_shared<OponentManager>(opManag));
 	
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
-		
 
-		
+		opManag.updateAll();
+		Position playerPos = pl.getPosition();
+		gameRules.notifyPlayerPosition(playerPos);
+
+		graphManag.draw();
 
 
 		/* Swap front and back buffers */

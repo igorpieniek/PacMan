@@ -10,5 +10,7 @@ public:
 
 	void draw() override;
 private:
+
+	Drafter ghost1;
 };
 

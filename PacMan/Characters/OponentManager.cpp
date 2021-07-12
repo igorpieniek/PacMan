@@ -34,7 +34,7 @@ void OponentManager::activeteAll(){
 }
 
 std::shared_ptr<Oponent> OponentManager::getOponent(int index){
-	if (index < 0 || index >= ops.size()) {
+	if (index >= 0 || index <= ops.size()) {
 		return std::make_shared<Oponent>(ops[index]);
 	}
 	return nullptr;

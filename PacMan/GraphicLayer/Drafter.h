@@ -11,7 +11,7 @@
 
 class Drafter{
 public:
-	virtual void addImage(std::string path, Direction dir);
+	virtual void addImage(std::string path, Direction dir = Direction::EAST);
 	virtual void draw(Position pos, Direction dir);
 
 protected:

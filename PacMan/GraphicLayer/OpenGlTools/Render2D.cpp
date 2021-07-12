@@ -37,7 +37,7 @@ void Render2D::init(){
 
         ib = std::make_shared<IndexBuffer>(indices);
 
-        shader = std::make_shared<Shader>("shaders/init.shader");
+        shader = std::make_shared<Shader>("GraphicLayer/OpenGlTools/shaders/init.shader");
 
         ib->unbind();
         vb->unbind();

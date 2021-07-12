@@ -5,7 +5,7 @@ GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
 	: GraphicManagerInterface(pl,oponentManag)
 {
 	Render2D::instance().init();
-	Drafter ghost1;
+	ghost1.addImage("images/ghost.png");
 	// initialize PlayerDrafter object
 	// initialize GhostDrafter objects:
 	//		add to map  like 'oponentsWithDrafter' <Oponent*, GhostDrafter>
@@ -14,6 +14,12 @@ GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
 }
 
 void GraphicGLManager::draw(){
+	std::shared_ptr<Oponent> opPos = oponents->getOponent(0);
+	Position pos = opPos->getPosition();
+
+	ghost1.draw(pos / 30.0f, Direction::EAST);
+
+	Render2D::instance().process();
 	/*
 	
 		???draw map????
@@ -30,9 +36,6 @@ void GraphicGLManager::draw(){
 			op.second.draw(pos,dir);
 
 		}
-	
-	
-	
 	*/
 
 }

@@ -1,7 +1,7 @@
 #include "Drafter.h"
 
 
-void Drafter::addImage(std::string path, Direction dir = Direction::EAST){
+void Drafter::addImage(std::string path, Direction dir){
 	filePath = path;
 	imageOriginalDirection = dir;
 	text = std::make_shared<Texture>(path);
