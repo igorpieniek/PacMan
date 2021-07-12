@@ -23,6 +23,7 @@ void GraphicGLManager::draw(){
 		for(auto& op : oponnnetWithDrafter){
 			Position pos = op.first->getPosition();
 			Direction dir = op.first->getDirection();
+			//remember to remap position - different coordinates limits!!
 
 			op.second.draw(pos,dir);
 
