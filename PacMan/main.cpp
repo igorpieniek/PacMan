@@ -23,6 +23,9 @@
 #include "GameRules.h"
 #include "PointsManager.h"
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 
 #define KEY_UP 72
 #define KEY_DOWN 80
