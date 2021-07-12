@@ -1,12 +1,6 @@
 #pragma once
 #include "GLBuffer.h"
 #include <vector>
-#include <map>
-
-#include <exception>
-#include "AdditionalTools.h"
-
-
 
 
 class VertexBuffer :public GLBuffer{
