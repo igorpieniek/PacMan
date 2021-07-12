@@ -11,6 +11,6 @@ public:
 	void draw() override;
 private:
 
-	Drafter ghost1;
+	std::vector<Drafter> ghosts;
 };
 

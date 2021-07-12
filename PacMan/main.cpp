@@ -69,7 +69,8 @@ void printAll(std::vector<MapCell>& mp, OponentManager* op, Player& pl, PointsMa
 	std::cout << std::endl;
 }
 
-static Player pl(Position{ 11,3 }, 1);
+//static Player pl(Position{ 11,3 }, 1);
+static Player pl(Position{ -1,-1 }, 1);
 static bool movePermission = true;
 
 static void userInput_thread(void)
@@ -137,9 +138,9 @@ int main() {
 	std::cout << "\n";
 
 	PointsManager points{ 10 };
-	OponentManager opManag{ 4 };
+	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 4 );
 
-	GameRules gameRules({ &points, &opManag, &pl });
+	GameRules gameRules({ &points, opManag.get(), &pl });
 	
 
 	GLFWwindow* window;
@@ -154,7 +155,7 @@ int main() {
 
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 640, "Hello World", NULL, NULL);
+	window = glfwCreateWindow(640, 640, "PacMan", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
@@ -166,21 +167,21 @@ int main() {
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 
-	glfwSwapInterval(1);
+	glfwSwapInterval(10);
 
 
 	if (glewInit() != GLEW_OK) {
 		std::cout << "GLEW PROBLEM\n";
 	}
 
-	GraphicGLManager graphManag(std::make_shared<Player>(pl), std::make_shared<OponentManager>(opManag));
+	GraphicGLManager graphManag(std::make_shared<Player>(pl), opManag);
 	
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
 
-		opManag.updateAll();
+		opManag->updateAll();
 		Position playerPos = pl.getPosition();
 		gameRules.notifyPlayerPosition(playerPos);
 

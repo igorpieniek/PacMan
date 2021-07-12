@@ -1,11 +1,17 @@
 #include "GraphicGLManager.h"
 
-GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl, 
-								   const std::shared_ptr<OponentManager> oponentManag)
-	: GraphicManagerInterface(pl,oponentManag)
+GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
+	std::shared_ptr<OponentManager> oponentManag)
+	: GraphicManagerInterface(pl, oponentManag)
 {
 	Render2D::instance().init();
-	ghost1.addImage("images/ghost.png");
+	for (int i = 0; i < 4; i++) {
+		ghosts.push_back({});
+	}
+	ghosts[0].addImage("images/ghost1.png");
+	ghosts[1].addImage("images/ghost2.png");
+	ghosts[2].addImage("images/ghost3.png");
+	ghosts[3].addImage("images/ghost4.png");
 	// initialize PlayerDrafter object
 	// initialize GhostDrafter objects:
 	//		add to map  like 'oponentsWithDrafter' <Oponent*, GhostDrafter>
@@ -14,10 +20,14 @@ GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
 }
 
 void GraphicGLManager::draw(){
-	std::shared_ptr<Oponent> opPos = oponents->getOponent(0);
-	Position pos = opPos->getPosition();
+	for (int i = 0; i < 4; i++) {
+		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
+		Position pos = opPos->getPosition();
+		pos = pos / 15;
+		pos = Position{ pos.getX() - 1.f, pos.getY() - 0.5f };
 
-	ghost1.draw(pos / 30.0f, Direction::EAST);
+		ghosts[i].draw(pos, Direction::EAST);
+	}
 
 	Render2D::instance().process();
 	/*
