@@ -4,7 +4,10 @@ GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
 	std::shared_ptr<OponentManager> oponentManag)
 	: GraphicManagerInterface(pl, oponentManag)
 {
+
+	calculateScale();
 	Render2D::instance().init();
+
 	for (int i = 0; i < 4; i++) {
 		ghosts.push_back({});
 	}
@@ -23,15 +26,16 @@ void GraphicGLManager::draw(){
 	for (int i = 0; i < 4; i++) {
 		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
 		Position pos = opPos->getPosition();
-		pos = pos / 15;
-		pos = Position{ pos.getX() - 1.f, pos.getY() - 0.5f };
+
+		pos = Position{ getNormalized(pos.getX()), 
+					    getNormalized(pos.getY()) };
 
 		ghosts[i].draw(pos, Direction::EAST);
 	}
 
 	Render2D::instance().process();
 	/*
-	
+		//IDEAS
 		???draw map????
 
 		Position pos = player->getPosition();
@@ -47,5 +51,15 @@ void GraphicGLManager::draw(){
 
 		}
 	*/
+}
 
+
+void GraphicGLManager::calculateScale() {
+	CoordType max = std::max(MapManager::instance().getMapXSize(),
+						     MapManager::instance().getMapYSize());
+	scale = 2 / max;
+}
+
+CoordType GraphicGLManager::getNormalized(CoordType cord){
+	return (cord * scale) - 1.0f;
 }

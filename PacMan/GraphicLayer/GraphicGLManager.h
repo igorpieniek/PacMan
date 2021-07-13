@@ -2,6 +2,9 @@
 #include "GraphicManagerInterface.h"
 #include "Render2D.h"
 #include "Drafter.h"
+#include "MapManager.h"
+
+#include <algorithm>
 
 class GraphicGLManager :public GraphicManagerInterface{
 public:
@@ -12,5 +15,9 @@ public:
 private:
 
 	std::vector<Drafter> ghosts;
+	float scale;
+
+	void calculateScale();
+	CoordType getNormalized(CoordType cord);
 };
 
