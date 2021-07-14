@@ -15,9 +15,13 @@ public:
 private:
 
 	std::vector<Drafter> ghosts;
+	std::vector<MapCell> mapvec;
+	Drafter mapDrafter;
 	float scale;
 
 	void calculateScale();
 	CoordType getNormalized(CoordType cord);
+
+	void drawObstacles();
 };
 
