@@ -14,6 +14,18 @@ public:
 	void draw() override;
 private:
 
+	const std::vector<std::string> ghostPaths = { //TODO: move to module that read that files from JSON file
+		"images/ghost1.png",
+		"images/ghost2.png",
+		"images/ghost3.png",
+		"images/ghost4.png",
+	};
+
+	const std::string mapPath = "images/dot.png";
+
+	std::string getnextGhostPath();
+
+
 	std::vector<Drafter> ghosts;
 	std::vector<MapCell> mapvec;
 	Drafter mapDrafter;

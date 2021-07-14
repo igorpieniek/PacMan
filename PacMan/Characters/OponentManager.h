@@ -27,6 +27,7 @@ public:
 	void deactivateAll();
 	void activeteAll();
 	std::shared_ptr<Oponent> getOponent(int index);
+	int getAmountOfOponents()const { return numberOfOponents; };
 
 
 	bool isOponentsAndDraw(Position& pos); //temporary to see results

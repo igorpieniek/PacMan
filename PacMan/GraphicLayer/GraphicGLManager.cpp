@@ -8,13 +8,11 @@ GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
 	calculateScale();
 	Render2D::instance().init();
 
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
 		ghosts.push_back({});
+		ghosts.back().addImage(getnextGhostPath());
 	}
-	ghosts[0].addImage("images/ghost1.png");
-	ghosts[1].addImage("images/ghost2.png");
-	ghosts[2].addImage("images/ghost3.png");
-	ghosts[3].addImage("images/ghost4.png");
+
 
 	mapDrafter.addImage("images/dot.png");
 	mapvec = MapManager::instance().getAllMap();
@@ -27,7 +25,7 @@ GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
 
 void GraphicGLManager::draw(){
 	drawObstacles();
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
 		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
 		Position pos = opPos->getPosition();
 
@@ -38,24 +36,9 @@ void GraphicGLManager::draw(){
 	}
 
 	Render2D::instance().process();
-	/*
-		//IDEAS
-		???draw map????
 
-		Position pos = player->getPosition();
-		Direction dir = player->getDirection();
-		playerDrafter.draw(pos,dir);
-	
-		for(auto& op : oponnnetWithDrafter){
-			Position pos = op.first->getPosition();
-			Direction dir = op.first->getDirection();
-			//remember to remap position - different coordinates limits!!
-
-			op.second.draw(pos,dir);
-
-		}
-	*/
 }
+
 
 
 void GraphicGLManager::calculateScale() {
@@ -75,3 +58,12 @@ void GraphicGLManager::drawObstacles(){
 		}
 	}
 }
+
+std::string GraphicGLManager::getnextGhostPath(){
+	static int counter;
+	if (counter >= ghostPaths.size()) {
+		counter = 0;
+	}
+	return ghostPaths[counter++];
+}
+

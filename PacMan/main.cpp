@@ -138,7 +138,7 @@ int main() {
 	std::cout << "\n";
 
 	PointsManager points{ 10 };
-	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 4 );
+	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 8 );
 
 	GameRules gameRules({ &points, opManag.get(), &pl });
 	
