@@ -86,7 +86,6 @@ MapManager::getAllPossibleDirections(Position& pos){
 			}
 		}
 	}
-	std::cout << "Original: " << pos << "rounded: " << roundPos << " size:" << result.size() << std::endl;
 	return result;
 }
 
