@@ -15,11 +15,14 @@ void MapManager::addMap(std::string filename){
 }
 
 bool MapManager::isOccupied(Position& pos){
-	auto foundIter = std::find(mapBoard.begin(), mapBoard.end(), pos);
-	if (foundIter != mapBoard.end()) {
-		return foundIter->isObstacle();
-	}
-	return false;
+	if (pos.getX() >= width  || pos.getX() < 0) return true;
+	if (pos.getY() >= height || pos.getY() < 0) return true;
+
+	int cellIndex = getMapBoardIndexPosition(pos);
+
+	if (cellIndex >= mapBoard.size()) return true;
+
+	return mapBoard[cellIndex].isObstacle();
 }
 
 Board& MapManager::getAllMap(){
@@ -31,9 +34,10 @@ Board MapManager::getNeighbours(Position& pos, int radius){
 
 	for (CoordType k = pos.getY() - radius; k <= pos.getY() + radius; ++k) {
 		for (CoordType w = pos.getX() - radius; w <= pos.getX() + radius; ++w){
-			Board::iterator iter = std::find(mapBoard.begin(), mapBoard.end(), Position{ w,k });
-			if (iter != mapBoard.end()) {
-				resultMap.push_back(*iter);
+			Position searchPos = { w,k };
+			int cellIndex = getMapBoardIndexPosition(searchPos);
+			if (cellIndex < mapBoard.size()) {
+				resultMap.push_back(mapBoard[cellIndex]);
 			}
 			else {
 				resultMap.push_back(MapCell{ Position{w,k}, MapCell::Category::OBSTACLE });
@@ -109,6 +113,9 @@ Board MapManager::readMapFromFile(std::string fileName){
 		}
 		++lineNumber;
 	}
+	width = line.length();
+	height = lineNumber;
+
 	return result;
 }
 
@@ -117,4 +124,9 @@ void MapManager::incrementFreePos(MapCell::Category cat) {
 	if (cat == MapCell::Category::FREE) {
 		freePositionsAmount++;
 	}
+}
+
+int MapManager::getMapBoardIndexPosition(Position& pos){
+	Position conv = { std::round(pos.getX()), std::round(pos.getY()) };
+	return  (conv.getY() * width) + conv.getX();
 }

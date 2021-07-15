@@ -46,10 +46,14 @@ public:
 private:
 	MapManager() {};
 
+	int width = 0, height = 0;
+
 	Board mapBoard;
 	Board readMapFromFile(std::string fileName);
 	int freePositionsAmount = 0;
 	void incrementFreePos(MapCell::Category cat);
+
+	int getMapBoardIndexPosition(Position& pos);
 
 	const std::map<char, MapCell::Category> mapBindings = {
 		{'1', MapCell::Category::OBSTACLE},
