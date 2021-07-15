@@ -23,7 +23,6 @@ Position RandMove::moveProcess(Position& pos) {
 
 Direction RandMove::getBestDirection(Position& center) {
     if (isIntPosition(center)) {
-        std::cout << " Normalized position reached\n";
         std::vector<Direction> directions = MapManager::instance().getAllPossibleDirections(center);
 
         if (directions.size() == 1) return directions[0];

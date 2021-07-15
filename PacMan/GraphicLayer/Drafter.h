@@ -2,12 +2,15 @@
 
 #include "Position.h"
 #include "Movement.h"
+#include "MapManager.h"
 #include <string>
 #include <vector>
 
 #include "Transformation.h"
 #include "Texture.h"
 #include "Render2D.h"
+
+
 
 class Drafter{
 public:
@@ -20,5 +23,11 @@ protected:
 	Transformation trans;
 	std::shared_ptr<Texture> text;
 
+	static float scale;
+	void calculateScale();
+	void normalize(Position& pos);
+
 };
+
+
 

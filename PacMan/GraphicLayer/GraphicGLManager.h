@@ -36,11 +36,6 @@ private:
 	PlayerDrafter plDrafter;
 	float scale;
 
-
-
-	void calculateScale();
-	CoordType getNormalized(CoordType cord);
-
 	void drawObstacles();
 
 	std::string getnextGhostPath();
