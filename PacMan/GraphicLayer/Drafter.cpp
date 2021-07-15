@@ -9,6 +9,6 @@ void Drafter::addImage(std::string path, Direction dir){
 
 void Drafter::draw(Position pos, Direction dir){
 	trans.setTranslation(pos.getX(), pos.getY());
-	trans.setScale(0.15f);
+	trans.setScale(0.08f);
 	Render2D::instance().addToDraw(text, trans);
 }

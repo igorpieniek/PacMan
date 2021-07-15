@@ -65,6 +65,9 @@ bool MapManager::isCorner(Position& pos){
 
 std::vector<Direction> 
 MapManager::getAllPossibleDirections(Position& pos){
+	Position roundPos = { std::roundf(pos.getX()),
+						  std::roundf(pos.getY()) };
+	
 	std::vector<Direction> result;
 	std::map<Direction, Position> check = {
 		{Direction::NORTH, {0, 1}},
@@ -76,11 +79,14 @@ MapManager::getAllPossibleDirections(Position& pos){
 	for (auto const& x : check) {
 		Board::iterator iter = std::find(mapBoard.begin(),
 										 mapBoard.end(),
-										 pos + x.second);
+										 roundPos + x.second);
 		if (iter != mapBoard.end()) {
-			if (!iter->isObstacle()) result.push_back(x.first);
+			if (!iter->isObstacle() ) {
+				result.push_back(x.first);
+			}
 		}
 	}
+	std::cout << "Original: " << pos << "rounded: " << roundPos << " size:" << result.size() << std::endl;
 	return result;
 }
 

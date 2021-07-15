@@ -9,6 +9,7 @@
 #include <cstdlib>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 class RandMove: public MoveAlgorithm{
 public:

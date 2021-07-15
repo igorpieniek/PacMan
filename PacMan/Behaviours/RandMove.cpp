@@ -22,16 +22,26 @@ Position RandMove::moveProcess(Position& pos) {
 
 
 Direction RandMove::getBestDirection(Position& center) {
-    std::vector<Direction> directions = MapManager::instance().getAllPossibleDirections(center);
+    std::cout << " Pos center " << center << " X test" << (center.getX() == std::round(center.getX()) )
+                                          << " Y test"<< (center.getY() == std::round(center.getY()) ) << std::endl;
+    if ((std::round(center.getX()*1000)/1000 == std::round(center.getX()) &&
+        std::round(center.getY() * 1000) / 1000 == std::round(center.getY()))) {
+        std::cout << " Normalized position reached\n";
+        std::vector<Direction> directions = MapManager::instance().getAllPossibleDirections(center);
 
-    if (directions.size() == 1) return directions[0];
+        if (directions.size() == 1) return directions[0];
 
-    if (isInitialized) {
-        deleteCurrentDirection(directions);
+
+        if (isInitialized) {
+            deleteCurrentDirection(directions);
+        }
+
+        int randIndex = getRandomValue(0, directions.size());
+        return directions[randIndex];
     }
-
-    int randIndex = getRandomValue(0, directions.size());
-    return directions[randIndex];
+    else {
+        return currentDirection;
+    }
 }
 
 
