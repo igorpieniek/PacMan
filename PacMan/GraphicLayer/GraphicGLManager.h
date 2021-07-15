@@ -4,6 +4,8 @@
 #include "Drafter.h"
 #include "MapManager.h"
 
+#include "PlayerDrafter.h"
+
 #include <algorithm>
 
 class GraphicGLManager :public GraphicManagerInterface{
@@ -23,17 +25,24 @@ private:
 
 	const std::string mapPath = "images/dot.png";
 
-	std::string getnextGhostPath();
+	const std::string playerPath = "images/pacman.png";
+
+
 
 
 	std::vector<Drafter> ghosts;
 	std::vector<MapCell> mapvec;
 	Drafter mapDrafter;
+	PlayerDrafter plDrafter;
 	float scale;
+
+
 
 	void calculateScale();
 	CoordType getNormalized(CoordType cord);
 
 	void drawObstacles();
+
+	std::string getnextGhostPath();
 };
 

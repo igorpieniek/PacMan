@@ -5,7 +5,7 @@ void OponentManager::createOponents(){
 	for (int i = 0; i < numberOfOponents; ++i) {
 		ops.push_back({ getRandPosition(),
 						 new Behaviour{new MoveAlg},
-						 0.1 });
+						 0.1f });
 	}
 }
 

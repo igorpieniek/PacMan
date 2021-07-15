@@ -70,7 +70,7 @@ void printAll(std::vector<MapCell>& mp, OponentManager* op, Player& pl, PointsMa
 }
 
 //static Player pl(Position{ 11,3 }, 1);
-static Player pl(Position{ -1,-1 }, 1);
+static Player pl(Position{ 11.0f,3.f }, 1);
 static bool movePermission = true;
 
 static void userInput_thread(void)
@@ -138,7 +138,7 @@ int main() {
 	std::cout << "\n";
 
 	PointsManager points{ 10 };
-	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 8 );
+	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 0 );
 
 	GameRules gameRules({ &points, opManag.get(), &pl });
 	

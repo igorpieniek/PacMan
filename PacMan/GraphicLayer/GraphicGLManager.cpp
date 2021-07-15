@@ -14,7 +14,9 @@ GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
 	}
 
 
-	mapDrafter.addImage("images/dot.png");
+	mapDrafter.addImage(mapPath);
+	plDrafter.addImage(playerPath);
+
 	mapvec = MapManager::instance().getAllMap();
 	// initialize PlayerDrafter object
 	// initialize GhostDrafter objects:
@@ -25,6 +27,11 @@ GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
 
 void GraphicGLManager::draw(){
 	drawObstacles();
+	Position plPos = player->getPosition();
+	plPos = {getNormalized(plPos.getX()),
+			 getNormalized(plPos.getY())
+};
+	plDrafter.draw(plPos, Direction::EAST);
 	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
 		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
 		Position pos = opPos->getPosition();
