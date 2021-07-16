@@ -81,11 +81,13 @@ MapManager::getAllPossibleDirections(Position& pos){
 	};
 
 	for (auto const& x : check) {
-		Board::iterator iter = std::find(mapBoard.begin(),
-										 mapBoard.end(),
-										 roundPos + x.second);
-		if (iter != mapBoard.end()) {
-			if (!iter->isObstacle() ) {
+		Position toFind{ roundPos + x.second };
+		int cellIndex = getMapBoardIndexPosition(toFind);
+
+		if (cellIndex >= mapBoard.size()) continue;
+
+		if (cellIndex < mapBoard.size()) {
+			if (!mapBoard[cellIndex].isObstacle()) {
 				result.push_back(x.first);
 			}
 		}
