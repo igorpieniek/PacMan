@@ -27,7 +27,6 @@ Direction RandMove::getBestDirection(Position& center) {
 
         if (directions.size() == 1) return directions[0];
 
-
         if (isInitialized) {
             deleteCurrentDirection(directions);
         }

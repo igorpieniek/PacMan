@@ -69,8 +69,7 @@ bool MapManager::isCorner(Position& pos){
 
 std::vector<Direction> 
 MapManager::getAllPossibleDirections(Position& pos){
-	Position roundPos = { std::roundf(pos.getX()),
-						  std::roundf(pos.getY()) };
+	Position roundPos = pos.getIntPos();
 	
 	std::vector<Direction> result;
 	std::map<Direction, Position> check = {
@@ -129,6 +128,6 @@ void MapManager::incrementFreePos(MapCell::Category cat) {
 }
 
 int MapManager::getMapBoardIndexPosition(Position& pos){
-	Position conv = { std::round(pos.getX()), std::round(pos.getY()) };
+	Position conv = pos.getIntPos();
 	return  (conv.getY() * width) + conv.getX();
 }

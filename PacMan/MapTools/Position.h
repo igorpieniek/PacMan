@@ -5,6 +5,7 @@
 
 #include <math.h>
 #include <iostream>
+#include <cmath>
 
 
 using CoordType = float;
@@ -19,6 +20,8 @@ public:
 
 	CoordType getX()const { return x; };
 	CoordType getY()const { return y; };
+
+	Position getIntPos() const;
 
 	bool operator==(const Position& pos);
 	Position operator+(const Position& pos);
