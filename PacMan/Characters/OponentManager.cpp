@@ -77,7 +77,7 @@ void OponentManager::notifyPlayerPosition(Position& pos){
 
 bool OponentManager::isPlayerPosReached(Position& pos){
 	for (const auto& op : ops) {
-		if (op.getPosition() == pos) return true;
+		if (op.getPosition().getIntPos() == pos.getIntPos()) return true;
 	}
 	return false;
 }
