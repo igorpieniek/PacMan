@@ -7,9 +7,6 @@
 
 #include <windows.h>
 
-#include <thread>
-#include <conio.h>
-
 #include "Position.h"
 #include "MapCell.h"
 #include "MapManager.h"
@@ -27,120 +24,42 @@
 
 #include "GraphicLayer/GraphicGLManager.h"
 
-
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 
-#define KEY_UP 72
-#define KEY_DOWN 80
-#define KEY_LEFT 75
-#define KEY_RIGHT 77
 
+std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 11.0f,3.f }, 0.1f);
 
+void positionTest(GLFWwindow* window, int key, int scancode, int action, int mods) {
+	switch (key) {
+	case GLFW_KEY_UP:
+		pl->moveUp();
+		break;
+	case GLFW_KEY_DOWN:
+		pl->moveDown();
+		break;
+	case GLFW_KEY_LEFT:
+		pl->moveRight();
+		break;
+	case GLFW_KEY_RIGHT:
+		pl->moveLeft();
+		break;
 
-void printAll(std::vector<MapCell>& mp, OponentManager* op, Player& pl, PointsManager& points) {
-	CoordType last = 0;
-	for (auto cell : mp) {
-		if (cell.getX() < last) std::cout << '\n';
-		last = cell.getX();
-
-		PointCat cat;
-
-		if (cell.isObstacle()) {
-			std::cout << " o";
-		}		
-		else if (pl.getPosition() == cell) {
-			//pl.draw();
-		}
-		else if (op->isOponentsAndDraw(cell)) {}
-		else if (points.getPointCat(&cat, cell)) {
-			if (cat == PointCat::NORMAL) {
-				std::cout << " .";
-			}
-			else { //special
-				std::cout << " ,";
-			}
-		}
-		else std::cout << "  ";
-
+	default:
+		break;
 	}
-	std::cout << std::endl;
-}
 
-//static Player pl(Position{ 11,3 }, 1);
-static Player pl(Position{ 11.0f,3.f }, 1);
-static bool movePermission = true;
-
-static void userInput_thread(void)
-{
-	while (true) {
-		if (movePermission) {
-			movePermission = false;
-			int key = _getch();
-			switch (key) {
-			case KEY_UP:
-				pl.moveDown();
-				break;
-			case KEY_DOWN:
-				pl.moveUp();
-				break;
-			case KEY_LEFT:
-				pl.moveRight();
-				break;
-			case KEY_RIGHT:
-				pl.moveLeft();
-				break;
-
-			default:
-				break;
-			}
-		}
-	}
-}
-
-static void app_thread(void) {
-	MapManager::instance().addMap("mapa.txt");
-	std::cout << "\n";
-
-	PointsManager points{ 10 };
-	OponentManager opManag{ 4 };
-
-	GameRules gameRules({ &points, &opManag, &pl });
-
-	while (true) {
-		movePermission = true;
-		std::cout << "Player position = " << pl.getPosition() 
-			      << ", lifes = " << pl.getAmountOfLifes()
-				  << ", points = "<< points.getPoints()  <<std::endl;
-
-		printAll(MapManager::instance().getAllMap(), &opManag, pl, points);
-		opManag.updateAll();
-		Position playerPos = pl.getPosition();
-		gameRules.notifyPlayerPosition(playerPos);
-		
-		
-		Sleep(50);
-		system("CLS");
-	}
 }
 
 int main() {
 
-	//std::thread thInput(userInput_thread);
-	//std::thread thApp(app_thread);
-
-	//thInput.join();
-	//thApp.join();
-
 	MapManager::instance().addMap("mapa.txt");
-	std::cout << "\n";
 
 	PointsManager points{ 10 };
 	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 2 );
 
-	GameRules gameRules({ &points, opManag.get(), &pl });
+	GameRules gameRules({ &points, opManag.get(), pl.get() });
 	
 
 	GLFWwindow* window;
@@ -162,7 +81,7 @@ int main() {
 		return -1;
 	}
 
-
+	glfwSetKeyCallback(window, positionTest);
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
@@ -174,7 +93,7 @@ int main() {
 		std::cout << "GLEW PROBLEM\n";
 	}
 
-	GraphicGLManager graphManag(std::make_shared<Player>(pl), opManag);
+	GraphicGLManager graphManag(pl, opManag);
 	
 
 	/* Loop until the user closes the window */
@@ -182,7 +101,7 @@ int main() {
 	{
 
 		opManag->updateAll();
-		Position playerPos = pl.getPosition();
+		Position playerPos = pl->getPosition();
 		gameRules.notifyPlayerPosition(playerPos);
 
 		graphManag.draw();
