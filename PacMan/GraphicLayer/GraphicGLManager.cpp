@@ -14,11 +14,13 @@ GraphicGLManager::GraphicGLManager(
 		ghosts.back().addImage(getnextGhostPath());
 	}
 
-	mapDrafter.addImage(mapPath);
+	//mapDrafter.addImage(mapPath);
 	plDrafter.addImage(playerPath);
 	cookieDrafter.addImage(cookiePath);
 
-	mapvec = MapManager::instance().getAllMap();
+	mapDrafter.addImage(mapPath);
+
+	
 	// initialize PlayerDrafter object
 	// initialize GhostDrafter objects:
 	//		add to map  like 'oponentsWithDrafter' <Oponent*, GhostDrafter>
@@ -27,7 +29,8 @@ GraphicGLManager::GraphicGLManager(
 }
 
 void GraphicGLManager::draw(){
-	drawObstacles();
+	//drawObstacles();
+	mapDrafter.draw();
 
 	for (const auto& cookie : points->getPointsData()) {
 		if (cookie.getPointClass() == PointCat::SPECIAL) {
@@ -48,14 +51,6 @@ void GraphicGLManager::draw(){
 	Render2D::instance().process();
 }
 
-
-void GraphicGLManager::drawObstacles(){
-	for (auto& cell : mapvec) {
-		if (cell.isObstacle()) {
-			mapDrafter.draw(cell, Direction::EAST);
-		}
-	}
-}
 
 std::string GraphicGLManager::getnextGhostPath(){
 	static int counter;

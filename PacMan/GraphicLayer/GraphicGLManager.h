@@ -7,6 +7,8 @@
 #include "PlayerDrafter.h"
 #include "CookieDrafter.h"
 
+#include "MapDrafter.h"
+
 #include <algorithm>
 
 class GraphicGLManager :public GraphicManagerInterface{
@@ -25,7 +27,7 @@ private:
 		"images/ghost4.png",
 	};
 
-	const std::string mapPath = "images/dot.png";
+	const std::string mapPath = "images/straight.png";
 
 	const std::string playerPath = "images/pacman.png";
 
@@ -34,12 +36,13 @@ private:
 
 	std::vector<Drafter> ghosts;
 	std::vector<MapCell> mapvec;
-	Drafter mapDrafter;
 	PlayerDrafter plDrafter;
 	CookieDrafter cookieDrafter;
 	float scale;
 
 	void drawObstacles();
+	MapDrafter mapDrafter;
+
 
 	std::string getnextGhostPath();
 };

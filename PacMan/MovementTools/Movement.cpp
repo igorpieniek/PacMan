@@ -16,6 +16,17 @@ Direction getOpprositeDirection(const Direction& dir) {
 	}
 }
 
+Direction getNextDirection(const Direction& dir) {
+	int index = static_cast<int>(dir);
+	if (index == 3) {
+		return static_cast<Direction>(0);
+	}
+
+	return static_cast<Direction>(index+1);
+
+
+}
+
 void printDirection(const Direction& dir){
 	switch (dir) {
 	case Direction::NORTH:
