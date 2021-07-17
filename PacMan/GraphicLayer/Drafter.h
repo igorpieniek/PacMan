@@ -25,6 +25,7 @@ protected:
 	std::shared_ptr<Texture> text;
 
 	static float scale;
+	static Position correction;
 	void calculateScale();
 	void normalize(Position& pos);
 
