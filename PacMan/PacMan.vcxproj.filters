@@ -102,7 +102,7 @@
     <ClCompile Include="GraphicLayer\PlayerDrafter.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMovementManager.cpp">
+    <ClCompile Include="Characters\PlayerMovementManager.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1052,7 +1052,7 @@
     <ClInclude Include="GraphicLayer\PlayerDrafter.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerMovementManager.h">
+    <ClInclude Include="Characters\PlayerMovementManager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

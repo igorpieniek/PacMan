@@ -5,6 +5,9 @@
 #include <string>
 #include <algorithm>
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
 #include <windows.h>
 
 #include "Position.h"
@@ -16,7 +19,7 @@
 
 #include "OponentManager.h"
 #include "Player.h"
-#include "PlayerMovementManager.h"
+
 
 #include "GameRules.h"
 #include "PointsManager.h"
@@ -25,42 +28,33 @@
 
 #include "GraphicLayer/GraphicGLManager.h"
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+
+
+#include "PlayerMovementManager.h"
 
 
 
-std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 11.0f,3.f }, 0.1f);
+
+std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 1.0f,1.f }, 0.1f);
+
+PlayerMovementManager playerMovement(pl);
 
 void positionTest(GLFWwindow* window, int key, int scancode, int action, int mods) {
-	switch (key) {
-	case GLFW_KEY_UP:
-		pl->moveUp();
-		break;
-	case GLFW_KEY_DOWN:
-		pl->moveDown();
-		break;
-	case GLFW_KEY_LEFT:
-		pl->moveRight();
-		break;
-	case GLFW_KEY_RIGHT:
-		pl->moveLeft();
-		break;
-
-	default:
-		break;
-	}
-
+	playerMovement.keyActionCallback(window, key, scancode, action, mods);
 }
+
+
 
 int main() {
 
 	MapManager::instance().addMap("mapa.txt");
 
 	PointsManager points{ 10 };
-	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 2 );
+	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 0 );
 
 	GameRules gameRules({ &points, opManag.get(), pl.get() });
+
+	
 	
 
 	GLFWwindow* window;
@@ -81,6 +75,7 @@ int main() {
 		glfwTerminate();
 		return -1;
 	}
+
 
 	glfwSetKeyCallback(window, positionTest);
 
@@ -104,6 +99,8 @@ int main() {
 		opManag->updateAll();
 		Position playerPos = pl->getPosition();
 		gameRules.notifyPlayerPosition(playerPos);
+
+		playerMovement.update();
 
 		graphManag.draw();
 

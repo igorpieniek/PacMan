@@ -9,10 +9,10 @@ void PlayerMovementManager::keyActionCallback(GLFWwindow* window, int key, int s
 		tryMove(Direction::SOUTH);
 		break;
 	case GLFW_KEY_LEFT:
-		tryMove(Direction::EAST);
+		tryMove(Direction::WEST);
 		break;
 	case GLFW_KEY_RIGHT:
-		tryMove(Direction::WEST);
+		tryMove(Direction::EAST);
 		break;
 
 	default:

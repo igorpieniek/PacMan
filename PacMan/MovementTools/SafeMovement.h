@@ -22,6 +22,8 @@ public:
 private:
 	bool isNextPositionFree(Position& pos, Direction dir);
 	void moveInDirDanger(Position& pos, Direction dir);
+
+	Movement tempDangerMoveTool;
 };
 
 #endif //__SAFEMOVEMENT_H__

@@ -174,7 +174,7 @@
     <ClCompile Include="Characters\OponentManager.cpp" />
     <ClCompile Include="GameTools\PointsManager.cpp" />
     <ClCompile Include="GraphicLayer\PlayerDrafter.cpp" />
-    <ClCompile Include="PlayerMovementManager.cpp" />
+    <ClCompile Include="Characters\PlayerMovementManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviours\Behaviour.h" />
@@ -492,7 +492,7 @@
     <ClInclude Include="GameTools\PointsManager.h" />
     <ClInclude Include="GameTools\Mediator.h" />
     <ClInclude Include="GraphicLayer\PlayerDrafter.h" />
-    <ClInclude Include="PlayerMovementManager.h" />
+    <ClInclude Include="Characters\PlayerMovementManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GraphicLayer\OpenGlTools\glm\glm\detail\func_common.inl" />
