@@ -16,6 +16,7 @@
 
 #include "OponentManager.h"
 #include "Player.h"
+#include "PlayerMovementManager.h"
 
 #include "GameRules.h"
 #include "PointsManager.h"
