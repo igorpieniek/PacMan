@@ -13,6 +13,8 @@ public:
 private:
 	std::string turnPath     = "images/turn.png";
 	std::string straightPath = "images/straight.png";
+	std::shared_ptr<Texture> cornerText;
+	std::shared_ptr<Texture> straightText;
 
 	std::map<Direction, float> rotations = {
 		{Direction::EAST,    0.0f},
@@ -24,13 +26,20 @@ private:
 	std::vector<MapCell> map;
 
 
+	enum class ObstacleType {
+		STRAIGHT, CORNER
+	};
 	struct ObstacleInfo {
 		Direction dir;
+		ObstacleType type;
 		Position pos;
 	};
 
 	
 	std::vector<ObstacleInfo> obstacles;
+
+	bool isStraight(Direction& result, std::vector<bool>& status);
+	bool isCorner(Direction& result, std::vector<bool>& status);
 
 };
 
