@@ -25,7 +25,6 @@ void SafeMovement::moveInDir(Position& pos, Direction dir){
 bool SafeMovement::isNextPositionFree(Position& pos, Direction dir){
 	Position temp = pos.getIntPos();
 	tempDangerMoveTool.moveInDir(temp, dir);
-	//moveInDirDanger(temp, dir);
 	if (MapManager::instance().isOccupied(temp)) return false;
 	else return true;
 }

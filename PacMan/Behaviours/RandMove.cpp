@@ -22,7 +22,7 @@ Position RandMove::moveProcess(Position& pos) {
 
 
 Direction RandMove::getBestDirection(Position& center) {
-    if (isIntPosition(center)) {
+    if (center.isIntPos()) {
         std::vector<Direction> directions = MapManager::instance().getAllPossibleDirections(center);
 
         if (directions.size() == 1) return directions[0];
@@ -38,12 +38,6 @@ Direction RandMove::getBestDirection(Position& center) {
         return currentDirection;
     }
 }
-
-bool RandMove::isIntPosition(Position& pos){
-    return (std::round(pos.getX() * 1000) / 1000 == std::round(pos.getX()) &&
-            std::round(pos.getY() * 1000) / 1000 == std::round(pos.getY()));
-}
-
 
 void RandMove::deleteCurrentDirection(std::vector<Direction>& dir){
     auto iter = std::find(dir.begin(), dir.end(), getOpprositeDirection(currentDirection));

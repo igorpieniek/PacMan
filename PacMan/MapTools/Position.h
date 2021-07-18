@@ -22,6 +22,7 @@ public:
 	CoordType getY()const { return y; };
 
 	Position getIntPos() const;
+	bool isIntPos()const;
 
 	bool operator==(const Position& pos);
 	Position operator+(const Position& pos);

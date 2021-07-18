@@ -25,8 +25,6 @@ private:
 
 	Direction getBestDirection(Position& center);
 
-	bool isIntPosition(Position& pos); // check if position have integer coordinates
-
 	void deleteCurrentDirection(std::vector<Direction>& dir);
 	Position moveProcess(Position& pos);
 
