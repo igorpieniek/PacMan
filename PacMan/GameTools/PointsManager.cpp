@@ -36,6 +36,7 @@ void PointsManager::notifyPlayerPosition(Position& pos) {
 		return;
 	}
 
+
 	auto it = getCellPointIter(pos);
 	if (it != cellPoints.end()) {
 		addPoints(it);
@@ -49,7 +50,7 @@ bool PointsManager::isAllPointsReached() {
 }
 
 PointsManager::CellPointIter PointsManager::getCellPointIter(Position& pos) {
-	return std::find(cellPoints.begin(), cellPoints.end(), pos);
+	return std::find(cellPoints.begin(), cellPoints.end(), pos.getIntPos());
 }
 
 void  PointsManager::addPoints(CellPointIter& it) {	
