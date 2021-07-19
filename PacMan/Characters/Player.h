@@ -15,7 +15,8 @@
 class Player :public Character, public GameMediatorComponent{
 public:
 	Player(Position startPos, CoordType sp) :
-		Character(startPos), moveTool(sp), prevPos(startPos), currentDir(Direction::EAST){};
+		Character(startPos), moveTool(sp), prevPos(startPos), 
+		currentDir(Direction::EAST), is_moving(false){};
 
 	void moveUp();
 	void moveDown();
@@ -24,6 +25,7 @@ public:
 
 	const Position& getProviousPosition()const { return prevPos; };
 	Direction getCurrentDirection()const { return currentDir; };
+	bool isMoving()const { return is_moving; };
 
 	int getAmountOfLifes()const { return numberOfLifes; };
 
@@ -37,6 +39,7 @@ private:
 
 	Direction currentDir;
 	Position prevPos;
+	bool is_moving;
 
 	int numberOfLifes = 3;
 

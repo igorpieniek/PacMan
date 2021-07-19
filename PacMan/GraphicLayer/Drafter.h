@@ -5,6 +5,7 @@
 #include "MapManager.h"
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 #include "Transformation.h"
 #include "Texture.h"
@@ -26,6 +27,14 @@ protected:
 	static float scale;
 	void calculateScale();
 	void normalize(Position& pos);
+
+	std::unordered_map<Direction, float> rotations = {
+		{Direction::EAST,    0.0f},
+		{Direction::SOUTH, -90.0f},
+		{Direction::WEST,  180.0f},
+		{Direction::NORTH,  90.0f}
+	};
+
 
 };
 

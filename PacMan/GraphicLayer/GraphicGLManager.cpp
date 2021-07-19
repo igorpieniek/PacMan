@@ -26,7 +26,10 @@ GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
 void GraphicGLManager::draw(){
 	drawObstacles();
 
-	plDrafter.draw(player->getPosition(), Direction::EAST);
+	plDrafter.updateIsMoving(player->isMoving());
+	plDrafter.draw(player->getPosition(), player->getCurrentDirection());
+	
+
 	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
 		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
 		ghosts[i].draw(opPos->getPosition(), Direction::EAST);

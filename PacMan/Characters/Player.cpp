@@ -22,7 +22,7 @@ void Player::moveLeft(){
 void Player::moveRight(){
 	Position cpy = currentPostion;
 	moveTool.moveRight(currentPostion);
-	updatePrevPosAndDir(cpy, currentPostion, Direction::NORTH);
+	updatePrevPosAndDir(cpy, currentPostion, Direction::EAST);
 }
 
 void Player::notify(Event evt){
@@ -42,6 +42,10 @@ void Player::updatePrevPosAndDir(Position& suspectPos, Position& current, Direct
 	if (suspectPos != current) {
 		prevPos = suspectPos;
 		currentDir = dir;
+		is_moving = true;
+	}
+	else if (is_moving) {
+		is_moving = false;
 	}
 }
 
