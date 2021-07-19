@@ -30,6 +30,9 @@ void GraphicGLManager::draw(){
 	drawObstacles();
 
 	for (const auto& cookie : points->getPointsData()) {
+		if (cookie.getPointClass() == PointCat::SPECIAL) {
+			cookieDrafter.setSpecialPoint();
+		}
 		cookieDrafter.draw(cookie, Direction::EAST);
 	}
 
