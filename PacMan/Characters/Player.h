@@ -15,14 +15,15 @@
 class Player :public Character, public GameMediatorComponent{
 public:
 	Player(Position startPos, CoordType sp) :
-		Character(startPos), moveTool(sp){};
-
-
+		Character(startPos), moveTool(sp), prevPos(startPos), currentDir(Direction::EAST){};
 
 	void moveUp();
 	void moveDown();
 	void moveLeft();
 	void moveRight();
+
+	const Position& getProviousPosition()const { return prevPos; };
+	Direction getCurrentDirection()const { return currentDir; };
 
 	int getAmountOfLifes()const { return numberOfLifes; };
 
@@ -34,8 +35,12 @@ public:
 private:
 	SafeMovement moveTool;
 
+	Direction currentDir;
+	Position prevPos;
+
 	int numberOfLifes = 3;
 
+	void updatePrevPosAndDir(Position& suspectPos, Position& current, Direction dir);
 	void update() override {}; // in private to delete
 };
 

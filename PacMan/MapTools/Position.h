@@ -28,6 +28,7 @@ public:
 
 
 	bool operator==(const Position& pos);
+	bool operator!=(const Position& pos);
 	Position operator+(const Position& pos);
 	Position& operator+=(const Position& rPos);
 	Position operator/(const CoordType& b) const;
