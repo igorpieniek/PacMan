@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="Behaviours\Behaviour.cpp" />
     <ClCompile Include="Behaviours\RandMove.cpp" />
+    <ClCompile Include="GraphicLayer\CookieDrafter.cpp" />
     <ClCompile Include="GameTools\GameRules.cpp" />
     <ClCompile Include="GameTools\CellPoint.cpp" />
     <ClCompile Include="Characters\Oponent.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Behaviours\Behaviour.h" />
     <ClInclude Include="Behaviours\MoveAlgorithm.h" />
     <ClInclude Include="Behaviours\RandMove.h" />
+    <ClInclude Include="GraphicLayer\CookieDrafter.h" />
     <ClInclude Include="GraphicLayer\Drafter.h" />
     <ClInclude Include="GraphicLayer\GraphicGLManager.h" />
     <ClInclude Include="GraphicLayer\GraphicManagerInterface.h" />

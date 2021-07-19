@@ -5,7 +5,7 @@
 #include "MapManager.h"
 
 #include "PlayerDrafter.h"
-
+#include "CookieDrafter.h"
 
 #include <algorithm>
 
@@ -29,13 +29,14 @@ private:
 
 	const std::string playerPath = "images/pacman.png";
 
-
+	const std::string cookiePath = "images/point.png";
 
 
 	std::vector<Drafter> ghosts;
 	std::vector<MapCell> mapvec;
 	Drafter mapDrafter;
 	PlayerDrafter plDrafter;
+	CookieDrafter cookieDrafter;
 	float scale;
 
 	void drawObstacles();

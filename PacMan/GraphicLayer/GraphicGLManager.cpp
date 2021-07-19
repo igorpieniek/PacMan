@@ -16,6 +16,7 @@ GraphicGLManager::GraphicGLManager(
 
 	mapDrafter.addImage(mapPath);
 	plDrafter.addImage(playerPath);
+	cookieDrafter.addImage(cookiePath);
 
 	mapvec = MapManager::instance().getAllMap();
 	// initialize PlayerDrafter object
@@ -27,6 +28,10 @@ GraphicGLManager::GraphicGLManager(
 
 void GraphicGLManager::draw(){
 	drawObstacles();
+
+	for (const auto& cookie : points->getPointsData()) {
+		cookieDrafter.draw(cookie, Direction::EAST);
+	}
 
 	plDrafter.updateIsMoving(player->isMoving());
 	plDrafter.draw(player->getPosition(), player->getCurrentDirection());
