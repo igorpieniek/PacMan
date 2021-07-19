@@ -30,7 +30,7 @@ public:
 
 	void setStepSize(CoordType siz);
 
-private:
+protected:
 	CoordType stepSize;
 
 };

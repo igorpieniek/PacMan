@@ -22,8 +22,19 @@ void PlayerMovementManager::keyActionCallback(GLFWwindow* window, int key, int s
 
 void PlayerMovementManager::update(){
 	if (!isFirst) {
-		PlayerMethod meth = dirMethod[nextDir];
-		(*player.*meth)();
+		PlayerMethod meth;
+		Direction currOpposite = getOpprositeDirection(currentDir);
+		if (nextDir == currentDir || nextDir == currOpposite) {
+			meth = dirMethod[nextDir];
+			(*player.*meth)();
+		}
+		else if(player->getPosition().isIntPos()) {
+			meth = dirMethod[nextDir];
+			(*player.*meth)();
+		}
+		
+		
+
 		updateLastPos();
 		if (isMoving()) {
 			currentDir = nextDir;

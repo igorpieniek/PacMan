@@ -17,16 +17,30 @@ void SafeMovement::moveRight(Position& pos){
 }
 
 void SafeMovement::moveInDir(Position& pos, Direction dir){
-	if (isNextPositionFree(pos, dir)) {
+	if (isNextPositionFree(pos, dir) && isMoveInDirAllowed(pos,dir)) {
 		moveInDirDanger(pos, dir);
 	}
 }
 
 bool SafeMovement::isNextPositionFree(Position& pos, Direction dir){
-	Position temp = pos.getIntPos();
+	Position temp = pos;
 	tempDangerMoveTool.moveInDir(temp, dir);
-	if (MapManager::instance().isOccupied(temp)) return false;
-	else return true;
+	if ( !MapManager::instance().isOccupied(temp)) return true;
+
+	temp = temp.getIntPos();
+	if (pos.distance(temp) >= (1.0f + (0.5*stepSize))) return true;
+	else return false;
+
+}
+
+bool SafeMovement::isMoveInDirAllowed(Position& pos, Direction dir){
+	if (dir == Direction::NORTH || dir == Direction::SOUTH) {
+		if (pos.isXCoordInt()) return true;
+	}
+	else if (dir == Direction::EAST || dir == Direction::WEST) {
+		if (pos.isYCoordInt()) return true;
+	}
+	return false;
 }
 
 void SafeMovement::moveInDirDanger(Position& pos, Direction dir){

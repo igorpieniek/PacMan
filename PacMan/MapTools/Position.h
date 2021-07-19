@@ -23,6 +23,9 @@ public:
 
 	Position getIntPos() const;
 	bool isIntPos()const;
+	bool isXCoordInt()const;
+	bool isYCoordInt()const;
+
 
 	bool operator==(const Position& pos);
 	Position operator+(const Position& pos);

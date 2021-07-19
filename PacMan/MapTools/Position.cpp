@@ -16,10 +16,19 @@ Position Position::getIntPos() const{
 }
 
 bool Position::isIntPos() const{
-	Position intPos = getIntPos();
-	return (std::round(x * 1000) / 1000 == intPos.getX()) &&
-		   (std::round(y * 1000) / 1000 == intPos.getY());
+	return isXCoordInt() && isYCoordInt();
 }
+
+bool Position::isXCoordInt() const{
+	Position intPos = getIntPos();
+	return std::round(x * 1000) / 1000 == intPos.getX();
+}
+
+bool Position::isYCoordInt() const{
+	Position intPos = getIntPos();
+	return std::round(y * 1000) / 1000 == intPos.getY();
+}
+
 
 bool Position::operator==(const Position& pos){
 	return this->x == pos.x && this->y == pos.y;

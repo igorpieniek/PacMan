@@ -21,6 +21,7 @@ public:
 
 private:
 	bool isNextPositionFree(Position& pos, Direction dir);
+	bool isMoveInDirAllowed(Position& pos, Direction dir);
 	void moveInDirDanger(Position& pos, Direction dir);
 
 	Movement tempDangerMoveTool;
