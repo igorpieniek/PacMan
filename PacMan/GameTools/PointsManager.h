@@ -22,8 +22,7 @@ public:
 	void notify(Event evt) override;
 	void notifyPlayerPosition(Position& pos) override;
 
-	//debug functions
-	bool getPointCat(PointCat* cat, Position& pos);
+	const std::vector<CellPoint>& getPointsData()const { return cellPoints; };
 	
 private:
 	int currentPoints;

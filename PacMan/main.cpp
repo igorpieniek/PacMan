@@ -49,10 +49,10 @@ int main() {
 
 	MapManager::instance().addMap("mapa.txt");
 
-	PointsManager points{ 10 };
+	std::shared_ptr<PointsManager> points = std::make_shared<PointsManager>( 10 );
 	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 0 );
 
-	GameRules gameRules({ &points, opManag.get(), pl.get() });
+	GameRules gameRules({ points.get(), opManag.get(), pl.get() });
 
 	
 	
@@ -89,7 +89,7 @@ int main() {
 		std::cout << "GLEW PROBLEM\n";
 	}
 
-	GraphicGLManager graphManag(pl, opManag);
+	GraphicGLManager graphManag(points, pl, opManag);
 	
 
 	/* Loop until the user closes the window */

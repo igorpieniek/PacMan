@@ -1,8 +1,10 @@
 #include "GraphicGLManager.h"
 
-GraphicGLManager::GraphicGLManager(const std::shared_ptr<Player> pl,
-	std::shared_ptr<OponentManager> oponentManag)
-	: GraphicManagerInterface(pl, oponentManag)
+GraphicGLManager::GraphicGLManager(
+		const std::shared_ptr<PointsManager> pointsManag,
+		const std::shared_ptr<Player> pl,
+		const std::shared_ptr<OponentManager> oponentManag)
+		: GraphicManagerInterface(pointsManag, pl, oponentManag)
 {
 
 	Render2D::instance().init();
