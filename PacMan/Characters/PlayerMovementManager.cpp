@@ -23,19 +23,9 @@ void PlayerMovementManager::keyActionCallback(GLFWwindow* window, int key, int s
 void PlayerMovementManager::update(){
 	if (!isFirst) {
 		PlayerMethod meth;
-		Direction currOpposite = getOpprositeDirection(currentDir);
-		if (nextDir == currentDir || nextDir == currOpposite) {
-			meth = dirMethod[nextDir];
-			(*player.*meth)();
-		}
-		else if(player->getPosition().isIntPos()) {
-			meth = dirMethod[nextDir];
-			(*player.*meth)();
-		}
-		
-		
-
 		updateLastPos();
+		meth = dirMethod[nextDir];
+		(*player.*meth)();
 		if (isMoving()) {
 			currentDir = nextDir;
 		}
@@ -43,9 +33,7 @@ void PlayerMovementManager::update(){
 			meth = dirMethod[currentDir];
 			(*player.*meth)();
 		}
-
 	}
-	updateLastPos();
 }
 
 void PlayerMovementManager::tryMove(Direction dir){
@@ -58,8 +46,6 @@ void PlayerMovementManager::tryMove(Direction dir){
 	if (currentDir != dir) {
 		nextDir = dir;
 	}
-	
-
 }
 
 void PlayerMovementManager::updateLastPos(){
@@ -67,5 +53,5 @@ void PlayerMovementManager::updateLastPos(){
 }
 
 bool PlayerMovementManager::isMoving(){
-	return lastPosition == player->getPosition();
+	return player->getPosition().distance(lastPosition) > 0.001f;
 }

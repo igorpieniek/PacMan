@@ -50,7 +50,7 @@ int main() {
 	MapManager::instance().addMap("mapa.txt");
 
 	PointsManager points{ 10 };
-	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 0 );
+	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 2 );
 
 	GameRules gameRules({ &points, opManag.get(), pl.get() });
 
