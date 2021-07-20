@@ -1,11 +1,7 @@
 #pragma once
 
-#ifndef __MOVEALGORITHM_H__
-#define __MOVEALGORITHM_H__
-
 #include "Position.h"
 #include "MapCell.h"
-
 
 
 class MoveAlgorithm{
@@ -16,9 +12,4 @@ public:
 protected:
 
 	MoveAlgorithm(){};
-
-	
 };
-
-
-#endif //__MOVEALGORITHM_H__

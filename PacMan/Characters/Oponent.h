@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __OPONENT_H__
-#define __OPONENT_H__
-
 #include <iostream>
 #include <string>
 #include "Character.h"
@@ -28,5 +25,3 @@ private:
 	bool active = true;
 	Behaviour* behaviour;
 };
-
-#endif // __OPONENT_H__

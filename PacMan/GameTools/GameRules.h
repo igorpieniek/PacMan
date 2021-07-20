@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __GAMERULES_H__
-#define __GAMERULES_H__
-
 #include "Mediator.h"
 #include <iostream>
 #include <vector>
@@ -24,6 +21,4 @@ private:
 	void notifyAll(Event evt);
 	void setComponentsMediator();
 };
-
-#endif // __GAMERULES_H__
 

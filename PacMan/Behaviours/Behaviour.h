@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __BEHAVIOUR_H__
-#define __BEHAVIOUR_H__
-
 #include "MoveAlgorithm.h"
 #include "Position.h"
 
@@ -17,5 +14,3 @@ private:
 	MoveAlgorithm* moveAlg;
 
 };
-
-#endif // __BEHAVIOUR_H__

@@ -1,9 +1,5 @@
 #pragma once
 
-
-#ifndef __MOVEMENT_H__
-#define __MOVEMENT_H__
-
 #include "Position.h"
 
 
@@ -34,9 +30,3 @@ protected:
 	CoordType stepSize;
 
 };
-
-
-
-
-
-#endif //__MOVEMENT_H__

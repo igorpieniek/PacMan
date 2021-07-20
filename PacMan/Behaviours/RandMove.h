@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __RANDMOVE_H__
-#define __RANDMOVE_H__
-
 #include "MoveAlgorithm.h"
 #include "Movement.h"
 #include "MapManager.h"
@@ -33,5 +30,3 @@ private:
 	Movement moveTool;
 	bool isInitialized = false;
 };
-
-#endif // __RANDMOVE_H__

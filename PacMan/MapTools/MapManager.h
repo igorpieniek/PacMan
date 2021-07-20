@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef __MAPMANAGER_H__
-#define __MAPMANAGER_H__
-
-
 #include "MapCell.h"
 #include "Movement.h"
 #include <vector>
@@ -61,5 +57,3 @@ private:
 	};
 
 };
-
-#endif //__MAPMANAGER_H__

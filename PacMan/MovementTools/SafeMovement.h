@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __SAFEMOVEMENT_H__
-#define __SAFEMOVEMENT_H__
-
 #include "MapManager.h"
 #include "Movement.h"
 
@@ -26,5 +23,3 @@ private:
 
 	Movement tempDangerMoveTool;
 };
-
-#endif //__SAFEMOVEMENT_H__

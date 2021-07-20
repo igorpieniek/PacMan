@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __POINTSMANAGER_H__
-#define __POINTSMANAGER_H__
-
 #include "MapManager.h"
 #include "Mediator.h"
 #include "CellPoint.h"
@@ -40,6 +37,4 @@ private:
 	CellPointIter getCellPointIter(Position& pos);
 
 };
-
-#endif // __POINTSMANAGER_H__
 

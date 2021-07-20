@@ -1,9 +1,5 @@
 #pragma once
 
-
-#ifndef __PLAYER_H__
-#define __PLAYER_H__
-
 #include "Character.h"
 #include "MapManager.h"
 #include "SafeMovement.h"
@@ -46,6 +42,4 @@ private:
 	void updatePrevPosAndDir(Position& suspectPos, Position& current, Direction dir);
 	void update() override {}; // in private to delete
 };
-
-#endif //__PLAYER_H__
 

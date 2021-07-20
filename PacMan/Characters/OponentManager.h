@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __OPONENTMANAGER_H__
-#define __OPONENTMANAGER_H__
-
 #include "Oponent.h"
 #include "Player.h"
 #include "RandMove.h"
@@ -49,5 +46,3 @@ private:
 
 
 };
-
-#endif //__OPONENTMANAGER_H__

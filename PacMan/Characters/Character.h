@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __CHARACTER_H__
-#define __CHARACTER_H__
-
 #include "Position.h"
 
 class Character{
@@ -22,6 +19,3 @@ protected:
 	Position initPositionSnapshot;
 
 };
-
-#endif
-

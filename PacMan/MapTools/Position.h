@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __POSITION_H__
-#define __POSITION_H__
-
 #include <math.h>
 #include <iostream>
 #include <cmath>
@@ -40,7 +37,3 @@ private:
 	CoordType y;
 	friend std::ostream& operator<<(std::ostream& os, const Position& pos);
 };
-
-
-
-#endif // __POSITION_H__

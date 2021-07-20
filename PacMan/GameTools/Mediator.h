@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __MEDIATOR_H__
-#define __MEDIATOR_H__
-
 #include "Position.h"
 
 enum class Event {
@@ -48,6 +45,3 @@ class GameMediator : public Mediator,
 class GameMediatorComponent : public MediatorComponent, 
 							  public PlayerPositionPropagator {};
 
-
-
-#endif //__MEDIATOR_H__

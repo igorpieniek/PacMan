@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef __MAPCELL_H__
-#define __MAPCELL_H__
-
-
 #include "Position.h"
 class MapCell :public Position{
 public:
@@ -22,5 +18,3 @@ private:
 	Category category;
 	using Position::move; //hiding method
 };
-
-#endif //__MAPCELL_H__

@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __CELLPOINT_H__
-#define __CELLPOINT_H__
-
 #include "MapCell.h"
 
 enum class PointCat : int {
@@ -24,6 +21,4 @@ private:
 	PointCat  point;
 
 };
-
-#endif //__CELLPOINT_H__
 
