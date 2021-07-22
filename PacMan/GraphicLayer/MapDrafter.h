@@ -2,8 +2,28 @@
 #include "Drafter.h"
 #include "MapManager.h"
 #include "Movement.h"
+#include "MatrixTool.h"
 #include <string>
 #include <map>
+
+
+enum class MapPatternType {
+	STRAIGHT, CORNER
+};
+
+
+struct MapPatternData {
+	MapPatternType type;
+	std::vector<int> arr;
+};
+
+struct PatternResult {
+	Direction dir;
+	MapPatternType cat;
+	bool isFound;
+};
+
+
 
 class MapDrafter :public Drafter{
 public:
@@ -26,20 +46,16 @@ private:
 	std::vector<MapCell> map;
 
 
-	enum class ObstacleType {
-		STRAIGHT, CORNER
-	};
+
 	struct ObstacleInfo {
 		Direction dir;
-		ObstacleType type;
+		MapPatternType type;
 		Position pos;
 	};
 
 	
 	std::vector<ObstacleInfo> obstacles;
-
-	bool isStraight(Direction& result, std::vector<bool>& status);
-	bool isCorner(Direction& result, std::vector<bool>& status);
+	PatternResult matchPattern(Position& cell);
 
 };
 

@@ -23,8 +23,6 @@ Direction getNextDirection(const Direction& dir) {
 	}
 
 	return static_cast<Direction>(index+1);
-
-
 }
 
 void printDirection(const Direction& dir){

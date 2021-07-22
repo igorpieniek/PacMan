@@ -171,6 +171,7 @@
     <ClCompile Include="MapTools\MapCell.cpp" />
     <ClCompile Include="MapTools\MapManager.cpp" />
     <ClCompile Include="MapTools\Position.cpp" />
+    <ClCompile Include="MapTools\MatrixTool.cpp" />
     <ClCompile Include="MovementTools\Movement.cpp" />
     <ClCompile Include="MovementTools\SafeMovement.cpp" />
     <ClCompile Include="Characters\OponentManager.cpp" />
@@ -490,6 +491,7 @@
     <ClInclude Include="MapTools\MapCell.h" />
     <ClInclude Include="MapTools\MapManager.h" />
     <ClInclude Include="MapTools\Position.h" />
+    <ClInclude Include="MapTools\MatrixTool.h" />
     <ClInclude Include="MovementTools\Movement.h" />
     <ClInclude Include="MovementTools\SafeMovement.h" />
     <ClInclude Include="Characters\OponentManager.h" />

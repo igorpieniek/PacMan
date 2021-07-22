@@ -1,49 +1,46 @@
 #include "MapDrafter.h"
 
+
+
+// 0 - means position free
+// 1 - means obstacle
+// 2 - means that it doesn't matter
+// default oriantation - east
+static const std::vector<MapPatternData> patterns = {
+	{
+		MapPatternType::STRAIGHT, 
+		{1,1,2,
+		 1,1,0,
+		 1,1,2}
+		},
+	{
+		MapPatternType::CORNER, // convex
+		{1,1,2,
+		 1,1,0,
+		 2,0,0} 
+		},
+	{
+		MapPatternType::CORNER, //concave
+		{0,1,2,
+		 1,1,1,
+		 2,1,1}
+		}
+};
+
 MapDrafter::MapDrafter(){
 
 	cornerText   = std::make_shared<Texture>(turnPath);
 	straightText = std::make_shared<Texture>(straightPath);
 
 	map = MapManager::instance().getAllMap();
-	std::vector<Position> testingMovements = {
-		{1,1}, {1,0}, {1,-1}, {0,-1}, {-1,-1}, {-1,0}, {-1,1}, {0,1}
-	//    NE     E       SE     S        SW       W      NW     N
-	};
 
-	for (const auto& cell : map) {
+
+	for (auto& cell : map) {
 		if (cell.isObstacle()) {
-			int i = 0, startIndex = -1;
-			std::vector<bool> neighStatus;
-			for (auto testIt = testingMovements.begin(); testIt != testingMovements.end(); testIt++) {
-				Position neighbour = cell;
-				neighbour += *testIt;
-				if (!MapManager::instance().isOccupied(neighbour)) {
-					++i;
-					neighStatus.push_back(true);
-					continue;
-				}
-				neighStatus.push_back(false);
+			PatternResult res = matchPattern(cell);
+			if (res.isFound) {
+				obstacles.push_back({ res.dir, res.cat, cell });
 			}
-			
-			Direction dir;
-			bool status = isStraight(dir, neighStatus);
-			if (status) {
-				obstacles.push_back({ dir, ObstacleType::STRAIGHT, cell });
-			}
-			/*
-			if (i == 0) continue;
-
-			if (i == 1) {
-				if      (startIndex == 3 || startIndex == 7) obstacles.push_back({ Direction::EAST,  ObstacleType::STRAIGHT, cell });
-				else if (startIndex == 1 || startIndex == 5) obstacles.push_back({ Direction::NORTH, ObstacleType::STRAIGHT, cell });
-				else if (startIndex == 0 ) obstacles.push_back({ Direction::NORTH, ObstacleType::CORNER, cell });
-				else if (startIndex == 2) obstacles.push_back({ Direction::EAST, ObstacleType::CORNER, cell });
-				else if (startIndex == 4) obstacles.push_back({ Direction::SOUTH, ObstacleType::CORNER, cell });
-				else if (startIndex == 6) obstacles.push_back({ Direction::WEST, ObstacleType::CORNER, cell });
-			}
-			*/
-
 		}
 	}
 
@@ -55,7 +52,7 @@ void MapDrafter::draw(){
 		trans.setRotation(rotations[it->dir]);
 		trans.setTranslation(transCell.getX(), transCell.getY());
 		trans.setScale(0.08f);
-		if (it->type == ObstacleType::CORNER) {
+		if (it->type == MapPatternType::CORNER) {
 			Render2D::instance().addToDraw(cornerText, trans);
 		}
 		else {
@@ -69,40 +66,35 @@ void MapDrafter::draw(){
 	}*/
 }
 
-bool MapDrafter::isStraight(Direction& result, std::vector<bool>& status){
-	int i = 0;
-	for (const auto& st : status) {
-		if (st) ++i;
-	}
-	if (i == 0) return false;
-	if (i == 1) {
-		if		(status[3] || status[7]) { result = Direction::EAST; return true; }
-		else if (status[1] || status[5]) { result = Direction::NORTH; return true; }
-	}
-	else if (i == 2) {
-		int start = -1;
-		for (auto it = status.begin(); it != status.end(); ++it) {
-			if (*it) start = it - status.begin();
+PatternResult MapDrafter::matchPattern(Position& cell){
+	auto arr = MapManager::instance().getNeighbours(cell, 1);
+	std::vector<MapPatternData> patternCpy = patterns;
+	std::vector<Direction> dirs = { Direction::EAST, Direction::WEST, Direction::NORTH, Direction::SOUTH };
+	MatrixTool<int> matTool;
+
+	for (auto dir = rotations.begin(); dir != rotations.end(); ++dir) {
+		for (auto& pat : patternCpy) {
+			int matchCounter = 0;
+			for (auto it = arr.begin(); it != arr.end(); it++) {
+				int indx = std::distance(arr.begin(), it);
+				if (pat.arr[indx] == 2) {  //neutral
+					matchCounter++;
+				}
+				else if (pat.arr[indx] == 0 && !it->isObstacle()) {
+					matchCounter++;
+				}			
+				else if(pat.arr[indx] == 1  &&  it->isObstacle()) { //match case
+					matchCounter++;
+				}
+			}
+			if (matchCounter == 9) {
+				return { dir->first, pat.type, true };
+			}
+
+			matTool.rotate90clockwise(pat.arr);
+
 		}
-		if      (start < 2)               { result = Direction::NORTH; return true; }
-		else if (start >= 2 && start < 4) { result = Direction::EAST; return true; }
-		else if (start >= 4 && start < 6) { result = Direction::NORTH; return true; }
-		else if (start >= 6)              { result = Direction::EAST; return true; }
 	}
-	else if (i == 3) {
-		if((status[0] && status[1] && status[2]) ||
-		   (status[4] && status[5] && status[6])) {
-			result = Direction::NORTH; return true;
-		}
-		else if ((status[2] && status[3] && status[4]) ||
-			     (status[6] && status[7] && status[0])) {
-			result = Direction::EAST; return true;
-		} 
-	}
-	return false;
+	return { Direction::EAST, MapPatternType::STRAIGHT, false };
 }
 
-bool MapDrafter::isCorner(Direction& result, std::vector<bool>& status){
-
-	return false;
-}
