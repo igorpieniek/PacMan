@@ -15,16 +15,16 @@ static const std::vector<MapPatternData> patterns = {
 		},
 	{
 		MapPatternType::CORNER, // convex
-		{1,1,2,
-		 1,1,0,
-		 2,0,0} 
+		{0,0,2,
+		 0,1,1,
+		 2,1,1} 
 		},
 	{
 		MapPatternType::CORNER, //concave
-		{0,1,2,
+		{1,1,1,
 		 1,1,1,
-		 2,1,1}
-		}
+		 1,1,0}
+	}
 };
 
 MapDrafter::MapDrafter(){
@@ -69,10 +69,10 @@ void MapDrafter::draw(){
 PatternResult MapDrafter::matchPattern(Position& cell){
 	auto arr = MapManager::instance().getNeighbours(cell, 1);
 	std::vector<MapPatternData> patternCpy = patterns;
-	std::vector<Direction> dirs = { Direction::EAST, Direction::WEST, Direction::NORTH, Direction::SOUTH };
+	std::vector<Direction> dirs = {    Direction::NORTH,  Direction::WEST, Direction::SOUTH, Direction::EAST};
 	MatrixTool<int> matTool;
 
-	for (auto dir = rotations.begin(); dir != rotations.end(); ++dir) {
+	for (auto dir = dirs.begin(); dir != dirs.end(); ++dir) {
 		for (auto& pat : patternCpy) {
 			int matchCounter = 0;
 			for (auto it = arr.begin(); it != arr.end(); it++) {
@@ -83,16 +83,15 @@ PatternResult MapDrafter::matchPattern(Position& cell){
 				else if (pat.arr[indx] == 0 && !it->isObstacle()) {
 					matchCounter++;
 				}			
-				else if(pat.arr[indx] == 1  &&  it->isObstacle()) { //match case
+				else if(pat.arr[indx] == 1  &&  it->isObstacle()) { 
 					matchCounter++;
 				}
 			}
 			if (matchCounter == 9) {
-				return { dir->first, pat.type, true };
+				return { *dir, pat.type, true };
 			}
 
 			matTool.rotate90clockwise(pat.arr);
-
 		}
 	}
 	return { Direction::EAST, MapPatternType::STRAIGHT, false };
