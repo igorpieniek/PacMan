@@ -33,13 +33,19 @@ MapDrafter::MapDrafter(){
 	straightText = std::make_shared<Texture>(straightPath);
 
 	map = MapManager::instance().getAllMap();
-
+	calculateScale();
 
 	for (auto& cell : map) {
 		if (cell.isObstacle()) {
 			PatternResult res = matchPattern(cell);
-			if (res.isFound) {
-				obstacles.push_back({ res.dir, res.cat, cell });
+			if (res.isFound ) {
+				Position transCell = cell;
+				normalize(transCell);
+				Transformation tr;
+				tr.setRotation(rotations[res.dir]);
+				tr.setTranslation(transCell.getX(), transCell.getY());
+				tr.setScale(0.08f);
+				obstacles.push_back({ res.dir, res.cat, cell, tr });
 			}
 		}
 	}
@@ -47,16 +53,16 @@ MapDrafter::MapDrafter(){
 }
 void MapDrafter::draw(){
 	for (auto it = obstacles.begin(); it != obstacles.end(); it++) {
-		Position transCell = it->pos;
+		/*Position transCell = it->pos;
 		normalize(transCell);
 		trans.setRotation(rotations[it->dir]);
 		trans.setTranslation(transCell.getX(), transCell.getY());
-		trans.setScale(0.08f);
+		trans.setScale(0.08f); */
 		if (it->type == MapPatternType::CORNER) {
-			Render2D::instance().addToDraw(cornerText, trans);
+			Render2D::instance().addToDraw(cornerText, it->trans);
 		}
 		else {
-			Render2D::instance().addToDraw(straightText, trans);
+			Render2D::instance().addToDraw(straightText, it->trans);
 		}
 	}
 	/*for (auto& cell : map) {

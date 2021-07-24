@@ -51,6 +51,7 @@ private:
 		Direction dir;
 		MapPatternType type;
 		Position pos;
+		Transformation trans;
 	};
 
 	
