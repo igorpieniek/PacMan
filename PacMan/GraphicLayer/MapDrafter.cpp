@@ -5,13 +5,20 @@
 MapDrafter::MapDrafter(){
 
 	cornerText   = std::make_shared<Texture>(turnPath);
-	straightText = std::make_shared<Texture>(straightPath);
+	
 
 	map = MapManager::instance().getAllMap();
 	calculateScale();
 
 	MapCreator creator;
 	creator.create();
+	straightText = std::make_shared<Texture>(straightPath);
+	mapTrans.setTranslation(0, -0.03f);
+	mapTrans.setRotationAxis(Transformation::Axis::X);
+	mapTrans.setRotation(180.0f);
+	mapTrans.setScale(2.05f, 0.7f, 1.0f);
+	
+
 	/*
 	for (auto& cell : map) {
 		if (cell.isObstacle()) {
@@ -31,6 +38,8 @@ MapDrafter::MapDrafter(){
 
 }
 void MapDrafter::draw(){
+
+	Render2D::instance().addToDraw(straightText, mapTrans);
 	/*
 	for (auto it = obstacles.begin(); it != obstacles.end(); it++) {
 		if (it->type == MapPatternType::CORNER) {

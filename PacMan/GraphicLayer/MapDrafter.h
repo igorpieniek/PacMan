@@ -20,9 +20,10 @@ public:
 
 private:
 	std::string turnPath     = "images/turn.png";
-	std::string straightPath = "images/straight.png";
+	std::string straightPath = "images/newMap.png";
 	std::shared_ptr<Texture> cornerText;
 	std::shared_ptr<Texture> straightText;
+	Transformation mapTrans;
 
 	std::map<Direction, float> rotations = {
 		{Direction::EAST,    0.0f},

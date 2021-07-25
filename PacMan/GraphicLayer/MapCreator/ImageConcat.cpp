@@ -53,7 +53,7 @@ void ImageConcat::convert(){
         result.height = lines.size() * matrix[0]->height;
         result.stride = matrix[0]->stride;
 
-        save("images/resultNEW.png");
+        save("images/newMap.png");
         
     }
 }
