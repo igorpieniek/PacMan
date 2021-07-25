@@ -1,6 +1,7 @@
 #include "ImageConcat.h"
 
-
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb_image_write.h"
 
 void ImageConcat::addImage(std::string path){
 
@@ -57,7 +58,8 @@ void ImageConcat::convert(){
 }
 
 void ImageConcat::save(std::string res){
-    int status = stbi_write_png(res.c_str(), result.width, result.height, result.stride, result.getDataPtr(), result.getByteWidth());
+    int status = stbi_write_png("resultNEW.png", result.width, result.height, result.stride, result.getDataPtr(), result.getByteWidth());
+    std::cout << "Image Concat saving status : " << status << std::endl;
 }
 
 

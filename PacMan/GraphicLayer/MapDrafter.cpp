@@ -2,31 +2,6 @@
 
 
 
-// 0 - means position free
-// 1 - means obstacle
-// 2 - means that it doesn't matter
-// default oriantation - east
-static const std::vector<MapPatternData> patterns = {
-	{
-		MapPatternType::STRAIGHT, 
-		{1,1,2,
-		 1,1,0,
-		 1,1,2}
-		},
-	{
-		MapPatternType::CORNER, // convex
-		{0,0,2,
-		 0,1,1,
-		 2,1,1} 
-		},
-	{
-		MapPatternType::CORNER, //concave
-		{1,1,1,
-		 1,1,1,
-		 1,1,0}
-	}
-};
-
 MapDrafter::MapDrafter(){
 
 	cornerText   = std::make_shared<Texture>(turnPath);
@@ -35,6 +10,9 @@ MapDrafter::MapDrafter(){
 	map = MapManager::instance().getAllMap();
 	calculateScale();
 
+	MapCreator creator;
+	creator.create();
+	/*
 	for (auto& cell : map) {
 		if (cell.isObstacle()) {
 			PatternResult res = matchPattern(cell);
@@ -49,9 +27,11 @@ MapDrafter::MapDrafter(){
 			}
 		}
 	}
+	*/
 
 }
 void MapDrafter::draw(){
+	/*
 	for (auto it = obstacles.begin(); it != obstacles.end(); it++) {
 		if (it->type == MapPatternType::CORNER) {
 			Render2D::instance().addToDraw(cornerText, it->trans);
@@ -60,13 +40,14 @@ void MapDrafter::draw(){
 			Render2D::instance().addToDraw(straightText, it->trans);
 		}
 	}
-	/*for (auto& cell : map) {
+	for (auto& cell : map) {
 		if (cell.isObstacle()) {
 			Drafter::draw(cell, Direction::EAST);
 		}
 	}*/
 }
 
+/*
 PatternResult MapDrafter::matchPattern(Position& cell){
 	auto arr = MapManager::instance().getNeighbours(cell, 1);
 	std::vector<MapPatternData> patternCpy = patterns;
@@ -96,5 +77,5 @@ PatternResult MapDrafter::matchPattern(Position& cell){
 		}
 	}
 	return { Direction::EAST, MapPatternType::STRAIGHT, false };
-}
+}*/
 

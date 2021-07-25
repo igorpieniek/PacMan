@@ -3,25 +3,13 @@
 #include "MapManager.h"
 #include "Movement.h"
 #include "MatrixTool.h"
+#include "MapCreator.h"
+
 #include <string>
 #include <map>
 
 
-enum class MapPatternType {
-	STRAIGHT, CORNER
-};
 
-
-struct MapPatternData {
-	MapPatternType type;
-	std::vector<int> arr;
-};
-
-struct PatternResult {
-	Direction dir;
-	MapPatternType cat;
-	bool isFound;
-};
 
 
 
@@ -45,7 +33,7 @@ private:
 
 	std::vector<MapCell> map;
 
-
+	/*
 
 	struct ObstacleInfo {
 		Direction dir;
@@ -57,6 +45,6 @@ private:
 	
 	std::vector<ObstacleInfo> obstacles;
 	PatternResult matchPattern(Position& cell);
-
+	*/
 };
 

@@ -1,22 +1,19 @@
 #pragma once
 #pragma warning(disable : 4996)
-//#ifndef STB_IMAGE_IMPLEMENTATION
-//#define STB_IMAGE_IMPLEMENTATION
 
-//#endif // !STB_IMAGE_IMPLEMENTATION
 
-#ifndef STB_IMAGE_WRITE_IMPLEMENTATION
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#endif // !STB_IMAGE_WRITE_IMPLEMENTATION
 
-#include "stb_image.h"
-#include "stb_image_write.h"
+
+
 
 #include <string>
 #include <iostream>
 #include <vector>
 
 #include "ImageData.h"
+#include "stb_image.h"
+
+
 
 class ImageConcat{
 private:

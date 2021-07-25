@@ -86,7 +86,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLEW_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;WIN32</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)$(SolutionName)\Dependencies\GLEW\include;$(SolutionDir)$(SolutionName)\Dependencies\GLFW\include;$(SolutionDir)$(SolutionName)\MovementTools;$(SolutionDir)$(SolutionName)\MapTools;$(SolutionDir)$(SolutionName)\Characters;$(SolutionDir)$(SolutionName)\GameTools;$(SolutionDir)$(SolutionName)\GraphicLayer;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\glm;$(SolutionDir)$(SolutionName)\GraphicLayer\MapCreator;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools;$(SolutionDir)$(SolutionName)\Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -103,7 +103,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLEW_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;WIN32</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)$(SolutionName)\Dependencies\GLEW\include;$(SolutionDir)$(SolutionName)\Dependencies\GLFW\include;$(SolutionDir)$(SolutionName)\MovementTools;$(SolutionDir)$(SolutionName)\MapTools;$(SolutionDir)$(SolutionName)\Characters;$(SolutionDir)$(SolutionName)\GameTools;$(SolutionDir)$(SolutionName)\GraphicLayer;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\glm;$(SolutionDir)$(SolutionName)\GraphicLayer\MapCreator;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools;$(SolutionDir)$(SolutionName)\Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
