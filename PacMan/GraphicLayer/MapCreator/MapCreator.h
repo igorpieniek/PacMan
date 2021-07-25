@@ -6,7 +6,10 @@
 #include <string>
 
 
+
 class MapCreator{
+public:
+	void create();
 private:
 	std::map<MapPatternType, std::string> imagePathMap = {
 		{MapPatternType::FREE , ""},

@@ -154,6 +154,8 @@
     <ClCompile Include="Characters\Player.cpp" />
     <ClCompile Include="GraphicLayer\Drafter.cpp" />
     <ClCompile Include="GraphicLayer\GraphicGLManager.cpp" />
+    <ClCompile Include="GraphicLayer\MapCreator\ImageConcat.cpp" />
+    <ClCompile Include="GraphicLayer\MapCreator\ImageData.cpp" />
     <ClCompile Include="GraphicLayer\MapDrafter.cpp" />
     <ClCompile Include="GraphicLayer\OpenGlTools\Buffers\AdditionalTools.cpp" />
     <ClCompile Include="GraphicLayer\OpenGlTools\Buffers\IndexBuffer.cpp" />
@@ -194,6 +196,9 @@
     <ClInclude Include="Characters\Character.h" />
     <ClInclude Include="Characters\Oponent.h" />
     <ClInclude Include="Characters\Player.h" />
+    <ClInclude Include="GraphicLayer\MapCreator\ImageConcat.h" />
+    <ClInclude Include="GraphicLayer\MapCreator\ImageData.h" />
+    <ClInclude Include="GraphicLayer\MapCreator\stb_image_write.h" />
     <ClInclude Include="GraphicLayer\MapDrafter.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\AdditionalTools.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\GLBuffer.h" />
