@@ -17,35 +17,7 @@ class MapDrafter :public Drafter{
 public:
 	MapDrafter();
 	void draw();
+	void addImage(std::string path, Direction dir = Direction::EAST) override;
 
-private:
-	std::string turnPath     = "images/turn.png";
-	std::string straightPath = "images/newMap.png";
-	std::shared_ptr<Texture> cornerText;
-	std::shared_ptr<Texture> straightText;
-	Transformation mapTrans;
-
-	std::map<Direction, float> rotations = {
-		{Direction::EAST,    0.0f},
-		{Direction::WEST,  180.0f},
-		{Direction::NORTH,  90.0f},
-		{Direction::SOUTH, -90.0f},
-	};
-
-	std::vector<MapCell> map;
-
-	/*
-
-	struct ObstacleInfo {
-		Direction dir;
-		MapPatternType type;
-		Position pos;
-		Transformation trans;
-	};
-
-	
-	std::vector<ObstacleInfo> obstacles;
-	PatternResult matchPattern(Position& cell);
-	*/
 };
 

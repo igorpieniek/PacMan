@@ -27,7 +27,7 @@ private:
 		"images/ghost4.png",
 	};
 
-	const std::string mapPath = "images/straight.png";
+	const std::string mapPath = "images/newMap.png";
 
 	const std::string playerPath = "images/pacman.png";
 
