@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(SolutionName)\Dependencies\GLEW\include;$(SolutionDir)$(SolutionName)\Dependencies\GLFW\include;$(SolutionDir)$(SolutionName)\MovementTools;$(SolutionDir)$(SolutionName)\MapTools;$(SolutionDir)$(SolutionName)\Characters;$(SolutionDir)$(SolutionName)\GameTools;$(SolutionDir)$(SolutionName)\GraphicLayer;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\glm;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools;$(SolutionDir)$(SolutionName)\Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(SolutionName)\Dependencies\GLEW\include;$(SolutionDir)$(SolutionName)\Dependencies\GLFW\include;$(SolutionDir)$(SolutionName)\MovementTools;$(SolutionDir)$(SolutionName)\MapTools;$(SolutionDir)$(SolutionName)\Characters;$(SolutionDir)$(SolutionName)\GameTools;$(SolutionDir)$(SolutionName)\GraphicLayer;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\glm;$(SolutionDir)$(SolutionName)\GraphicLayer\MapCreator;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools;$(SolutionDir)$(SolutionName)\Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,7 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(SolutionName)\Dependencies\GLEW\include;$(SolutionDir)$(SolutionName)\Dependencies\GLFW\include;$(SolutionDir)$(SolutionName)\MovementTools;$(SolutionDir)$(SolutionName)\MapTools;$(SolutionDir)$(SolutionName)\Characters;$(SolutionDir)$(SolutionName)\GameTools;$(SolutionDir)$(SolutionName)\GraphicLayer;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\glm;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools;$(SolutionDir)$(SolutionName)\Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(SolutionName)\Dependencies\GLEW\include;$(SolutionDir)$(SolutionName)\Dependencies\GLFW\include;$(SolutionDir)$(SolutionName)\MovementTools;$(SolutionDir)$(SolutionName)\MapTools;$(SolutionDir)$(SolutionName)\Characters;$(SolutionDir)$(SolutionName)\GameTools;$(SolutionDir)$(SolutionName)\GraphicLayer;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools\glm;$(SolutionDir)$(SolutionName)\GraphicLayer\MapCreator;$(SolutionDir)$(SolutionName)\GraphicLayer\OpenGlTools;$(SolutionDir)$(SolutionName)\Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -168,10 +168,12 @@
     <ClCompile Include="GraphicLayer\OpenGlTools\TextureTools\Texture.cpp" />
     <ClCompile Include="GraphicLayer\OpenGlTools\Transformation.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="GraphicLayer\MapCreator\MapCreator.cpp" />
+    <ClCompile Include="GraphicLayer\MapCreator\MapMatchPattern.cpp" />
     <ClCompile Include="MapTools\MapCell.cpp" />
     <ClCompile Include="MapTools\MapManager.cpp" />
     <ClCompile Include="MapTools\Position.cpp" />
-    <ClCompile Include="MapTools\MatrixTool.cpp" />
+    <ClCompile Include="GraphicLayer\MapCreator\MatrixTool.cpp" />
     <ClCompile Include="MovementTools\Movement.cpp" />
     <ClCompile Include="MovementTools\SafeMovement.cpp" />
     <ClCompile Include="Characters\OponentManager.cpp" />
@@ -488,10 +490,12 @@
     <ClInclude Include="GraphicLayer\OpenGlTools\TextureTools\stb_image.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\TextureTools\Texture.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\Transformation.h" />
+    <ClInclude Include="GraphicLayer\MapCreator\MapCreator.h" />
+    <ClInclude Include="GraphicLayer\MapCreator\MapMatchPattern.h" />
     <ClInclude Include="MapTools\MapCell.h" />
     <ClInclude Include="MapTools\MapManager.h" />
     <ClInclude Include="MapTools\Position.h" />
-    <ClInclude Include="MapTools\MatrixTool.h" />
+    <ClInclude Include="GraphicLayer\MapCreator\MatrixTool.h" />
     <ClInclude Include="MovementTools\Movement.h" />
     <ClInclude Include="MovementTools\SafeMovement.h" />
     <ClInclude Include="Characters\OponentManager.h" />

@@ -53,11 +53,6 @@ MapDrafter::MapDrafter(){
 }
 void MapDrafter::draw(){
 	for (auto it = obstacles.begin(); it != obstacles.end(); it++) {
-		/*Position transCell = it->pos;
-		normalize(transCell);
-		trans.setRotation(rotations[it->dir]);
-		trans.setTranslation(transCell.getX(), transCell.getY());
-		trans.setScale(0.08f); */
 		if (it->type == MapPatternType::CORNER) {
 			Render2D::instance().addToDraw(cornerText, it->trans);
 		}
