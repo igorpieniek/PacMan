@@ -29,6 +29,7 @@ struct MapPatternData {
 
 class MapMatchPattern{
 public:
+	std::vector<MapPatternType> getMatch();
 
 private:
 	enum class Rotation {

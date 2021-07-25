@@ -25,6 +25,19 @@ static const std::vector<MapPatternData> patterns = {
 	}
 };
 
+std::vector<MapPatternType> MapMatchPattern::getMatch(){
+	std::vector<MapPatternType> result;
+	for (auto& cell : MapManager::instance().getAllMap()) {
+		if (cell.isObstacle()) {
+			result.push_back(matchPatternForCell(cell));
+		}
+		else {
+			result.push_back(MapPatternType::FREE);
+		}
+	}
+	return result;
+}
+
 MapPatternType MapMatchPattern::matchPatternForCell(Position& cell){
 	auto arr = MapManager::instance().getNeighbours(cell, 1);
 	std::vector<MapPatternData> patternCpy = patterns;
