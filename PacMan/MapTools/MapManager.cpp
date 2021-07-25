@@ -105,6 +105,7 @@ Board MapManager::readMapFromFile(std::string fileName){
 	std::string line;
 	int lineNumber = 0;
 	while ( std::getline(file, line)) {
+		if(width ==0) 	width = line.length();
 		for ( int i = 0; i < (int)line.length(); i++) {
 			auto it = mapBindings.find(line[i]);
 			if (it != mapBindings.end()) {
@@ -114,7 +115,7 @@ Board MapManager::readMapFromFile(std::string fileName){
 		}
 		++lineNumber;
 	}
-	width = line.length();
+
 	height = lineNumber;
 
 	return result;

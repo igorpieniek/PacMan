@@ -1,8 +1,9 @@
 #include "MapCreator.h"
 
 void MapCreator::create(){
-	ImageConcat mergeTool(MapManager::instance().getMapXSize(),
-						  MapManager::instance().getMapYSize() );
+	
+	ImageConcat mergeTool(MapManager::instance().getMapXSize()+1,
+						  MapManager::instance().getMapYSize()+1 );
 	MapMatchPattern patternTool;
 	std::vector<MapPatternType> cellPatternData = patternTool.getMatch();
 

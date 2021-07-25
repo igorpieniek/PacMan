@@ -10,6 +10,7 @@ void ImageConcat::addImage(std::string path){
     if (res == images.end()) {
         std::shared_ptr<ImageData> image = std::make_shared<ImageData>();
        
+        stbi_set_flip_vertically_on_load(0);
         unsigned char* raw = stbi_load(path.c_str(), &image->width, &image->height, &image->stride, 0);
         if (raw == nullptr) {
             std::cout << "Bad image id:" << std::endl;
@@ -52,13 +53,13 @@ void ImageConcat::convert(){
         result.height = lines.size() * matrix[0]->height;
         result.stride = matrix[0]->stride;
 
-        save("resultNEW.png");
+        save("images/resultNEW.png");
         
     }
 }
 
 void ImageConcat::save(std::string res){
-    int status = stbi_write_png("resultNEW.png", result.width, result.height, result.stride, result.getDataPtr(), result.getByteWidth());
+    int status = stbi_write_png(res.c_str(), result.width, result.height, result.stride, result.getDataPtr(), result.getByteWidth());
     std::cout << "Image Concat saving status : " << status << std::endl;
 }
 
@@ -74,10 +75,7 @@ void ImageConcat::addToMatrix(std::shared_ptr<ImageData> img){
 }
 
 std::vector<unsigned char> ImageConcat::concat(ImageData& one, const std::shared_ptr<ImageData> two){
-    //if (!(one == *two)) {
-    //    std::cout << "This isn't the same size images!" << std::endl;
-     //   return {};
-    //}
+
     std::vector<unsigned char> res;
     if (one.width == 0) {
         res.insert(res.end(), two->data.begin(), two->data.end());

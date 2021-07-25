@@ -42,7 +42,7 @@ std::vector<MapPatternType> MapMatchPattern::getMatch(){
 MapPatternType MapMatchPattern::matchPatternForCell(Position& cell){
 	auto arr = MapManager::instance().getNeighbours(cell, 1);
 	std::vector<MapPatternData> patternCpy = patterns;
-	std::vector<Rotation>  rotations = { Rotation::DEG270, Rotation::DEG180, Rotation::DEG90, Rotation::DEG0 };
+	std::vector<Rotation>  rotations = { Rotation::DEG0 ,Rotation::DEG90, Rotation::DEG180, Rotation::DEG270 };
 	MatrixTool<int> matTool;
 
 	for (auto rot = rotations.begin(); rot != rotations.end(); ++rot) {
