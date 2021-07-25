@@ -1,5 +1,6 @@
 #include "MapMatchPattern.h"
 
+//TODO: move to some.config file
 // 0 - means position free
 // 1 - means obstacle
 // 2 - means that it doesn't matter
