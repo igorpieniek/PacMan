@@ -26,7 +26,7 @@ int main() {
 	MapManager::instance().addMap("mapa.txt");
 
 	std::shared_ptr<PointsManager> points = std::make_shared<PointsManager>( 10 );
-	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 4 );
+	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 0 );
 	
 
 	GameRules gameRules({ points.get(), opManag.get(), pl.get() });

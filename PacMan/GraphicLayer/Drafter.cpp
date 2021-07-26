@@ -1,6 +1,7 @@
 #include "Drafter.h"
 
 float Drafter::scale = 0.0f;
+float Drafter::cellSize = 0.0f;
 Position Drafter::correction = Position();
 
 void Drafter::addImage(std::string path, Direction dir){
@@ -21,22 +22,24 @@ void Drafter::calculateScale() {
 	if (scale != 0) return;
 	CoordType max = std::max(MapManager::instance().getMapXSize(),
 							 MapManager::instance().getMapYSize());
-	scale = 2 / max;
-	float correctionRatio = (MapManager::instance().getMapYSize() / MapManager::instance().getMapXSize());
+	cellSize = 2 / max;
+	scale =  (2 - (2 * cellSize)) / (max-2);
+	float correctionRatio = ((MapManager::instance().getMapYSize()) / (MapManager::instance().getMapXSize()));
 	if (correctionRatio > 1.0f) {
 		correctionRatio = 1 / correctionRatio;
 	}
 
-	correctionRatio = 0.5 * (1.0f - correctionRatio);
+
+	//correctionRatio = 0.5 * (1.0f - correctionRatio);
 	if (MapManager::instance().getMapXSize() == max) {
 		correction = Position{ 1.0f, correctionRatio };
 	}
 	else {
-		correction = Position{ correctionRatio, 1.0f };
+		correction = Position{ correctionRatio, 1.0f};
 	}
 }
 
 void Drafter::normalize(Position& pos) {
-	pos = { (pos.getX() * scale) - correction.getX(),
-			(pos.getY() * scale) - correction.getY() };
+	pos = { (pos.getX() * scale) - correction.getX() + cellSize/2, 
+			(pos.getY() * scale) - correction.getY() + cellSize/2, };
 }

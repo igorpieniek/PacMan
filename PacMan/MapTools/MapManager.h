@@ -32,8 +32,8 @@ public:
 	bool isCorner(Position& pos);
 	std::vector<Direction> getAllPossibleDirections(Position& pos);
 
-	CoordType getMapXSize() const { return mapBoard.back().getX(); };
-	CoordType getMapYSize() const { return mapBoard.back().getY(); };
+	CoordType getMapXSize() const { return width; };
+	CoordType getMapYSize() const { return height; };
 	int getFreePosAmount() const { return freePositionsAmount; };
 
 	MapManager(MapManager const&) = delete;
