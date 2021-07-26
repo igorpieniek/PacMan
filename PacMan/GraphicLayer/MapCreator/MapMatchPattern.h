@@ -20,7 +20,6 @@ enum class MapPatternType {
 };
 
 
-
 struct MapPatternData {
 	MapPatternType type;
 	std::vector<int> arr;
@@ -29,21 +28,22 @@ struct MapPatternData {
 
 class MapMatchPattern{
 public:
-	std::vector<MapPatternType> getMatch();
+	std::vector<MapPatternType> getMatchForWholeMap();
 
 private:
 	enum class Rotation {
 		DEG0, DEG90, DEG180, DEG270
 	};
-	struct ObstacleInfo {
-		Direction dir;
-		MapPatternType type;
-		Position pos;
-	};
 
 
-	std::vector<ObstacleInfo> obstacles;
+	std::vector<Rotation>  rotations = { Rotation::DEG0,
+										 Rotation::DEG90, 
+										 Rotation::DEG180, 
+										 Rotation::DEG270 };
+	MatrixTool<int> matTool;
+
 	MapPatternType matchPatternForCell(Position& cell);
+	int getNumberOfHitsForPattern(const Board& square, const MapPatternData& pat);
 	MapPatternType getProperType(const MapPatternType type, const Rotation rot);
 	MapPatternType getNextTypeClockWise(const MapPatternType);
 

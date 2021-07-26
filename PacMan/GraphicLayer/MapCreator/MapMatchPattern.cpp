@@ -4,7 +4,6 @@
 // 0 - means position free
 // 1 - means obstacle
 // 2 - means that it doesn't matter
-// default oriantation - east
 static const std::vector<MapPatternData> patterns = {
 	{
 		MapPatternType::VERTICAL,
@@ -26,7 +25,7 @@ static const std::vector<MapPatternData> patterns = {
 	}
 };
 
-std::vector<MapPatternType> MapMatchPattern::getMatch(){
+std::vector<MapPatternType> MapMatchPattern::getMatchForWholeMap(){
 	std::vector<MapPatternType> result;
 	for (auto& cell : MapManager::instance().getAllMap()) {
 		if (cell.isObstacle()) {
@@ -42,25 +41,11 @@ std::vector<MapPatternType> MapMatchPattern::getMatch(){
 MapPatternType MapMatchPattern::matchPatternForCell(Position& cell){
 	auto arr = MapManager::instance().getNeighbours(cell, 1);
 	std::vector<MapPatternData> patternCpy = patterns;
-	std::vector<Rotation>  rotations = { Rotation::DEG0 ,Rotation::DEG90, Rotation::DEG180, Rotation::DEG270 };
-	MatrixTool<int> matTool;
 
 	for (auto rot = rotations.begin(); rot != rotations.end(); ++rot) {
 		for (auto& pat : patternCpy) {
-			int matchCounter = 0;
-			for (auto it = arr.begin(); it != arr.end(); it++) {
-				int indx = std::distance(arr.begin(), it);
-				if (pat.arr[indx] == 2) {  //neutral
-					matchCounter++;
-				}
-				else if (pat.arr[indx] == 0 && !it->isObstacle()) {
-					matchCounter++;
-				}
-				else if (pat.arr[indx] == 1 && it->isObstacle()) {
-					matchCounter++;
-				}
-			}
-			if (matchCounter == 9) {
+			int matchCounter = getNumberOfHitsForPattern(arr, pat);
+			if (matchCounter == arr.size()) { // all targets match
 				return getProperType(pat.type, *rot);
 			}
 
@@ -68,6 +53,23 @@ MapPatternType MapMatchPattern::matchPatternForCell(Position& cell){
 		}
 	}
 	return MapPatternType::FREE;
+}
+
+int MapMatchPattern::getNumberOfHitsForPattern(const Board& square, const MapPatternData& pat){
+	int matchCounter = 0;
+	for (auto it = square.begin(); it != square.end(); it++) {
+		int indx = std::distance(square.begin(), it);
+		if (pat.arr[indx] == 2) {  // without requirements
+			matchCounter++;
+		}
+		else if (pat.arr[indx] == 0 && !it->isObstacle()) { // free required
+			matchCounter++;
+		}
+		else if (pat.arr[indx] == 1 && it->isObstacle()) { //obstacle required
+			matchCounter++;
+		}
+	}
+	return matchCounter;
 }
 
 MapPatternType MapMatchPattern::getProperType(const MapPatternType type, const Rotation rot){

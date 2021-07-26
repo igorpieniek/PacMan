@@ -5,7 +5,7 @@ void MapCreator::create(){
 	ImageConcat mergeTool(MapManager::instance().getMapXSize(),
 						  MapManager::instance().getMapYSize());
 	MapMatchPattern patternTool;
-	std::vector<MapPatternType> cellPatternData = patternTool.getMatch();
+	std::vector<MapPatternType> cellPatternData = patternTool.getMatchForWholeMap();
 
 	for (auto& cellPat : cellPatternData) {
 		mergeTool.addImage(imagePathMap[cellPat]);

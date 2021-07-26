@@ -25,12 +25,12 @@ void Drafter::calculateScale() {
 	cellSize = 2 / max;
 	scale =  (2 - (2 * cellSize)) / (max-2);
 	float correctionRatio = ((MapManager::instance().getMapYSize()) / (MapManager::instance().getMapXSize()));
+	
 	if (correctionRatio > 1.0f) {
 		correctionRatio = 1 / correctionRatio;
 	}
 
 
-	//correctionRatio = 0.5 * (1.0f - correctionRatio);
 	if (MapManager::instance().getMapXSize() == max) {
 		correction = Position{ 1.0f, correctionRatio };
 	}

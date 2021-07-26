@@ -11,7 +11,6 @@ MapDrafter::MapDrafter(){
 
 void MapDrafter::draw(){
 	Render2D::instance().addToDraw(text, trans);
-
 }
 
 void MapDrafter::addImage(std::string path, Direction dir){
