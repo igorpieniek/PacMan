@@ -13,49 +13,51 @@ void ImageConcat::addImage(std::string path){
         stbi_set_flip_vertically_on_load(0);
         unsigned char* raw = stbi_load(path.c_str(), &image->width, &image->height, &image->stride, 0);
         if (raw == nullptr) {
-            std::cout << "Bad image id:" << std::endl;
-            return;
+            throw std::runtime_error("Cannot load map clapping file: " + path);
         }
-        std::cout << "Image " << path<< " add to buffer"<< std::endl;
+        std::cout << "Image " << path<< " added to buffer"<< std::endl;
         image->path = path;
-        image->addRaw(raw);
+        image->saveImage(raw);
+        stbi_image_free(raw);
+
         images.push_back(image);
         addToMatrix(image);
-
     }
     else {
-        std::cout << "Image " << path << " already stored" << std::endl;
+        //std::cout << "Image " << path << " already stored" << std::endl;
         addToMatrix(*res);
     }
-
-   
 }
 
 void ImageConcat::convert(){
-    if (matrix.size() == (heightSize * widthSize)) { //temp
-        // check if all images are the same size
-        
-        // line concat
-        std::vector<ImageData> lines(heightSize);
-        for (int h = 0; h < heightSize; ++h) {
-            lines[h].height = matrix[0]->height;
-            lines[h].stride = matrix[0]->stride;
-            for (int w = 0; w < widthSize; ++w) {
-                std::cout << "Pos (" << w << ", " << h << ") add img name: " << matrix[w + (h * widthSize)]->path << std::endl;
-                lines[h].data = concat(lines[h], matrix[w + (h * widthSize)]);
-                lines[h].width = matrix[0]->width * (w+1);
-            }
-        }
-
-        // all lines concat into one
-        result.data = concatHeight(lines);
-        result.width = lines[0].width;
-        result.height = lines.size() * matrix[0]->height;
-        result.stride = matrix[0]->stride;
-
-        save("images/newMap.png");
-        
+    if (matrix.size() != (heightSize * widthSize)) {
+        throw std::runtime_error("Size of added map clappings is not equal size of declared new image");
     }
+
+    // check if all images are the same size
+    if (!isImagesDataValid()) {
+        throw std::runtime_error("Loaded images have diffrent sizes or stride (pixel format)");
+    }
+    // line concat
+    std::vector<ImageData> lines(heightSize);
+    for (int h = 0; h < heightSize; ++h) {
+        lines[h].height = matrix[0]->height;
+        lines[h].stride = matrix[0]->stride;
+        for (int w = 0; w < widthSize; ++w) {
+            //std::cout << "Pos (" << w << ", " << h << ") add img name: " << matrix[w + (h * widthSize)]->path << std::endl;
+            lines[h].data = concatWidth(lines[h], matrix[w + (h * widthSize)]);
+            lines[h].width = matrix[0]->width * (w + 1);
+        }
+    }
+
+    // all lines concat into one
+    result.data = concatHeight(lines);
+    result.width = lines[0].width;
+    result.height = lines.size() * matrix[0]->height;
+    result.stride = matrix[0]->stride;
+
+    save(savePath);
+    
 }
 
 void ImageConcat::save(std::string res){
@@ -74,7 +76,17 @@ void ImageConcat::addToMatrix(std::shared_ptr<ImageData> img){
     }
 }
 
-std::vector<unsigned char> ImageConcat::concat(ImageData& one, const std::shared_ptr<ImageData> two){
+bool ImageConcat::isImagesDataValid(){
+    std::shared_ptr<ImageData> test = images[0];
+    for (const auto& img : images) {
+        if (!(*test == *img)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+std::vector<unsigned char> ImageConcat::concatWidth(ImageData& one, const std::shared_ptr<ImageData> two){
 
     std::vector<unsigned char> res;
     if (one.width == 0) {

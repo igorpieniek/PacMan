@@ -1,9 +1,8 @@
 #include "ImageData.h"
 
-void ImageData::addRaw(unsigned char* ptr){
-    raw = ptr;
+void ImageData::saveImage(unsigned char* ptr){
     for (int i = 0; i < getByteSize(); i++) {
-        data.push_back(raw[i]);
+        data.push_back(ptr[i]);
     }
 }
 

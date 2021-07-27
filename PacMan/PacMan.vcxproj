@@ -175,7 +175,6 @@
     <ClCompile Include="MapTools\MapCell.cpp" />
     <ClCompile Include="MapTools\MapManager.cpp" />
     <ClCompile Include="MapTools\Position.cpp" />
-    <ClCompile Include="GraphicLayer\MapCreator\MatrixTool.cpp" />
     <ClCompile Include="MovementTools\Movement.cpp" />
     <ClCompile Include="MovementTools\SafeMovement.cpp" />
     <ClCompile Include="Characters\OponentManager.cpp" />

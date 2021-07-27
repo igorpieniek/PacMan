@@ -111,9 +111,6 @@
     <ClCompile Include="GraphicLayer\MapDrafter.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicLayer\MapCreator\MatrixTool.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="GraphicLayer\MapCreator\MapCreator.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
