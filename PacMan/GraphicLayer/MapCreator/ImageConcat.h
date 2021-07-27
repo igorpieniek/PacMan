@@ -14,8 +14,8 @@
 
 class ImageConcat{
 public:
-	ImageConcat(int amoutOfCellWidth, int amoutOfCellHeight) :
-		widthSize(amoutOfCellWidth), heightSize(amoutOfCellHeight) {};
+	ImageConcat(int amoutOfCellWidth, int amoutOfCellHeight, const std::string saveFilePath) :
+		widthSize(amoutOfCellWidth), heightSize(amoutOfCellHeight), savePath(saveFilePath) {};
 	void addImage(std::string path);
 	void convert();
 
@@ -24,7 +24,7 @@ private:
 	std::vector< std::shared_ptr<ImageData> > matrix;
 	ImageData result;
 	int widthSize, heightSize;
-	const std::string savePath = "images/newMap.png";
+	const std::string savePath;
 
 	void addToMatrix(std::shared_ptr<ImageData> img);
 	bool isImagesDataValid();

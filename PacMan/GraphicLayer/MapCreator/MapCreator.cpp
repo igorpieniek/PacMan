@@ -3,7 +3,9 @@
 void MapCreator::create(){
 	
 	ImageConcat mergeTool(MapManager::instance().getMapXSize(),
-						  MapManager::instance().getMapYSize());
+						  MapManager::instance().getMapYSize(),
+						  newMapFile );
+
 	MapMatchPattern patternTool;
 	std::vector<MapPatternType> cellPatternData = patternTool.getMatchForWholeMap();
 
@@ -12,4 +14,8 @@ void MapCreator::create(){
 	}
 	mergeTool.convert();
 
+}
+
+std::string MapCreator::getNewFileName() const{
+	return newMapFile;
 }

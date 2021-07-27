@@ -11,7 +11,9 @@
 class MapCreator{
 public:
 	void create();
+	std::string getNewFileName()const;
 private:
+	const std::string  newMapFile = "images/newMap.png";
 	std::map<MapPatternType, std::string> imagePathMap = {
 		{MapPatternType::FREE ,				 "images/empty.png"},
 		{MapPatternType::VERTICAL ,			 "images/vertical.png"},
