@@ -3,7 +3,7 @@
 
 
 void Oponent::update(){
-	behaviour->move(currentPostion);
+	behaviour->getNextPosition(currentPostion);
 }
 
 void Oponent::disable(){

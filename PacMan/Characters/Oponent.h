@@ -3,25 +3,20 @@
 #include <iostream>
 #include <string>
 #include "Character.h"
-#include "Behaviour.h"
+#include "MoveAlgorithm.h"
 #include "Position.h"
 
 class Oponent: public Character{
 public:
-	Oponent(Position startPos, Behaviour* beh, CoordType speed) :
-		Character(startPos), behaviour(beh)
-	{
-		behaviour->setStepSpeed(speed);
-	};
-
+	Oponent(Position startPos, std::shared_ptr<MoveAlgorithm> beh ) :
+		Character(startPos), behaviour(beh){};
 
 	void update() override;
-
 
 	void disable();
 	void enable();
 
 private:
 	bool active = true;
-	Behaviour* behaviour;
+	std::shared_ptr<MoveAlgorithm> behaviour;
 };

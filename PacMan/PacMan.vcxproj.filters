@@ -39,9 +39,6 @@
     <ClCompile Include="MovementTools\SafeMovement.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Behaviours\Behaviour.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="Behaviours\RandMove.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -147,9 +144,6 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="MovementTools\SafeMovement.h">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClInclude>
-    <ClInclude Include="Behaviours\Behaviour.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Behaviours\MoveAlgorithm.h">

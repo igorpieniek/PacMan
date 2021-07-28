@@ -145,7 +145,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Behaviours\Behaviour.cpp" />
     <ClCompile Include="Behaviours\RandMove.cpp" />
     <ClCompile Include="GraphicLayer\CookieDrafter.cpp" />
     <ClCompile Include="GameTools\GameRules.cpp" />
@@ -183,7 +182,6 @@
     <ClCompile Include="Behaviours\PlayerMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Behaviours\Behaviour.h" />
     <ClInclude Include="Behaviours\MoveAlgorithm.h" />
     <ClInclude Include="Behaviours\RandMove.h" />
     <ClInclude Include="GraphicLayer\CookieDrafter.h" />

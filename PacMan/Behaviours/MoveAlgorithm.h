@@ -10,7 +10,7 @@ public:
 	virtual void setStepResolution(CoordType res) = 0;
 	virtual void reset() = 0;
 	virtual ~MoveAlgorithm() {};
-protected:
 
+protected:
 	MoveAlgorithm(){};
 };
