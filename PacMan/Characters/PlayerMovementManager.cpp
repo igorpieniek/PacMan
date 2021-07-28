@@ -43,6 +43,10 @@ void PlayerMovementManager::setStepResolution(CoordType res){
 	moveTool.setStepSize(res);
 }
 
+void PlayerMovementManager::reset(){
+	isFirst = true;
+}
+
 
 void PlayerMovementManager::tryMove(Direction dir){
 	if (isFirst) {

@@ -9,6 +9,8 @@ void RandMove::setStepResolution(CoordType res){
     moveTool.setStepSize(res);
 }
 
+void RandMove::reset(){}
+
 
 void RandMove::moveProcess(Position& pos) {
     currentDirection = getBestDirection(pos);

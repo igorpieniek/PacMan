@@ -11,11 +11,15 @@ void Player::notify(Event evt){
 		--numberOfLifes;		
 		if (numberOfLifes == 0) {
 			mediator->notify(Event::END_OF_LIVES);
+			return;
 		}
 		std::cout << "Player : LIFE_LOST - remaining: " << numberOfLifes << std::endl;
 	}
 	if (evt == Event::RESTART_POSITIONS) {
 		restoreInitialPosition();
+		is_moving = false;
+		currentDir = Direction::EAST;
+		moveManag->reset();
 	}
 }
 

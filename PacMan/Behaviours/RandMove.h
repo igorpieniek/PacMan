@@ -16,6 +16,7 @@ public:
 
 	void getNextPosition(Position& current) override;
 	void setStepResolution(CoordType res) override;
+	void reset() override;
 
 private:
 	int getRandomValue(int min, int max);
