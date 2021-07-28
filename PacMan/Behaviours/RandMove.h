@@ -14,7 +14,7 @@ public:
 		currentDirection = Direction::NORTH;
 	};
 
-	void getNextPosition(Position& current) override;
+	void update(Position& current) override;
 	void setStepResolution(CoordType res) override;
 	void reset() override;
 

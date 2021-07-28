@@ -1,9 +1,7 @@
 #include "Oponent.h"
 
-
-
 void Oponent::update(){
-	behaviour->getNextPosition(currentPostion);
+	behaviour->update(currentPostion);
 }
 
 void Oponent::disable(){

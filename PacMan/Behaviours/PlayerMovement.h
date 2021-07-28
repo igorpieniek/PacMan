@@ -14,7 +14,7 @@ public:
 
 	void keyActionCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
-	void getNextPosition(Position& current) override;
+	void update(Position& current) override;
 	void setStepResolution(CoordType res) override;
 	void reset() override;
 

@@ -25,7 +25,7 @@ void Player::notify(Event evt){
 
 void Player::update(){
 	Position cpy = currentPostion;
-	moveManag->getNextPosition(currentPostion);
+	moveManag->update(currentPostion);
 	updatePrevPosAndDir(cpy, currentPostion);
 }
 

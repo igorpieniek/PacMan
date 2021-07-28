@@ -26,7 +26,7 @@ void PlayerMovement::keyActionCallback(GLFWwindow* window, int key, int scancode
 	}
 }
 
-void PlayerMovement::getNextPosition(Position& pos){
+void PlayerMovement::update(Position& pos){
 	if (!isFirst) {
 		lastPosition = pos;
 		moveTool.moveInDir(pos, nextDir);

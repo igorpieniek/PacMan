@@ -1,6 +1,6 @@
 #include "RandMove.h"
 
-void RandMove::getNextPosition(Position& current){
+void RandMove::update(Position& current){
     moveProcess(current);
     isInitialized = true;
 }
