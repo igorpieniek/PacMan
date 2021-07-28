@@ -18,7 +18,7 @@
 
 
 std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 1.0f,1.f }, 0.1f);
-PlayerMovementManager playerMovement(pl);
+//PlayerMovementManager playerMovement(pl->getPosition());
 
 
 int main() {
@@ -53,8 +53,8 @@ int main() {
 
 
 	//glfwSetKeyCallback(window, positionTest);
-	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
-							{ playerMovement.keyActionCallback(window, key, scancode, action, mods); });
+	//glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+	//						{ playerMovement.keyActionCallback(window, key, scancode, action, mods); });
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
@@ -77,7 +77,7 @@ int main() {
 		Position playerPos = pl->getPosition();
 		gameRules.notifyPlayerPosition(playerPos);
 
-		playerMovement.update();
+		//playerMovement.update();
 
 		graphManag.draw();
 

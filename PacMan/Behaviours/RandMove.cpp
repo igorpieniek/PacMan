@@ -1,11 +1,8 @@
 #include "RandMove.h"
 
-Position RandMove::getNextPosition(Position& current){
-    Position pos;
-    pos = moveProcess(current);
+void RandMove::getNextPosition(Position& current){
+    moveProcess(current);
     isInitialized = true;
-    
-    return pos;
 }
 
 void RandMove::setStepResolution(CoordType res){
@@ -13,11 +10,9 @@ void RandMove::setStepResolution(CoordType res){
 }
 
 
-Position RandMove::moveProcess(Position& pos) {
+void RandMove::moveProcess(Position& pos) {
     currentDirection = getBestDirection(pos);
-    Position resultPos = pos;
-    moveTool.moveInDir(resultPos, currentDirection);
-    return resultPos;
+    moveTool.moveInDir(pos, currentDirection);
 }
 
 

@@ -2,26 +2,23 @@
 
 #include "Player.h"
 #include "Movement.h"
+#include "MoveAlgorithm.h"
 #include <unordered_map>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-class PlayerMovementManager{
+class PlayerMovementManager: public MoveAlgorithm{
 public:
-	PlayerMovementManager(std::shared_ptr<Player> pl) : player(pl) 
-	{
-		lastPosition = pl->getPosition();
-		currentDir = Direction::EAST;
-		nextDir = Direction::EAST;
-	};
+	PlayerMovementManager(Position& startPos);
 
 	void keyActionCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
-	void update();
+	void getNextPosition(Position& current) override;
+	void setStepResolution(CoordType res) override;
 private:
-	std::shared_ptr<Player> player;
 
 	typedef void (Player::*PlayerMethod)(void);
+
 	std::unordered_map<Direction, PlayerMethod> dirMethod{
 		{Direction::NORTH, &Player::moveUp },
 		{Direction::EAST,  &Player::moveRight },

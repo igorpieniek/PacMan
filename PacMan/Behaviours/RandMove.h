@@ -14,7 +14,7 @@ public:
 		currentDirection = Direction::NORTH;
 	};
 
-	Position getNextPosition(Position& current) override;
+	void getNextPosition(Position& current) override;
 	void setStepResolution(CoordType res) override;
 
 private:
@@ -23,7 +23,7 @@ private:
 	Direction getBestDirection(Position& center);
 
 	void deleteCurrentDirection(std::vector<Direction>& dir);
-	Position moveProcess(Position& pos);
+	void moveProcess(Position& pos);
 
 
 	Direction currentDirection;

@@ -6,7 +6,7 @@
 
 class MoveAlgorithm{
 public:
-	virtual Position getNextPosition(Position& current) = 0;
+	virtual void getNextPosition(Position& current) = 0;
 	virtual void setStepResolution(CoordType res) = 0;
 	virtual ~MoveAlgorithm() {};
 protected:
