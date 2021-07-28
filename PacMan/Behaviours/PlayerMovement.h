@@ -8,9 +8,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-class PlayerMovementManager: public MoveAlgorithm{
+class PlayerMovement: public MoveAlgorithm{
 public:
-	PlayerMovementManager(CoordType speed);
+	PlayerMovement(CoordType speed);
 
 	void keyActionCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 

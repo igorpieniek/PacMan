@@ -102,7 +102,7 @@
     <ClCompile Include="GraphicLayer\PlayerDrafter.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Characters\PlayerMovementManager.cpp">
+    <ClCompile Include="Behaviours\PlayerMovement.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="GraphicLayer\CookieDrafter.cpp">
@@ -1070,7 +1070,7 @@
     <ClInclude Include="GraphicLayer\PlayerDrafter.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\PlayerMovementManager.h">
+    <ClInclude Include="Behaviours\PlayerMovement.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="GraphicLayer\CookieDrafter.h">

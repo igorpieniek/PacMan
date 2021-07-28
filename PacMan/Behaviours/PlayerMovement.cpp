@@ -1,12 +1,12 @@
-#include "PlayerMovementManager.h"
+#include "PlayerMovement.h"
 
-PlayerMovementManager::PlayerMovementManager(CoordType speed){
+PlayerMovement::PlayerMovement(CoordType speed){
 	currentDir = Direction::EAST;
 	nextDir = Direction::EAST;
 	setStepResolution(speed);
 }
 
-void PlayerMovementManager::keyActionCallback(GLFWwindow* window, int key, int scancode, int action, int mods){
+void PlayerMovement::keyActionCallback(GLFWwindow* window, int key, int scancode, int action, int mods){
 	switch (key) {
 	case GLFW_KEY_UP:
 		tryMove(Direction::NORTH);
@@ -26,7 +26,7 @@ void PlayerMovementManager::keyActionCallback(GLFWwindow* window, int key, int s
 	}
 }
 
-void PlayerMovementManager::getNextPosition(Position& pos){
+void PlayerMovement::getNextPosition(Position& pos){
 	if (!isFirst) {
 		lastPosition = pos;
 		moveTool.moveInDir(pos, nextDir);
@@ -39,16 +39,16 @@ void PlayerMovementManager::getNextPosition(Position& pos){
 	}
 }
 
-void PlayerMovementManager::setStepResolution(CoordType res){
+void PlayerMovement::setStepResolution(CoordType res){
 	moveTool.setStepSize(res);
 }
 
-void PlayerMovementManager::reset(){
+void PlayerMovement::reset(){
 	isFirst = true;
 }
 
 
-void PlayerMovementManager::tryMove(Direction dir){
+void PlayerMovement::tryMove(Direction dir){
 	if (isFirst) {
 		currentDir = dir;
 		nextDir = dir;
@@ -60,7 +60,7 @@ void PlayerMovementManager::tryMove(Direction dir){
 	}
 }
 
-bool PlayerMovementManager::isMoving(Position& posAfterUpdate){
+bool PlayerMovement::isMoving(Position& posAfterUpdate){
 	return posAfterUpdate.distance(lastPosition) > 0.001f;
 
 }
