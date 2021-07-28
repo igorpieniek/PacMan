@@ -1,9 +1,10 @@
 #include "PlayerMovementManager.h"
 
-PlayerMovementManager::PlayerMovementManager(Position& startPos){
+PlayerMovementManager::PlayerMovementManager(Position& startPos, CoordType speed){
 	lastPosition = startPos;
 	currentDir = Direction::EAST;
 	nextDir = Direction::EAST;
+	moveTool.setStepSize(speed);
 }
 
 void PlayerMovementManager::keyActionCallback(GLFWwindow* window, int key, int scancode, int action, int mods){
@@ -28,21 +29,19 @@ void PlayerMovementManager::keyActionCallback(GLFWwindow* window, int key, int s
 
 void PlayerMovementManager::getNextPosition(Position& pos){
 	if (!isFirst) {
-		PlayerMethod meth;
-		updateLastPos();
-		meth = dirMethod[nextDir];
-		//(*player.*meth)();
-		if (isMoving()) {
+		lastPosition = pos;
+		moveTool.moveInDir(pos, nextDir);
+		if (isMoving(pos)) {
 			currentDir = nextDir;
 		}
 		else {
-			meth = dirMethod[currentDir];
-			//(*player.*meth)();
+			moveTool.moveInDir(pos, currentDir);
 		}
 	}
 }
 
 void PlayerMovementManager::setStepResolution(CoordType res){
+	moveTool.setStepSize(res);
 }
 
 void PlayerMovementManager::tryMove(Direction dir){
@@ -57,11 +56,7 @@ void PlayerMovementManager::tryMove(Direction dir){
 	}
 }
 
-void PlayerMovementManager::updateLastPos(){
-	//lastPosition = player->getPosition();
-}
+bool PlayerMovementManager::isMoving(Position& posAfterUpdate){
+	return lastPosition == posAfterUpdate;
 
-bool PlayerMovementManager::isMoving(){
-	//return player->getPosition().distance(lastPosition) > 0.001f;
-	return false;
 }
