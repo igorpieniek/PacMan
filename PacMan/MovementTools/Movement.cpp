@@ -25,6 +25,15 @@ Direction getNextDirection(const Direction& dir) {
 	return static_cast<Direction>(index+1);
 }
 
+Direction getMoveDir(const Position& prev, const Position& future){
+	CoordType xdiff = future.getX() - prev.getX();
+	CoordType ydiff = future.getY() - prev.getY();
+	if		(xdiff == 0 && ydiff > 0) return Direction::NORTH;
+	else if (xdiff == 0 && ydiff < 0) return Direction::SOUTH;
+	else if (xdiff > 0 && ydiff == 0) return Direction::EAST;
+	else if (xdiff < 0 && ydiff == 0) return Direction::WEST;
+}
+
 void printDirection(const Direction& dir){
 	switch (dir) {
 	case Direction::NORTH:

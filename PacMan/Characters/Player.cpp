@@ -17,13 +17,16 @@ void Player::notify(Event evt){
 }
 
 void Player::update(){
+	Position cpy = currentPostion;
 	moveManag->getNextPosition(currentPostion);
+	updatePrevPosAndDir(cpy, currentPostion);
 }
 
-void Player::updatePrevPosAndDir(Position& suspectPos, Position& current, Direction dir){
+void Player::updatePrevPosAndDir(Position& suspectPos, Position& current){
+	Direction newDir = getMoveDir(suspectPos, current);
 	if (suspectPos != current) {
 		prevPos = suspectPos;
-		currentDir = dir;
+		currentDir = newDir;
 		is_moving = true;
 	}
 	else if (is_moving) {

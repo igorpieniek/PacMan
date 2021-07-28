@@ -12,6 +12,7 @@ enum class Direction {
 
 Direction getOpprositeDirection(const Direction& dir);
 Direction getNextDirection(const Direction& dir);
+Direction getMoveDir(const Position& prev, const Position& future);
 void printDirection(const Direction& dir);
 
 class Movement{

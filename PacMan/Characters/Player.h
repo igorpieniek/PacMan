@@ -43,7 +43,7 @@ private:
 
 	int numberOfLifes = 3;
 
-	void updatePrevPosAndDir(Position& suspectPos, Position& current, Direction dir);
+	void updatePrevPosAndDir(Position& suspectPos, Position& current);
 	 
 };
 
