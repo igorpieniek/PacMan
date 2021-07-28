@@ -11,35 +11,24 @@
 
 class Player :public Character, public GameMediatorComponent{
 public:
-	Player(Position startPos, CoordType sp, std::shared_ptr<MoveAlgorithm> moveAlg) :
-		Character(startPos), 
-		prevPos(startPos), 
-		currentDir(Direction::EAST),
-		is_moving(false),
-		moveManag(moveAlg)
-	{
-		moveManag->setStepResolution(sp);
-	};
+	Player(Position startPos, std::shared_ptr<MoveAlgorithm> moveAlg);
 
+	void notify(Event evt) override;
+	void update() override;
 
-
-	const Position& getProviousPosition()const { return prevPos; };
 	Direction getCurrentDirection()const { return currentDir; };
 	bool isMoving()const { return is_moving; };
 
 	int getAmountOfLifes()const { return numberOfLifes; };
 
-	void notify(Event evt) override;
-
 	//unused but have to exist
 	void notifyPlayerPosition(Position& playerPos) override {};
-	void update() override;
 
 private:
 	std::shared_ptr<MoveAlgorithm> moveManag;
 	Direction currentDir;
 	Position prevPos;
-	bool is_moving;
+	bool is_moving = false;
 
 	int numberOfLifes = 3;
 

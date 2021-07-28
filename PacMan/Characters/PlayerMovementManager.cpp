@@ -3,7 +3,7 @@
 PlayerMovementManager::PlayerMovementManager(CoordType speed){
 	currentDir = Direction::EAST;
 	nextDir = Direction::EAST;
-	moveTool.setStepSize(speed);
+	setStepResolution(speed);
 }
 
 void PlayerMovementManager::keyActionCallback(GLFWwindow* window, int key, int scancode, int action, int mods){

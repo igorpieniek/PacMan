@@ -1,7 +1,10 @@
 #include "Player.h"
 
-
-
+Player::Player(Position startPos, std::shared_ptr<MoveAlgorithm> moveAlg) :
+	Character(startPos),
+	prevPos(startPos),
+	currentDir(Direction::EAST),
+	moveManag(moveAlg)	{};
 
 void Player::notify(Event evt){
 	if (evt == Event::LIFE_LOST) {

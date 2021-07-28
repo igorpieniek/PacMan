@@ -17,7 +17,7 @@
 #include "PlayerMovementManager.h"
 
 std::shared_ptr<PlayerMovementManager> playerMovement = std::make_shared<PlayerMovementManager>(0.1f);
-std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 1.0f,1.f }, 0.1f, playerMovement);
+std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 1.0f,1.f }, playerMovement);
 //PlayerMovementManager playerMovement(pl->getPosition());
 
 
