@@ -16,8 +16,8 @@
 #include "GraphicLayer/GraphicGLManager.h"
 #include "PlayerMovementManager.h"
 
-
-std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 1.0f,1.f }, 0.1f);
+std::shared_ptr<PlayerMovementManager> playerMovement = std::make_shared<PlayerMovementManager>(0.1f);
+std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 1.0f,1.f }, 0.1f, playerMovement);
 //PlayerMovementManager playerMovement(pl->getPosition());
 
 
@@ -53,8 +53,8 @@ int main() {
 
 
 	//glfwSetKeyCallback(window, positionTest);
-	//glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
-	//						{ playerMovement.keyActionCallback(window, key, scancode, action, mods); });
+	glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+							{ playerMovement->keyActionCallback(window, key, scancode, action, mods); });
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
@@ -74,10 +74,9 @@ int main() {
 	{
 
 		opManag->updateAll();
+		pl->update();
 		Position playerPos = pl->getPosition();
 		gameRules.notifyPlayerPosition(playerPos);
-
-		//playerMovement.update();
 
 		graphManag.draw();
 

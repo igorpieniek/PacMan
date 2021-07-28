@@ -1,7 +1,6 @@
 #include "PlayerMovementManager.h"
 
-PlayerMovementManager::PlayerMovementManager(Position& startPos, CoordType speed){
-	lastPosition = startPos;
+PlayerMovementManager::PlayerMovementManager(CoordType speed){
 	currentDir = Direction::EAST;
 	nextDir = Direction::EAST;
 	moveTool.setStepSize(speed);
@@ -44,6 +43,7 @@ void PlayerMovementManager::setStepResolution(CoordType res){
 	moveTool.setStepSize(res);
 }
 
+
 void PlayerMovementManager::tryMove(Direction dir){
 	if (isFirst) {
 		currentDir = dir;
@@ -57,6 +57,6 @@ void PlayerMovementManager::tryMove(Direction dir){
 }
 
 bool PlayerMovementManager::isMoving(Position& posAfterUpdate){
-	return lastPosition == posAfterUpdate;
+	return posAfterUpdate.distance(lastPosition) > 0.001f;
 
 }

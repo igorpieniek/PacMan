@@ -4,20 +4,24 @@
 #include "MapManager.h"
 #include "SafeMovement.h"
 #include "Mediator.h"
+#include "MoveAlgorithm.h"
 #include <string>
 #include <iostream>
 
 
 class Player :public Character, public GameMediatorComponent{
 public:
-	Player(Position startPos, CoordType sp) :
-		Character(startPos), moveTool(sp), prevPos(startPos), 
-		currentDir(Direction::EAST), is_moving(false){};
+	Player(Position startPos, CoordType sp, std::shared_ptr<MoveAlgorithm> moveAlg) :
+		Character(startPos), 
+		prevPos(startPos), 
+		currentDir(Direction::EAST),
+		is_moving(false),
+		moveManag(moveAlg)
+	{
+		moveManag->setStepResolution(sp);
+	};
 
-	void moveUp();
-	void moveDown();
-	void moveLeft();
-	void moveRight();
+
 
 	const Position& getProviousPosition()const { return prevPos; };
 	Direction getCurrentDirection()const { return currentDir; };
@@ -29,10 +33,10 @@ public:
 
 	//unused but have to exist
 	void notifyPlayerPosition(Position& playerPos) override {};
+	void update() override;
 
 private:
-	SafeMovement moveTool;
-
+	std::shared_ptr<MoveAlgorithm> moveManag;
 	Direction currentDir;
 	Position prevPos;
 	bool is_moving;
@@ -40,6 +44,6 @@ private:
 	int numberOfLifes = 3;
 
 	void updatePrevPosAndDir(Position& suspectPos, Position& current, Direction dir);
-	void update() override {}; // in private to delete
+	 
 };
 

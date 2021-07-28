@@ -10,12 +10,13 @@
 
 class PlayerMovementManager: public MoveAlgorithm{
 public:
-	PlayerMovementManager(Position& startPos, CoordType speed);
+	PlayerMovementManager(CoordType speed);
 
 	void keyActionCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 	void getNextPosition(Position& current) override;
 	void setStepResolution(CoordType res) override;
+
 private:
 
 	SafeMovement moveTool;

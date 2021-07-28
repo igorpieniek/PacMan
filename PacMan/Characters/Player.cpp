@@ -1,29 +1,7 @@
 #include "Player.h"
 
 
-void Player::moveUp(){
-	Position cpy = currentPostion;
-	moveTool.moveUp(currentPostion);
-	updatePrevPosAndDir(cpy, currentPostion, Direction::NORTH);
-}
 
-void Player::moveDown(){
-	Position cpy = currentPostion;
-	moveTool.moveDown(currentPostion);
-	updatePrevPosAndDir(cpy, currentPostion, Direction::SOUTH);
-}
-
-void Player::moveLeft(){
-	Position cpy = currentPostion;
-	moveTool.moveLeft(currentPostion);
-	updatePrevPosAndDir(cpy, currentPostion, Direction::WEST);
-}
-
-void Player::moveRight(){
-	Position cpy = currentPostion;
-	moveTool.moveRight(currentPostion);
-	updatePrevPosAndDir(cpy, currentPostion, Direction::EAST);
-}
 
 void Player::notify(Event evt){
 	if (evt == Event::LIFE_LOST) {
@@ -36,6 +14,10 @@ void Player::notify(Event evt){
 	if (evt == Event::RESTART_POSITIONS) {
 		restoreInitialPosition();
 	}
+}
+
+void Player::update(){
+	moveManag->getNextPosition(currentPostion);
 }
 
 void Player::updatePrevPosAndDir(Position& suspectPos, Position& current, Direction dir){
