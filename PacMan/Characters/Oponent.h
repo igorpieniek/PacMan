@@ -16,6 +16,8 @@ public:
 	void disable();
 	void enable();
 
+
+
 private:
 	bool active = true;
 	std::shared_ptr<MoveAlgorithm> behaviour;

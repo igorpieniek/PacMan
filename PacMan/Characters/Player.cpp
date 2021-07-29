@@ -17,6 +17,7 @@ void Player::notify(Event evt){
 	}
 	if (evt == Event::RESTART_POSITIONS) {
 		restoreInitialPosition();
+		stopMotion();
 		is_moving = false;
 		currentDir = Direction::EAST;
 		moveManag->reset();
@@ -24,6 +25,7 @@ void Player::notify(Event evt){
 }
 
 void Player::update(){
+	if (isMotionBlocked) return;
 	Position cpy = currentPostion;
 	moveManag->update(currentPostion);
 	updatePrevPosAndDir(cpy, currentPostion);

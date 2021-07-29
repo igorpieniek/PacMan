@@ -1,6 +1,7 @@
 #include "Oponent.h"
 
 void Oponent::update(){
+	if (isMotionBlocked) return;
 	behaviour->update(currentPostion);
 }
 
