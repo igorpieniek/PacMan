@@ -65,6 +65,17 @@ void OponentManager::notify(Event evt){
 		for (auto& oponent : ops) {
 			oponent.restoreInitialPosition();
 		}
+		break;
+	case Event::ALLOW_MOTION:
+		for (auto& oponent : ops) {
+			oponent.unblockMotion();
+		}
+		break;
+	case Event::STOP_MOTION:
+		for (auto& oponent : ops) {
+			oponent.stopMotion();
+		}
+		break;
 	}
 }
 

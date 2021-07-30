@@ -7,20 +7,32 @@ Player::Player(Position startPos, std::shared_ptr<MoveAlgorithm> moveAlg) :
 	moveManag(moveAlg)	{};
 
 void Player::notify(Event evt){
-	if (evt == Event::LIFE_LOST) {
-		--numberOfLifes;		
+	switch (evt)
+	{
+
+
+	case Event::LIFE_LOST:
+		--numberOfLifes;
 		if (numberOfLifes == 0) {
 			mediator->notify(Event::END_OF_LIVES);
 			return;
 		}
 		std::cout << "Player : LIFE_LOST - remaining: " << numberOfLifes << std::endl;
-	}
-	if (evt == Event::RESTART_POSITIONS) {
+		break;
+	case Event::RESTART_POSITIONS:
 		restoreInitialPosition();
-		stopMotion();
 		is_moving = false;
 		currentDir = Direction::EAST;
 		moveManag->reset();
+		break;
+	case Event::STOP_MOTION:
+		stopMotion();
+		break;
+	case Event::ALLOW_MOTION:
+		unblockMotion();
+		break;
+	default:
+		break;
 	}
 }
 

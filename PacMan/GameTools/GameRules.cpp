@@ -1,5 +1,18 @@
 #include "GameRules.h"
 
+GameRules::GameRules(std::vector<GameMediatorComponent*> comp) :
+					components(comp), GameMediator()
+{
+	setComponentsMediator();
+	notifyAll(Event::STOP_MOTION);
+	Sleep(8000);
+	notifyAll(Event::ALLOW_MOTION);
+};
+
+void GameRules::update(){
+
+}
+
 void GameRules::notify(Event evt){
 	switch (evt){
 	case Event::SPECIAL_POINT_REACHED:
@@ -18,7 +31,11 @@ void GameRules::notify(Event evt){
 		std::cout << "GameRules: PLAYER_CATCHED\n";
 		notifyAll(Event::LIFE_LOST);
 		notifyAll(Event::RESTART_POSITIONS);
+		notifyAll(Event::STOP_MOTION);
+		Sleep(3000);
+		notifyAll(Event::ALLOW_MOTION);
 		break;
+
 	case Event::END_OF_LIVES:
 		//exit - lose
 		std::cout << "GameRules: END_OF_LIVES:\n";
@@ -35,6 +52,8 @@ void GameRules::notifyPlayerPosition(Position& playerPos){
 		comp->notifyPlayerPosition(playerPos);
 	}
 }
+
+
 
 void GameRules::notifyAll(Event evt) {
 	for (auto& comp : components) {

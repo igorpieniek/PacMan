@@ -180,6 +180,7 @@
     <ClCompile Include="GameTools\PointsManager.cpp" />
     <ClCompile Include="GraphicLayer\PlayerDrafter.cpp" />
     <ClCompile Include="Behaviours\PlayerMovement.cpp" />
+    <ClCompile Include="GameTools\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviours\MoveAlgorithm.h" />
@@ -505,6 +506,7 @@
     <ClInclude Include="GameTools\Mediator.h" />
     <ClInclude Include="GraphicLayer\PlayerDrafter.h" />
     <ClInclude Include="Behaviours\PlayerMovement.h" />
+    <ClInclude Include="GameTools\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GraphicLayer\OpenGlTools\glm\glm\detail\func_common.inl" />
