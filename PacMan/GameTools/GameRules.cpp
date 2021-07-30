@@ -4,14 +4,10 @@ GameRules::GameRules(std::vector<GameMediatorComponent*> comp) :
 					components(comp), GameMediator()
 {
 	setComponentsMediator();
-	notifyAll(Event::STOP_MOTION);
-	Sleep(8000);
-	notifyAll(Event::ALLOW_MOTION);
+	disableMotionForTime(3);
+	
 };
 
-void GameRules::update(){
-
-}
 
 void GameRules::notify(Event evt){
 	switch (evt){
@@ -31,9 +27,8 @@ void GameRules::notify(Event evt){
 		std::cout << "GameRules: PLAYER_CATCHED\n";
 		notifyAll(Event::LIFE_LOST);
 		notifyAll(Event::RESTART_POSITIONS);
-		notifyAll(Event::STOP_MOTION);
-		Sleep(3000);
-		notifyAll(Event::ALLOW_MOTION);
+		disableMotionForTime(2);
+
 		break;
 
 	case Event::END_OF_LIVES:
@@ -65,4 +60,15 @@ void GameRules::setComponentsMediator(){
 	for (auto& comp : components) {
 		comp->setMediator(this);
 	}
+}
+
+
+void GameRules::disableMotionForTime(double seconds){
+	notifyAll(Event::STOP_MOTION);
+	Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::enableMotionCb, this), seconds);
+}
+
+void GameRules::enableMotionCb(){
+	notifyAll(Event::ALLOW_MOTION);
+	std::cout << "Time elapsed and cb called successfully!\n";
 }

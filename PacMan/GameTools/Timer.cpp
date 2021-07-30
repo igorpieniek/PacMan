@@ -1,4 +1,5 @@
 #include "Timer.h"
+#include <iostream>
 
 Timer& Timer::instance(){
     static Timer tim;
@@ -13,19 +14,23 @@ void Timer::addPeriodElapsedCallback(std::function<void()> fun, double sec){
 Timer::Timer(){
     updateTime();
     thrd = std::thread(&Timer::process, this);
-    thrd.join();
+    thrd.detach();
 }
 
 void Timer::process(){
-    updateTime();
-    for (auto& cb : callbacks) {
-        std::chrono::duration<double> elapsed_seconds = last - cb.startTime;
-        if (elapsed_seconds.count() >= cb.requiredTime) {
-            cb.fun();
-            cb.isUsed = true;
+    while (1) {
+        updateTime();
+        //std::cout << "In da process\n";
+        for (auto& cb : callbacks) {
+            std::chrono::duration<double> elapsed_seconds = last - cb.startTime;
+            //std::cout << "In da process callbacs" << elapsed_seconds.count() << std::endl;
+            if (elapsed_seconds.count() >= cb.requiredTime) {
+                cb.fun();
+                cb.isUsed = true;
+            }
         }
+        deleteUsedCallbacks();
     }
-    deleteUsedCallbacks();
 
 }
 
