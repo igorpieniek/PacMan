@@ -20,16 +20,15 @@ Timer::Timer(){
 void Timer::process(){
     while (1) {
         updateTime();
-        //std::cout << "In da process\n";
         for (auto& cb : callbacks) {
             std::chrono::duration<double> elapsed_seconds = last - cb.startTime;
-            //std::cout << "In da process callbacs" << elapsed_seconds.count() << std::endl;
             if (elapsed_seconds.count() >= cb.requiredTime) {
                 cb.fun();
                 cb.isUsed = true;
             }
         }
         deleteUsedCallbacks();
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
 
 }
