@@ -65,8 +65,9 @@ int main() {
 		std::cout << "GLEW PROBLEM\n";
 	}
 
-	GraphicGLManager graphManag(points, pl, opManag);
-	GameRules gameRules({ points.get(), opManag.get(), pl.get(), &graphManag });
+	std::shared_ptr<GraphicGLManager> graphManag 
+						= std::make_shared<GraphicGLManager>(points, pl, opManag);
+	GameRules gameRules({ points, opManag, pl, graphManag });
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
@@ -77,7 +78,7 @@ int main() {
 		Position playerPos = pl->getPosition();
 		gameRules.notifyPlayerPosition(playerPos);
 
-		graphManag.draw();
+		graphManag->draw();
 
 
 		/* Swap front and back buffers */

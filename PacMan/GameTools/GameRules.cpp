@@ -1,6 +1,6 @@
 #include "GameRules.h"
 
-GameRules::GameRules(std::vector<GameMediatorComponent*> comp) :
+GameRules::GameRules(std::vector<std::shared_ptr<GameMediatorComponent>> comp) :
 					components(comp), GameMediator()
 {
 	setComponentsMediator();
