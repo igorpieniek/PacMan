@@ -7,9 +7,10 @@
 
 #include "PlayerDrafter.h"
 #include "CookieDrafter.h"
+#include "HeartDrafter.h"
 
 #include "MapDrafter.h"
-
+#include "Movement.h"
 #include <algorithm>
 
 class GraphicGLManager :public GraphicManagerInterface, public GameMediatorComponent {
@@ -36,15 +37,19 @@ private:
 
 	const std::string cookiePath = "images/point.png";
 
+	const std::string heartPath = "images/heart.png";
+
 
 	std::vector<Drafter> ghosts;
 	std::vector<MapCell> mapvec;
 	PlayerDrafter plDrafter;
 	CookieDrafter cookieDrafter;
+	HeartDrafter heartDrafter;
 
 	void drawCookies();
 	void drawPlayer();
 	void drawGhosts();
+	void drawHealth();
 	MapDrafter mapDrafter;
 
 

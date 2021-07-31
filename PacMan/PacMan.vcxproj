@@ -168,6 +168,7 @@
     <ClCompile Include="GraphicLayer\OpenGlTools\Render2D.cpp" />
     <ClCompile Include="GraphicLayer\OpenGlTools\TextureTools\Texture.cpp" />
     <ClCompile Include="GraphicLayer\OpenGlTools\Transformation.cpp" />
+    <ClCompile Include="GraphicLayer\HeartDrafter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="GraphicLayer\MapCreator\MapCreator.cpp" />
     <ClCompile Include="GraphicLayer\MapCreator\MapMatchPattern.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="Characters\Player.h" />
     <ClInclude Include="GraphicLayer\MapCreator\ImageConcat.h" />
     <ClInclude Include="GraphicLayer\MapCreator\ImageData.h" />
+    <ClInclude Include="GraphicLayer\HeartDrafter.h" />
     <ClInclude Include="Vendor\stb_image\stb_image_write.h" />
     <ClInclude Include="GraphicLayer\MapDrafter.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\AdditionalTools.h" />
