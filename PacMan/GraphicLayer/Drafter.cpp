@@ -20,24 +20,28 @@ void Drafter::draw(Position pos, Direction dir){
 void Drafter::calculateScale() {
 	if (scale != 0) return;
 
-	CoordType maxRealMapSize = std::max(MapManager::instance().getMapXSize(),
-							            MapManager::instance().getMapYSize());
-
-	constexpr float mainScale = 0.8f; // <0,1>
-
+	CoordType Xsize = MapManager::instance().getMapXSize();
+	CoordType Ysize = MapManager::instance().getMapYSize();
+	CoordType maxRealMapSize;
+	float correctionRatio;
+	float mainScale = 0.93f; // <0,1>
 	constexpr float maxWindowWidth = 2.0f;
-	constexpr float maxWidth = mainScale * maxWindowWidth;
-	scale =  maxWidth / maxRealMapSize;
-	float correctionRatio = ((MapManager::instance().getMapYSize()) / (MapManager::instance().getMapXSize()));
-	
-	if (correctionRatio > 1.0f) {
-		correctionRatio = 1 / correctionRatio;
+	if(Ysize >= Xsize){
+		maxRealMapSize = Ysize;
+		mainScale = 0.8f;
+		correctionRatio = Xsize / Ysize;
 	}
+	else {
+		maxRealMapSize = Xsize;
+		correctionRatio = Ysize / Xsize;
+	}
+
+	const float maxWidth = mainScale * maxWindowWidth;
+	scale =  maxWidth / maxRealMapSize;
 
 	correctionRatio *= mainScale;
 
-
-	if (MapManager::instance().getMapXSize() == maxRealMapSize) {
+	if (Xsize >= Ysize) {
 		correction = Position{ maxWidth/2 , correctionRatio };
 	}
 	else {

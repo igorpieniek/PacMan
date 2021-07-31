@@ -57,7 +57,7 @@ void GraphicGLManager::drawGhosts(){
 }
 
 void GraphicGLManager::drawHealth(){
-	Position pos{2 , MapManager::instance().getMapYSize()+1 };
+	Position pos{2 , MapManager::instance().getMapYSize() };
 	Movement moveTool(3);
 	for (int i = 0; i < player->getAmountOfLifes(); i++) {
 		heartDrafter.draw(pos, Direction::EAST);
