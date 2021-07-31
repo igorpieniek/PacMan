@@ -120,7 +120,7 @@
     <ClCompile Include="GraphicLayer\MapCreator\ImageData.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="GameTools\Timer.cpp">
+    <ClCompile Include="GenericTools\Timer.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -209,7 +209,7 @@
     <ClInclude Include="GraphicLayer\OpenGlTools\Transformation.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicLayer\OpenGlTools\TextureTools\stb_image.h">
+    <ClInclude Include="Vendor\stb_image\stb_image.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="GraphicLayer\OpenGlTools\TextureTools\Texture.h">
@@ -1076,7 +1076,7 @@
     <ClInclude Include="GraphicLayer\MapDrafter.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicLayer\MapCreator\MatrixTool.h">
+    <ClInclude Include="GenericTools\MatrixTool.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="GraphicLayer\MapCreator\MapCreator.h">
@@ -1091,10 +1091,10 @@
     <ClInclude Include="GraphicLayer\MapCreator\ImageData.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicLayer\MapCreator\stb_image_write.h">
+    <ClInclude Include="Vendor\stb_image\stb_image_write.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GameTools\Timer.h">
+    <ClInclude Include="GenericTools\Timer.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

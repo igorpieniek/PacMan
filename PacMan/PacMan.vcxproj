@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)MovementTools;$(SolutionDir)MapTools;$(SolutionDir)Characters;$(SolutionDir)GameTools;$(SolutionDir)GraphicLayer;$(SolutionDir)GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)GraphicLayer\OpenGlTools\glm;$(SolutionDir)GraphicLayer\MapCreator;$(SolutionDir)GraphicLayer\OpenGlTools;$(SolutionDir)Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)MovementTools;$(SolutionDir)MapTools;$(SolutionDir)Characters;$(SolutionDir)GameTools;$(SolutionDir)GraphicLayer;$(SolutionDir)GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)GraphicLayer\OpenGlTools\glm;$(SolutionDir)GraphicLayer\MapCreator;$(SolutionDir)GraphicLayer\OpenGlTools;$(SolutionDir)GenericTools;$(SolutionDir)Vendor;$(SolutionDir)Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,7 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)MovementTools;$(SolutionDir)MapTools;$(SolutionDir)Characters;$(SolutionDir)GameTools;$(SolutionDir)GraphicLayer;$(SolutionDir)GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)GraphicLayer\OpenGlTools\glm;$(SolutionDir)GraphicLayer\MapCreator;$(SolutionDir)GraphicLayer\OpenGlTools;$(SolutionDir)Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)MovementTools;$(SolutionDir)MapTools;$(SolutionDir)Characters;$(SolutionDir)GameTools;$(SolutionDir)GraphicLayer;$(SolutionDir)GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)GraphicLayer\OpenGlTools\glm;$(SolutionDir)GraphicLayer\MapCreator;$(SolutionDir)GraphicLayer\OpenGlTools;$(SolutionDir)GenericTools;$(SolutionDir)Vendor;$(SolutionDir)Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -180,7 +180,7 @@
     <ClCompile Include="GameTools\PointsManager.cpp" />
     <ClCompile Include="GraphicLayer\PlayerDrafter.cpp" />
     <ClCompile Include="Behaviours\PlayerMovement.cpp" />
-    <ClCompile Include="GameTools\Timer.cpp" />
+    <ClCompile Include="GenericTools\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviours\MoveAlgorithm.h" />
@@ -196,7 +196,7 @@
     <ClInclude Include="Characters\Player.h" />
     <ClInclude Include="GraphicLayer\MapCreator\ImageConcat.h" />
     <ClInclude Include="GraphicLayer\MapCreator\ImageData.h" />
-    <ClInclude Include="GraphicLayer\MapCreator\stb_image_write.h" />
+    <ClInclude Include="Vendor\stb_image\stb_image_write.h" />
     <ClInclude Include="GraphicLayer\MapDrafter.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\AdditionalTools.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\GLBuffer.h" />
@@ -490,7 +490,7 @@
     <ClInclude Include="GraphicLayer\OpenGlTools\glm\glm\vector_relational.hpp" />
     <ClInclude Include="GraphicLayer\OpenGlTools\gl_errors.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\Render2D.h" />
-    <ClInclude Include="GraphicLayer\OpenGlTools\TextureTools\stb_image.h" />
+    <ClInclude Include="Vendor\stb_image\stb_image.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\TextureTools\Texture.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\Transformation.h" />
     <ClInclude Include="GraphicLayer\MapCreator\MapCreator.h" />
@@ -498,7 +498,7 @@
     <ClInclude Include="MapTools\MapCell.h" />
     <ClInclude Include="MapTools\MapManager.h" />
     <ClInclude Include="MapTools\Position.h" />
-    <ClInclude Include="GraphicLayer\MapCreator\MatrixTool.h" />
+    <ClInclude Include="GenericTools\MatrixTool.h" />
     <ClInclude Include="MovementTools\Movement.h" />
     <ClInclude Include="MovementTools\SafeMovement.h" />
     <ClInclude Include="Characters\OponentManager.h" />
@@ -506,7 +506,7 @@
     <ClInclude Include="GameTools\Mediator.h" />
     <ClInclude Include="GraphicLayer\PlayerDrafter.h" />
     <ClInclude Include="Behaviours\PlayerMovement.h" />
-    <ClInclude Include="GameTools\Timer.h" />
+    <ClInclude Include="GenericTools\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GraphicLayer\OpenGlTools\glm\glm\detail\func_common.inl" />
