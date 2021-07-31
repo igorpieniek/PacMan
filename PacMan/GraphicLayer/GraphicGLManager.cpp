@@ -15,45 +15,44 @@ GraphicGLManager::GraphicGLManager(
 		ghosts.back().addImage(getnextGhostPath());
 	}
 
-	//mapDrafter.addImage(mapPath);
 	plDrafter.addImage(playerPath);
 	cookieDrafter.addImage(cookiePath);
 
 	mapDrafter.addImage(mapPath);
 
-	
-	// initialize PlayerDrafter object
-	// initialize GhostDrafter objects:
-	//		add to map  like 'oponentsWithDrafter' <Oponent*, GhostDrafter>
-
-
 }
 
 void GraphicGLManager::draw(){
-	//drawObstacles();
 	mapDrafter.draw();
 
+	drawCookies();
+	drawPlayer();
+	drawGhosts();
+	
+	Render2D::instance().process();
+}
+
+
+void GraphicGLManager::drawCookies(){
 	for (const auto& cookie : points->getPointsData()) {
 		if (cookie.getPointClass() == PointCat::SPECIAL) {
 			cookieDrafter.setSpecialPoint();
 		}
 		cookieDrafter.draw(cookie, Direction::EAST);
 	}
+}
 
+void GraphicGLManager::drawPlayer(){
 	plDrafter.updateIsMoving(player->isMoving());
 	plDrafter.draw(player->getPosition(), player->getCurrentDirection());
-	
+}
 
+void GraphicGLManager::drawGhosts(){
 	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
 		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
 		ghosts[i].draw(opPos->getPosition(), Direction::EAST);
 	}
-
-	Render2D::instance().process();
 }
-
-
-
 
 std::string GraphicGLManager::getnextGhostPath(){
 	static int counter;

@@ -41,9 +41,10 @@ private:
 	std::vector<MapCell> mapvec;
 	PlayerDrafter plDrafter;
 	CookieDrafter cookieDrafter;
-	float scale;
 
-	void drawObstacles();
+	void drawCookies();
+	void drawPlayer();
+	void drawGhosts();
 	MapDrafter mapDrafter;
 
 
