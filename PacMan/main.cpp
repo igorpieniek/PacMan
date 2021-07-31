@@ -17,7 +17,7 @@
 #include "PlayerMovement.h"
 
 std::shared_ptr<PlayerMovement> playerMovement = std::make_shared<PlayerMovement>(0.1f);
-std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 1.0f,1.f }, playerMovement);
+std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 4.0f,4.f }, playerMovement);
 
 
 int main() {

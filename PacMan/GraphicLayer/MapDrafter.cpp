@@ -20,8 +20,8 @@ void MapDrafter::addImage(std::string path, Direction dir){
 
 	trans.setRotationAxis(Transformation::Axis::X);
 	trans.setRotation(180.0f);
-	trans.setScale(cellSize * MapManager::instance().getMapXSize(),
-				   cellSize * MapManager::instance().getMapYSize(), 1.0f);
+	trans.setScale(scale * MapManager::instance().getMapXSize(),
+				   scale * MapManager::instance().getMapYSize(), 1.0f);
 }
 
 
