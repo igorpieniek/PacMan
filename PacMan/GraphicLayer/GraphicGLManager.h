@@ -1,5 +1,6 @@
 #pragma once
 #include "GraphicManagerInterface.h"
+#include "Mediator.h"
 #include "Render2D.h"
 #include "Drafter.h"
 #include "MapManager.h"
@@ -11,14 +12,16 @@
 
 #include <algorithm>
 
-class GraphicGLManager :public GraphicManagerInterface{
+class GraphicGLManager :public GraphicManagerInterface, public GameMediatorComponent {
 public:
 	GraphicGLManager(const std::shared_ptr<PointsManager> pointsManag,
 					 const std::shared_ptr<Player> pl,
 					 const std::shared_ptr<OponentManager> oponentManag);
 
 	void draw() override;
+	void notify(Event evt) override;
 private:
+	void notifyPlayerPosition(Position& pos)override {};
 
 	const std::vector<std::string> ghostPaths = { //TODO: move to module that read that files from JSON file
 		"images/ghost1.png",

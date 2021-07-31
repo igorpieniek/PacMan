@@ -1,4 +1,5 @@
 #include "GraphicGLManager.h"
+#include <iostream>
 
 GraphicGLManager::GraphicGLManager(
 		const std::shared_ptr<PointsManager> pointsManag,
@@ -52,6 +53,8 @@ void GraphicGLManager::draw(){
 }
 
 
+
+
 std::string GraphicGLManager::getnextGhostPath(){
 	static int counter;
 	if (counter >= ghostPaths.size()) {
@@ -60,3 +63,31 @@ std::string GraphicGLManager::getnextGhostPath(){
 	return ghostPaths[counter++];
 }
 
+
+void GraphicGLManager::notify(Event evt) {
+	switch (evt)
+	{
+	case Event::SPECIAL_POINT_REACHED:
+		break;
+	case Event::ALL_POINTS_COLLECTED:
+		break;
+	case Event::DISABLE_ALL_OPONENTS:
+		break;
+	case Event::ENABLE_ALL_OPONENTS:
+		break;
+	case Event::PLAYER_CATCHED:
+		break;
+	case Event::END_OF_LIVES:
+		break;
+	case Event::LIFE_LOST:
+		break;
+	case Event::RESTART_POSITIONS:
+		break;
+	case Event::ALLOW_MOTION:
+		break;
+	case Event::STOP_MOTION:
+		break;
+	default:
+		break;
+	}
+}

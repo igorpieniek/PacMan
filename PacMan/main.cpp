@@ -11,7 +11,7 @@
 #include "PointsManager.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "stb_image/stb_image.h"
 
 #include "GraphicLayer/GraphicGLManager.h"
 #include "PlayerMovement.h"
@@ -28,7 +28,7 @@ int main() {
 	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 3 );
 	
 
-	GameRules gameRules({ points.get(), opManag.get(), pl.get() });
+	
 
 	
 	GLFWwindow* window;
@@ -66,7 +66,7 @@ int main() {
 	}
 
 	GraphicGLManager graphManag(points, pl, opManag);
-	
+	GameRules gameRules({ points.get(), opManag.get(), pl.get(), &graphManag });
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
