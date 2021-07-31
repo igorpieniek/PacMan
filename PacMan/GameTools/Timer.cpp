@@ -8,7 +8,7 @@ Timer& Timer::instance(){
 
 void Timer::addPeriodElapsedCallback(std::function<void()> fun, double sec){
     updateTime();
-    callbacks.push_back({ fun, sec, last, false });
+    callbacks.push_back({ fun, sec, currentTime, false });
 }
 
 Timer::Timer(){
@@ -20,13 +20,7 @@ Timer::Timer(){
 void Timer::process(){
     while (1) {
         updateTime();
-        for (auto& cb : callbacks) {
-            std::chrono::duration<double> elapsed_seconds = last - cb.startTime;
-            if (elapsed_seconds.count() >= cb.requiredTime) {
-                cb.fun();
-                cb.isUsed = true;
-            }
-        }
+        executeCallbacks();
         deleteUsedCallbacks();
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
@@ -41,6 +35,16 @@ void Timer::deleteUsedCallbacks(){
     callbacks.erase(itersToRemove, callbacks.end());
 }
 
+void Timer::executeCallbacks(){
+    for (auto& cb : callbacks) {
+        std::chrono::duration<double> elapsed_seconds = currentTime - cb.startTime;
+        if (elapsed_seconds.count() >= cb.requiredTime) {
+            cb.fun();
+            cb.isUsed = true;
+        }
+    }
+}
+
 void Timer::updateTime(){
-    last = std::chrono::system_clock::now();
+    currentTime = std::chrono::system_clock::now();
 }

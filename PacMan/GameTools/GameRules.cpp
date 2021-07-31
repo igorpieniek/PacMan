@@ -5,7 +5,6 @@ GameRules::GameRules(std::vector<GameMediatorComponent*> comp) :
 {
 	setComponentsMediator();
 	disableMotionForTime(3);
-	
 };
 
 
@@ -70,5 +69,5 @@ void GameRules::disableMotionForTime(double seconds){
 
 void GameRules::enableMotionCb(){
 	notifyAll(Event::ALLOW_MOTION);
-	std::cout << "Time elapsed and cb called successfully!\n";
+	//std::cout << "Time elapsed and cb called successfully!\n";
 }

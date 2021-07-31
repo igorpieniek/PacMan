@@ -14,10 +14,11 @@ private:
 	Timer();
 	void process();
 	void deleteUsedCallbacks();
+	void executeCallbacks();
 	void updateTime();
 
 
-	std::chrono::system_clock::time_point  last;
+	std::chrono::system_clock::time_point  currentTime;
 	std::thread thrd;
 
 	struct CallbackElement {
