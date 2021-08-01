@@ -182,6 +182,9 @@
     <ClCompile Include="GraphicLayer\PlayerDrafter.cpp" />
     <ClCompile Include="Behaviours\PlayerMovement.cpp" />
     <ClCompile Include="GenericTools\Timer.cpp" />
+    <ClCompile Include="Vendor\json\json_reader.cpp" />
+    <ClCompile Include="Vendor\json\json_value.cpp" />
+    <ClCompile Include="Vendor\json\json_writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Behaviours\MoveAlgorithm.h" />
@@ -198,6 +201,17 @@
     <ClInclude Include="GraphicLayer\MapCreator\ImageConcat.h" />
     <ClInclude Include="GraphicLayer\MapCreator\ImageData.h" />
     <ClInclude Include="GraphicLayer\HeartDrafter.h" />
+    <ClInclude Include="Vendor\json\allocator.h" />
+    <ClInclude Include="Vendor\json\assertions.h" />
+    <ClInclude Include="Vendor\json\config.h" />
+    <ClInclude Include="Vendor\json\forwards.h" />
+    <ClInclude Include="Vendor\json\json.h" />
+    <ClInclude Include="Vendor\json\json_features.h" />
+    <ClInclude Include="Vendor\json\json_tool.h" />
+    <ClInclude Include="Vendor\json\reader.h" />
+    <ClInclude Include="Vendor\json\value.h" />
+    <ClInclude Include="Vendor\json\version.h" />
+    <ClInclude Include="Vendor\json\writer.h" />
     <ClInclude Include="Vendor\stb_image\stb_image_write.h" />
     <ClInclude Include="GraphicLayer\MapDrafter.h" />
     <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\AdditionalTools.h" />
@@ -648,6 +662,7 @@
     <None Include="GraphicLayer\OpenGlTools\glm\glm\gtx\vector_query.inl" />
     <None Include="GraphicLayer\OpenGlTools\glm\glm\gtx\wrap.inl" />
     <None Include="GraphicLayer\OpenGlTools\Shaders\init.shader" />
+    <None Include="Vendor\json\json_valueiterator.inl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="GraphicLayer\OpenGlTools\glm\glm\CMakeLists.txt" />

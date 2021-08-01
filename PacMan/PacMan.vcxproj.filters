@@ -126,6 +126,15 @@
     <ClCompile Include="GraphicLayer\HeartDrafter.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="Vendor\json\json_reader.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\json\json_value.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\json\json_writer.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Characters\Character.h">
@@ -1103,6 +1112,39 @@
     <ClInclude Include="GraphicLayer\HeartDrafter.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="Vendor\json\allocator.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\json\assertions.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\json\config.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\json\forwards.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\json\json.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\json\json_features.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\json\json_tool.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\json\reader.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\json\value.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\json\version.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\json\writer.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="GraphicLayer\OpenGlTools\Shaders\init.shader" />
@@ -1512,6 +1554,9 @@
       <Filter>Pliki nagłówkowe</Filter>
     </None>
     <None Include="GraphicLayer\OpenGlTools\glm\glm\gtx\wrap.inl">
+      <Filter>Pliki nagłówkowe</Filter>
+    </None>
+    <None Include="Vendor\json\json_valueiterator.inl">
       <Filter>Pliki nagłówkowe</Filter>
     </None>
   </ItemGroup>
