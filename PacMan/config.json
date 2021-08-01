@@ -1,5 +1,18 @@
 {
-	"Header": 123,
-	"Payload":23.23,
-	"Status":"smth"
+	"paths":{
+		"mapTxt": "mapa.txt",
+		"dynamicMapImg": "images/newDynamicMap.png",
+		"playerImg":"images/pacman.png",
+		"heartImg":"images/heart.png",
+		"pointImg":"images/point.png",
+		"mapElementsImg":{
+			"vertical": "images/vertical.png",
+			"horizontal": "images/horizontal.png",
+			"empty": "images/empty.png",
+			"cornerNE": "images/corner_NE.png",
+			"cornerSE": "images/corner_SE.png",
+			"cornerSW": "images/corner_SW.png",
+			"cornerNW": "images/corner_NW.png"
+		},
+	},
 }

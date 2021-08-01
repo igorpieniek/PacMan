@@ -42,6 +42,29 @@ public:
 private:
 	ConfigLoader();
 
+	std::vector<std::string> requiredPathsHeaders = {
+		"mapTxt",
+		"dynamicMapImg",
+		"playerImg",
+		"heartImg",
+		"pointImg",
+		"mapElementsImg"
+	};
+	std::vector<std::string> requiredMapElementsHeaders = {
+		"vertical",
+		"horizontal",
+		"empty",
+		"cornerNE",
+		"cornerSE",
+		"cornerSW",
+		"cornerNW"
+	};
+	bool isPathSectionOK();
+	bool isMapElementsOK();
+
+	bool isSubsectionHaveRequiredFields(Json::Value sub, std::vector<std::string>& required, std::string subName);
+	
+
 	Json::Value root;
 	Json::CharReaderBuilder builder;
 };
