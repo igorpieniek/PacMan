@@ -23,4 +23,5 @@ ConfigLoader::ConfigLoader() {
 	else {
 		std::cout << "Config file (" << CONFIG_PATH << ") sucessfully loded!" << std::endl;
 	}
+
 }
