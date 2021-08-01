@@ -16,8 +16,7 @@
 #include "GraphicLayer/GraphicGLManager.h"
 #include "PlayerMovement.h"
 
-#include "json/json.h"
-#include <fstream>
+#include "ConfigLoader.h"
 
 std::shared_ptr<PlayerMovement> playerMovement = std::make_shared<PlayerMovement>(0.1f);
 std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 4.0f,4.f }, playerMovement);
@@ -25,21 +24,8 @@ std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 4.0f,4.f }, play
 
 int main() {
 
-	Json::Value root;
-	std::ifstream ifs;
-	ifs.open("config.json");
-
-	Json::CharReaderBuilder builder;
-	builder["collectComments"] = true;
-	JSONCPP_STRING errs;
-	if (!parseFromStream(builder, ifs, &root, &errs)) {
-		std::cout << errs << std::endl;
-		return EXIT_FAILURE;
-	}
-	std::cout << root["Header"] << std::endl;
-	std::cout << root["Status"].asString() << std::endl;
-	std::cout << root << std::endl;
-	return EXIT_SUCCESS;
+	ConfigLoader::instance();
+	return 0;
 	MapManager::instance().addMap("mapa.txt");
 
 	std::shared_ptr<PointsManager> points = std::make_shared<PointsManager>( 10 );
