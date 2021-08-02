@@ -25,7 +25,7 @@ std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 4.0f,4.f }, play
 int main() {
 
 	ConfigLoader::instance();
-	return 0;
+	//return 0;
 	MapManager::instance().addMap("mapa.txt");
 
 	std::shared_ptr<PointsManager> points = std::make_shared<PointsManager>( 10 );

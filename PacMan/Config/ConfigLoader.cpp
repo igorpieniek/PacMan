@@ -5,6 +5,8 @@ ConfigLoader& ConfigLoader::instance(){
     return loader;
 }
 
+
+
 ConfigLoader::ConfigLoader() {
 
 	std::ifstream ifs;
@@ -53,4 +55,85 @@ bool ConfigLoader::isSubsectionHaveRequiredFields(Json::Value sub, std::vector<s
 		}
 	}
 	return true;
+}
+
+ //----------------------GETTERS--------------------------------------------------
+std::string ConfigLoader::getMapTxtPath(){
+	return root["paths"]["mapTxt"].asString();
+}
+
+std::string ConfigLoader::getDynamicMapImgPath(){
+	return root["paths"]["dynamicMapImg"].asString();
+}
+
+std::string ConfigLoader::getPlayerImgPath(){
+	return root["paths"]["playerImg"].asString();
+}
+
+std::string ConfigLoader::getHeartImgPath(){
+	return root["paths"]["heartImg"].asString();
+}
+
+std::string ConfigLoader::getPointImgPath(){
+	return root["paths"]["pointImg"].asString();
+}
+
+std::string ConfigLoader::getMapElementVerticalImgPath(){
+	return root["paths"]["mapElementsImg"]["vertical"].asString();
+}
+
+std::string ConfigLoader::getMapElementHorizontalImgPath(){
+	return root["paths"]["mapElementsImg"]["horizontal"].asString();
+}
+
+std::string ConfigLoader::getMapElementEmptyImgPath(){
+	return root["paths"]["mapElementsImg"]["empty"].asString();
+}
+
+std::string ConfigLoader::getMapElementCornerNEImgPath(){
+	return root["paths"]["mapElementsImg"]["cornerNE"].asString();
+}
+
+std::string ConfigLoader::getMapElementCornerNWImgPath(){
+	return root["paths"]["mapElementsImg"]["cornerNW"].asString();
+}
+
+std::string ConfigLoader::getMapElementCornerSEImgPath(){
+	return root["paths"]["mapElementsImg"]["cornerSE"].asString();
+}
+
+std::string ConfigLoader::getMapElementCornerSWImgPath(){
+	return root["paths"]["mapElementsImg"]["cornerSW"].asString();
+}
+
+std::vector<std::string> ConfigLoader::getOponentsImgPaths(){
+	return std::vector<std::string>();
+}
+
+Position ConfigLoader::getPlayerInitialPosition(){
+	return Position();
+}
+
+int ConfigLoader::getAmoutOfOponents(){
+	return 0;
+}
+
+int ConfigLoader::getAmountOfSpecialPoints(){
+	return 0;
+}
+
+CoordType ConfigLoader::getPlayerSpeed(){
+	return CoordType();
+}
+
+CoordType ConfigLoader::getOponentSpeed(){
+	return CoordType();
+}
+
+int ConfigLoader::getMainWindowWidth(){
+	return 0;
+}
+
+int ConfigLoader::getMainWindowHeight(){
+	return 0;
 }

@@ -41,6 +41,9 @@ public:
 
 private:
 	ConfigLoader();
+	std::vector<std::string> requiredMainHeaders = {
+		"paths", "other"
+	};
 
 	std::vector<std::string> requiredPathsHeaders = {
 		"mapTxt",
@@ -58,6 +61,14 @@ private:
 		"cornerSE",
 		"cornerSW",
 		"cornerNW"
+	};
+	std::vector<std::string> requiredOtherHeaders = {
+		"playerPosition",
+		"amountOfOponents",
+		"amoutOfSpecialPoints",
+		"playerSpeed",
+		"oponentSpeed",
+		"windowSize"
 	};
 	bool isPathSectionOK();
 	bool isMapElementsOK();
