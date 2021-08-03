@@ -5,6 +5,7 @@
 #include "ImageConcat.h"
 #include <map>
 #include <string>
+#include "ConfigLoader.h"
 
 
 
@@ -13,19 +14,19 @@ public:
 	void create();
 	std::string getNewFileName()const;
 private:
-	const std::string  newMapFile = "images/newMap.png";
+	const std::string  newMapFile = ConfigLoader::instance().getDynamicMapImgPath();
 	std::map<MapPatternType, std::string> imagePathMap = {
-		{MapPatternType::FREE ,				 "images/empty.png"},
-		{MapPatternType::VERTICAL ,			 "images/vertical.png"},
-		{MapPatternType::HORIZONTAL ,		 "images/horizontal.png"},
-		{MapPatternType::CORNER_CONCAVE_NE , "images/corner_NE.png"},
-		{MapPatternType::CORNER_CONCAVE_SE , "images/corner_SE.png"},
-		{MapPatternType::CORNER_CONCAVE_NW , "images/corner_NW.png"},
-		{MapPatternType::CORNER_CONCAVE_SW , "images/corner_SW.png"},
-		{MapPatternType::CORNER_CONVEX_NE ,  "images/corner_SW.png"},
-		{MapPatternType::CORNER_CONVEX_NW ,  "images/corner_SE.png"},
-		{MapPatternType::CORNER_CONVEX_SE ,  "images/corner_NW.png"},
-		{MapPatternType::CORNER_CONVEX_SW ,  "images/corner_NE.png"},
+		{MapPatternType::FREE ,				 ConfigLoader::instance().getMapElementEmptyImgPath()},
+		{MapPatternType::VERTICAL ,			 ConfigLoader::instance().getMapElementVerticalImgPath()},
+		{MapPatternType::HORIZONTAL ,		 ConfigLoader::instance().getMapElementHorizontalImgPath()},
+		{MapPatternType::CORNER_CONCAVE_NE , ConfigLoader::instance().getMapElementCornerNEImgPath()},
+		{MapPatternType::CORNER_CONCAVE_SE , ConfigLoader::instance().getMapElementCornerSEImgPath()},
+		{MapPatternType::CORNER_CONCAVE_NW , ConfigLoader::instance().getMapElementCornerNWImgPath()},
+		{MapPatternType::CORNER_CONCAVE_SW , ConfigLoader::instance().getMapElementCornerSWImgPath()},
+		{MapPatternType::CORNER_CONVEX_NE ,  ConfigLoader::instance().getMapElementCornerSWImgPath()},
+		{MapPatternType::CORNER_CONVEX_NW ,  ConfigLoader::instance().getMapElementCornerSEImgPath()},
+		{MapPatternType::CORNER_CONVEX_SE ,  ConfigLoader::instance().getMapElementCornerNWImgPath()},
+		{MapPatternType::CORNER_CONVEX_SW ,  ConfigLoader::instance().getMapElementCornerNEImgPath()},
 	};
 };
 

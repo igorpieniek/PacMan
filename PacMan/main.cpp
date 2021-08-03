@@ -18,18 +18,20 @@
 
 #include "ConfigLoader.h"
 
-std::shared_ptr<PlayerMovement> playerMovement = std::make_shared<PlayerMovement>(0.1f);
-std::shared_ptr<Player> pl = std::make_shared<Player>(Position{ 4.0f,4.f }, playerMovement);
+std::shared_ptr<PlayerMovement> playerMovement = std::make_shared<PlayerMovement>(ConfigLoader::instance().getPlayerSpeed());
+std::shared_ptr<Player> pl = std::make_shared<Player>(ConfigLoader::instance().getPlayerInitialPosition(), playerMovement);
+
 
 
 int main() {
 
-	ConfigLoader::instance();
-	//return 0;
-	MapManager::instance().addMap("mapa.txt");
 
-	std::shared_ptr<PointsManager> points = std::make_shared<PointsManager>( 10 );
-	std::shared_ptr<OponentManager> opManag = std::make_shared<OponentManager>( 3 );
+	MapManager::instance().addMap(ConfigLoader::instance().getMapTxtPath());
+
+	std::shared_ptr<PointsManager> points = 
+						std::make_shared<PointsManager>(ConfigLoader::instance().getAmountOfSpecialPoints());
+	std::shared_ptr<OponentManager> opManag =
+						std::make_shared<OponentManager>(ConfigLoader::instance().getAmountOfOponents());
 	
 
 	
@@ -47,7 +49,9 @@ int main() {
 
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 640, "PacMan", NULL, NULL);
+	window = glfwCreateWindow(ConfigLoader::instance().getMainWindowWidth(),
+							  ConfigLoader::instance().getMainWindowHeight(),
+							  "PacMan", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();

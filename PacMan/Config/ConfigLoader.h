@@ -31,7 +31,7 @@ public:
 
 	// others
 	Position getPlayerInitialPosition();
-	int getAmoutOfOponents();
+	int getAmountOfOponents();
 	int getAmountOfSpecialPoints();
 	CoordType getPlayerSpeed();
 	CoordType getOponentSpeed();
@@ -57,7 +57,8 @@ private:
 		{"playerImg",		&JsonVal::isString},
 		{"heartImg",		&JsonVal::isString},
 		{"pointImg",		&JsonVal::isString},
-		{"mapElementsImg",  &JsonVal::isObject}
+		{"mapElementsImg",  &JsonVal::isObject},
+		{"ghostsImg",       &JsonVal::isArray}
 	};
 	RequiredMap requiredMapElementsHeaders{
 		{"vertical",	&JsonVal::isString},
@@ -71,7 +72,7 @@ private:
 	RequiredMap requiredOtherHeaders{
 		{"playerPosition",		&JsonVal::isArray},
 		{"amountOfOponents",	&JsonVal::isUInt},
-		{"amoutOfSpecialPoints",&JsonVal::isUInt},
+		{"amountOfSpecialPoints",&JsonVal::isUInt},
 		{"playerSpeed",			&JsonVal::isDouble},
 		{"oponentSpeed",		&JsonVal::isDouble},
 		{"windowSize",			&JsonVal::isArray}

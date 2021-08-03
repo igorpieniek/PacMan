@@ -12,6 +12,7 @@
 #include "MapDrafter.h"
 #include "Movement.h"
 #include <algorithm>
+#include "ConfigLoader.h"
 
 class GraphicGLManager :public GraphicManagerInterface, public GameMediatorComponent {
 public:
@@ -24,20 +25,11 @@ public:
 private:
 	void notifyPlayerPosition(Position& pos)override {};
 
-	const std::vector<std::string> ghostPaths = { //TODO: move to module that read that files from JSON file
-		"images/ghost1.png",
-		"images/ghost2.png",
-		"images/ghost3.png",
-		"images/ghost4.png",
-	};
-
-	const std::string mapPath = "images/newMap.png";
-
-	const std::string playerPath = "images/pacman.png";
-
-	const std::string cookiePath = "images/point.png";
-
-	const std::string heartPath = "images/heart.png";
+	std::vector<std::string> ghostPaths = ConfigLoader::instance().getOponentsImgPaths();
+	std::string mapPath	 = ConfigLoader::instance().getDynamicMapImgPath();
+	std::string playerPath = ConfigLoader::instance().getPlayerImgPath();
+	std::string cookiePath = ConfigLoader::instance().getPointImgPath();
+	std::string heartPath  = ConfigLoader::instance().getHeartImgPath();
 
 
 	std::vector<Drafter> ghosts;

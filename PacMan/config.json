@@ -13,14 +13,20 @@
 			"cornerSE": "images/corner_SE.png",
 			"cornerSW": "images/corner_SW.png",
 			"cornerNW": "images/corner_NW.png"
-		}
+		},
+		"ghostsImg":[
+			"images/ghost1.png",
+			"images/ghost2.png",
+			"images/ghost3.png",
+			"images/ghost4.png"
+		]
 	},
 	"other":{
 		"playerPosition": [1,1],
-		"amountOfOponents": 3,
-		"amoutOfSpecialPoints": 8,
+		"amountOfOponents": 5,
+		"amountOfSpecialPoints": 8,
 		"playerSpeed": 0.2,
 		"oponentSpeed": 0.2,
-		"windowSize": [640,480]
+		"windowSize": [640,640]
 	}
 }
