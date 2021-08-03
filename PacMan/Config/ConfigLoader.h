@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 #include "Player.h"
 
 #define CONFIG_PATH "config.json"
@@ -41,39 +42,44 @@ public:
 
 private:
 	ConfigLoader();
-	std::vector<std::string> requiredMainHeaders = {
-		"paths", "other"
+	using JsonVal = Json::Value;
+	typedef bool (JsonVal::*JsonCheckerMeth)(void) const ;
+	using RequiredMap = std::map<std::string, JsonCheckerMeth>;
+
+	RequiredMap requiredMainHeaders{
+		{"paths", &JsonVal::isObject},
+		{"other", &JsonVal::isObject}
 	};
 
-	std::vector<std::string> requiredPathsHeaders = {
-		"mapTxt",
-		"dynamicMapImg",
-		"playerImg",
-		"heartImg",
-		"pointImg",
-		"mapElementsImg"
+	RequiredMap requiredPathsHeaders{
+		{"mapTxt",			&JsonVal::isString},
+		{"dynamicMapImg",   &JsonVal::isString},
+		{"playerImg",		&JsonVal::isString},
+		{"heartImg",		&JsonVal::isString},
+		{"pointImg",		&JsonVal::isString},
+		{"mapElementsImg",  &JsonVal::isObject}
 	};
-	std::vector<std::string> requiredMapElementsHeaders = {
-		"vertical",
-		"horizontal",
-		"empty",
-		"cornerNE",
-		"cornerSE",
-		"cornerSW",
-		"cornerNW"
+	RequiredMap requiredMapElementsHeaders{
+		{"vertical",	&JsonVal::isString},
+		{"horizontal",	&JsonVal::isString},
+		{"empty",		&JsonVal::isString},
+		{"cornerNE",	&JsonVal::isString},
+		{"cornerSE",	&JsonVal::isString},
+		{"cornerSW",	&JsonVal::isString},
+		{"cornerNW",	&JsonVal::isString}
 	};
-	std::vector<std::string> requiredOtherHeaders = {
-		"playerPosition",
-		"amountOfOponents",
-		"amoutOfSpecialPoints",
-		"playerSpeed",
-		"oponentSpeed",
-		"windowSize"
+	RequiredMap requiredOtherHeaders{
+		{"playerPosition",		&JsonVal::isArray},
+		{"amountOfOponents",	&JsonVal::isUInt},
+		{"amoutOfSpecialPoints",&JsonVal::isUInt},
+		{"playerSpeed",			&JsonVal::isDouble},
+		{"oponentSpeed",		&JsonVal::isDouble},
+		{"windowSize",			&JsonVal::isArray}
 	};
-	bool isPathSectionOK();
-	bool isMapElementsOK();
 
-	bool isSubsectionHaveRequiredFields(Json::Value sub, std::vector<std::string>& required, std::string subName);
+	bool isJSONhaveRequiredFields();
+
+	bool isSubsectionHaveRequiredFields(Json::Value sub, RequiredMap& required, std::string subName);
 	
 
 	Json::Value root;

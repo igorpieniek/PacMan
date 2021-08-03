@@ -1,5 +1,7 @@
 #include "ConfigLoader.h"
 
+#define RETURN_IF_INVALID(X) if(!X) return false; 
+
 ConfigLoader& ConfigLoader::instance(){
     static ConfigLoader loader;
     return loader;
@@ -24,34 +26,34 @@ ConfigLoader::ConfigLoader() {
 		std::cout << "Config file (" << CONFIG_PATH << ") sucessfully loded!" << std::endl;
 	}
 
-	bool status = isPathSectionOK();
+	bool status = isJSONhaveRequiredFields();
+	if (!status) exit(EXIT_FAILURE);
+	std::cout << "Verification of the configuration file was successful! " << std::endl;
 
 }
 
-bool ConfigLoader::isPathSectionOK(){
-	bool status = isSubsectionHaveRequiredFields(root["paths"], requiredPathsHeaders, "paths");
-	if (!status) return status;
-	status &= isMapElementsOK();
-	return status;
 
 
+bool ConfigLoader::isJSONhaveRequiredFields(){
+	RETURN_IF_INVALID( isSubsectionHaveRequiredFields(root, requiredMainHeaders, "MAIN"));
+	RETURN_IF_INVALID(isSubsectionHaveRequiredFields(root["paths"], requiredPathsHeaders, "paths"));
+	RETURN_IF_INVALID(isSubsectionHaveRequiredFields(root["paths"]["mapElementsImg"], requiredMapElementsHeaders, "paths->mapElementsImg"));
+	RETURN_IF_INVALID(isSubsectionHaveRequiredFields(root["other"], requiredOtherHeaders, "other"));
+	return true;
 }
 
-bool ConfigLoader::isMapElementsOK(){
-	return  isSubsectionHaveRequiredFields(root["paths"]["mapElementsImg"], requiredMapElementsHeaders, "paths->mapElementsImg");
-}
+bool ConfigLoader::isSubsectionHaveRequiredFields(Json::Value sub, RequiredMap& required, std::string subName){
 
-bool ConfigLoader::isSubsectionHaveRequiredFields(Json::Value sub, std::vector<std::string>& required, std::string subName){
 	for (auto& req : required) {
-		if (!sub.isMember(req)) {
-			std::cout << "Field <<" << req << ">> has to be defined in subsection <"<< subName<<"> json file!" << std::endl;
+		if (!sub.isMember(req.first)) {
+			std::cout << "Field <<" << req.first << ">> has to be defined in subsection <"<< subName<<"> json file!" << std::endl;
 			return false;
 		}
 		else {
-			//if (!sub[req].isString()) {
-			//	std::cout << "Field <<" << req << ">> exist in <" << subName << ">  , but value is not a string type!" << std::endl;
-			//	return false;
-			//}
+			if (!(sub[req.first].*(req.second))() ) {
+				std::cout << "Field <<" << req.first << ">> exist in <" << subName << ">  , but value is not required type!" << std::endl;
+				return false;
+			}
 		}
 	}
 	return true;

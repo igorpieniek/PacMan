@@ -13,6 +13,14 @@
 			"cornerSE": "images/corner_SE.png",
 			"cornerSW": "images/corner_SW.png",
 			"cornerNW": "images/corner_NW.png"
-		},
+		}
 	},
+	"other":{
+		"playerPosition": [1,1],
+		"amountOfOponents": 3,
+		"amoutOfSpecialPoints": 8,
+		"playerSpeed": 0.2,
+		"oponentSpeed": 0.2,
+		"windowSize": [640,480]
+	}
 }
