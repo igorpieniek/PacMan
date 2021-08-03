@@ -113,29 +113,31 @@ std::vector<std::string> ConfigLoader::getOponentsImgPaths(){
 }
 
 Position ConfigLoader::getPlayerInitialPosition(){
-	return Position();
+	CoordType x = root["other"]["playerPosition"][0].asFloat();
+	CoordType y = root["other"]["playerPosition"][1].asFloat();
+	return Position(x,y);
 }
 
 int ConfigLoader::getAmoutOfOponents(){
-	return 0;
+	return root["other"]["amountOfOponents"].asInt();
 }
 
 int ConfigLoader::getAmountOfSpecialPoints(){
-	return 0;
+	return root["other"]["amoutOfSpecialPoints"].asInt();
 }
 
 CoordType ConfigLoader::getPlayerSpeed(){
-	return CoordType();
+	return root["other"]["playerSpeed"].asFloat();
 }
 
 CoordType ConfigLoader::getOponentSpeed(){
-	return CoordType();
+	return root["other"]["oponentSpeed"].asFloat();
 }
 
 int ConfigLoader::getMainWindowWidth(){
-	return 0;
+	return root["other"]["windowSize"][0].asInt();
 }
 
 int ConfigLoader::getMainWindowHeight(){
-	return 0;
+	return root["other"]["windowSize"][1].asInt();
 }
