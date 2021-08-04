@@ -2,9 +2,10 @@
 
 
 void OponentManager::createOponents(){
+	CoordType opSpeed = CONFIG.getOponentSpeed();
 	for (int i = 0; i < numberOfOponents; ++i) {
 		ops.push_back({ getRandPosition(),
-						std::make_shared<MoveAlg>(0.1f) });
+						std::make_shared<MoveAlg>(opSpeed) });
 	}
 }
 

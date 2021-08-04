@@ -40,6 +40,7 @@ public:
 	CoordType getOponentSpeed();
 	int getMainWindowWidth();
 	int getMainWindowHeight();
+	int getStartDelay_s();
 
 
 
@@ -78,7 +79,8 @@ private:
 		{"amountOfSpecialPoints",&JsonVal::isUInt},
 		{"playerSpeed",			&JsonVal::isDouble},
 		{"oponentSpeed",		&JsonVal::isDouble},
-		{"windowSize",			&JsonVal::isArray}
+		{"windowSize",			&JsonVal::isArray},
+		{"startDelay_s",        &JsonVal::isUInt},	
 	};
 
 	bool isJSONhaveRequiredFields();

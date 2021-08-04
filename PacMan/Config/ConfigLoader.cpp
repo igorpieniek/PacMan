@@ -146,3 +146,7 @@ int ConfigLoader::getMainWindowWidth(){
 int ConfigLoader::getMainWindowHeight(){
 	return root["other"]["windowSize"][1].asInt();
 }
+
+int ConfigLoader::getStartDelay_s(){
+	return root["other"]["startDelay_s"].asInt();
+}

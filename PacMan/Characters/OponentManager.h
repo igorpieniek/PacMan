@@ -5,6 +5,7 @@
 #include "RandMove.h"
 #include "MapManager.h"
 #include "Mediator.h"
+#include "ConfigLoader.h"
 #include <vector>
 #include <map>
 #include <cstdlib>

@@ -25,6 +25,7 @@
 		"playerPosition": [1,1],
 		"amountOfOponents": 5,
 		"amountOfSpecialPoints": 8,
+		"startDelay_s": 5,
 		"playerSpeed": 0.2,
 		"oponentSpeed": 0.2,
 		"windowSize": [640,640]
