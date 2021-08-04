@@ -25,11 +25,11 @@ public:
 private:
 	void notifyPlayerPosition(Position& pos)override {};
 
-	std::vector<std::string> ghostPaths = ConfigLoader::instance().getOponentsImgPaths();
-	std::string mapPath	 = ConfigLoader::instance().getDynamicMapImgPath();
-	std::string playerPath = ConfigLoader::instance().getPlayerImgPath();
-	std::string cookiePath = ConfigLoader::instance().getPointImgPath();
-	std::string heartPath  = ConfigLoader::instance().getHeartImgPath();
+	std::vector<std::string> ghostPaths = CONFIG.getOponentsImgPaths();
+	std::string mapPath	 = CONFIG.getDynamicMapImgPath();
+	std::string playerPath = CONFIG.getPlayerImgPath();
+	std::string cookiePath = CONFIG.getPointImgPath();
+	std::string heartPath  = CONFIG.getHeartImgPath();
 
 
 	std::vector<Drafter> ghosts;

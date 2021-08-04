@@ -8,6 +8,9 @@
 #include <map>
 #include "Player.h"
 
+
+#define CONFIG ConfigLoader::instance()
+
 #define CONFIG_PATH "config.json"
 
 class ConfigLoader{
