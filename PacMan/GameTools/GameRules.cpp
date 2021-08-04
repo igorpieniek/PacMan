@@ -4,7 +4,7 @@ GameRules::GameRules(std::vector<std::shared_ptr<GameMediatorComponent>> comp) :
 					components(comp), GameMediator()
 {
 	setComponentsMediator();
-	disableMotionForTime(3);
+	disableMotionForTime(startDelay);
 };
 
 
@@ -26,7 +26,7 @@ void GameRules::notify(Event evt){
 		std::cout << "GameRules: PLAYER_CATCHED\n";
 		notifyAll(Event::LIFE_LOST);
 		notifyAll(Event::RESTART_POSITIONS);
-		disableMotionForTime(2);
+		disableMotionForTime(startDelay);
 
 		break;
 

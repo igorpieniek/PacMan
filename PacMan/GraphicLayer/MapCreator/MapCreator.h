@@ -5,6 +5,7 @@
 #include "ImageConcat.h"
 #include <map>
 #include <string>
+#include "ConfigLoader.h"
 
 
 
@@ -13,19 +14,19 @@ public:
 	void create();
 	std::string getNewFileName()const;
 private:
-	const std::string  newMapFile = "images/newMap.png";
+	const std::string  newMapFile = CONFIG.getDynamicMapImgPath();
 	std::map<MapPatternType, std::string> imagePathMap = {
-		{MapPatternType::FREE ,				 "images/empty.png"},
-		{MapPatternType::VERTICAL ,			 "images/vertical.png"},
-		{MapPatternType::HORIZONTAL ,		 "images/horizontal.png"},
-		{MapPatternType::CORNER_CONCAVE_NE , "images/corner_NE.png"},
-		{MapPatternType::CORNER_CONCAVE_SE , "images/corner_SE.png"},
-		{MapPatternType::CORNER_CONCAVE_NW , "images/corner_NW.png"},
-		{MapPatternType::CORNER_CONCAVE_SW , "images/corner_SW.png"},
-		{MapPatternType::CORNER_CONVEX_NE ,  "images/corner_SW.png"},
-		{MapPatternType::CORNER_CONVEX_NW ,  "images/corner_SE.png"},
-		{MapPatternType::CORNER_CONVEX_SE ,  "images/corner_NW.png"},
-		{MapPatternType::CORNER_CONVEX_SW ,  "images/corner_NE.png"},
+		{MapPatternType::FREE ,				 CONFIG.getMapElementEmptyImgPath()},
+		{MapPatternType::VERTICAL ,			 CONFIG.getMapElementVerticalImgPath()},
+		{MapPatternType::HORIZONTAL ,		 CONFIG.getMapElementHorizontalImgPath()},
+		{MapPatternType::CORNER_CONCAVE_NE , CONFIG.getMapElementCornerNEImgPath()},
+		{MapPatternType::CORNER_CONCAVE_SE , CONFIG.getMapElementCornerSEImgPath()},
+		{MapPatternType::CORNER_CONCAVE_NW , CONFIG.getMapElementCornerNWImgPath()},
+		{MapPatternType::CORNER_CONCAVE_SW , CONFIG.getMapElementCornerSWImgPath()},
+		{MapPatternType::CORNER_CONVEX_NE ,  CONFIG.getMapElementCornerSWImgPath()},
+		{MapPatternType::CORNER_CONVEX_NW ,  CONFIG.getMapElementCornerSEImgPath()},
+		{MapPatternType::CORNER_CONVEX_SE ,  CONFIG.getMapElementCornerNWImgPath()},
+		{MapPatternType::CORNER_CONVEX_SW ,  CONFIG.getMapElementCornerNEImgPath()},
 	};
 };
 

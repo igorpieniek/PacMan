@@ -4,6 +4,7 @@
 #include "Timer.h"
 #include <iostream>
 #include <vector>
+#include "ConfigLoader.h"
 
 
 class GameRules: public GameMediator{
@@ -15,6 +16,7 @@ public:
 
 private:
 	std::vector<std::shared_ptr<GameMediatorComponent>> components;
+	int startDelay = CONFIG.getStartDelay_s();
 
 	void notifyAll(Event evt);
 	void setComponentsMediator();
