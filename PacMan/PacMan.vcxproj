@@ -183,6 +183,12 @@
     <ClCompile Include="GraphicLayer\PlayerDrafter.cpp" />
     <ClCompile Include="Behaviours\PlayerMovement.cpp" />
     <ClCompile Include="GenericTools\Timer.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_tables.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Vendor\json\json_reader.cpp" />
     <ClCompile Include="Vendor\json\json_value.cpp" />
     <ClCompile Include="Vendor\json\json_writer.cpp" />
@@ -203,6 +209,13 @@
     <ClInclude Include="GraphicLayer\MapCreator\ImageConcat.h" />
     <ClInclude Include="GraphicLayer\MapCreator\ImageData.h" />
     <ClInclude Include="GraphicLayer\HeartDrafter.h" />
+    <ClInclude Include="Vendor\imgui\imconfig.h" />
+    <ClInclude Include="Vendor\imgui\imgui.h" />
+    <ClInclude Include="Vendor\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="Vendor\imgui\imgui_internal.h" />
+    <ClInclude Include="Vendor\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Vendor\imgui\imstb_textedit.h" />
+    <ClInclude Include="Vendor\imgui\imstb_truetype.h" />
     <ClInclude Include="Vendor\json\allocator.h" />
     <ClInclude Include="Vendor\json\assertions.h" />
     <ClInclude Include="Vendor\json\config.h" />
