@@ -13,6 +13,7 @@
 #include "Movement.h"
 #include <algorithm>
 #include "ConfigLoader.h"
+#include "Menu/PointCounter.h"
 
 class GraphicGLManager :public GraphicManagerInterface, public GameMediatorComponent {
 public:
@@ -37,6 +38,8 @@ private:
 	PlayerDrafter plDrafter;
 	CookieDrafter cookieDrafter;
 	HeartDrafter heartDrafter;
+
+	PointCounter counterDrafter;
 
 	void drawCookies();
 	void drawPlayer();

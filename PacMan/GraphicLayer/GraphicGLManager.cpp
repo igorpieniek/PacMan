@@ -30,6 +30,8 @@ void GraphicGLManager::draw(){
 	drawPlayer();
 	drawGhosts();
 	drawHealth();
+
+	counterDrafter.setValue(points->getPoints());
 	
 	Render2D::instance().process();
 }

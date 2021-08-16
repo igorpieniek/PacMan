@@ -22,6 +22,8 @@
 #include "imgui/imgui_impl_opengl3.h"
 #include "imgui/imgui_impl_glfw.h"
 
+
+
 std::shared_ptr<PlayerMovement> playerMovement = std::make_shared<PlayerMovement>(CONFIG.getPlayerSpeed());
 std::shared_ptr<Player> pl = std::make_shared<Player>(CONFIG.getPlayerInitialPosition(), playerMovement);
 
@@ -111,8 +113,9 @@ int main() {
 		ImGui::NewFrame();
 
 		if (demoWindow) {
-			//ImGui::ShowDemoWindow(&demoWindow);
+			ImGui::ShowDemoWindow(&demoWindow);
 		}
+		/*
 		ImGui::Begin("window", NULL, window_flags);                          // Create a window called "Hello, world!" and append into it.
 
 		
@@ -122,13 +125,30 @@ int main() {
 		ImGui::Text(std::to_string(points->getPoints()).c_str() );
 	
 		ImGui::End();
-
+		*/
+		ImGui::Begin(" ", NULL, ImGuiWindowFlags_NoTitleBar | 
+								ImGuiWindowFlags_MenuBar | 
+								ImGuiWindowFlags_NoNav | 
+								ImGuiWindowFlags_NoCollapse|
+			ImGuiWindowFlags_NoDecoration);
+		ImGui::SetWindowFontScale(2.f);
+		ImGui::Text("Are you ready?");
+		ImGui::BeginGroup();
+		if( ImGui::Button("Yes") )
+			std::cout << "Button clicked" << std::endl;
+		ImGui::SameLine();
+		if (ImGui::Button("No, close window"))
+			exit(0);
+		ImGui::EndGroup();
+		ImGui::End();
+		
 		opManag->updateAll();
 		pl->update();
 		Position playerPos = pl->getPosition();
 		gameRules.notifyPlayerPosition(playerPos);
 
 		graphManag->draw();
+
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 

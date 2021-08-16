@@ -183,6 +183,7 @@
     <ClCompile Include="GraphicLayer\PlayerDrafter.cpp" />
     <ClCompile Include="Behaviours\PlayerMovement.cpp" />
     <ClCompile Include="GenericTools\Timer.cpp" />
+    <ClCompile Include="GraphicLayer\Menu\PointCounter.cpp" />
     <ClCompile Include="Vendor\imgui\imgui.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_demo.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_draw.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="GraphicLayer\MapCreator\ImageConcat.h" />
     <ClInclude Include="GraphicLayer\MapCreator\ImageData.h" />
     <ClInclude Include="GraphicLayer\HeartDrafter.h" />
+    <ClInclude Include="GraphicLayer\Menu\PointCounter.h" />
     <ClInclude Include="Vendor\imgui\imconfig.h" />
     <ClInclude Include="Vendor\imgui\imgui.h" />
     <ClInclude Include="Vendor\imgui\imgui_impl_glfw.h" />
