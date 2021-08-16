@@ -186,6 +186,7 @@
     <ClCompile Include="Vendor\imgui\imgui.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_demo.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_tables.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_widgets.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="GraphicLayer\HeartDrafter.h" />
     <ClInclude Include="Vendor\imgui\imconfig.h" />
     <ClInclude Include="Vendor\imgui\imgui.h" />
+    <ClInclude Include="Vendor\imgui\imgui_impl_glfw.h" />
     <ClInclude Include="Vendor\imgui\imgui_impl_opengl3.h" />
     <ClInclude Include="Vendor\imgui\imgui_internal.h" />
     <ClInclude Include="Vendor\imgui\imstb_rectpack.h" />
