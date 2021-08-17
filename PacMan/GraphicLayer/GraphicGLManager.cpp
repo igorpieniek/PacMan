@@ -30,9 +30,10 @@ void GraphicGLManager::draw(){
 	drawPlayer();
 	drawGhosts();
 	drawHealth();
+	drawPointsCounter();
 
-	counterDrafter.setValue(points->getPoints());
-	
+	drawStartMenuProcess();
+
 	Render2D::instance().process();
 }
 
@@ -44,6 +45,27 @@ void GraphicGLManager::drawCookies(){
 		}
 		cookieDrafter.draw(cookie, Direction::EAST);
 	}
+}
+
+void GraphicGLManager::drawPointsCounter(){
+	counterDrafter.setValue(points->getPoints());
+}
+
+void GraphicGLManager::drawStartMenuProcess(){
+	if (!isStartButtonPressed) {
+		if (startMenu.drawAndGetStatus()) {
+			 isStartButtonPressed = true;
+			 mediator->notify(Event::START_GAME);
+		}
+	}
+}
+
+void GraphicGLManager::drawStartCounterProcess(){
+
+}
+
+void GraphicGLManager::drawRetryMenuProcess(){
+
 }
 
 void GraphicGLManager::drawPlayer(){

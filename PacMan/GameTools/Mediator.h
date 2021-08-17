@@ -3,6 +3,7 @@
 #include "Position.h"
 
 enum class Event {
+	START_GAME,
 	SPECIAL_POINT_REACHED,
 	ALL_POINTS_COLLECTED,
 	DISABLE_ALL_OPONENTS,

@@ -4,12 +4,16 @@ GameRules::GameRules(std::vector<std::shared_ptr<GameMediatorComponent>> comp) :
 					components(comp), GameMediator()
 {
 	setComponentsMediator();
-	disableMotionForTime(startDelay);
+	notifyAll(Event::STOP_MOTION);
+	
 };
 
 
 void GameRules::notify(Event evt){
 	switch (evt){
+	case Event::START_GAME:
+		disableMotionForTime(startDelay);
+		break;
 	case Event::SPECIAL_POINT_REACHED:
 		//disable all opponents
 		//start timer of special state - oponents disable
@@ -19,7 +23,7 @@ void GameRules::notify(Event evt){
 	case Event::ALL_POINTS_COLLECTED:
 		//exit - win
 		std::cout << "GameRules: ALL_POINTS_COLLECTED:\n";
-		exit(EXIT_SUCCESS);
+		//exit(EXIT_SUCCESS);
 		break;
 	case Event::PLAYER_CATCHED:
 		//decrement live

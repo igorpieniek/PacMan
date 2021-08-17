@@ -90,20 +90,6 @@ int main() {
 						= std::make_shared<GraphicGLManager>(points, pl, opManag);
 	GameRules gameRules({ points, opManag, pl, graphManag });
 
-	bool demoWindow = true;
-	ImGuiWindowFlags window_flags = 0;
-	 window_flags |= ImGuiWindowFlags_NoTitleBar;
-	window_flags |= ImGuiWindowFlags_NoScrollbar;
-	//window_flags |= ImGuiWindowFlags_MenuBar;
-	//window_flags |= ImGuiWindowFlags_NoMove;
-	 //window_flags |= ImGuiWindowFlags_NoResize;
-	window_flags |= ImGuiWindowFlags_NoCollapse;
-	window_flags |= ImGuiWindowFlags_NoNav;
-	window_flags |= ImGuiWindowFlags_NoBackground;
-	window_flags |= ImGuiWindowFlags_NoDecoration;
-	//if (no_bring_to_front)  window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus;
-	//if (no_close)           p_open = NULL; // Don't pass our bool* to Begin
-
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
@@ -112,36 +98,6 @@ int main() {
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		if (demoWindow) {
-			ImGui::ShowDemoWindow(&demoWindow);
-		}
-		/*
-		ImGui::Begin("window", NULL, window_flags);                          // Create a window called "Hello, world!" and append into it.
-
-		
-
-		ImGui::SetNextWindowPos(ImVec2(0.8*CONFIG.getMainWindowWidth(), 0.95*CONFIG.getMainWindowHeight()), ImGuiCond_FirstUseEver);
-		ImGui::SetWindowFontScale(3.f);
-		ImGui::Text(std::to_string(points->getPoints()).c_str() );
-	
-		ImGui::End();
-		*/
-		ImGui::Begin(" ", NULL, ImGuiWindowFlags_NoTitleBar | 
-								ImGuiWindowFlags_MenuBar | 
-								ImGuiWindowFlags_NoNav | 
-								ImGuiWindowFlags_NoCollapse|
-			ImGuiWindowFlags_NoDecoration);
-		ImGui::SetWindowFontScale(2.f);
-		ImGui::Text("Are you ready?");
-		ImGui::BeginGroup();
-		if( ImGui::Button("Yes") )
-			std::cout << "Button clicked" << std::endl;
-		ImGui::SameLine();
-		if (ImGui::Button("No, close window"))
-			exit(0);
-		ImGui::EndGroup();
-		ImGui::End();
-		
 		opManag->updateAll();
 		pl->update();
 		Position playerPos = pl->getPosition();

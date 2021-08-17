@@ -14,6 +14,7 @@
 #include <algorithm>
 #include "ConfigLoader.h"
 #include "Menu/PointCounter.h"
+#include "Menu/StartMenu.h"
 
 class GraphicGLManager :public GraphicManagerInterface, public GameMediatorComponent {
 public:
@@ -40,8 +41,14 @@ private:
 	HeartDrafter heartDrafter;
 
 	PointCounter counterDrafter;
+	StartMenu startMenu;
+	bool isStartButtonPressed = false;
 
 	void drawCookies();
+	void drawPointsCounter();
+	void drawStartMenuProcess();
+	void drawStartCounterProcess();
+	void drawRetryMenuProcess();
 	void drawPlayer();
 	void drawGhosts();
 	void drawHealth();
