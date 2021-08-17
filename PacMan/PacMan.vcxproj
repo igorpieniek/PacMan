@@ -185,6 +185,7 @@
     <ClCompile Include="GenericTools\Timer.cpp" />
     <ClCompile Include="GraphicLayer\Menu\PointCounter.cpp" />
     <ClCompile Include="GraphicLayer\Menu\StartMenu.cpp" />
+    <ClCompile Include="GraphicLayer\Menu\StartCounter.cpp" />
     <ClCompile Include="Vendor\imgui\imgui.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_demo.cpp" />
     <ClCompile Include="Vendor\imgui\imgui_draw.cpp" />
@@ -214,6 +215,7 @@
     <ClInclude Include="GraphicLayer\HeartDrafter.h" />
     <ClInclude Include="GraphicLayer\Menu\PointCounter.h" />
     <ClInclude Include="GraphicLayer\Menu\StartMenu.h" />
+    <ClInclude Include="GraphicLayer\Menu\StartCounter.h" />
     <ClInclude Include="Vendor\imgui\imconfig.h" />
     <ClInclude Include="Vendor\imgui\imgui.h" />
     <ClInclude Include="Vendor\imgui\imgui_impl_glfw.h" />

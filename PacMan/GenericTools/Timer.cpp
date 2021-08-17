@@ -22,7 +22,7 @@ void Timer::process(){
         updateTime();
         executeCallbacks();
         deleteUsedCallbacks();
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 
 }
@@ -31,7 +31,7 @@ void Timer::deleteUsedCallbacks(){
     auto itersToRemove = std::remove_if(callbacks.begin(),
         callbacks.end(),
         [](const CallbackElement& cb) { return cb.isUsed; });
-
+    
     callbacks.erase(itersToRemove, callbacks.end());
 }
 
