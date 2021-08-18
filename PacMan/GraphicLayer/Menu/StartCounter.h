@@ -15,8 +15,8 @@ public:
 private:
 	const float scale = 3.0f;
 	const float initOpacity = 100.0f;
-	const float Xsize = 400;
-	const float Ysize = 400;
+	const float Xsize = 190;
+	const float Ysize = 80;
 	const float Xpos = 0.5f * CONFIG.getMainWindowWidth() - 0.5 * Xsize;
 	const float Ypos = 0.5f * CONFIG.getMainWindowHeight() - 0.5 * Ysize;
 
@@ -30,9 +30,9 @@ private:
 		ImGuiWindowFlags_NoScrollbar |
 		ImGuiWindowFlags_NoCollapse |
 		ImGuiWindowFlags_NoNav |
-		ImGuiWindowFlags_NoBackground |
 		ImGuiWindowFlags_NoDecoration |
 		ImGuiWindowFlags_NoMove;
 
 	void changeTimeCb();
+	void setTextCenter(std::string text);
 };

@@ -14,7 +14,7 @@ public:
 private:
 	const float scale = 2.0f;
 	const float Xsize = 450;
-	const float Ysize = 200;
+	const float Ysize = 130;
 	const float Xpos = 0.5f * CONFIG.getMainWindowWidth() - 0.5* Xsize;
 	const float Ypos = 0.5f * CONFIG.getMainWindowHeight() - 0.5*Ysize;
 	ImGuiWindowFlags window_flags =
@@ -25,5 +25,7 @@ private:
 		ImGuiWindowFlags_NoDecoration |
 		ImGuiWindowFlags_NoMove|
 		ImGuiWindowFlags_NoResize;
+
+
 };
 
