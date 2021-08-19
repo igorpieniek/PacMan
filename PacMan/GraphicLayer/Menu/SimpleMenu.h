@@ -12,12 +12,14 @@ class SimpleMenu{
 protected:
 	SimpleMenu(float w, float h);
 
-	enum class SimpleAnswear {
-		YES, NO
+	enum class Answear {
+		NOTHING, YES, NO 
 	};
 
 	void setMessages(std::string quest, std::string y, std::string n);
-	SimpleAnswear drawAndGetStatus();
+	Answear draw();
+	
+	std::string extra;
 
 private:
 	const float scale = 2.0f;
