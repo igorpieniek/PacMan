@@ -12,12 +12,17 @@ void StartCounter::draw(){
 			Timer::instance().addPeriodElapsedCallback(std::bind(&StartCounter::changeTimeCb, this), 1);
 			isTimerInitialized = true;
 		}
-		ImGui::SetNextWindowPos(ImVec2(Xpos, Ypos));
-		ImGui::SetNextWindowSize(ImVec2(Xsize, Ysize));
-		ImGui::Begin("startCounter", NULL, window_flags);
-		ImGui::SameLine((Xsize / 2) - (Ysize / 2));
+		ImGui::SetNextWindowPos(ImVec2(XposWin, YposWin));
+		ImGui::SetNextWindowSize(ImVec2(XsizeWin, YsizeWin));
+		ImGui::Begin("startCounterWind", NULL, window_flags);
+
+		ImGui::End();
+
+		ImGui::SetNextWindowPos(ImVec2(XposWin, YposText));
+		ImGui::SetNextWindowSize(ImVec2(XsizeWin, YsizeText));
+		ImGui::Begin("startCounter", NULL, window_flags | ImGuiWindowFlags_NoBackground );
 		ImGui::SetWindowFontScale(scale);
-		ImGui::Dummy(ImVec2(0.0f, 20.0f));
+		
 		if (currentTime == 0) {
 			setTextCenter("START!");
 		}

@@ -14,11 +14,14 @@ public:
 
 private:
 	const float scale = 3.0f;
-	const float initOpacity = 100.0f;
-	const float Xsize = 190;
-	const float Ysize = 80;
-	const float Xpos = 0.5f * CONFIG.getMainWindowWidth() - 0.5 * Xsize;
-	const float Ypos = 0.5f * CONFIG.getMainWindowHeight() - 0.5 * Ysize;
+	const float XsizeWin = 190;
+	const float YsizeWin = 200;
+	const float XposWin = 0.5f * CONFIG.getMainWindowWidth() - 0.5 * XsizeWin;
+	const float YposWin = 0.5f * CONFIG.getMainWindowHeight() - 0.5 * YsizeWin;
+
+	const float YsizeText = 80;
+	const float YposText = 0.5f * CONFIG.getMainWindowHeight() - 0.5 * YsizeText;
+	
 
 	int time = CONFIG.getStartDelay_s();
 	int currentTime = time;
