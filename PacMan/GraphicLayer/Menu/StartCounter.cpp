@@ -21,15 +21,21 @@ void StartCounter::draw(){
 		ImGui::SetNextWindowPos(ImVec2(XposWin, YposText));
 		ImGui::SetNextWindowSize(ImVec2(XsizeWin, YsizeText));
 		ImGui::Begin("startCounter", NULL, window_flags | ImGuiWindowFlags_NoBackground );
-		ImGui::SetWindowFontScale(scale);
+		ImGui::SetWindowFontScale(currentScale);
+		
+		std::string msg;
 		
 		if (currentTime == 0) {
-			setTextCenter("START!");
+			msg = "START!";
 		}
 		else {
-			setTextCenter(std::to_string(currentTime));
+			msg = std::to_string(currentTime);
 		}
+		setTextCenter(msg);
+		ImGui::TextColored(ImVec4(1, 1, 0, currentOpacity), msg.c_str());
 		ImGui::End();
+		currentOpacity -= opacityStep;
+		currentScale += scaleStep;
 	}
 }
 
@@ -37,11 +43,14 @@ void StartCounter::changeTimeCb(){
 	isTimerInitialized = false;
 	if (currentTime > 0) {
 		currentTime--;
+
 	}
 	else {
 		currentTime = time;
 		isStarted = false;
 	}
+	currentOpacity = opacity;
+	currentScale = scale;
 }
 
 void StartCounter::setTextCenter(std::string text) {
@@ -50,6 +59,4 @@ void StartCounter::setTextCenter(std::string text) {
 		ImGui::GetWindowSize().x / 2 -
 		font_size + (font_size / 2)
 	);
-
-	ImGui::Text(text.c_str());
 }
