@@ -1,0 +1,50 @@
+#include "SimpleMenu.h"
+
+SimpleMenu::SimpleMenu(float w, float h): Xsize(w), Ysize(h){
+	Xpos = 0.5f * CONFIG.getMainWindowWidth() - 0.5 * Xsize;
+	Ypos = 0.5f * CONFIG.getMainWindowHeight() - 0.5 * Ysize;
+}
+
+void SimpleMenu::setMessages(std::string quest, std::string y, std::string n){
+	question = quest;
+	yes = y;
+	no = n;
+}
+
+SimpleMenu::SimpleAnswear SimpleMenu::drawAndGetStatus(){
+	SimpleAnswear answ = SimpleAnswear::NOTHING;
+	ImGui::SetNextWindowPos(ImVec2(Xpos, Ypos));
+	ImGui::SetNextWindowSize(ImVec2(Xsize, Ysize));
+	ImGui::Begin(std::string("StartMenu"+question).c_str(), NULL, window_flags);
+	ImGui::SetWindowFontScale(scale);
+
+	setTextCenter(question);
+	ImGui::Text(question.c_str());
+
+	ImGui::Dummy(ImVec2(0, 20));
+	ImGui::BeginGroup();
+
+	ImGui::Dummy(ImVec2(Xsize / 4, 0));
+	ImGui::SameLine();
+	if (ImGui::Button(yes.c_str()))
+		answ = SimpleAnswear::YES;
+
+	ImGui::SameLine();
+	ImGui::Dummy(ImVec2(Xsize / 4, 0));
+	ImGui::SameLine();
+	if (ImGui::Button(no.c_str()))
+		answ = SimpleAnswear::NO;
+	ImGui::EndGroup();
+	ImGui::Dummy(ImVec2(0, 1));
+	ImGui::End();
+
+	return answ;
+}
+
+void SimpleMenu::setTextCenter(std::string& text) {
+	float font_size = ImGui::GetFontSize() * text.size() / 2;
+	ImGui::SameLine(
+		ImGui::GetWindowSize().x / 2 -
+		font_size + (font_size / 2)
+	);
+}

@@ -13,7 +13,7 @@ public:
 	void draw();
 
 private:
-	const float scale = 3.0f;
+
 	const float XsizeWin = CONFIG.getMainWindowWidth()-10;
 	const float YsizeWin = 220;
 	const float XposWin = 0.5f * CONFIG.getMainWindowWidth() - 0.5 * XsizeWin;
@@ -22,9 +22,11 @@ private:
 	const float YsizeText = 80;
 	const float YposText = 0.5f * CONFIG.getMainWindowHeight() - 0.5 * YsizeText;
 	
-	float opacity = 1.0f;
+	const float opacity = 1.0f;
 	float currentOpacity = opacity;
 	float opacityStep = 0.04f;
+
+	const float scale = 3.0f;
 	float currentScale = scale;
 	float scaleStep = 0.1f;
 
