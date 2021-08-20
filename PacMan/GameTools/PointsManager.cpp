@@ -60,6 +60,7 @@ void PointsManager::removeCellPoint(CellPointIter& it){
 void PointsManager::notify(Event evt){
 	if (evt == Event::RESET_GAME) {
 		currentPoints = 0;
+		cellPoints.clear();
 		createCellPointArray();
 	}
 }

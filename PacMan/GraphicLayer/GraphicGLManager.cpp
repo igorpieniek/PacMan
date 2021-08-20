@@ -76,7 +76,8 @@ void GraphicGLManager::drawFinishMenuProcess(){
 }
 
 void GraphicGLManager::drawStartCounterProcess(){
-	startCounter.draw();
+	if (!isRetryButtonPressed)
+			startCounter.draw();
 }
 
 
