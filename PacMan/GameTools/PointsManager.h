@@ -25,6 +25,7 @@ public:
 private:
 	int currentPoints;
 	int specialPointsAmount;
+	int firstPointVal = 0;
 	std::vector<CellPoint> cellPoints;
 
 	using CellPointIter = std::vector<CellPoint>::iterator;

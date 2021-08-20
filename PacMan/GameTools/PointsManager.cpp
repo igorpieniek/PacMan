@@ -25,7 +25,6 @@ void PointsManager::notifyPlayerPosition(Position& pos) {
 		return;
 	}
 
-
 	auto it = getCellPointIter(pos);
 	if (it != cellPoints.end()) {
 		addPoints(it);
@@ -43,6 +42,10 @@ PointsManager::CellPointIter PointsManager::getCellPointIter(Position& pos) {
 }
 
 void  PointsManager::addPoints(CellPointIter& it) {	
+	if (!firstPointVal) {
+		firstPointVal = it->getPoints();
+		currentPoints = -firstPointVal;
+	}
 	currentPoints += it->getPoints();
 }
 
@@ -59,7 +62,7 @@ void PointsManager::removeCellPoint(CellPointIter& it){
 
 void PointsManager::notify(Event evt){
 	if (evt == Event::RESET_GAME) {
-		currentPoints = 0;
+		currentPoints = -firstPointVal;
 		cellPoints.clear();
 		createCellPointArray();
 	}
