@@ -15,6 +15,7 @@
 #include "ConfigLoader.h"
 #include "Menu/PointCounter.h"
 #include "Menu/StartMenu.h"
+#include "Menu/FinishMenu.h"
 #include "Menu/StartCounter.h"
 
 class GraphicGLManager :public GraphicManagerInterface, public GameMediatorComponent {
@@ -46,11 +47,15 @@ private:
 	StartCounter startCounter;
 	bool isStartButtonPressed = false;
 
+	FinishMenu finishMenu;
+	bool isRetryButtonPressed = false;
+	
+
 	void drawCookies();
 	void drawPointsCounter();
 	void drawStartMenuProcess();
+	void drawFinishMenuProcess();
 	void drawStartCounterProcess();
-	void drawRetryMenuProcess();
 	void drawPlayer();
 	void drawGhosts();
 	void drawHealth();

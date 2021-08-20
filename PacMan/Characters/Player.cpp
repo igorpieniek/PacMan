@@ -9,8 +9,6 @@ Player::Player(Position startPos, std::shared_ptr<MoveAlgorithm> moveAlg) :
 void Player::notify(Event evt){
 	switch (evt)
 	{
-
-
 	case Event::LIFE_LOST:
 		--numberOfLifes;
 		if (numberOfLifes == 0) {
@@ -30,6 +28,9 @@ void Player::notify(Event evt){
 		break;
 	case Event::ALLOW_MOTION:
 		unblockMotion();
+		break;
+	case Event::RESET_GAME:
+		numberOfLifes = 3;
 		break;
 	default:
 		break;

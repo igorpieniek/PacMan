@@ -28,16 +28,27 @@ void GameRules::notify(Event evt){
 	case Event::PLAYER_CATCHED:
 		//decrement live
 		std::cout << "GameRules: PLAYER_CATCHED\n";
+		disableMotionForTime(startDelay);
 		notifyAll(Event::LIFE_LOST);
 		notifyAll(Event::RESTART_POSITIONS);
-		disableMotionForTime(startDelay);
+		
 
 		break;
 
 	case Event::END_OF_LIVES:
 		//exit - lose
 		std::cout << "GameRules: END_OF_LIVES:\n";
-		exit(EXIT_SUCCESS);
+		Timer::instance().reset();
+		notifyAll(Event::STOP_MOTION);
+		notifyAll(Event::END_OF_LIVES);
+
+		break;
+	case Event::RESET_GAME:
+
+		notifyAll(Event::RESTART_POSITIONS);
+		notifyAll(Event::RESET_GAME);
+		
+		
 		break;
 	default:
 		//usused events

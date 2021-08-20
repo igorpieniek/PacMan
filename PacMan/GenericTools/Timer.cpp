@@ -11,6 +11,10 @@ void Timer::addPeriodElapsedCallback(std::function<void()> fun, double sec){
     callbacks.push_back({ fun, sec, currentTime, false });
 }
 
+void Timer::reset(){
+    callbacks.clear();
+}
+
 Timer::Timer(){
     updateTime();
     thrd = std::thread(&Timer::process, this);

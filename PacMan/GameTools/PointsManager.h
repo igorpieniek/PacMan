@@ -15,6 +15,7 @@ public:
 	};
 
 	int getPoints()const { return currentPoints; };
+	bool isAllPointsReached()const;
 
 	void notify(Event evt) override;
 	void notifyPlayerPosition(Position& pos) override;
@@ -29,7 +30,7 @@ private:
 	using CellPointIter = std::vector<CellPoint>::iterator;
 
 
-	bool isAllPointsReached();
+	
 	void createCellPointArray();
 	void addPoints(CellPointIter& it);
 	void removeCellPoint(CellPointIter& it);

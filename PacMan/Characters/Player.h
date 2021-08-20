@@ -30,7 +30,7 @@ private:
 	Position prevPos;
 	bool is_moving = false;
 
-	int numberOfLifes = 3;
+	int numberOfLifes = 3; //add to config loader
 
 	void updatePrevPosAndDir(Position& suspectPos, Position& current);
 	 

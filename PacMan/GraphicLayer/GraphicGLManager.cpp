@@ -34,6 +34,7 @@ void GraphicGLManager::draw(){
 
 	drawStartMenuProcess();
 	drawStartCounterProcess();
+	drawFinishMenuProcess();
 
 	Render2D::instance().process();
 }
@@ -62,13 +63,22 @@ void GraphicGLManager::drawStartMenuProcess(){
 	}
 }
 
+void GraphicGLManager::drawFinishMenuProcess(){
+	if (isRetryButtonPressed) {
+		if (finishMenu.drawAndGetStatus(points->isAllPointsReached(),
+										points->getPoints())) {
+			isRetryButtonPressed = false;
+			mediator->notify(Event::RESET_GAME);
+			mediator->notify(Event::START_GAME);
+			startCounter.start();
+		}
+	}
+}
+
 void GraphicGLManager::drawStartCounterProcess(){
 	startCounter.draw();
 }
 
-void GraphicGLManager::drawRetryMenuProcess(){
-
-}
 
 void GraphicGLManager::drawPlayer(){
 	plDrafter.updateIsMoving(player->isMoving());
@@ -114,6 +124,7 @@ void GraphicGLManager::notify(Event evt) {
 	case Event::PLAYER_CATCHED:
 		break;
 	case Event::END_OF_LIVES:
+		isRetryButtonPressed = true;
 		break;
 	case Event::LIFE_LOST:
 		break;

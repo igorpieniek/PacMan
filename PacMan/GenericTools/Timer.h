@@ -9,6 +9,7 @@ public:
 	static Timer& instance();
 
 	void addPeriodElapsedCallback(std::function<void()> fun,double sec);
+	void reset();
 
 private:
 	Timer();
