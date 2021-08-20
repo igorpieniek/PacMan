@@ -23,7 +23,8 @@ void GameRules::notify(Event evt){
 	case Event::ALL_POINTS_COLLECTED:
 		//exit - win
 		std::cout << "GameRules: ALL_POINTS_COLLECTED:\n";
-		//exit(EXIT_SUCCESS);
+		notifyAll(Event::STOP_MOTION);
+		notifyAll(evt);
 		break;
 	case Event::PLAYER_CATCHED:
 		//decrement live

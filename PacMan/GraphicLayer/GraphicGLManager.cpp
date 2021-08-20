@@ -116,8 +116,6 @@ void GraphicGLManager::notify(Event evt) {
 	{
 	case Event::SPECIAL_POINT_REACHED:
 		break;
-	case Event::ALL_POINTS_COLLECTED:
-		break;
 	case Event::DISABLE_ALL_OPONENTS:
 		break;
 	case Event::ENABLE_ALL_OPONENTS:
@@ -125,6 +123,7 @@ void GraphicGLManager::notify(Event evt) {
 	case Event::PLAYER_CATCHED:
 		break;
 	case Event::END_OF_LIVES:
+	case Event::ALL_POINTS_COLLECTED:
 		isRetryButtonPressed = true;
 		break;
 	case Event::LIFE_LOST:
