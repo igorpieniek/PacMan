@@ -10,27 +10,15 @@ void OponentManager::createOponents(){
 }
 
 void OponentManager::updateAll() {
-	for (auto& oponent : ops) {
-		oponent.update();
-	}
-}
-
-void OponentManager::drawAll() {
-	for (auto& oponent : ops) {
-		//oponent.draw();
-	}
+	std::for_each(ops.begin(), ops.end(), [this](Oponent& op) { op.update(); });
 }
 
 void OponentManager::deactivateAll(){
-	for (auto& oponent : ops) {
-		oponent.disable();
-	}
+	std::for_each(ops.begin(), ops.end(), [this](Oponent& op) { op.disable(); });
 }
 
 void OponentManager::activeteAll(){
-	for (auto& oponent : ops) {
-		oponent.enable();
-	}
+	std::for_each(ops.begin(), ops.end(), [this](Oponent& op) { op.enable(); });
 }
 
 std::shared_ptr<Oponent> OponentManager::getOponent(int index){
@@ -40,16 +28,6 @@ std::shared_ptr<Oponent> OponentManager::getOponent(int index){
 	return nullptr;
 }
 
-bool OponentManager::isOponentsAndDraw(Position& pos){
-	auto pred = [&pos](const Oponent& oponent) {return oponent.getPosition() == pos; };
-	auto oponentIter = find_if(ops.begin(), ops.end(), pred);
-	if (oponentIter != ops.end()) {
-		//oponentIter->draw();
-		return true;
-	}
-	return false;
-}
-
 void OponentManager::notify(Event evt){
 	switch (evt){
 	case Event::DISABLE_ALL_OPONENTS:
@@ -57,25 +35,23 @@ void OponentManager::notify(Event evt){
 		deactivateAll();
 		active = false;
 		break;
+
 	case Event::ENABLE_ALL_OPONENTS:
 		std::cout << "OponentManager: ENABLE ALL\n";
 		activeteAll();
 		active = true;
 		break;
+
 	case Event::RESTART_POSITIONS:
-		for (auto& oponent : ops) {
-			oponent.restoreInitialPosition();
-		}
+		std::for_each(ops.begin(), ops.end(), [this](Oponent& op) { op.restoreInitialPosition(); });
 		break;
+
 	case Event::ALLOW_MOTION:
-		for (auto& oponent : ops) {
-			oponent.unblockMotion();
-		}
+		std::for_each(ops.begin(), ops.end(), [this](Oponent& op) { op.unblockMotion(); });
 		break;
+
 	case Event::STOP_MOTION:
-		for (auto& oponent : ops) {
-			oponent.stopMotion();
-		}
+		std::for_each(ops.begin(), ops.end(), [this](Oponent& op) { op.stopMotion(); });
 		break;
 	}
 }

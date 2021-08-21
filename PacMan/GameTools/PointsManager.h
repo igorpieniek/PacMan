@@ -30,8 +30,6 @@ private:
 
 	using CellPointIter = std::vector<CellPoint>::iterator;
 
-
-	
 	void createCellPointArray();
 	void addPoints(CellPointIter& it);
 	void removeCellPoint(CellPointIter& it);

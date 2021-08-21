@@ -10,6 +10,7 @@
 #include <map>
 #include <cstdlib>
 #include <iostream>
+#include <algorithm>
 
 
 class OponentManager: public GameMediatorComponent{
@@ -21,14 +22,10 @@ public:
 	};
 
 	void updateAll();
-	void drawAll();
 	void deactivateAll();
 	void activeteAll();
 	std::shared_ptr<Oponent> getOponent(int index);
 	int getAmountOfOponents()const { return numberOfOponents; };
-
-
-	bool isOponentsAndDraw(Position& pos); //temporary to see results
 
 	void notify(Event evt) override;
 	void notifyPlayerPosition(Position& pos) override;

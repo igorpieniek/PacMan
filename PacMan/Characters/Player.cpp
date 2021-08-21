@@ -9,7 +9,7 @@ Player::Player(Position startPos, std::shared_ptr<MoveAlgorithm> moveAlg) :
 void Player::notify(Event evt){
 	switch (evt)
 	{
-	case Event::LIFE_LOST:
+	case Event::PLAYER_CATCHED:
 		--numberOfLifes;
 		if (numberOfLifes == 0) {
 			mediator->notify(Event::END_OF_LIVES);

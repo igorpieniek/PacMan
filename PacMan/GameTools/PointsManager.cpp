@@ -1,7 +1,5 @@
 #include "PointsManager.h"
 
-
-
 void PointsManager::createCellPointArray(){
 	int counter = 0;
 	int divider = (int)(MapManager::instance().getFreePosAmount() / specialPointsAmount);
@@ -58,7 +56,6 @@ void PointsManager::checkSpecialPoint(CellPointIter& it) {
 void PointsManager::removeCellPoint(CellPointIter& it){
 	cellPoints.erase(it);
 }
-
 
 void PointsManager::notify(Event evt){
 	if (evt == Event::RESET_GAME) {

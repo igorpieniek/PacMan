@@ -112,29 +112,16 @@ std::string GraphicGLManager::getnextGhostPath(){
 
 
 void GraphicGLManager::notify(Event evt) {
-	switch (evt)
-	{
-	case Event::SPECIAL_POINT_REACHED:
-		break;
-	case Event::DISABLE_ALL_OPONENTS:
-		break;
-	case Event::ENABLE_ALL_OPONENTS:
-		break;
-	case Event::PLAYER_CATCHED:
-		break;
+	switch (evt){
 	case Event::END_OF_LIVES:
 	case Event::ALL_POINTS_COLLECTED:
 		isRetryButtonPressed = true;
 		break;
-	case Event::LIFE_LOST:
-		break;
+
 	case Event::RESTART_POSITIONS:
 		startCounter.start();
 		break;
-	case Event::ALLOW_MOTION:
-		break;
-	case Event::STOP_MOTION:
-		break;
+
 	default:
 		break;
 	}
