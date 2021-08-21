@@ -103,7 +103,7 @@ void GraphicGLManager::drawHealth(){
 }
 
 std::string GraphicGLManager::getnextGhostPath(){
-	static int counter;
+	static size_t counter;
 	if (counter >= ghostPaths.size()) {
 		counter = 0;
 	}

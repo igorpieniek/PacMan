@@ -120,4 +120,6 @@ MapPatternType MapMatchPattern::getNextTypeClockWise(const MapPatternType type){
 	default:
 		break;
 	}
+	std::cout << "Error: Unsuported MapPatternType" << std::endl;
+	return type;
 }

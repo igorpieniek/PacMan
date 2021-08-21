@@ -3,6 +3,7 @@
 #include <string>
 
 struct ImageData{
+	ImageData();
 	std::vector<unsigned char> data;
 	int width, height, stride;
 	std::string path;

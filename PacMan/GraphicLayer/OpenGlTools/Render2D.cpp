@@ -3,7 +3,6 @@
 Render2D& Render2D::instance(){
     static Render2D inst;
     return inst;
-    // TODO: tu wstawiæ instrukcjê return
 }
 
 void Render2D::init(){

@@ -32,8 +32,8 @@ public:
 	bool isCorner(Position& pos);
 	std::vector<Direction> getAllPossibleDirections(Position& pos);
 
-	CoordType getMapXSize() const { return width; };
-	CoordType getMapYSize() const { return height; };
+	CoordType getMapXSize() const { return static_cast<CoordType>(width); };
+	CoordType getMapYSize() const { return static_cast<CoordType>(height); };
 	int getFreePosAmount() const { return freePositionsAmount; };
 
 	MapManager(MapManager const&) = delete;
@@ -49,7 +49,7 @@ private:
 	int freePositionsAmount = 0;
 	void incrementFreePos(MapCell::Category cat);
 
-	int getMapBoardIndexPosition(Position& pos);
+	size_t getMapBoardIndexPosition(Position& pos);
 
 	const std::map<char, MapCell::Category> mapBindings = {
 		{'1', MapCell::Category::OBSTACLE},

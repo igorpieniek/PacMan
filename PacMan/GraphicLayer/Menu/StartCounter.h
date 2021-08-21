@@ -14,13 +14,13 @@ public:
 
 private:
 
-	const float XsizeWin = CONFIG.getMainWindowWidth()-10;
+	const float XsizeWin = (float)(CONFIG.getMainWindowWidth()-10);
 	const float YsizeWin = 220;
-	const float XposWin = 0.5f * CONFIG.getMainWindowWidth() - 0.5 * XsizeWin;
-	const float YposWin = 0.5f * CONFIG.getMainWindowHeight() - 0.5 * YsizeWin;
+	const float XposWin = 0.5f * CONFIG.getMainWindowWidth() - 0.5f * XsizeWin;
+	const float YposWin = 0.5f * CONFIG.getMainWindowHeight() - 0.5f * YsizeWin;
 
 	const float YsizeText = 80;
-	const float YposText = 0.5f * CONFIG.getMainWindowHeight() - 0.5 * YsizeText;
+	const float YposText = 0.5f * CONFIG.getMainWindowHeight() - 0.5f * YsizeText;
 	
 	const float opacity = 1.0f;
 	float currentOpacity = opacity;

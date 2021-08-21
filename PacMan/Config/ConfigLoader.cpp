@@ -111,7 +111,7 @@ std::string ConfigLoader::getMapElementCornerSWImgPath(){
 std::vector<std::string> ConfigLoader::getOponentsImgPaths(){
 	std::vector<std::string> res;
 	Json::Value ghosts = root["paths"]["ghostsImg"];
-	for (int i = 0; i < ghosts.size(); i++) {
+	for (size_t i = 0; i < ghosts.size(); i++) {
 		res.push_back(ghosts[i].asString());
 	}
 	return res;

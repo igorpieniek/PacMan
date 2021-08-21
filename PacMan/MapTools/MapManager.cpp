@@ -18,7 +18,7 @@ bool MapManager::isOccupied(Position& pos){
 	if (pos.getX() >= width  || pos.getX() < 0) return true;
 	if (pos.getY() >= height || pos.getY() < 0) return true;
 
-	int cellIndex = getMapBoardIndexPosition(pos);
+	size_t cellIndex = getMapBoardIndexPosition(pos);
 
 	if (cellIndex >= mapBoard.size()) return true;
 
@@ -35,7 +35,7 @@ Board MapManager::getNeighbours(Position& pos, int radius){
 	for (CoordType k = pos.getY() - radius; k <= pos.getY() + radius; ++k) {
 		for (CoordType w = pos.getX() - radius; w <= pos.getX() + radius; ++w){
 			Position searchPos = { w,k };
-			int cellIndex = getMapBoardIndexPosition(searchPos);
+			size_t cellIndex = getMapBoardIndexPosition(searchPos);
 			if (cellIndex < mapBoard.size()) {
 				resultMap.push_back(mapBoard[cellIndex]);
 			}
@@ -81,7 +81,7 @@ MapManager::getAllPossibleDirections(Position& pos){
 
 	for (auto const& x : check) {
 		Position toFind{ roundPos + x.second };
-		int cellIndex = getMapBoardIndexPosition(toFind);
+		size_t cellIndex = getMapBoardIndexPosition(toFind);
 
 		if (cellIndex >= mapBoard.size()) continue;
 
@@ -128,7 +128,7 @@ void MapManager::incrementFreePos(MapCell::Category cat) {
 	}
 }
 
-int MapManager::getMapBoardIndexPosition(Position& pos){
+size_t MapManager::getMapBoardIndexPosition(Position& pos){
 	Position conv = pos.getIntPos();
-	return  (conv.getY() * width) + conv.getX();
+	return  static_cast<size_t>( (conv.getY() * width) + conv.getX() );
 }

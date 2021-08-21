@@ -2,8 +2,8 @@
 
 void MapCreator::create(){
 	
-	ImageConcat mergeTool(MapManager::instance().getMapXSize(),
-						  MapManager::instance().getMapYSize(),
+	ImageConcat mergeTool(static_cast<int>(MapManager::instance().getMapXSize()),
+						  static_cast<int>(MapManager::instance().getMapYSize()),
 						  newMapFile );
 
 	MapMatchPattern patternTool;

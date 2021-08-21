@@ -1,8 +1,8 @@
 #include "SimpleMenu.h"
 
 SimpleMenu::SimpleMenu(float w, float h): Xsize(w), Ysize(h){
-	Xpos = 0.5f * CONFIG.getMainWindowWidth() - 0.5 * Xsize;
-	Ypos = 0.5f * CONFIG.getMainWindowHeight() - 0.5 * Ysize;
+	Xpos = 0.5f * CONFIG.getMainWindowWidth()  - 0.5f * Xsize;
+	Ypos = 0.5f * CONFIG.getMainWindowHeight() - 0.5f * Ysize;
 }
 
 void SimpleMenu::setMessages(std::string quest, std::string y, std::string n){
@@ -30,7 +30,7 @@ SimpleMenu::Answear SimpleMenu::draw(){
 	ImGui::Dummy(ImVec2(0, 20));
 	ImGui::BeginGroup();
 
-	ImGui::Dummy(ImVec2(Xsize / 4.5, 0));
+	ImGui::Dummy(ImVec2(Xsize / 4.5f, 0));
 	ImGui::SameLine();
 	if (ImGui::Button(yes.c_str()))
 		answ = Answear::YES;

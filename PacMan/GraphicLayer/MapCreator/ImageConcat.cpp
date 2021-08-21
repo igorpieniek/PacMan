@@ -68,7 +68,7 @@ void ImageConcat::save(std::string res){
 
 
 void ImageConcat::addToMatrix(std::shared_ptr<ImageData> img){
-    if (matrix.size() < (heightSize * widthSize)) {
+    if (matrix.size() < (size_t)(heightSize * widthSize)) {
         matrix.push_back(img);
     }
     else {

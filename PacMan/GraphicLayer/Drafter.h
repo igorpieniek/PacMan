@@ -20,7 +20,7 @@ public:
 
 protected:
 	std::string filePath;
-	Direction imageOriginalDirection;
+	Direction imageOriginalDirection = Direction::EAST;
 	Transformation trans;
 	std::shared_ptr<Texture> text;
 
