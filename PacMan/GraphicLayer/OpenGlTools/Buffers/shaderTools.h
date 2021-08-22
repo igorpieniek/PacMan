@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef __SHADERTOOLS_H__
-#define __SHADERTOOLS_H__
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <vector>
@@ -32,17 +29,14 @@ public:
 	void bind() const override;
 	void unbind() const override;
 
-	void setUniform(std::string uni, std::vector<float> val);
-	void setUniformMatrix(std::string uni, const float* dataPtr);
+	void setUniform(const char* uni, std::vector<float> val);
+	void setUniformMatrix(const char* uni, const float* dataPtr);
 
 	~Shader();
 
 private:
-	std::unordered_map<std::string, int> uniformsLocation;
+	std::unordered_map<const char*, int> uniformsLocation;
 
-	int getUniformLocation(std::string uniform);
+	int getUniformLocation(const char* uniform);
 
 };
-
-#endif
-

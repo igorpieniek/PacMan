@@ -41,7 +41,6 @@ void Render2D::init(){
         ib->unbind();
         vb->unbind();
     }
-
 }
 
 void Render2D::addToDraw(std::shared_ptr<Texture> text, Transformation& trans){
@@ -50,29 +49,13 @@ void Render2D::addToDraw(std::shared_ptr<Texture> text, Transformation& trans){
 
 void Render2D::process(){
     renderer.clear();
-    
     for (auto& textRend : textureRender) {
         //all process, render and draw all elements
-        shader->bind();
+        //shader->bind();
         textRend.text->set();
-        shader->setUniformMatrix("transform", textRend.trans.getPointer());
+        shader->setUniformMatrix(uniformTransform, textRend.trans.getPointer());
         textRend.isUsed = true;
         renderer.draw(va, ib, shader);
-
     }
-    deleteUsedTextures();
-}
-
-Render2D::Render2D(){
-    //all graphics pipeline process
-}
-
-void Render2D::deleteUsedTextures(){
-
-    auto itersToRemove = std::remove_if(textureRender.begin(), 
-                                        textureRender.end(),
-                                        [](const TextureRenderer& txtRend){ return txtRend.isUsed;});
-
-    textureRender.erase(itersToRemove, textureRender.end());
-
+    textureRender.clear();
 }

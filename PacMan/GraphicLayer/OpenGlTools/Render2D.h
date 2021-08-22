@@ -20,7 +20,7 @@ public:
     void operator=(const Render2D&) = delete;
 
 private:
-    Render2D();
+    Render2D() {};
 
     struct TextureRenderer {
         std::shared_ptr<Texture> text;
@@ -30,14 +30,12 @@ private:
 
     bool isInitialized = false;
     std::vector<TextureRenderer> textureRender;
+    const char uniformTransform[10] = "transform";
 
     std::shared_ptr<VertexArray>  va;
     std::shared_ptr<Shader> shader;
     std::shared_ptr<IndexBuffer> ib;
     std::shared_ptr<VertexBuffer> vb;
     Renderer renderer;
-
-
-    void deleteUsedTextures();
 };
 

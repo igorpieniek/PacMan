@@ -23,7 +23,7 @@
 	},
 	"other":{
 		"playerPosition": [8,1],
-		"amountOfOponents": 6,
+		"amountOfOponents": 2,
 		"amountOfSpecialPoints": 15,
 		"startDelay_s": 4,
 		"playerSpeed": 0.2,

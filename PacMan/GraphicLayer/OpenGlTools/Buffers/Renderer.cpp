@@ -7,7 +7,7 @@ void Renderer::draw(const VertexArray& va, const IndexBuffer& ib, const Shader& 
 	ERROR_CHECK(glDrawElements(GL_TRIANGLES, ib.getCount(), GL_UNSIGNED_INT, nullptr));
 }
 
-void Renderer::draw(const std::shared_ptr<VertexArray> va, const std::shared_ptr<IndexBuffer> ib, const std::shared_ptr<Shader> shader) const{
+void Renderer::draw(const std::shared_ptr<VertexArray>& va, const std::shared_ptr<IndexBuffer>& ib, const std::shared_ptr<Shader>& shader) const{
 	shader->bind();
 	va->bind();
 	ib->bind();

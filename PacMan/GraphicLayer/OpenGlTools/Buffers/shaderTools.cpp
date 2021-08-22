@@ -1,4 +1,4 @@
-#include "shaderTools.h"
+#include "ShaderTools.h"
 
 
 std::vector<std::string> ShaderTools::readFile(std::string shadersPath) {
@@ -88,7 +88,7 @@ void Shader::unbind() const {
     glUseProgram(0);
 }
 
-void Shader::setUniform(std::string uni, std::vector<float> val){
+void Shader::setUniform(const char* uni, std::vector<float> val){
     int loc = getUniformLocation(uni);
     if (loc == -1) return;
     int size = val.size();
@@ -110,7 +110,7 @@ void Shader::setUniform(std::string uni, std::vector<float> val){
     }
 }
 
-void Shader::setUniformMatrix(std::string uni, const float* dataPtr){
+void Shader::setUniformMatrix(const char* uni, const float* dataPtr){
     int loc = getUniformLocation(uni);
     if (loc == -1) return;
 
@@ -122,12 +122,12 @@ Shader::~Shader(){
     glDeleteProgram(id);
 }
 
-int Shader::getUniformLocation(std::string uniform){
+int Shader::getUniformLocation(const char* uniform){
     if (uniformsLocation.find(uniform) != uniformsLocation.end()) {
         return uniformsLocation[uniform];
     }
 
-    unsigned int loc = glGetUniformLocation(id, uniform.c_str());
+    unsigned int loc = glGetUniformLocation(id, uniform);
     if (loc == -1) {
         std::cout << "No uniform called " << uniform << "in program -id: " << id << std::endl;
     }

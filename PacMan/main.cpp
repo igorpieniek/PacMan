@@ -97,7 +97,6 @@ int main() {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
-		bool status = true;
 		opManag->updateAll();
 		pl->update();
 		Position playerPos = pl->getPosition();

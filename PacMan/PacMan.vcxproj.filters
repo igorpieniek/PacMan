@@ -66,7 +66,7 @@
     <ClCompile Include="GraphicLayer\OpenGlTools\Buffers\Renderer.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicLayer\OpenGlTools\Buffers\shaderTools.cpp">
+    <ClCompile Include="GraphicLayer\OpenGlTools\Buffers\ShaderTools.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="GraphicLayer\OpenGlTools\Buffers\VertexArray.cpp">
@@ -239,7 +239,7 @@
     <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\Renderer.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\shaderTools.h">
+    <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\ShaderTools.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\VertexArray.h">
