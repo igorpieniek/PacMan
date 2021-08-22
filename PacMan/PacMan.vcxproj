@@ -552,6 +552,7 @@
     <ClInclude Include="GenericTools\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="GraphicLayer\OpenGlTools\glm\glm\detail\func_common.inl" />
     <None Include="GraphicLayer\OpenGlTools\glm\glm\detail\func_common_simd.inl" />
     <None Include="GraphicLayer\OpenGlTools\glm\glm\detail\func_exponential.inl" />

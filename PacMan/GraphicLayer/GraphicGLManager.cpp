@@ -90,17 +90,14 @@ void GraphicGLManager::drawPlayer(){
 void GraphicGLManager::drawGhosts(){
 	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
 		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
-		ghosts[i].draw(opPos->getPosition(), Direction::EAST);
+		ghosts[i].draw(opPos->getPosition());
 	}
 }
 
 void GraphicGLManager::drawHealth(){
 	Position pos{2 , MapManager::instance().getMapYSize() };
-	Movement moveTool(3);
-	for (int i = 0; i < player->getAmountOfLifes(); i++) {
-		heartDrafter.draw(pos, Direction::EAST);
-		moveTool.moveRight(pos);
-	}
+	heartDrafter.setNumberOfLives(player->getAmountOfLifes());
+	heartDrafter.draw(pos);
 }
 
 std::string GraphicGLManager::getnextGhostPath(){
