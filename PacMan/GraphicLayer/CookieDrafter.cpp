@@ -4,11 +4,11 @@ void CookieDrafter::draw(Position pos, Direction dir){
 	normalize(pos);
 	trans.setTranslation(pos.getX(), pos.getY());
 	if (isSpecialPoint) {
-		trans.setScale(0.18f);
+		trans.setScale(3.0f*scale);
 		isSpecialPoint = false;
 	}
 	else {
-		trans.setScale(0.11f);
+		trans.setScale(2.0f*scale);
 	}
 	Render2D::instance().addToDraw(text, trans);
 }

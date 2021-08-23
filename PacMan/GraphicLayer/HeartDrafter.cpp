@@ -5,7 +5,7 @@ void HeartDrafter::draw(Position pos, Direction dir){
 		Position current = pos + Position{ i * 3.0f ,0 };
 		normalize( current );
 		trans.setTranslation(current.getX(), current.getY() + 0.05f);
-		trans.setScale(0.15f);
+		trans.setScale(2.5f*scale);
 		Render2D::instance().addToDraw(text, trans);
 	}
 }

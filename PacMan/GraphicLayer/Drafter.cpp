@@ -13,7 +13,7 @@ void Drafter::addImage(std::string path, Direction dir){
 void Drafter::draw(Position pos, Direction dir){
 	normalize(pos);
 	trans.setTranslation(pos.getX(), pos.getY());
-	trans.setScale(0.08f);
+	trans.setScale(1.5f*scale);
 	Render2D::instance().addToDraw(text, trans);
 }
 
