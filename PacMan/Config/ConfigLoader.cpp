@@ -140,11 +140,11 @@ CoordType ConfigLoader::getOponentSpeed(){
 }
 
 int ConfigLoader::getMainWindowWidth(){
-	return root["other"]["windowSize"][0].asInt();
+	return root["other"]["windowSize"].asInt();
 }
 
 int ConfigLoader::getMainWindowHeight(){
-	return root["other"]["windowSize"][1].asInt();
+	return root["other"]["windowSize"].asInt();
 }
 
 int ConfigLoader::getStartDelay_s(){

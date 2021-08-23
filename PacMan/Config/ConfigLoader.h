@@ -79,7 +79,7 @@ private:
 		{"amountOfSpecialPoints",&JsonVal::isUInt},
 		{"playerSpeed",			&JsonVal::isDouble},
 		{"oponentSpeed",		&JsonVal::isDouble},
-		{"windowSize",			&JsonVal::isArray},
+		{"windowSize",			&JsonVal::isUInt}, //isArray (x,y) if scale problem will be resolved
 		{"startDelay_s",        &JsonVal::isUInt},	
 	};
 
