@@ -52,7 +52,8 @@ void Render2D::process(){
     for (auto& textRend : textureRender) {
         //all process, render and draw all elements
         //shader->bind();
-        textRend.text->set();
+        //textRend.text->set();
+        textRend.text->bind();
         shader->setUniformMatrix(uniformTransform, textRend.trans.getPointer());
         textRend.isUsed = true;
         renderer.draw(va, ib, shader);

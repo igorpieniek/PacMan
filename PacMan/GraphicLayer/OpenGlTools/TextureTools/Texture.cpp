@@ -5,6 +5,7 @@ Texture::Texture(std::string filename) : filePath(filename) {
     bind();
     stbi_set_flip_vertically_on_load(1);
     loadTexture(filePath);
+    set();
 }
 
 Texture::~Texture(){
@@ -44,7 +45,7 @@ void Texture::unbind() const {
 void Texture::set(){
     setImageData();
     createMipmap();
-    //stbi_image_free(imageData);
+    stbi_image_free(imageData);
 }
 
 
