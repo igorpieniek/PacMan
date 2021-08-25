@@ -22,7 +22,8 @@ void PointsManager::createCellPointArray(){
 }
 
 void PointsManager::notifyPlayerPosition(Position& pos) {
-	if (isAllPointsReached()) {
+	if (isAllPointsReached() && !lockPlayerPosNotify) {
+		lockPlayerPosNotify = true;
 		mediator->notify(Event::ALL_POINTS_COLLECTED);
 		return;
 	}
@@ -62,10 +63,11 @@ void PointsManager::removeCellPoint(CellPointIter& it){
 }
 
 void PointsManager::notify(Event evt){
-	if (evt == Event::RESET_GAME) {
+	if (evt == Event::RESET_GAME) {	
 		currentPoints = -firstPointVal;
 		cellPoints.clear();
 		createCellPointArray();
+		lockPlayerPosNotify = false;
 	}
 }
 

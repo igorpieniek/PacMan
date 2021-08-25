@@ -26,6 +26,7 @@ private:
 	int currentPoints;
 	int specialPointsAmount;
 	int firstPointVal = 0;
+	bool lockPlayerPosNotify = false;
 	std::vector<CellPoint> cellPoints;
 
 	using CellPointIter = std::vector<CellPoint>::iterator;
