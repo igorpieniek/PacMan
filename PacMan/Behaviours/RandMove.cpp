@@ -6,6 +6,9 @@ void RandMove::update(Position& current){
 }
 
 void RandMove::setStepResolution(CoordType res){
+    if (res < 0.0f || res > 1.0f) {
+        throw std::runtime_error("RandMove: speed must be from range <0,1> your value: " + std::to_string(res));
+    }
     moveTool.setStepSize(res);
 }
 

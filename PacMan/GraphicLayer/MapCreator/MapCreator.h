@@ -14,6 +14,7 @@ public:
 	void create();
 	std::string getNewFileName()const;
 private:
+	void imagePathExistCheck();
 	const std::string  newMapFile = CONFIG.getDynamicMapImgPath();
 	std::map<MapPatternType, std::string> imagePathMap = {
 		{MapPatternType::FREE ,				 CONFIG.getMapElementEmptyImgPath()},

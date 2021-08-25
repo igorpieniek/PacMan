@@ -1,6 +1,7 @@
 #include "ConfigLoader.h"
 
 #define RETURN_IF_INVALID(X) if(!X) return false; 
+#define EXIT_PROGRAM()  system("pause"); exit(EXIT_FAILURE);
 
 ConfigLoader& ConfigLoader::instance(){
     static ConfigLoader loader;
@@ -15,7 +16,7 @@ ConfigLoader::ConfigLoader() {
 	ifs.open(CONFIG_PATH);
 	if (!ifs.is_open()) {
 		std::cout << "Error: cannot open config file (broken or doesn't exist) - "<< CONFIG_PATH << std::endl;
-		return;
+		EXIT_PROGRAM();
 	}
 	builder["collectComments"] = true;
 	JSONCPP_STRING errs;
@@ -27,7 +28,7 @@ ConfigLoader::ConfigLoader() {
 	}
 
 	bool status = isJSONhaveRequiredFields();
-	if (!status) exit(EXIT_FAILURE);
+	if (!status) { EXIT_PROGRAM(); }
 	std::cout << "Verification of the configuration file was successful! " << std::endl;
 
 }
@@ -51,7 +52,7 @@ bool ConfigLoader::isSubsectionHaveRequiredFields(Json::Value sub, RequiredMap& 
 		}
 		else {
 			if (!(sub[req.first].*(req.second))() ) {
-				std::cout << "Field <<" << req.first << ">> exist in <" << subName << ">  , but value is not required type!" << std::endl;
+				std::cout << "Field <<" << req.first << ">> exist in <" << subName << ">, but value is not required type!" << std::endl;
 				return false;
 			}
 		}
@@ -118,8 +119,8 @@ std::vector<std::string> ConfigLoader::getOponentsImgPaths(){
 }
 
 Position ConfigLoader::getPlayerInitialPosition(){
-	CoordType x = root["other"]["playerPosition"][0].asFloat();
-	CoordType y = root["other"]["playerPosition"][1].asFloat();
+	CoordType x = root["other"]["playerPosition"][0].asUInt();
+	CoordType y = root["other"]["playerPosition"][1].asUInt();
 	return Position(x,y);
 }
 

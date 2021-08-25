@@ -40,6 +40,9 @@ void PlayerMovement::update(Position& pos){
 }
 
 void PlayerMovement::setStepResolution(CoordType res){
+	if (res < 0.0f || res > 1.0f) {
+		throw std::runtime_error("PlayerMovement: player speed must be from range <0,1> your value: " + std::to_string(res));
+	}
 	moveTool.setStepSize(res);
 }
 

@@ -1,12 +1,11 @@
 #include "PacManApp.h"
-std::shared_ptr<PlayerMovement> PacManApp::playerMovement = std::make_shared<PlayerMovement>(CONFIG.getPlayerSpeed());
+std::shared_ptr<PlayerMovement> PacManApp::playerMovement = std::make_shared<PlayerMovement>(1);
 
 PacManApp::PacManApp(){
-	playerMovement = std::make_shared<PlayerMovement>(CONFIG.getPlayerSpeed());
-	player = std::make_shared<Player>(CONFIG.getPlayerInitialPosition(), playerMovement);
-
 	MapManager::instance().addMap(CONFIG.getMapTxtPath());
 
+	playerMovement = std::make_shared<PlayerMovement>(CONFIG.getPlayerSpeed());
+	player = std::make_shared<Player>(CONFIG.getPlayerInitialPosition(), playerMovement);
 	points  = std::make_shared<PointsManager>(CONFIG.getAmountOfSpecialPoints());
 	opManag = std::make_shared<OponentManager>(CONFIG.getAmountOfOponents());
 

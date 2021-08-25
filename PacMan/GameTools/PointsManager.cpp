@@ -2,6 +2,10 @@
 
 void PointsManager::createCellPointArray(){
 	int counter = 0;
+	if (MapManager::instance().getFreePosAmount() < specialPointsAmount) {
+		throw std::runtime_error("PointsManager: there cannot be more special points than amout of free positions!");
+	}
+
 	int divider = (int)(MapManager::instance().getFreePosAmount() / specialPointsAmount);
 	for (auto const& cell : MapManager::instance().getAllMap()) {
 		if (!cell.isObstacle()) {

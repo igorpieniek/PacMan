@@ -8,6 +8,9 @@ GraphicGLManager::GraphicGLManager(
 		: GraphicManagerInterface(pointsManag, pl, oponentManag)
 {
 
+	if (ghostPaths.size() == 0) {
+		throw std::runtime_error("GraphicGLManager: No oponent paths added!");
+	}
 	Render2D::instance().init();
 
 	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {

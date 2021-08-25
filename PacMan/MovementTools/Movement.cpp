@@ -56,6 +56,11 @@ void printDirection(const Direction& dir){
 
 
 
+Movement::Movement(CoordType step) : stepSize(step) 
+{
+	checkStepSizeIsPositive();
+}
+
 void Movement::moveUp(Position& pos){
 	pos += Position{ 0, stepSize };
 }
@@ -91,5 +96,12 @@ void Movement::moveInDir(Position& pos, Direction dir){
 
 void Movement::setStepSize(CoordType siz){
 	stepSize = siz;
+	checkStepSizeIsPositive();
+}
+
+void Movement::checkStepSizeIsPositive(){
+	if (stepSize < 0) {
+		throw std::runtime_error("Movement: step size can't be negative! ");
+	}
 }
 

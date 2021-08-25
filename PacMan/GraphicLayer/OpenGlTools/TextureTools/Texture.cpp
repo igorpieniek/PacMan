@@ -54,8 +54,7 @@ void Texture::set(){
 void Texture::loadTexture(std::string filename){
     imageData = stbi_load(filename.c_str(), &width, &height, &nrChannels, 0);
     if (imageData == nullptr) {
-        std::cout << "Bad texture id:" << id << std::endl;
-
+        throw std::runtime_error("Texture: bad filename - file does not exist :" + filename);
     }
     updateColorFormat();
 }
