@@ -1,10 +1,16 @@
 #include "Player.h"
+#include <exception>
 
 Player::Player(Position startPos, std::shared_ptr<MoveAlgorithm> moveAlg) :
 	Character(startPos),
 	prevPos(startPos),
 	currentDir(Direction::EAST),
-	moveManag(moveAlg)	{};
+	moveManag(moveAlg)	
+{
+	if (MapManager::instance().isOccupied(startPos)) {
+		throw std::runtime_error("Bad player position: selected position is occupied!");
+	}
+};
 
 void Player::notify(Event evt){
 	switch (evt)

@@ -4,7 +4,14 @@
 #include "PacManApp.h"
 
 int main() {
-	PacManApp app;
-	return app.process();
+	try {
+		PacManApp app;
+		return app.process();
+	}
+	catch (std::exception& err) {
+		std::cerr << err.what() << std::endl;
+		system("pause");
+		exit(1);
+	}
 
 }
