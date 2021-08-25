@@ -1,5 +1,11 @@
 #include "OponentManager.h"
+#include <time.h>
 
+
+OponentManager::OponentManager(int numberOfOps) : numberOfOponents(numberOfOps) {
+	std::srand((unsigned)time(NULL));
+	createOponents();
+}
 
 void OponentManager::createOponents(){
 	CoordType opSpeed = CONFIG.getOponentSpeed();
@@ -76,7 +82,8 @@ Position OponentManager::getRandPosition() {
 
 		Position pos{ static_cast<CoordType>(randX),
 				      static_cast<CoordType>(randY) };
-		if (!MapManager::instance().isOccupied(pos)) {
+		if (!MapManager::instance().isOccupied(pos) &&
+			pos.getIntPos() != CONFIG.getPlayerInitialPosition().getIntPos()) {
 			return pos;
 		}
 	}

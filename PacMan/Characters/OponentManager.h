@@ -16,10 +16,7 @@
 class OponentManager: public GameMediatorComponent{
 public:
 	
-	OponentManager(int numberOfOps = { 4 }) : numberOfOponents(numberOfOps) 
-	{
-		createOponents();
-	};
+	OponentManager(int numberOfOps = { 4 });
 
 	void updateAll();
 	void deactivateAll();
@@ -41,6 +38,4 @@ private:
 	void createOponents();
 	Position getRandPosition();
 	bool isPlayerPosReached(Position& pos);
-
-
 };
