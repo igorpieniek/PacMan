@@ -31,12 +31,12 @@ void ImageConcat::addImage(std::string path){
 
 void ImageConcat::convert(){
     if (matrix.size() != (heightSize * widthSize)) {
-        throw std::runtime_error("Size of added map clappings is not equal size of declared new image");
+        throw std::runtime_error("ImageConcat: Size of added map clappings is not equal size of declared new image");
     }
 
     // check if all images are the same size
     if (!isImagesDataValid()) {
-        throw std::runtime_error("Loaded images have diffrent sizes or stride (pixel format)");
+        throw std::runtime_error("ImageConcat: Loaded images have diffrent sizes or stride (pixel format)");
     }
     // line concat
     std::vector<ImageData> lines(heightSize);

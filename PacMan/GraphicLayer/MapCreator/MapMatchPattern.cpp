@@ -15,14 +15,32 @@ static const std::vector<MapPatternData> patterns = {
 		MapPatternType::CORNER_CONVEX_NW, 
 		{0,0,2,
 		 0,1,1,
-		 2,1,1}
+		 2,1,2}
 		},
 	{
 		MapPatternType::CORNER_CONCAVE_SE,
 		{1,1,1,
 		 1,1,1,
 		 1,1,0}
-	}
+		},
+	{
+		MapPatternType::VERTICAL,
+		{0,2,0,
+		 2,1,2,
+		 0,1,0}
+		},
+	{
+		MapPatternType::VERTICAL,
+		{2,2,2,
+		 0,1,2,
+		 2,1,2}
+		},
+	{
+		MapPatternType::VERTICAL,
+		{0,0,0,
+		 0,1,0,
+		 0,0,0}
+		},
 };
 
 std::vector<MapPatternType> MapMatchPattern::getMatchForWholeMap(){
