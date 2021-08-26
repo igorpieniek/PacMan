@@ -1,0 +1,87 @@
+﻿  RandMove.cpp
+  ConfigLoader.cpp
+C:\Users\Igor\source\repos\PacMan\Config\ConfigLoader.cpp(122,14): warning C4244: "inicjowanie": konwersja z "Json::Value::UInt" do "CoordType", możliwa utrata danych
+C:\Users\Igor\source\repos\PacMan\Config\ConfigLoader.cpp(123,14): warning C4244: "inicjowanie": konwersja z "Json::Value::UInt" do "CoordType", możliwa utrata danych
+  FinishMenu.cpp
+  CookieDrafter.cpp
+  GameRules.cpp
+  CellPoint.cpp
+  Oponent.cpp
+  Player.cpp
+  Drafter.cpp
+  GraphicGLManager.cpp
+  ImageConcat.cpp
+  ImageData.cpp
+  MapDrafter.cpp
+  AdditionalTools.cpp
+  IndexBuffer.cpp
+  Renderer.cpp
+  ShaderTools.cpp
+  VertexArray.cpp
+  VertexBuffer.cpp
+  VertexBufferLayout.cpp
+  Generowanie kodu...
+  Trwa kompilowanie...
+  glm.cpp
+  gl_errors.cpp
+  Render2D.cpp
+  Texture.cpp
+  Transformation.cpp
+  HeartDrafter.cpp
+  main.cpp
+  MapCreator.cpp
+  MapMatchPattern.cpp
+  MapCell.cpp
+  MapManager.cpp
+  Position.cpp
+  Movement.cpp
+  SafeMovement.cpp
+  OponentManager.cpp
+  PointsManager.cpp
+  PlayerDrafter.cpp
+  PlayerMovement.cpp
+  Timer.cpp
+  PointCounter.cpp
+  Generowanie kodu...
+C:\Users\Igor\source\repos\PacMan\MovementTools\Movement.cpp(35): warning C4715: "getMoveDir”: niewszystkie ścieżki kodu zwracają wartość
+  Trwa kompilowanie...
+  StartMenu.cpp
+  StartCounter.cpp
+  SimpleMenu.cpp
+  PacManApp.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\xutility(138,73): warning C4244: "argument": konwersja z "_Ty" do "CoordType", możliwa utrata danych
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\memory(2186): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „void std::_Construct_in_place<_Ty,int>(_Ty &,int &&) noexcept(false)” funkcji szablon
+          with
+          [
+              _Ty=PlayerMovement
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\memory(2906): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<int>(int &&)” funkcji szablon
+          with
+          [
+              _Ty=PlayerMovement
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\memory(2907): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<int>(int &&)” funkcji szablon
+          with
+          [
+              _Ty=PlayerMovement
+          ]
+C:\Users\Igor\source\repos\PacMan\PacManApp.cpp(2): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „std::shared_ptr<PlayerMovement> std::make_shared<PlayerMovement,int>(int &&)” funkcji szablon
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw.cpp
+  imgui_impl_opengl3.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  json_reader.cpp
+  json_value.cpp
+  json_writer.cpp
+  Generowanie kodu...
+LINK : warning LNK4098: domyślna biblioteka „LIBCMT” powoduje konflikt z innymi bibliotekami; użyj opcji /NODEFAULTLIB:biblioteka
+LINK : warning LNK4098: domyślna biblioteka „MSVCRT” powoduje konflikt z innymi bibliotekami; użyj opcji /NODEFAULTLIB:biblioteka
+glew32s.lib(glew.obj) : warning LNK4099: nie znaleziono pliku PDB „vc120.pdb” z elementem „glew32s.lib(glew.obj)” lub w pozycji „C:\Users\Igor\source\repos\PacMan\Debug\vc120.pdb”; obiekt zostanie skonsolidowany bez informacji debugowania
+  PacMan.vcxproj -> C:\Users\Igor\source\repos\PacMan\Debug\PacMan.exe

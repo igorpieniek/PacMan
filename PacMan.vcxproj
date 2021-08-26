@@ -86,7 +86,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLEW_STATIC;WIN32</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;WIN32;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)MovementTools;$(SolutionDir)MapTools;$(SolutionDir)Characters;$(SolutionDir)GameTools;$(SolutionDir)GraphicLayer;$(SolutionDir)GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)GraphicLayer\OpenGlTools\glm;$(SolutionDir)GraphicLayer\MapCreator;$(SolutionDir)GraphicLayer\OpenGlTools;$(SolutionDir)GenericTools;$(SolutionDir)Vendor;$(SolutionDir)Config;$(SolutionDir)Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -103,7 +103,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLEW_STATIC;WIN32</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_STATIC;WIN32;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)MovementTools;$(SolutionDir)MapTools;$(SolutionDir)Characters;$(SolutionDir)GameTools;$(SolutionDir)GraphicLayer;$(SolutionDir)GraphicLayer\OpenGlTools\TextureTools;$(SolutionDir)GraphicLayer\OpenGlTools\Shaders;$(SolutionDir)GraphicLayer\OpenGlTools\Buffers;$(SolutionDir)GraphicLayer\OpenGlTools\glm;$(SolutionDir)GraphicLayer\MapCreator;$(SolutionDir)GraphicLayer\OpenGlTools;$(SolutionDir)GenericTools;$(SolutionDir)Vendor;$(SolutionDir)Config;$(SolutionDir)Behaviours;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
