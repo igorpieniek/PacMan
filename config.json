@@ -1,6 +1,6 @@
 {
 	"paths":{
-		"mapTxt": "mapa.txt",
+		"mapTxt": "mapTemplate.txt",
 		"dynamicMapImg": "images/newDynamicMap.png",
 		"playerImg":"images/pacman.png",
 		"heartImg":"images/heart.png",
@@ -23,8 +23,8 @@
 	},
 	"other":{
 		"playerPosition": [8,1],
-		"amountOfOponents": 2,
-		"amountOfSpecialPoints": 15,
+		"amountOfOponents": 6,
+		"amountOfSpecialPoints": 8,
 		"startDelay_s": 4,
 		"playerSpeed": 0.2,
 		"oponentSpeed": 0.1,
