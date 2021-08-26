@@ -1,4 +1,5 @@
 #include "MapManager.h"
+#include <string>
 
 
 MapManager& MapManager::instance(){
@@ -104,20 +105,32 @@ Board MapManager::readMapFromFile(std::string fileName){
 	std::string line;
 	int lineNumber = 0;
 	while ( std::getline(file, line)) {
-		if(width ==0) 	width = line.length();
+		updateMapWidth(line.length());
 		for ( int i = 0; i < (int)line.length(); i++) {
 			auto it = mapBindings.find(line[i]);
 			if (it != mapBindings.end()) {
 				result.push_back({ { (CoordType)i, (CoordType)lineNumber}, it->second });
 				incrementFreePos(it->second);
 			}
+			else {
+				throw std::runtime_error("MapManager: Unknown sign in map txt file: " + std::string(1,line[i]));
+			}
 		}
 		++lineNumber;
 	}
 
 	height = lineNumber;
-
 	return result;
+}
+
+void MapManager::updateMapWidth(int w){
+	if (width == 0) {
+		width = w;
+		return;
+	}
+
+	if (w != width) throw std::runtime_error("MapManager: Different width of lines in map txt file!");
+	width = w;
 }
 
 

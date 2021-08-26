@@ -46,6 +46,7 @@ private:
 
 	Board mapBoard;
 	Board readMapFromFile(std::string fileName);
+	void updateMapWidth(int w);
 	int freePositionsAmount = 0;
 	void incrementFreePos(MapCell::Category cat);
 
