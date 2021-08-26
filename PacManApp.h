@@ -25,7 +25,6 @@ class PacManApp{
 public:
 	PacManApp();
 	int process();
-	~PacManApp();
 private:
 	static std::shared_ptr<PlayerMovement> playerMovement;
 	std::shared_ptr<Player> player;

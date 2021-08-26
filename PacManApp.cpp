@@ -39,15 +39,12 @@ int PacManApp::process(){
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-	return 0;
-}
-
-PacManApp::~PacManApp(){
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 
 	glfwTerminate();
+	return 0;
 }
 
 bool PacManApp::initGLFW(){
