@@ -57,7 +57,7 @@
     <ClCompile Include="GraphicLayer\GraphicGLManager.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicLayer\Drafter.cpp">
+    <ClCompile Include="GraphicLayer\Drafters\Drafter.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="GraphicLayer\OpenGlTools\Buffers\IndexBuffer.cpp">
@@ -96,16 +96,16 @@
     <ClCompile Include="GraphicLayer\OpenGlTools\Buffers\AdditionalTools.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicLayer\PlayerDrafter.cpp">
+    <ClCompile Include="GraphicLayer\Drafters\PlayerDrafter.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="Behaviours\PlayerMovement.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicLayer\CookieDrafter.cpp">
+    <ClCompile Include="GraphicLayer\Drafters\CookieDrafter.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicLayer\MapDrafter.cpp">
+    <ClCompile Include="GraphicLayer\Drafters\MapDrafter.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="GraphicLayer\MapCreator\MapCreator.cpp">
@@ -123,7 +123,7 @@
     <ClCompile Include="GenericTools\Timer.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicLayer\HeartDrafter.cpp">
+    <ClCompile Include="GraphicLayer\Drafters\HeartDrafter.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="Vendor\json\json_reader.cpp">
@@ -230,7 +230,7 @@
     <ClInclude Include="GraphicLayer\GraphicGLManager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicLayer\Drafter.h">
+    <ClInclude Include="GraphicLayer\Drafters\Drafter.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\GLBuffer.h">
@@ -1118,16 +1118,16 @@
     <ClInclude Include="GraphicLayer\OpenGlTools\Buffers\AdditionalTools.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicLayer\PlayerDrafter.h">
+    <ClInclude Include="GraphicLayer\Drafters\PlayerDrafter.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Behaviours\PlayerMovement.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicLayer\CookieDrafter.h">
+    <ClInclude Include="GraphicLayer\Drafters\CookieDrafter.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicLayer\MapDrafter.h">
+    <ClInclude Include="GraphicLayer\Drafters\MapDrafter.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="GenericTools\MatrixTool.h">
@@ -1151,7 +1151,7 @@
     <ClInclude Include="GenericTools\Timer.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicLayer\HeartDrafter.h">
+    <ClInclude Include="GraphicLayer\Drafters\HeartDrafter.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Vendor\json\allocator.h">

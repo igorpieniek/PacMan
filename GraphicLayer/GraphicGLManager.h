@@ -1,18 +1,20 @@
 #pragma once
+#include <algorithm>
+
 #include "GraphicManagerInterface.h"
+
 #include "Mediator.h"
 #include "Render2D.h"
-#include "Drafter.h"
-#include "MapManager.h"
-
-#include "PlayerDrafter.h"
-#include "CookieDrafter.h"
-#include "HeartDrafter.h"
-
-#include "MapDrafter.h"
 #include "Movement.h"
-#include <algorithm>
+#include "MapManager.h"
 #include "ConfigLoader.h"
+
+#include "Drafters/Drafter.h"
+#include "Drafters/PlayerDrafter.h"
+#include "Drafters/CookieDrafter.h"
+#include "Drafters/HeartDrafter.h"
+#include "Drafters/MapDrafter.h"
+
 #include "Menu/PointCounter.h"
 #include "Menu/StartMenu.h"
 #include "Menu/FinishMenu.h"
