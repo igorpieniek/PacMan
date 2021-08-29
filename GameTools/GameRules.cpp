@@ -10,6 +10,8 @@ GameRules::GameRules(std::vector<std::shared_ptr<GameMediatorComponent>> comp) :
 void GameRules::notify(Event evt){
 	switch (evt){
 	case Event::START_GAME:
+		reset();
+		notifyAll(Event::ENABLE_ALL_OPONENTS);
 		disableMotionForTime(startDelay);
 		break;
 
@@ -19,18 +21,19 @@ void GameRules::notify(Event evt){
 		std::cout << "GameRules: SPECIAL_POINT_REACHED:\n";
 		notifyAll(evt);
 		notifyAll(Event::DISABLE_ALL_OPONENTS);
-		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::nearEnableOpponentCb, this), 
-											       disableTime*normalDisablePercentage);
+		setGhostDisableTimer();
 		break;
 
 	case Event::ALL_POINTS_COLLECTED:
 		std::cout << "GameRules: ALL_POINTS_COLLECTED:\n";
+		reset();
 		notifyAll(Event::STOP_MOTION);
 		notifyAll(evt);
 		break;
 
 	case Event::PLAYER_CATCHED:
 		std::cout << "GameRules: PLAYER_CATCHED\n";
+		reset();
 		disableMotionForTime(startDelay);
 		notifyAll(evt);
 		notifyAll(Event::RESTART_POSITIONS);
@@ -38,7 +41,7 @@ void GameRules::notify(Event evt){
 
 	case Event::END_OF_LIVES:
 		std::cout << "GameRules: END_OF_LIVES:\n";
-		Timer::instance().reset();
+		reset();
 		notifyAll(Event::STOP_MOTION);
 		notifyAll(Event::END_OF_LIVES);
 		break;
@@ -78,12 +81,36 @@ void GameRules::enableMotionCb(){
 	notifyAll(Event::ALLOW_MOTION);
 }
 
+void GameRules::reset(){
+	Timer::instance().reset();
+	currentGhostDisableTime = 0;
+}
+
+void GameRules::setGhostDisableTimer(){
+	if (currentGhostDisableTime == 0) {
+		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::nearEnableOpponentCb, this),
+												   normalDisableTime);
+	}
+	currentGhostDisableTime += normalDisableTime;
+	std::cout << "Current time of disabling ghosts is " << currentGhostDisableTime << std::endl;
+}
+
 void GameRules::nearEnableOpponentCb(){
-	notifyAll(Event::WARNING_NEAR_ENABLE_ALL_OPONENTS);
-	Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::enableOpponentCb, this),
-											   disableTime * (1-normalDisablePercentage));
+	currentGhostDisableTime -= normalDisableTime;
+	std::cout << "Current time of disabling ghosts is    " << currentGhostDisableTime << std::endl;
+	if (currentGhostDisableTime == 0) {
+		notifyAll(Event::WARNING_NEAR_ENABLE_ALL_OPONENTS);
+		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::enableOpponentCb, this),
+			warningDisableTime);
+	}
+	else {
+		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::nearEnableOpponentCb, this),
+			normalDisableTime);
+	}
 }
 
 void GameRules::enableOpponentCb(){
-	notifyAll(Event::ENABLE_ALL_OPONENTS);
+	if (currentGhostDisableTime == 0) {
+		notifyAll(Event::ENABLE_ALL_OPONENTS);
+	}
 }

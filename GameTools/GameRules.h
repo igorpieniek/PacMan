@@ -19,7 +19,9 @@ private:
 	int startDelay = CONFIG.getStartDelay_s();
 	const double disableTime = 2.0;
 	// % of normal disable (rest of time should be indicated in some way)
-	const double normalDisablePercentage = 0.75; 
+	const double normalDisableTime = 0.75 * disableTime;
+	const double warningDisableTime = disableTime - normalDisableTime;
+	double currentGhostDisableTime = 0;
 
 	void notifyAll(Event evt);
 	void setComponentsMediator();
@@ -27,7 +29,9 @@ private:
 	void disableMotionForTime(double secounds);
 	void enableMotionCb();
 
+	void reset();
 
+	void setGhostDisableTimer();
 	void nearEnableOpponentCb();
 	void enableOpponentCb();
 };

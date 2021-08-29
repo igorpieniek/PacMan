@@ -3,6 +3,7 @@
 #include "MapManager.h"
 #include "Mediator.h"
 #include "CellPoint.h"
+#include "ConfigLoader.h"
 #include <vector>
 
 class PointsManager: public GameMediatorComponent{
