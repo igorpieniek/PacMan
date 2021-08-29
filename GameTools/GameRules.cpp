@@ -30,7 +30,9 @@ void GameRules::notify(Event evt){
 		notifyAll(Event::STOP_MOTION);
 		notifyAll(evt);
 		break;
-
+	case Event::DISABLED_GHOST_CATCHED:
+		notifyAll(evt);
+		break;
 	case Event::PLAYER_CATCHED:
 		std::cout << "GameRules: PLAYER_CATCHED\n";
 		reset();
@@ -92,12 +94,10 @@ void GameRules::setGhostDisableTimer(){
 												   normalDisableTime);
 	}
 	currentGhostDisableTime += normalDisableTime;
-	std::cout << "Current time of disabling ghosts is " << currentGhostDisableTime << std::endl;
 }
 
 void GameRules::nearEnableOpponentCb(){
 	currentGhostDisableTime -= normalDisableTime;
-	std::cout << "Current time of disabling ghosts is    " << currentGhostDisableTime << std::endl;
 	if (currentGhostDisableTime == 0) {
 		notifyAll(Event::WARNING_NEAR_ENABLE_ALL_OPPONENTS);
 		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::enableOpponentCb, this),

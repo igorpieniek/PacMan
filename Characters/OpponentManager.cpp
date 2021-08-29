@@ -62,8 +62,18 @@ void OpponentManager::notify(Event evt){
 }
 
 void OpponentManager::notifyPlayerPosition(Position& pos){
-	if (active && isPlayerPosReached(pos)) {
-		mediator->notify(Event::PLAYER_CATCHED);
+	static bool catchOnce = true;
+	if (isPlayerPosReached(pos)) {
+		if (active) {
+			mediator->notify(Event::PLAYER_CATCHED);
+		}
+		else if(catchOnce){
+			mediator->notify(Event::DISABLED_GHOST_CATCHED);
+			catchOnce = false;
+		}
+	}
+	else {
+		catchOnce = true;
 	}
 }
 

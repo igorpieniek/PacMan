@@ -6,6 +6,7 @@ enum class PointCat : int {
 	ZER0  = 0,
 	NORMAL = 1,
 	SPECIAL = 10,
+	GHOST_CATCH =200 
 };
 
 class CellPoint : public MapCell{

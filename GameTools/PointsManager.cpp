@@ -71,6 +71,9 @@ void PointsManager::notify(Event evt){
 		createCellPointArray();
 		lockPlayerPosNotify = false;
 	}
+	else if (evt == Event::DISABLED_GHOST_CATCHED) {
+		currentPoints += static_cast<int>(PointCat::GHOST_CATCH);
+	}
 }
 
 
