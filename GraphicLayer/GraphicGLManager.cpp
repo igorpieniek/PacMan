@@ -112,15 +112,15 @@ void GraphicGLManager::drawGhosts() {
 }
 
 void GraphicGLManager::rawDrawGhostsEnabled(){
-	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
-		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
+	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
+		std::shared_ptr<Opponent> opPos = opponents->getOpponent(i);
 		ghosts[i].draw(opPos->getPosition());
 	}
 }
 
 void GraphicGLManager::rawDrawGhostsDisabled(){
-	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
-		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
+	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
+		std::shared_ptr<Opponent> opPos = opponents->getOpponent(i);
 		disabledGhost.draw(opPos->getPosition());
 	}
 }
@@ -150,14 +150,14 @@ void GraphicGLManager::notify(Event evt) {
 	case Event::RESTART_POSITIONS:
 		startCounter.start();
 		break;
-	case Event::DISABLE_ALL_OPONENTS:
+	case Event::DISABLE_ALL_OPPONENTS:
 		disabledFlag = true;
 		break;
-	case Event::ENABLE_ALL_OPONENTS:
+	case Event::ENABLE_ALL_OPPONENTS:
 		isNearEnabledFlag = false;
 		disabledFlag = false;
 		break;
-	case Event::WARNING_NEAR_ENABLE_ALL_OPONENTS:
+	case Event::WARNING_NEAR_ENABLE_ALL_OPPONENTS:
 		isNearEnabledFlag = true;
 		break;
 	default:

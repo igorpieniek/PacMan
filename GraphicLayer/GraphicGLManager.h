@@ -33,7 +33,7 @@ private:
 
 
 	std::vector<std::string> ghostPaths = CONFIG.getOpponentsImgPaths();
-	std::string disabledGhostPath = CONFIG.getDisabledOponentImgPath();
+	std::string disabledGhostPath = CONFIG.getDisabledOpponentImgPath();
 
 	std::string mapPath	 = CONFIG.getDynamicMapImgPath();
 	std::string playerPath = CONFIG.getPlayerImgPath();

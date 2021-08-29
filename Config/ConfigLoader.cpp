@@ -118,7 +118,7 @@ std::vector<std::string> ConfigLoader::getOpponentsImgPaths(){
 	return res;
 }
 
-std::string ConfigLoader::getDisabledOponentImgPath(){
+std::string ConfigLoader::getDisabledOpponentImgPath(){
 	return root["paths"]["disabledGhostImg"].asString();
 }
 

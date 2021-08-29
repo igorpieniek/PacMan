@@ -31,7 +31,7 @@ public:
 	std::string getMapElementCornerSWImgPath();
 
 	std::vector<std::string> getOpponentsImgPaths();
-	std::string getDisabledOponentImgPath();
+	std::string getDisabledOpponentImgPath();
 
 
 	// others

@@ -11,7 +11,7 @@ void GameRules::notify(Event evt){
 	switch (evt){
 	case Event::START_GAME:
 		reset();
-		notifyAll(Event::ENABLE_ALL_OPONENTS);
+		notifyAll(Event::ENABLE_ALL_OPPONENTS);
 		disableMotionForTime(startDelay);
 		break;
 
@@ -20,7 +20,7 @@ void GameRules::notify(Event evt){
 		// start timer of special state - opponents disable
 		std::cout << "GameRules: SPECIAL_POINT_REACHED:\n";
 		notifyAll(evt);
-		notifyAll(Event::DISABLE_ALL_OPONENTS);
+		notifyAll(Event::DISABLE_ALL_OPPONENTS);
 		setGhostDisableTimer();
 		break;
 
@@ -99,7 +99,7 @@ void GameRules::nearEnableOpponentCb(){
 	currentGhostDisableTime -= normalDisableTime;
 	std::cout << "Current time of disabling ghosts is    " << currentGhostDisableTime << std::endl;
 	if (currentGhostDisableTime == 0) {
-		notifyAll(Event::WARNING_NEAR_ENABLE_ALL_OPONENTS);
+		notifyAll(Event::WARNING_NEAR_ENABLE_ALL_OPPONENTS);
 		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::enableOpponentCb, this),
 			warningDisableTime);
 	}
@@ -111,6 +111,6 @@ void GameRules::nearEnableOpponentCb(){
 
 void GameRules::enableOpponentCb(){
 	if (currentGhostDisableTime == 0) {
-		notifyAll(Event::ENABLE_ALL_OPONENTS);
+		notifyAll(Event::ENABLE_ALL_OPPONENTS);
 	}
 }
