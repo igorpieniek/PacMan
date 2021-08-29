@@ -2,6 +2,13 @@
 The project was created to improve my own C++ programming skills. But most of all it was created just for fun!
 
 
+
+https://user-images.githubusercontent.com/46819243/131263210-d4e74990-d7c0-43f9-a41e-c84503195096.mp4
+
+
+
+
+
 # Used libraries
 
 - [GLEW](http://glew.sourceforge.net/)
