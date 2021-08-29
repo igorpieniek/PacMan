@@ -44,6 +44,7 @@ private:
 	std::vector<Drafter> ghosts;
 	Drafter disabledGhost;
 	bool disabledFlag = false;
+	bool isNearEnabledFlag = false;
 
 	std::vector<MapCell> mapvec;
 	PlayerDrafter plDrafter;
@@ -66,6 +67,8 @@ private:
 	void drawStartCounterProcess();
 	void drawPlayer();
 	void drawGhosts();
+	void rawDrawGhostsEnabled();
+	void rawDrawGhostsDisabled();
 	void drawHealth();
 	MapDrafter mapDrafter;
 

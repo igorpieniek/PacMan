@@ -17,6 +17,9 @@ public:
 private:
 	std::vector<std::shared_ptr<GameMediatorComponent>> components;
 	int startDelay = CONFIG.getStartDelay_s();
+	const double disableTime = 2.0;
+	// % of normal disable (rest of time should be indicated in some way)
+	const double normalDisablePercentage = 0.75; 
 
 	void notifyAll(Event evt);
 	void setComponentsMediator();
@@ -24,6 +27,8 @@ private:
 	void disableMotionForTime(double secounds);
 	void enableMotionCb();
 
+
+	void nearEnableOpponentCb();
 	void enableOpponentCb();
 };
 

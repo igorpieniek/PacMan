@@ -90,17 +90,38 @@ void GraphicGLManager::drawPlayer(){
 	plDrafter.draw(player->getPosition(), player->getCurrentDirection());
 }
 
-void GraphicGLManager::drawGhosts(){
-	if (disabledFlag) {
-		for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
-			std::shared_ptr<Oponent> opPos = opponents->getOpponent(i);
-			disabledGhost.draw(opPos->getPosition());
+void GraphicGLManager::drawGhosts() {
+	static int nearDisableEndCounter;
+	constexpr int maxCnt = 10;
+	if (isNearEnabledFlag) {
+		nearDisableEndCounter++;
+		if (nearDisableEndCounter < maxCnt) {
+			rawDrawGhostsDisabled();
 		}
-		return;
+		else {
+			if (nearDisableEndCounter >= maxCnt) nearDisableEndCounter = 0;
+			rawDrawGhostsEnabled();
+		}
 	}
-	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
-		std::shared_ptr<Opponent> opPos = opponents->getOpponent(i);
+	else if (disabledFlag ) {
+		rawDrawGhostsDisabled();
+	}
+	else {
+		rawDrawGhostsEnabled();
+	}
+}
+
+void GraphicGLManager::rawDrawGhostsEnabled(){
+	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
+		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
 		ghosts[i].draw(opPos->getPosition());
+	}
+}
+
+void GraphicGLManager::rawDrawGhostsDisabled(){
+	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
+		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
+		disabledGhost.draw(opPos->getPosition());
 	}
 }
 
@@ -133,7 +154,11 @@ void GraphicGLManager::notify(Event evt) {
 		disabledFlag = true;
 		break;
 	case Event::ENABLE_ALL_OPONENTS:
+		isNearEnabledFlag = false;
 		disabledFlag = false;
+		break;
+	case Event::WARNING_NEAR_ENABLE_ALL_OPONENTS:
+		isNearEnabledFlag = true;
 		break;
 	default:
 		break;

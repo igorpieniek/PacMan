@@ -19,7 +19,8 @@ void GameRules::notify(Event evt){
 		std::cout << "GameRules: SPECIAL_POINT_REACHED:\n";
 		notifyAll(evt);
 		notifyAll(Event::DISABLE_ALL_OPONENTS);
-		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::enableOpponentCb, this), 1.5);
+		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::nearEnableOpponentCb, this), 
+											       disableTime*normalDisablePercentage);
 		break;
 
 	case Event::ALL_POINTS_COLLECTED:
@@ -75,6 +76,12 @@ void GameRules::disableMotionForTime(double seconds){
 
 void GameRules::enableMotionCb(){
 	notifyAll(Event::ALLOW_MOTION);
+}
+
+void GameRules::nearEnableOpponentCb(){
+	notifyAll(Event::WARNING_NEAR_ENABLE_ALL_OPONENTS);
+	Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::enableOpponentCb, this),
+											   disableTime * (1-normalDisablePercentage));
 }
 
 void GameRules::enableOpponentCb(){
