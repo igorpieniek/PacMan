@@ -6,9 +6,9 @@
 #include "MoveAlgorithm.h"
 #include "Position.h"
 
-class Oponent: public Character{
+class Opponent: public Character{
 public:
-	Oponent(Position startPos, std::shared_ptr<MoveAlgorithm> beh ) :
+	Opponent(Position startPos, std::shared_ptr<MoveAlgorithm> beh ) :
 		Character(startPos), behaviour(beh){};
 
 	void update() override;

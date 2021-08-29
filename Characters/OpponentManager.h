@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Oponent.h"
+#include "Opponent.h"
 #include "Player.h"
 #include "RandMove.h"
 #include "MapManager.h"
@@ -13,29 +13,29 @@
 #include <algorithm>
 
 
-class OponentManager: public GameMediatorComponent{
+class OpponentManager: public GameMediatorComponent{
 public:
 	
-	OponentManager(int numberOfOps = { 4 });
+	OpponentManager(int numberOfOps = { 4 });
 
 	void updateAll();
 	void deactivateAll();
 	void activeteAll();
-	std::shared_ptr<Oponent> getOponent(int index);
-	int getAmountOfOponents()const { return numberOfOponents; };
+	std::shared_ptr<Opponent> getOpponent(int index);
+	int getAmountOfOpponents()const { return numberOfOpponents; };
 
 	void notify(Event evt) override;
 	void notifyPlayerPosition(Position& pos) override;
 
 
 private:
-	int numberOfOponents;
-	std::vector<Oponent> ops;
+	int numberOfOpponents;
+	std::vector<Opponent> ops;
 	bool active = true;
 	
 	using MoveAlg = RandMove;
 
-	void createOponents();
+	void createOpponents();
 	Position getRandPosition();
 	bool isPlayerPosReached(Position& pos);
 };

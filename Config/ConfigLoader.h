@@ -30,14 +30,14 @@ public:
 	std::string getMapElementCornerSEImgPath();
 	std::string getMapElementCornerSWImgPath();
 
-	std::vector<std::string> getOponentsImgPaths();
+	std::vector<std::string> getOpponentsImgPaths();
 
 	// others
 	Position getPlayerInitialPosition();
-	int getAmountOfOponents();
+	int getAmountOfOpponents();
 	int getAmountOfSpecialPoints();
 	CoordType getPlayerSpeed();
-	CoordType getOponentSpeed();
+	CoordType getOpponentSpeed();
 	int getMainWindowWidth();
 	int getMainWindowHeight();
 	int getStartDelay_s();
@@ -75,10 +75,10 @@ private:
 	};
 	RequiredMap requiredOtherHeaders{
 		{"playerPosition",		&JsonVal::isArray},
-		{"amountOfOponents",	&JsonVal::isUInt},
+		{"amountOfOpponents",	&JsonVal::isUInt},
 		{"amountOfSpecialPoints",&JsonVal::isUInt},
 		{"playerSpeed",			&JsonVal::isDouble},
-		{"oponentSpeed",		&JsonVal::isDouble},
+		{"opponentSpeed",		&JsonVal::isDouble},
 		{"windowSize",			&JsonVal::isUInt}, //isArray (x,y) if scale problem will be resolved
 		{"startDelay_s",        &JsonVal::isUInt},	
 	};

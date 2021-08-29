@@ -18,7 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Characters\Oponent.cpp">
+    <ClCompile Include="Characters\Opponent.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="Characters\Player.cpp">
@@ -42,7 +42,7 @@
     <ClCompile Include="Behaviours\RandMove.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Characters\OponentManager.cpp">
+    <ClCompile Include="Characters\OpponentManager.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="GameTools\PointsManager.cpp">
@@ -182,7 +182,7 @@
     <ClInclude Include="Characters\Character.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\Oponent.h">
+    <ClInclude Include="Characters\Opponent.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="Characters\Player.h">
@@ -209,7 +209,7 @@
     <ClInclude Include="Behaviours\RandMove.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Characters\OponentManager.h">
+    <ClInclude Include="Characters\OpponentManager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="GameTools\PointsManager.h">

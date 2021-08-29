@@ -24,14 +24,14 @@ class GraphicGLManager :public GraphicManagerInterface, public GameMediatorCompo
 public:
 	GraphicGLManager(const std::shared_ptr<PointsManager> pointsManag,
 					 const std::shared_ptr<Player> pl,
-					 const std::shared_ptr<OponentManager> oponentManag);
+					 const std::shared_ptr<OpponentManager> opponentManag);
 
 	void draw() override;
 	void notify(Event evt) override;
 private:
 	void notifyPlayerPosition(Position& pos)override {};
 
-	std::vector<std::string> ghostPaths = CONFIG.getOponentsImgPaths();
+	std::vector<std::string> ghostPaths = CONFIG.getOpponentsImgPaths();
 	std::string mapPath	 = CONFIG.getDynamicMapImgPath();
 	std::string playerPath = CONFIG.getPlayerImgPath();
 	std::string cookiePath = CONFIG.getPointImgPath();

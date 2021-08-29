@@ -109,7 +109,7 @@ std::string ConfigLoader::getMapElementCornerSWImgPath(){
 	return root["paths"]["mapElementsImg"]["cornerSW"].asString();
 }
 
-std::vector<std::string> ConfigLoader::getOponentsImgPaths(){
+std::vector<std::string> ConfigLoader::getOpponentsImgPaths(){
 	std::vector<std::string> res;
 	Json::Value ghosts = root["paths"]["ghostsImg"];
 	for (size_t i = 0; i < ghosts.size(); i++) {
@@ -124,8 +124,8 @@ Position ConfigLoader::getPlayerInitialPosition(){
 	return Position(x,y);
 }
 
-int ConfigLoader::getAmountOfOponents(){
-	return root["other"]["amountOfOponents"].asInt();
+int ConfigLoader::getAmountOfOpponents(){
+	return root["other"]["amountOfOpponents"].asInt();
 }
 
 int ConfigLoader::getAmountOfSpecialPoints(){
@@ -136,8 +136,8 @@ CoordType ConfigLoader::getPlayerSpeed(){
 	return root["other"]["playerSpeed"].asFloat();
 }
 
-CoordType ConfigLoader::getOponentSpeed(){
-	return root["other"]["oponentSpeed"].asFloat();
+CoordType ConfigLoader::getOpponentSpeed(){
+	return root["other"]["opponentSpeed"].asFloat();
 }
 
 int ConfigLoader::getMainWindowWidth(){

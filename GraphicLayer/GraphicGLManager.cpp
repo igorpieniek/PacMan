@@ -4,16 +4,16 @@
 GraphicGLManager::GraphicGLManager(
 		const std::shared_ptr<PointsManager> pointsManag,
 		const std::shared_ptr<Player> pl,
-		const std::shared_ptr<OponentManager> oponentManag)
-		: GraphicManagerInterface(pointsManag, pl, oponentManag)
+		const std::shared_ptr<OpponentManager> opponentManag)
+		: GraphicManagerInterface(pointsManag, pl, opponentManag)
 {
 
 	if (ghostPaths.size() == 0) {
-		throw std::runtime_error("GraphicGLManager: No oponent paths added!");
+		throw std::runtime_error("GraphicGLManager: No Opponent paths added!");
 	}
 	Render2D::instance().init();
 
-	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
+	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
 		ghosts.push_back({});
 		ghosts.back().addImage(getnextGhostPath());
 	}
@@ -91,8 +91,8 @@ void GraphicGLManager::drawPlayer(){
 }
 
 void GraphicGLManager::drawGhosts(){
-	for (int i = 0; i < oponents->getAmountOfOponents(); i++) {
-		std::shared_ptr<Oponent> opPos = oponents->getOponent(i);
+	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
+		std::shared_ptr<Opponent> opPos = opponents->getOpponent(i);
 		ghosts[i].draw(opPos->getPosition());
 	}
 }

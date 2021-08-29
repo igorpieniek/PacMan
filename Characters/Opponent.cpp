@@ -1,14 +1,14 @@
-#include "Oponent.h"
+#include "Opponent.h"
 
-void Oponent::update(){
+void Opponent::update(){
 	if (isMotionBlocked) return;
 	behaviour->update(currentPostion);
 }
 
-void Oponent::disable(){
+void Opponent::disable(){
 	active = false;
 }
 
-void Oponent::enable(){
+void Opponent::enable(){
 	active = true;
 }

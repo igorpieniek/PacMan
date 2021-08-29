@@ -15,7 +15,7 @@ void GameRules::notify(Event evt){
 
 	case Event::SPECIAL_POINT_REACHED:
 		// disable all opponents
-		// start timer of special state - oponents disable
+		// start timer of special state - opponents disable
 		std::cout << "GameRules: SPECIAL_POINT_REACHED:\n";
 		notifyAll(evt);
 		break;

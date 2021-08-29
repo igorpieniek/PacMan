@@ -7,7 +7,7 @@ PacManApp::PacManApp(){
 	playerMovement = std::make_shared<PlayerMovement>(CONFIG.getPlayerSpeed());
 	player = std::make_shared<Player>(CONFIG.getPlayerInitialPosition(), playerMovement);
 	points  = std::make_shared<PointsManager>(CONFIG.getAmountOfSpecialPoints());
-	opManag = std::make_shared<OponentManager>(CONFIG.getAmountOfOponents());
+	opManag = std::make_shared<OpponentManager>(CONFIG.getAmountOfOpponents());
 
 
 	if (!initGLFW())return;
