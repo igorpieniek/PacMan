@@ -31,6 +31,8 @@ public:
 	std::string getMapElementCornerSWImgPath();
 
 	std::vector<std::string> getOpponentsImgPaths();
+	std::string getDisabledOponentImgPath();
+
 
 	// others
 	Position getPlayerInitialPosition();
@@ -62,7 +64,8 @@ private:
 		{"heartImg",		&JsonVal::isString},
 		{"pointImg",		&JsonVal::isString},
 		{"mapElementsImg",  &JsonVal::isObject},
-		{"ghostsImg",       &JsonVal::isArray}
+		{"ghostsImg",       &JsonVal::isArray},
+		{"disabledGhostImg",&JsonVal::isString}
 	};
 	RequiredMap requiredMapElementsHeaders{
 		{"vertical",	&JsonVal::isString},

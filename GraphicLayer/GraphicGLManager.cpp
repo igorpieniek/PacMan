@@ -17,7 +17,7 @@ GraphicGLManager::GraphicGLManager(
 		ghosts.push_back({});
 		ghosts.back().addImage(getnextGhostPath());
 	}
-
+	disabledGhost.addImage(disabledGhostPath);
 	plDrafter.addImage(playerPath);
 	cookieDrafter.addImage(cookiePath);
 	heartDrafter.addImage(heartPath);
@@ -91,6 +91,13 @@ void GraphicGLManager::drawPlayer(){
 }
 
 void GraphicGLManager::drawGhosts(){
+	if (disabledFlag) {
+		for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
+			std::shared_ptr<Oponent> opPos = opponents->getOpponent(i);
+			disabledGhost.draw(opPos->getPosition());
+		}
+		return;
+	}
 	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
 		std::shared_ptr<Opponent> opPos = opponents->getOpponent(i);
 		ghosts[i].draw(opPos->getPosition());
@@ -122,7 +129,12 @@ void GraphicGLManager::notify(Event evt) {
 	case Event::RESTART_POSITIONS:
 		startCounter.start();
 		break;
-
+	case Event::DISABLE_ALL_OPONENTS:
+		disabledFlag = true;
+		break;
+	case Event::ENABLE_ALL_OPONENTS:
+		disabledFlag = false;
+		break;
 	default:
 		break;
 	}

@@ -23,5 +23,7 @@ private:
 
 	void disableMotionForTime(double secounds);
 	void enableMotionCb();
+
+	void enableOpponentCb();
 };
 

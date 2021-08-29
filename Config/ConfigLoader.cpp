@@ -118,6 +118,10 @@ std::vector<std::string> ConfigLoader::getOpponentsImgPaths(){
 	return res;
 }
 
+std::string ConfigLoader::getDisabledOponentImgPath(){
+	return root["paths"]["disabledGhostImg"].asString();
+}
+
 Position ConfigLoader::getPlayerInitialPosition(){
 	CoordType x = root["other"]["playerPosition"][0].asUInt();
 	CoordType y = root["other"]["playerPosition"][1].asUInt();

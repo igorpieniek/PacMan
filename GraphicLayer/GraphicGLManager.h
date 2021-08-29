@@ -31,7 +31,10 @@ public:
 private:
 	void notifyPlayerPosition(Position& pos)override {};
 
+
 	std::vector<std::string> ghostPaths = CONFIG.getOpponentsImgPaths();
+	std::string disabledGhostPath = CONFIG.getDisabledOponentImgPath();
+
 	std::string mapPath	 = CONFIG.getDynamicMapImgPath();
 	std::string playerPath = CONFIG.getPlayerImgPath();
 	std::string cookiePath = CONFIG.getPointImgPath();
@@ -39,6 +42,9 @@ private:
 
 
 	std::vector<Drafter> ghosts;
+	Drafter disabledGhost;
+	bool disabledFlag = false;
+
 	std::vector<MapCell> mapvec;
 	PlayerDrafter plDrafter;
 	CookieDrafter cookieDrafter;
