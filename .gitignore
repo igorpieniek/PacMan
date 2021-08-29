@@ -1,8 +1,13 @@
 *.vs
-*.sln
-/PacMan/Debug
-*.vcxproj*
+Debug/
 *.ilk
 *.pdb
+*.exe
+*.ini
 
+*.txt
+*.ini
+*.cd
+
+!mapTemplate.txt
 

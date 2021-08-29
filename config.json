@@ -1,0 +1,32 @@
+{
+	"paths":{
+		"mapTxt": "mapTemplate.txt",
+		"dynamicMapImg": "images/newDynamicMap.png",
+		"playerImg":"images/pacman.png",
+		"heartImg":"images/heart.png",
+		"pointImg":"images/point.png",
+		"mapElementsImg":{
+			"vertical": "images/vertical.png",
+			"horizontal": "images/horizontal.png",
+			"empty": "images/empty.png",
+			"cornerNE": "images/corner_NE.png",
+			"cornerSE": "images/corner_SE.png",
+			"cornerSW": "images/corner_SW.png",
+			"cornerNW": "images/corner_NW.png"
+		},
+		"ghostsImg":[
+			"images/ghost1.png",
+			"images/ghost2.png",
+			"images/ghost3.png",
+			"images/ghost4.png"
+		],
+		"disabledGhostImg": "images/disabled.png"
+	},
+	"other":{
+		"playerPosition": [8,1],
+		"amountOfOpponents": 6,
+		"amountOfSpecialPoints": 8,
+		"startDelay_s": 4,
+		"windowSize": 640
+	}
+}
