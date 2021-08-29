@@ -21,6 +21,8 @@
 #include "ConfigLoader.h"
 
 
+#define SPEED 0.1
+
 class PacManApp{
 public:
 	PacManApp();

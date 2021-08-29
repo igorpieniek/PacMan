@@ -38,8 +38,6 @@ public:
 	Position getPlayerInitialPosition();
 	int getAmountOfOpponents();
 	int getAmountOfSpecialPoints();
-	CoordType getPlayerSpeed();
-	CoordType getOpponentSpeed();
 	int getMainWindowWidth();
 	int getMainWindowHeight();
 	int getStartDelay_s();
@@ -80,8 +78,6 @@ private:
 		{"playerPosition",		&JsonVal::isArray},
 		{"amountOfOpponents",	&JsonVal::isUInt},
 		{"amountOfSpecialPoints",&JsonVal::isUInt},
-		{"playerSpeed",			&JsonVal::isDouble},
-		{"opponentSpeed",		&JsonVal::isDouble},
 		{"windowSize",			&JsonVal::isUInt}, //isArray (x,y) if scale problem will be resolved
 		{"startDelay_s",        &JsonVal::isUInt},	
 	};

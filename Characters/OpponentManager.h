@@ -16,7 +16,7 @@
 class OpponentManager: public GameMediatorComponent{
 public:
 	
-	OpponentManager(int numberOfOps = { 4 });
+	OpponentManager(float speed, int numberOfOps = { 4 });
 
 	void updateAll();
 	void deactivateAll();
@@ -32,6 +32,7 @@ private:
 	int numberOfOpponents;
 	std::vector<Opponent> ops;
 	bool active = true;
+	float opponentSpeed;
 	
 	using MoveAlg = RandMove;
 

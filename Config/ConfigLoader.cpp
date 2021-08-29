@@ -136,13 +136,6 @@ int ConfigLoader::getAmountOfSpecialPoints(){
 	return root["other"]["amountOfSpecialPoints"].asInt();
 }
 
-CoordType ConfigLoader::getPlayerSpeed(){
-	return root["other"]["playerSpeed"].asFloat();
-}
-
-CoordType ConfigLoader::getOpponentSpeed(){
-	return root["other"]["opponentSpeed"].asFloat();
-}
 
 int ConfigLoader::getMainWindowWidth(){
 	return root["other"]["windowSize"].asInt();

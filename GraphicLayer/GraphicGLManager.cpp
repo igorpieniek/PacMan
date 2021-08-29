@@ -92,14 +92,14 @@ void GraphicGLManager::drawPlayer(){
 
 void GraphicGLManager::drawGhosts() {
 	static int nearDisableEndCounter;
-	constexpr int maxCnt = 10;
+	constexpr int maxCnt = 5;
 	if (isNearEnabledFlag) {
 		nearDisableEndCounter++;
 		if (nearDisableEndCounter < maxCnt) {
 			rawDrawGhostsDisabled();
 		}
 		else {
-			if (nearDisableEndCounter >= maxCnt) nearDisableEndCounter = 0;
+			if (nearDisableEndCounter >= 2*maxCnt) nearDisableEndCounter = 0;
 			rawDrawGhostsEnabled();
 		}
 	}

@@ -4,10 +4,10 @@ std::shared_ptr<PlayerMovement> PacManApp::playerMovement = std::make_shared<Pla
 PacManApp::PacManApp(){
 	MapManager::instance().addMap(CONFIG.getMapTxtPath());
 
-	playerMovement = std::make_shared<PlayerMovement>(CONFIG.getPlayerSpeed());
+	playerMovement = std::make_shared<PlayerMovement>(SPEED);
 	player = std::make_shared<Player>(CONFIG.getPlayerInitialPosition(), playerMovement);
 	points  = std::make_shared<PointsManager>(CONFIG.getAmountOfSpecialPoints());
-	opManag = std::make_shared<OpponentManager>(CONFIG.getAmountOfOpponents());
+	opManag = std::make_shared<OpponentManager>(SPEED, CONFIG.getAmountOfOpponents());
 
 
 	if (!initGLFW())return;

@@ -27,8 +27,6 @@
 		"amountOfOpponents": 6,
 		"amountOfSpecialPoints": 8,
 		"startDelay_s": 4,
-		"playerSpeed": 0.2,
-		"opponentSpeed": 0.1,
 		"windowSize": 640
 	}
 }

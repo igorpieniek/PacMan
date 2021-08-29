@@ -2,16 +2,15 @@
 #include <time.h>
 
 
-OpponentManager::OpponentManager(int numberOfOps) : numberOfOpponents(numberOfOps) {
+OpponentManager::OpponentManager(float speed, int numberOfOps) : opponentSpeed(speed), numberOfOpponents(numberOfOps) {
 	std::srand((unsigned)time(NULL));
 	createOpponents();
 }
 
 void OpponentManager::createOpponents(){
-	CoordType opSpeed = CONFIG.getOpponentSpeed();
 	for (int i = 0; i < numberOfOpponents; ++i) {
 		ops.push_back({ getRandPosition(),
-						std::make_shared<MoveAlg>(opSpeed) });
+						std::make_shared<MoveAlg>(opponentSpeed) });
 	}
 }
 
