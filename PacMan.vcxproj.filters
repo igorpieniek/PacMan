@@ -1646,7 +1646,6 @@
     <None Include="Vendor\json\json_valueiterator.inl">
       <Filter>Pliki nagłówkowe</Filter>
     </None>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Vendor\glm\CMakeLists.txt" />

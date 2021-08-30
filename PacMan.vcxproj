@@ -556,7 +556,6 @@
     <ClInclude Include="GenericTools\Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <None Include="Vendor\glm\detail\func_common.inl" />
     <None Include="Vendor\glm\detail\func_common_simd.inl" />
     <None Include="Vendor\glm\detail\func_exponential.inl" />
