@@ -151,6 +151,7 @@ void GraphicGLManager::notify(Event evt) {
 		startCounter.start();
 		break;
 	case Event::DISABLE_ALL_OPPONENTS:
+		isNearEnabledFlag = false;
 		disabledFlag = true;
 		break;
 	case Event::ENABLE_ALL_OPPONENTS:

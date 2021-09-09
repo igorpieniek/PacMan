@@ -4,7 +4,12 @@ GameRules::GameRules(std::vector<std::shared_ptr<GameMediatorComponent>> comp) :
 					components(comp), GameMediator()
 {
 	setComponentsMediator();
+	smallOpponentEnableTimer.setCallback(std::bind(&GameRules::nearEnableOpponentCb, this));
+	mainOpponentEnableTimer.setCallback(std::bind(&GameRules::enableOpponentCb, this));
+	motionTimer.setCallback(std::bind(&GameRules::enableMotionCb, this));
+
 	notifyAll(Event::STOP_MOTION);
+
 };
 
 void GameRules::notify(Event evt){
@@ -76,7 +81,7 @@ void GameRules::setComponentsMediator(){
 
 void GameRules::disableMotionForTime(double seconds){
 	notifyAll(Event::STOP_MOTION);
-	Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::enableMotionCb, this), seconds);
+	motionTimer.startPeriodElapse(seconds);
 }
 
 void GameRules::enableMotionCb(){
@@ -84,28 +89,29 @@ void GameRules::enableMotionCb(){
 }
 
 void GameRules::reset(){
-	Timer::instance().reset();
+	smallOpponentEnableTimer.reset();
+	mainOpponentEnableTimer.reset();
+	motionTimer.reset();
 	currentGhostDisableTime = 0;
 }
 
 void GameRules::setGhostDisableTimer(){
 	if (currentGhostDisableTime == 0) {
-		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::nearEnableOpponentCb, this),
-												   normalDisableTime);
+		smallOpponentEnableTimer.startPeriodElapse(normalDisableTime);
 	}
 	currentGhostDisableTime += normalDisableTime;
 }
 
 void GameRules::nearEnableOpponentCb(){
 	currentGhostDisableTime -= normalDisableTime;
+	std::cout << "Current disable time " << currentGhostDisableTime << std::endl;
 	if (currentGhostDisableTime == 0) {
 		notifyAll(Event::WARNING_NEAR_ENABLE_ALL_OPPONENTS);
-		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::enableOpponentCb, this),
-			warningDisableTime);
+		mainOpponentEnableTimer.startPeriodElapse(warningDisableTime);
 	}
 	else {
-		Timer::instance().addPeriodElapsedCallback(std::bind(&GameRules::nearEnableOpponentCb, this),
-			normalDisableTime);
+		notifyAll(Event::DISABLE_ALL_OPPONENTS);
+		smallOpponentEnableTimer.startPeriodElapse(normalDisableTime);
 	}
 }
 

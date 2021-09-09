@@ -23,6 +23,11 @@ private:
 	const double warningDisableTime = disableTime - normalDisableTime;
 	double currentGhostDisableTime = 0;
 
+	Timer smallOpponentEnableTimer;
+	Timer mainOpponentEnableTimer;
+	Timer motionTimer;
+
+
 	void notifyAll(Event evt);
 	void setComponentsMediator();
 

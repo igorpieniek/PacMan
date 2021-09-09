@@ -9,6 +9,7 @@
 
 class StartCounter {
 public:
+	StartCounter();
 	void start();
 	void draw();
 
@@ -36,6 +37,7 @@ private:
 	bool isStarted = false;
 	bool isTimerInitialized = false;
 
+	Timer counterTimer;
 
 	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoTitleBar |
 		ImGuiWindowFlags_NoScrollbar |

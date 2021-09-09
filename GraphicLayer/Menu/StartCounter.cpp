@@ -1,5 +1,9 @@
 #include "StartCounter.h"
 
+StartCounter::StartCounter(){
+	counterTimer.setCallback(std::bind(&StartCounter::changeTimeCb, this));
+}
+
 void StartCounter::start(){
 	if (!isTimerInitialized) {
 		isStarted = true;
@@ -9,7 +13,7 @@ void StartCounter::start(){
 void StartCounter::draw(){
 	if (isStarted) {
 		if (!isTimerInitialized) {
-			Timer::instance().addPeriodElapsedCallback(std::bind(&StartCounter::changeTimeCb, this), 1);
+			counterTimer.startPeriodElapse(1);
 			isTimerInitialized = true;
 		}
 		ImGui::SetNextWindowPos(ImVec2(XposWin, YposWin));

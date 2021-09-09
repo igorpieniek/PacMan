@@ -6,29 +6,28 @@
 
 class Timer{
 public:
-	static Timer& instance();
-
-	void addPeriodElapsedCallback(std::function<void()> fun,double sec);
+	Timer();
+	void startPeriodElapse(double duration);
+	void setCallback(std::function<void()> fun);
 	void reset();
+	bool isLoced()const { return isWaiting; };
 
 private:
-	Timer();
+
 	void process();
-	void deleteUsedCallbacks();
-	void executeCallbacks();
+	void executeCallback();
 	void updateTime();
 
 
-	std::chrono::system_clock::time_point  currentTime;
+	std::chrono::system_clock::time_point currentTime{};
+	std::chrono::system_clock::time_point startTime{};
 	std::thread thrd;
 
-	struct CallbackElement {
-		std::function<void()> fun;
-		double requiredTime;
-		std::chrono::system_clock::time_point startTime;
-		bool isUsed = false;
-	};
+	std::function<void()> callback = nullptr;
+	double requiredTime{};
 
-	std::vector<CallbackElement> callbacks;
+	bool isWaiting = false;
+
+
 };
 
