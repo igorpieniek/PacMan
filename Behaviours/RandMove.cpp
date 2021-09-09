@@ -32,7 +32,7 @@ Direction RandMove::getBestDirection(Position& center) {
             deleteCurrentDirection(directions);
         }
 
-        int randIndex = getRandomValue(0, directions.size());
+        int randIndex = getRandomValue(0, directions.size()-1);
         return directions[randIndex];
     }
     else {
@@ -48,6 +48,7 @@ void RandMove::deleteCurrentDirection(std::vector<Direction>& dir){
 }
 
 int RandMove::getRandomValue(int min, int max){
-    return std::rand() % max + min;
+    std::uniform_int_distribution<> randomizer(min, max);
+    return randomizer(generator);
 }
 

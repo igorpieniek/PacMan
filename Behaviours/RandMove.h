@@ -7,6 +7,7 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
+#include <random>
 
 class RandMove: public MoveAlgorithm{
 public:
@@ -30,4 +31,7 @@ private:
 	Direction currentDirection;
 	Movement moveTool;
 	bool isInitialized = false;
+
+	std::random_device rd;
+	std::mt19937 generator{rd()};
 };

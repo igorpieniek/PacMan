@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <algorithm>
+#include <random>
 
 
 class OpponentManager: public GameMediatorComponent{

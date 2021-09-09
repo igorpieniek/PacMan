@@ -3,7 +3,6 @@
 
 
 OpponentManager::OpponentManager(float speed, int numberOfOps) : opponentSpeed(speed), numberOfOpponents(numberOfOps) {
-	std::srand((unsigned)time(NULL));
 	createOpponents();
 }
 
@@ -85,9 +84,13 @@ bool OpponentManager::isPlayerPosReached(Position& pos){
 }
 
 Position OpponentManager::getRandPosition() {
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> randomizerX(0, static_cast<int>(MapManager::instance().getMapXSize()) );
+	std::uniform_int_distribution<> randomizerY(0, static_cast<int>(MapManager::instance().getMapYSize()) );
 	while (true) {
-		int randX = std::rand() % static_cast<int>( MapManager::instance().getMapXSize() );
-		int randY = std::rand() % static_cast<int>( MapManager::instance().getMapYSize() );
+		int randX = randomizerX(gen);
+		int randY = randomizerY(gen);
 
 		Position pos{ static_cast<CoordType>(randX),
 				      static_cast<CoordType>(randY) };
