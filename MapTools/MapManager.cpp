@@ -71,16 +71,9 @@ bool MapManager::isCorner(Position& pos){
 std::vector<Direction> 
 MapManager::getAllPossibleDirections(Position& pos){
 	Position roundPos = pos.getIntPos();
-	
 	std::vector<Direction> result;
-	std::map<Direction, Position> check = {
-		{Direction::NORTH, {0, 1}},
-		{Direction::SOUTH, {0,-1}},
-		{Direction::EAST,  {1, 0}},
-		{Direction::WEST,  {-1,0}},
-	};
 
-	for (auto const& x : check) {
+	for (auto const& x : directionTranslations) {
 		Position toFind{ roundPos + x.second };
 		size_t cellIndex = getMapBoardIndexPosition(toFind);
 
@@ -92,7 +85,7 @@ MapManager::getAllPossibleDirections(Position& pos){
 			}
 		}
 	}
-	return result;
+	return std::move(result);
 }
 
 

@@ -57,4 +57,11 @@ private:
 		{'0', MapCell::Category::FREE},
 	};
 
+	const std::map<Direction, Position> directionTranslations = {
+		{Direction::NORTH, {0, 1}},
+		{Direction::SOUTH, {0,-1}},
+		{Direction::EAST,  {1, 0}},
+		{Direction::WEST,  {-1,0}},
+	};
+
 };
