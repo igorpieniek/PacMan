@@ -56,7 +56,7 @@ void Render2D::process(){
         textRend.text->bind();
         shader->setUniformMatrix(uniformTransform, textRend.trans.getPointer());
         textRend.isUsed = true;
-        renderer.draw(va, ib, shader);
+        renderer.draw(va, ib);
     }
     textureRender.clear();
 }

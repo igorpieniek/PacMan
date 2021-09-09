@@ -8,11 +8,9 @@
 class Renderer {
 public:
 	void draw(const VertexArray& va, 
-			  const IndexBuffer& ib, 
-			  const Shader& shader ) const;
+			  const IndexBuffer& ib ) const;
 	void draw(const std::shared_ptr<VertexArray>& va,
-			  const std::shared_ptr<IndexBuffer>& ib,
-		      const std::shared_ptr<Shader>& shader) const;
+			  const std::shared_ptr<IndexBuffer>& ib) const;
 
 	void clear()const;
 private:
