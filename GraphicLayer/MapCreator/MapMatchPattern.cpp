@@ -53,7 +53,7 @@ std::vector<MapPatternType> MapMatchPattern::getMatchForWholeMap(){
 			result.push_back(MapPatternType::FREE);
 		}
 	}
-	return result;
+	return std::move(result);
 }
 
 MapPatternType MapMatchPattern::matchPatternForCell(Position& cell){
@@ -73,7 +73,7 @@ MapPatternType MapMatchPattern::matchPatternForCell(Position& cell){
 	return MapPatternType::FREE;
 }
 
-int MapMatchPattern::getNumberOfHitsForPattern(const Board& square, const MapPatternData& pat){
+int MapMatchPattern::getNumberOfHitsForPattern(const Board& square, const MapPatternData& pat)const {
 	int matchCounter = 0;
 	for (auto it = square.begin(); it != square.end(); it++) {
 		int indx = std::distance(square.begin(), it);

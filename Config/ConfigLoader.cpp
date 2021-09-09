@@ -115,7 +115,7 @@ std::vector<std::string> ConfigLoader::getOpponentsImgPaths(){
 	for (size_t i = 0; i < ghosts.size(); i++) {
 		res.push_back(ghosts[i].asString());
 	}
-	return res;
+	return std::move(res);
 }
 
 std::string ConfigLoader::getDisabledOpponentImgPath(){

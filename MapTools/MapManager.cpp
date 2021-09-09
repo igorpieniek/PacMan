@@ -46,7 +46,7 @@ Board MapManager::getNeighbours(Position& pos, int radius){
 		}
 	}
 
-	return resultMap;
+	return std::move(resultMap);
 }
 
 bool MapManager::isCorner(Position& pos){
@@ -90,7 +90,7 @@ MapManager::getAllPossibleDirections(Position& pos){
 
 
 Board MapManager::readMapFromFile(std::string fileName){
-	std::vector<MapCell> result;
+	Board result;
 	std::ifstream file(fileName);
 	if (file.fail()) {
 		throw std::runtime_error("Map file open error!");
@@ -113,7 +113,7 @@ Board MapManager::readMapFromFile(std::string fileName){
 	}
 
 	height = lineNumber;
-	return result;
+	return std::move(result);
 }
 
 void MapManager::updateMapWidth(int w){

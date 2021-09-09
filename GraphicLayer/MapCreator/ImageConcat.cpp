@@ -87,7 +87,6 @@ bool ImageConcat::isImagesDataValid(){
 }
 
 std::vector<unsigned char> ImageConcat::concatWidth(ImageData& one, const std::shared_ptr<ImageData> two){
-
     std::vector<unsigned char> res;
     if (one.width == 0) {
         res.insert(res.end(), two->data.begin(), two->data.end());
@@ -100,7 +99,7 @@ std::vector<unsigned char> ImageConcat::concatWidth(ImageData& one, const std::s
                 two->data.begin() + (i * two->getByteWidth()) + two->getByteWidth());
         }
     }
-	return res;
+	return std::move(res);
 }
 
 std::vector<unsigned char> ImageConcat::concatHeight(std::vector<ImageData>& imageLines){
@@ -110,5 +109,5 @@ std::vector<unsigned char> ImageConcat::concatHeight(std::vector<ImageData>& ima
         res.insert(res.end(), line.data.begin(), line.data.end() );
     }
 
-    return res;
+    return std::move(res);
 }

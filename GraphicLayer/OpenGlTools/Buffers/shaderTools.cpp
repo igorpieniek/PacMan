@@ -31,7 +31,7 @@ std::vector<std::string> ShaderTools::readFile(std::string shadersPath) {
         }
     }
     shaderStream.close();
-    return { VertexShaderCode, FragmentShaderCode };
+    return std::move(std::vector<std::string>{ VertexShaderCode, FragmentShaderCode });
 
 }
 

@@ -36,14 +36,14 @@ private:
 	};
 
 
-	std::vector<Rotation>  rotations = { Rotation::DEG0,
-										 Rotation::DEG90, 
-										 Rotation::DEG180, 
-										 Rotation::DEG270 };
+	const std::vector<Rotation>  rotations = { Rotation::DEG0,
+											   Rotation::DEG90, 
+											   Rotation::DEG180, 
+											   Rotation::DEG270 };
 	MatrixTool<int> matTool;
 
 	MapPatternType matchPatternForCell(Position& cell);
-	int getNumberOfHitsForPattern(const Board& square, const MapPatternData& pat);
+	int getNumberOfHitsForPattern(const Board& square, const MapPatternData& pat)const;
 	MapPatternType getProperType(const MapPatternType type, const Rotation rot);
 	MapPatternType getNextTypeClockWise(const MapPatternType);
 
