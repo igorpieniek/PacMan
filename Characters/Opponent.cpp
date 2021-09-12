@@ -2,7 +2,12 @@
 
 void Opponent::update(){
 	if (isMotionBlocked) return;
-	behaviour->update(currentPostion);
+	if (behaviour) {
+		behaviour->update(currentPostion);
+	}
+	else {
+		throw std::runtime_error("Opponent: No behaviour algorithm added!");
+	}
 }
 
 void Opponent::disable(){

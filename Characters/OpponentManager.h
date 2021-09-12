@@ -22,7 +22,7 @@ public:
 	void updateAll();
 	void deactivateAll();
 	void activeteAll();
-	std::shared_ptr<Opponent> getOpponent(int index);
+	Position getOpponentXposition(int index);
 	int getAmountOfOpponents()const { return numberOfOpponents; };
 
 	void notify(Event evt) override;

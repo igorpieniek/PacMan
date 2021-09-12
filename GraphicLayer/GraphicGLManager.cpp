@@ -113,15 +113,15 @@ void GraphicGLManager::drawGhosts() {
 
 void GraphicGLManager::rawDrawGhostsEnabled(){
 	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
-		std::shared_ptr<Opponent> opPos = opponents->getOpponent(i);
-		ghosts[i].draw(opPos->getPosition());
+		Position opPos = opponents->getOpponentXposition(i);
+		ghosts[i].draw(opPos);
 	}
 }
 
 void GraphicGLManager::rawDrawGhostsDisabled(){
 	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
-		std::shared_ptr<Opponent> opPos = opponents->getOpponent(i);
-		disabledGhost.draw(opPos->getPosition());
+		Position opPos = opponents->getOpponentXposition(i);
+		disabledGhost.draw(opPos);
 	}
 }
 

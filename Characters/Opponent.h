@@ -8,8 +8,12 @@
 
 class Opponent: public Character{
 public:
-	Opponent(Position startPos, std::shared_ptr<MoveAlgorithm> beh ) :
-		Character(startPos), behaviour(beh){};
+	Opponent() :Character({}) {};
+
+	void setStartPosition(Position&& pos) { currentPostion = pos;}
+
+	void setMoveAlgorithm(std::unique_ptr<MoveAlgorithm>&& beh) {
+		behaviour = std::move(beh);}
 
 	void update() override;
 
@@ -18,5 +22,5 @@ public:
 
 private:
 	bool active = true;
-	std::shared_ptr<MoveAlgorithm> behaviour;
+	std::unique_ptr<MoveAlgorithm> behaviour;
 };

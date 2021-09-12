@@ -7,9 +7,10 @@ OpponentManager::OpponentManager(float speed, int numberOfOps) : opponentSpeed(s
 }
 
 void OpponentManager::createOpponents(){
+	ops.resize(numberOfOpponents);
 	for (int i = 0; i < numberOfOpponents; ++i) {
-		ops.push_back({ getRandPosition(),
-						std::make_shared<MoveAlg>(opponentSpeed) });
+		ops[i].setStartPosition(getRandPosition());
+		ops[i].setMoveAlgorithm(std::make_unique<MoveAlg>(opponentSpeed));
 	}
 }
 
@@ -25,11 +26,11 @@ void OpponentManager::activeteAll(){
 	std::for_each(ops.begin(), ops.end(), [this](Opponent& op) { op.enable(); });
 }
 
-std::shared_ptr<Opponent> OpponentManager::getOpponent(int index){
+Position OpponentManager::getOpponentXposition(int index){
 	if (index >= 0 || index <= static_cast<int>(ops.size())) {
-		return std::make_shared<Opponent>(ops[index]);
+		return ops[index].getPosition();
 	}
-	return nullptr;
+	return Position{};
 }
 
 void OpponentManager::notify(Event evt){
