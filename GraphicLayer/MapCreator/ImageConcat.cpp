@@ -6,7 +6,7 @@
 void ImageConcat::addImage(std::string path){
 
     auto res = std::find_if(images.begin(), images.end(),
-                            [&](const std::shared_ptr<ImageData>& img) {return img->path == path; });
+                            [&](const std::weak_ptr<ImageData>& img) {return img.lock()->path == path; });
     if (res == images.end()) {
         std::shared_ptr<ImageData> image = std::make_shared<ImageData>();
        

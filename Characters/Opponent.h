@@ -10,7 +10,9 @@ class Opponent: public Character{
 public:
 	Opponent() :Character({}) {};
 
-	void setStartPosition(Position&& pos) { currentPostion = pos;}
+	void setStartPosition(Position&& pos) { 
+		initPositionSnapshot = pos;
+		currentPostion = pos;}
 
 	void setMoveAlgorithm(std::unique_ptr<MoveAlgorithm>&& beh) {
 		behaviour = std::move(beh);}

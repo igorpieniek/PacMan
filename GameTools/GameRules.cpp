@@ -66,17 +66,17 @@ void GameRules::notify(Event evt){
 
 void GameRules::notifyPlayerPosition(Position& playerPos){
 	std::for_each(components.begin(), components.end(), 
-				  [&playerPos](std::shared_ptr<GameMediatorComponent>& comp) { comp->notifyPlayerPosition(playerPos); });
+				  [&playerPos](std::weak_ptr<GameMediatorComponent> comp) { comp.lock()->notifyPlayerPosition(playerPos); });
 }
 
 void GameRules::notifyAll(Event evt) {
 	std::for_each(components.begin(), components.end(),
-				  [&evt](std::shared_ptr<GameMediatorComponent>& comp) { comp->notify(evt); });
+				  [&evt](std::weak_ptr<GameMediatorComponent> comp) { comp.lock()->notify(evt); });
 }
 
 void GameRules::setComponentsMediator(){
 	std::for_each(components.begin(), components.end(),
-				  [this](std::shared_ptr<GameMediatorComponent>& comp) { comp->setMediator(this); });
+				  [this](std::weak_ptr<GameMediatorComponent> comp) { comp.lock()->setMediator(this); });
 }
 
 void GameRules::disableMotionForTime(double seconds){
