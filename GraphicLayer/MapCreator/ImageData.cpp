@@ -3,6 +3,7 @@
 ImageData::ImageData() : height{}, width{}, stride{} {}
 
 void ImageData::saveImage(unsigned char* ptr){
+    data.reserve(getByteSize());
     for (int i = 0; i < getByteSize(); i++) {
         data.push_back(ptr[i]);
     }

@@ -10,6 +10,15 @@ void Opponent::update(){
 	}
 }
 
+void Opponent::setStartPosition(Position&& pos) {
+	initPositionSnapshot = pos;
+	currentPostion = pos;
+}
+
+void Opponent::setMoveAlgorithm(std::unique_ptr<MoveAlgorithm>&& beh) {
+	behaviour = std::move(beh);
+}
+
 void Opponent::disable(){
 	active = false;
 }
@@ -17,3 +26,5 @@ void Opponent::disable(){
 void Opponent::enable(){
 	active = true;
 }
+
+

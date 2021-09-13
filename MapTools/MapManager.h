@@ -15,11 +15,9 @@
 
 using Board = std::vector<MapCell>;
 
-
 // Singleton class
 class MapManager{
 public:
-
 	static MapManager& instance();
 
 	void addMap(Board& map);
@@ -43,11 +41,11 @@ private:
 	MapManager() {};
 
 	int width = 0, height = 0;
-
-	Board mapBoard;
+	Board mapBoard{};
+	int freePositionsAmount = 0;
 	Board readMapFromFile(std::string fileName);
 	void updateMapWidth(int w);
-	int freePositionsAmount = 0;
+
 	void incrementFreePos(MapCell::Category cat);
 
 	size_t getMapBoardIndexPosition(Position& pos);

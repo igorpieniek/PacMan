@@ -13,16 +13,16 @@
 
 
 
-class Drafter{
+class Drafter {
 public:
 	virtual void addImage(std::string path, Direction dir = Direction::EAST);
 	virtual void draw(Position pos, Direction dir = Direction::EAST);
 
 protected:
-	std::string filePath;
+	std::string filePath{};
 	Direction imageOriginalDirection = Direction::EAST;
-	Transformation trans;
-	std::shared_ptr<Texture> text;
+	Transformation trans{};
+	std::shared_ptr<Texture> text{};
 
 	static float scale;
 	static Position correction;

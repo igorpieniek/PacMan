@@ -13,6 +13,4 @@ public:
 			  const std::shared_ptr<IndexBuffer>& ib) const;
 
 	void clear()const;
-private:
-
 };

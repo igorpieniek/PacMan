@@ -12,8 +12,5 @@ public:
 	void unbind() const override;
 
 	void addBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout);
-
-private:
-
 };
 

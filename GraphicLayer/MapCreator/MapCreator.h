@@ -8,7 +8,6 @@
 #include "ConfigLoader.h"
 
 
-
 class MapCreator{
 public:
 	void create();

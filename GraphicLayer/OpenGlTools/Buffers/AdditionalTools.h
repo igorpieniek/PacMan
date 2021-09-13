@@ -16,6 +16,6 @@ public:
 		else return {};
 	}
 private:
-	float r, g, b, alph;
-	int size;
+	float r{}, g{}, b{}, alph{};
+	int size{};
 };

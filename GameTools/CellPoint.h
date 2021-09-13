@@ -19,7 +19,7 @@ public:
 	int takePoints();
 
 private:
-	PointCat  point;
+	PointCat point{};
 
 };
 

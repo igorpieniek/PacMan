@@ -7,7 +7,6 @@
 
 class Transformation {
 public:
-
 	enum class Axis {
 		X,Y,Z
 	};
@@ -23,17 +22,18 @@ public:
 
 private:
 	struct Coordinates {
-		float x, y, z;
+		float x{}, y{}, z{};
+		Coordinates()=default;
 		Coordinates(float val) : x(val), y(val), z(val) {};
 		Coordinates(float X, float Y, float Z) : x(X), y(Y), z(Z) {};
 	};
 
-	float angle;
-	Coordinates scale;
-	Coordinates move;
-	Coordinates rotation;
+	float angle{};
+	Coordinates scale{};
+	Coordinates move{};
+	Coordinates rotation{};
 
-	glm::mat4 trans;
+	glm::mat4 trans{};
 	
 };
 

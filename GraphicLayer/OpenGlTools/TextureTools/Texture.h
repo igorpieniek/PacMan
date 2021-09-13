@@ -32,11 +32,11 @@ public:
 
 
 private:
-	unsigned int id;
-	int width, height, nrChannels;
-	unsigned char* imageData;
-	uint16_t colorFormat;
-	std::string filePath;
+	unsigned int id{};
+	int width{}, height{}, nrChannels{};
+	unsigned char* imageData{nullptr};
+	uint16_t colorFormat{};
+	std::string filePath{};
 
 	void loadTexture(std::string filename);
 	void setWrapParameter(uint16_t method);

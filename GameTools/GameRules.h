@@ -19,13 +19,13 @@ private:
 	int startDelay = CONFIG.getStartDelay_s();
 	const double disableTime = 2.0;
 	// % of normal disable (rest of time should be indicated in some way)
-	const double normalDisableTime = 0.75 * disableTime;
+	const double normalDisableTime  = 0.75 * disableTime;
 	const double warningDisableTime = disableTime - normalDisableTime;
 	double currentGhostDisableTime = 0;
 
-	Timer smallOpponentEnableTimer;
-	Timer mainOpponentEnableTimer;
-	Timer motionTimer;
+	Timer smallOpponentEnableTimer{};
+	Timer mainOpponentEnableTimer{};
+	Timer motionTimer{};
 
 
 	void notifyAll(Event evt);

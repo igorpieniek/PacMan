@@ -5,8 +5,8 @@
 struct ImageData{
 	ImageData();
 	std::vector<unsigned char> data;
-	int width, height, stride;
-	std::string path;
+	int width{}, height{}, stride{};
+	std::string path{};
 
 	void saveImage(unsigned char* ptr);
 	bool operator==(const ImageData& data);

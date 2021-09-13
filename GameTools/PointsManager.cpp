@@ -1,5 +1,15 @@
 #include "PointsManager.h"
 
+PointsManager::PointsManager(int specialAmount) :
+	specialPointsAmount{ specialAmount },
+	currentPoints{ 0 }
+{
+	cellPoints.reserve(static_cast<size_t>(MapManager::instance().getMapXSize()*
+										   MapManager::instance().getMapYSize()));
+	createCellPointArray();
+};
+
+
 void PointsManager::createCellPointArray(){
 	int counter = 0;
 	if (MapManager::instance().getFreePosAmount() < specialPointsAmount) {

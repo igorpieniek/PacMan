@@ -50,6 +50,9 @@ private:
 	typedef bool (JsonVal::*JsonCheckerMeth)(void) const ;
 	using RequiredMap = std::map<std::string, JsonCheckerMeth>;
 
+	Json::Value root{};
+	Json::CharReaderBuilder builder{};
+
 	RequiredMap requiredMainHeaders{
 		{"paths", &JsonVal::isObject},
 		{"other", &JsonVal::isObject}
@@ -85,9 +88,6 @@ private:
 	bool isJSONhaveRequiredFields();
 
 	bool isSubsectionHaveRequiredFields(Json::Value sub, RequiredMap& required, std::string subName);
-	
 
-	Json::Value root;
-	Json::CharReaderBuilder builder;
 };
 

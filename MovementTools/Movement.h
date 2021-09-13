@@ -2,7 +2,6 @@
 
 #include "Position.h"
 
-
 enum class Direction {
 	NORTH,
 	EAST,
@@ -28,7 +27,7 @@ public:
 	void setStepSize(CoordType siz);
 
 protected:
-	CoordType stepSize;
+	CoordType stepSize{};
 
 private:
 	void checkStepSizeIsPositive();

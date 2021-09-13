@@ -42,21 +42,23 @@ private:
 
 
 	std::vector<Drafter> ghosts;
-	Drafter disabledGhost;
+	Drafter disabledGhost{};
 	bool disabledFlag = false;
 	bool isNearEnabledFlag = false;
 
 	std::vector<MapCell> mapvec;
-	PlayerDrafter plDrafter;
-	CookieDrafter cookieDrafter;
-	HeartDrafter heartDrafter;
+	PlayerDrafter plDrafter{};
+	CookieDrafter cookieDrafter{};
+	HeartDrafter heartDrafter{};
 
-	PointCounter counterDrafter;
-	StartMenu startMenu;
-	StartCounter startCounter;
+	MapDrafter mapDrafter{};
+
+	PointCounter counterDrafter{};
+	StartMenu startMenu{};
+	StartCounter startCounter{};
 	bool isStartButtonPressed = false;
 
-	FinishMenu finishMenu;
+	FinishMenu finishMenu{};
 	bool isRetryButtonPressed = false;
 	
 
@@ -70,7 +72,7 @@ private:
 	void rawDrawGhostsEnabled();
 	void rawDrawGhostsDisabled();
 	void drawHealth();
-	MapDrafter mapDrafter;
+
 
 
 	std::string getnextGhostPath();

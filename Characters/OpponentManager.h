@@ -30,10 +30,10 @@ public:
 
 
 private:
-	int numberOfOpponents;
+	int numberOfOpponents{};
 	std::vector<Opponent> ops;
 	bool active = true;
-	float opponentSpeed;
+	float opponentSpeed{};
 	
 	using MoveAlg = RandMove;
 

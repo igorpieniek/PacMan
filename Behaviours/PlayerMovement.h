@@ -19,13 +19,12 @@ public:
 	void reset() override;
 
 private:
-
-	SafeMovement moveTool;
+	SafeMovement moveTool{};
 
 	bool isFirst = true;
-	Position lastPosition;
-	Direction currentDir;
-	Direction nextDir;
+	Position lastPosition{};
+	Direction currentDir{};
+	Direction nextDir{};
 
 	void tryMove(Direction dir);
 	bool isMoving(Position& posAfterUpdate);

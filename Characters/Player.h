@@ -25,12 +25,12 @@ public:
 	void notifyPlayerPosition(Position& playerPos) override {};
 
 private:
-	std::shared_ptr<MoveAlgorithm> moveManag;
-	Direction currentDir;
-	Position prevPos;
+	std::shared_ptr<MoveAlgorithm> moveManag{};
+	Direction currentDir{};
+	Position prevPos{};
 	bool is_moving = false;
 
-	int numberOfLifes = 3; //add to config loader
+	int numberOfLifes{ 3 };
 
 	void updatePrevPosAndDir(Position& suspectPos, Position& current);
 	 

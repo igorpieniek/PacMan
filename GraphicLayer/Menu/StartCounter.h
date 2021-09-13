@@ -37,7 +37,7 @@ private:
 	bool isStarted = false;
 	bool isTimerInitialized = false;
 
-	Timer counterTimer;
+	Timer counterTimer{};
 
 	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoTitleBar |
 		ImGuiWindowFlags_NoScrollbar |

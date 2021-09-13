@@ -24,12 +24,12 @@ protected:
 private:
 	const float scale = 2.0f;
 
-	float Xsize;
-	float Ysize;
-	float Xpos;
-	float Ypos;
+	float Xsize{};
+	float Ysize{};
+	float Xpos{};
+	float Ypos{};
 
-	std::string question, yes, no;
+	std::string question{}, yes{}, no{};
 
 	ImGuiWindowFlags window_flags =
 		ImGuiWindowFlags_NoTitleBar |

@@ -10,12 +10,8 @@ class Opponent: public Character{
 public:
 	Opponent() :Character({}) {};
 
-	void setStartPosition(Position&& pos) { 
-		initPositionSnapshot = pos;
-		currentPostion = pos;}
-
-	void setMoveAlgorithm(std::unique_ptr<MoveAlgorithm>&& beh) {
-		behaviour = std::move(beh);}
+	void setStartPosition(Position&& pos);
+	void setMoveAlgorithm(std::unique_ptr<MoveAlgorithm>&& beh);
 
 	void update() override;
 
@@ -24,5 +20,5 @@ public:
 
 private:
 	bool active = true;
-	std::unique_ptr<MoveAlgorithm> behaviour;
+	std::unique_ptr<MoveAlgorithm> behaviour{};
 };

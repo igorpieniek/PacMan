@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -12,8 +10,7 @@ public:
 	virtual void bind() const = 0;
 	virtual void unbind() const = 0;
 
-
 protected:
-	unsigned int id;
+	unsigned int id{};
 };
 

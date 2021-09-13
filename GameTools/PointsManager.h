@@ -8,13 +8,7 @@
 
 class PointsManager: public GameMediatorComponent{
 public:
-	PointsManager(int specialAmount) : 
-		specialPointsAmount{ specialAmount },
-		currentPoints{ 0 }
-	{
-		createCellPointArray();
-	};
-
+	PointsManager(int specialAmount);
 	int getPoints()const { return currentPoints; };
 	bool isAllPointsReached()const;
 
@@ -24,8 +18,8 @@ public:
 	const std::vector<CellPoint>& getPointsData()const { return cellPoints; };
 	
 private:
-	int currentPoints;
-	int specialPointsAmount;
+	int currentPoints{};
+	int specialPointsAmount{};
 	int firstPointVal = 0;
 	bool lockPlayerPosNotify = false;
 	std::vector<CellPoint> cellPoints;

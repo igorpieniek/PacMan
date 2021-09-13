@@ -27,9 +27,8 @@ private:
 	void deleteCurrentDirection(std::vector<Direction>& dir);
 	void moveProcess(Position& pos);
 
-
-	Direction currentDirection;
-	Movement moveTool;
+	Direction currentDirection{};
+	Movement moveTool{};
 	bool isInitialized = false;
 
 	std::random_device rd;

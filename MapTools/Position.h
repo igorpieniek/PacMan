@@ -9,7 +9,6 @@ using CoordType = float;
 
 class Position{
 public:
-
 	Position(CoordType xx = { }, CoordType yy = {}) : x(xx), y(yy) {};
 
 	void move(Position& pos);
@@ -33,7 +32,7 @@ public:
 	
 
 private:
-	CoordType x;
-	CoordType y;
+	CoordType x{};
+	CoordType y{};
 	friend std::ostream& operator<<(std::ostream& os, const Position& pos);
 };

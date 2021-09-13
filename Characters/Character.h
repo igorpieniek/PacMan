@@ -18,7 +18,7 @@ protected:
 								    initPositionSnapshot(startPos),
 									isMotionBlocked(false){};
 	
-	Position currentPostion;
-	Position initPositionSnapshot;
-	bool isMotionBlocked;
+	Position currentPostion{};
+	Position initPositionSnapshot{};
+	bool isMotionBlocked{};
 };

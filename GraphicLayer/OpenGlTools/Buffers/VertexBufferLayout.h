@@ -6,9 +6,9 @@
 
 
 struct VertexBufferElement {
-	unsigned int type;
-	unsigned int count;
-	unsigned char normalized;
+	unsigned int type{};
+	unsigned int count{};
+	unsigned char normalized{};
 
 	static unsigned int getSizeOfType(unsigned int type) {
 		switch (type){
@@ -57,6 +57,6 @@ public:
 	
 private:
 	std::vector<VertexBufferElement> elements;
-	unsigned int stride;
+	unsigned int stride{};
 };
 

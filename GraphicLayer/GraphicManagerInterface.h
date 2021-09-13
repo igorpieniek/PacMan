@@ -19,8 +19,8 @@ public:
 	virtual void draw() = 0;
 
 protected:
-	const std::shared_ptr<PointsManager> points;
-	const std::shared_ptr<Player> player;
-	const std::shared_ptr<OpponentManager> opponents;
+	const std::shared_ptr<PointsManager> points{};
+	const std::shared_ptr<Player> player{};
+	const std::shared_ptr<OpponentManager> opponents{};
 };
 

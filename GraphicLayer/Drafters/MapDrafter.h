@@ -5,13 +5,6 @@
 #include "MatrixTool.h"
 #include "MapCreator.h"
 
-#include <string>
-#include <map>
-
-
-
-
-
 
 class MapDrafter :public Drafter{
 public:

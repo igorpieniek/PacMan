@@ -13,6 +13,7 @@ GraphicGLManager::GraphicGLManager(
 	}
 	Render2D::instance().init();
 
+	ghosts.reserve(opponents->getAmountOfOpponents());
 	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
 		ghosts.push_back({});
 		ghosts.back().addImage(getnextGhostPath());

@@ -13,7 +13,7 @@ public:
 	unsigned int getCount()const { return count; };
 
 private:
-	int count;
+	int count{};
 
 };
 

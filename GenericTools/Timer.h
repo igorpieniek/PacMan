@@ -21,13 +21,11 @@ private:
 
 	std::chrono::system_clock::time_point currentTime{};
 	std::chrono::system_clock::time_point startTime{};
-	std::thread thrd;
+	std::thread thrd{};
 
 	std::function<void()> callback = nullptr;
 	double requiredTime{};
 
 	bool isWaiting = false;
-
-
 };
 

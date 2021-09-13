@@ -15,6 +15,6 @@ public:
 	bool isObstacle() const;
 
 private:
-	Category category;
+	Category category{};
 	using Position::move; //hiding method
 };
