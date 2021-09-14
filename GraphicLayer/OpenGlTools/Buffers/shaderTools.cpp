@@ -88,25 +88,16 @@ void Shader::unbind() const {
     glUseProgram(0);
 }
 
-void Shader::setUniform(const char* uni, std::vector<float> val){
+void Shader::setUniform(const char* uni, std::vector<float>& val){
     int loc = getUniformLocation(uni);
     if (loc == -1) return;
-    int size = val.size();
-    switch (size)
-    {
-    case 2:
-        glUniform2f(loc, val[0], val[1]);
-        break;
-     case 3:
-        glUniform3f(loc, val[0], val[1], val[2]);
-        break;
-     case 4:
-        glUniform4f(loc, val[0], val[1], val[2], val[3]);
-        break;
-    
-    default:
+
+    auto iter = uniformMeth.find(val.size());
+    if (iter != uniformMeth.end()) {
+        iter->second(loc, val);
+    }
+    else {
         std::cout << "Not supported uniform" << std::endl;
-        break;
     }
 }
 
