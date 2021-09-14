@@ -15,9 +15,8 @@
 #include "GLBuffer.h"
 #include "gl_errors.h"
 
-class ShaderTools{
-public:
-	static std::vector<std::string> readFile(std::string shadersPath);
+namespace ShaderTools{
+	static std::string readFile(std::string shaderPath);
 	static unsigned int compile(unsigned int type, const std::string& code);
 	static unsigned int create(const std::string& vertexShader, const std::string& fragmentShader);
 
@@ -26,7 +25,7 @@ public:
 
 class Shader : public GLBuffer {
 public:
-	Shader(std::string filename);
+	Shader(std::string vertex, std::string fragment);
 	
 	void bind() const override;
 	void unbind() const override;

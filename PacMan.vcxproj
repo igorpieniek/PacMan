@@ -556,6 +556,8 @@
     <ClInclude Include="GenericTools\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GraphicLayer\OpenGlTools\Shaders\color2D.frag" />
+    <None Include="GraphicLayer\OpenGlTools\Shaders\pos2D.vert" />
     <None Include="Vendor\glm\detail\func_common.inl" />
     <None Include="Vendor\glm\detail\func_common_simd.inl" />
     <None Include="Vendor\glm\detail\func_exponential.inl" />
@@ -692,7 +694,6 @@
     <None Include="Vendor\glm\gtx\vector_angle.inl" />
     <None Include="Vendor\glm\gtx\vector_query.inl" />
     <None Include="Vendor\glm\gtx\wrap.inl" />
-    <None Include="GraphicLayer\OpenGlTools\Shaders\init.shader" />
     <None Include="Vendor\json\json_valueiterator.inl" />
   </ItemGroup>
   <ItemGroup>

@@ -1,37 +1,20 @@
 #include "ShaderTools.h"
 
 
-std::vector<std::string> ShaderTools::readFile(std::string shadersPath) {
-    const std::string vertexTag = "#VertexShader";
-    const std::string fragmantTag = "#FragmentShader";
-
-    std::string VertexShaderCode;
-    std::string FragmentShaderCode;
-    std::ifstream shaderStream(shadersPath.c_str(), std::ios::in);
+std::string ShaderTools::readFile(std::string shaderPath) {
+    std::string shaderCode;
+    std::ifstream shaderStream(shaderPath.c_str(), std::ios::in);
 
     std::string line;
     bool isFragmentShaderStart = false;
 
     std::getline(shaderStream, line);
-    if (line.find(vertexTag) != std::string::npos) {
-        while (!shaderStream.eof()) {
-            std::getline(shaderStream, line);
-            if (line.find(fragmantTag) != std::string::npos) {
-                isFragmentShaderStart = true;
-                break;
-            }
-            VertexShaderCode.append(line + "\n");
-        }
-    }
-
-    if (isFragmentShaderStart) {
-        while (!shaderStream.eof()) {
-            std::getline(shaderStream, line);
-            FragmentShaderCode.append(line + "\n");
-        }
+    while (!shaderStream.eof()) {
+        std::getline(shaderStream, line);
+        shaderCode.append(line + "\n");
     }
     shaderStream.close();
-    return std::move(std::vector<std::string>{ VertexShaderCode, FragmentShaderCode });
+    return std::move(shaderCode);
 
 }
 
@@ -74,9 +57,10 @@ unsigned int ShaderTools::create(const std::string& vertexShader, const std::str
 
 }
 
-Shader::Shader(std::string filename){
-    std::vector<std::string> shaders = ShaderTools::readFile(filename);
-    id = ShaderTools::create(shaders[0], shaders[1]);
+Shader::Shader(std::string vertex, std::string fragment){
+    std::string vertShader = ShaderTools::readFile(vertex);
+    std::string fragShader = ShaderTools::readFile(fragment);
+    id = ShaderTools::create(vertShader, fragShader);
     bind();
 }
 
