@@ -32,6 +32,7 @@ Board& MapManager::getAllMap(){
 
 Board MapManager::getNeighbours(Position& pos, int radius){
 	Board resultMap;
+	resultMap.reserve(std::pow((2 * radius + 1), 2));
 
 	for (CoordType k = pos.getY() - radius; k <= pos.getY() + radius; ++k) {
 		for (CoordType w = pos.getX() - radius; w <= pos.getX() + radius; ++w){

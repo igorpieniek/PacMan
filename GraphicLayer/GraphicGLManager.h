@@ -46,7 +46,6 @@ private:
 	bool disabledFlag = false;
 	bool isNearEnabledFlag = false;
 
-	std::vector<MapCell> mapvec;
 	PlayerDrafter plDrafter{};
 	CookieDrafter cookieDrafter{};
 	HeartDrafter heartDrafter{};
@@ -72,8 +71,6 @@ private:
 	void rawDrawGhostsEnabled();
 	void rawDrawGhostsDisabled();
 	void drawHealth();
-
-
 
 	std::string getnextGhostPath();
 };
