@@ -147,6 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Behaviours\Astar\AstarMovement.cpp" />
+    <ClCompile Include="Behaviours\Astar\Astar.cpp" />
     <ClCompile Include="Behaviours\RandMove.cpp" />
     <ClCompile Include="Config\ConfigLoader.cpp" />
     <ClCompile Include="GraphicLayer\Menu\FinishMenu.cpp" />
@@ -203,6 +205,8 @@
     <ClCompile Include="Vendor\json\json_writer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Behaviours\Astar\AstarMovement.h" />
+    <ClInclude Include="Behaviours\Astar\Astar.h" />
     <ClInclude Include="Behaviours\MoveAlgorithm.h" />
     <ClInclude Include="Behaviours\RandMove.h" />
     <ClInclude Include="Config\ConfigLoader.h" />
