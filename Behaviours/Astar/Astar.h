@@ -52,6 +52,7 @@ class Astar{
 public:
 	Astar() {};
 	bool calculate(int sizex, int sizey, std::vector<CellAstar>* map);
+	std::vector<BoardIter> getPath();
 	void enableDiagonalPath()  { isDiagonalPathEnable = true; };
 	void disableDiagonalPath() { isDiagonalPathEnable = false; };
 
@@ -62,6 +63,7 @@ private:
 	std::vector<CellAstar>* points{nullptr};
 	std::vector<BoardIter> notTested;
 	std::vector<BoardIter> nb; //neighbours container
+	std::vector<BoardIter> path;
 	bool isDiagonalPathEnable = false;
 
 	const std::vector<int> neighbourPointTrans{ -1, 0, 1 };

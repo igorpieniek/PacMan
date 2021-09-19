@@ -7,6 +7,8 @@ bool Astar::calculate(int sizex, int sizey, std::vector<CellAstar>* map){
 		_sizex = sizex;
 		_sizey = sizey;
 
+		path.clear();
+
 		resetPointsCategory();
 		resetStopIterator();
 		resetStartIterator();
@@ -19,6 +21,7 @@ bool Astar::calculate(int sizex, int sizey, std::vector<CellAstar>* map){
 	}
 	return false;
 }
+
 bool Astar::main_process(){
 	BoardIter temp = startIter;
 	while (temp != stopIter) { 
@@ -51,6 +54,7 @@ bool Astar::dereferencePath(){
 	startIter->cat = AstarCellCategory::START;
 
 	while (temp != startIter) {
+		path.push_back(temp);
 		temp = temp->parent;
 		temp->cat = AstarCellCategory::PATH;
 	}
@@ -161,4 +165,8 @@ void Astar::resetStartIterator(){
 void Astar::resetNotTestedVec(){
 	notTested.clear();
 	notTested.push_back(startIter);
+}
+
+std::vector<BoardIter> Astar::getPath(){
+	return std::move(path);
 }

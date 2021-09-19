@@ -16,6 +16,7 @@ private:
 	Position stopPos{};
 	std::vector<CellAstar> map{};
 	std::vector<Position> path{};
+	int currentPathExecIndx{};
 	SafeMovement moveTool;
 
 	int sizex{}, sizey{};

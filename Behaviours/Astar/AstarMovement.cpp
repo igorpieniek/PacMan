@@ -11,11 +11,36 @@ AstarMovement::AstarMovement(CoordType speed, Position stopBase): stopPos(stopBa
 }
 
 void AstarMovement::update(Position& current){
-	//update startPos on map 
-	// calculate new path only if it gets to int pos
-	if (!astar.calculate(sizex, sizey, &map)) {
-		std::cout << "Algorithm couldnt find the path to base" << std::endl;
+	// create path only once!
+	// move using path
+	static bool firstTime = true;
+	if (firstTime) {
+		firstTime = false;
+		auto iter = std::find_if(map.begin(), map.end(),
+			[&current](const CellAstar& cell) {return cell.x == current.getIntPos().getX() && cell.y == current.getIntPos().getY(); });
+		if (iter != map.end()) iter->cat = AstarCellCategory::START;
+		if (!astar.calculate(sizex, sizey, &map)) {
+			std::cout << "Algorithm couldnt find the path to base" << std::endl;
+		}
+		else {
+			for (const auto& pt : astar.getPath()) {
+				path.push_back({ (float)pt->x, (float)pt->y });
+			}
+			if (path.size() > 2) {
+				currentPathExecIndx = path.size() - 2;
+			}
+		}
 	}
+
+	//////////////
+	if (currentPathExecIndx == 0) {} // do smth to inform that ghost is already in base OR  do nothing
+	else if (current.getIntPos() == path[currentPathExecIndx]) {
+		currentPathExecIndx--;
+	}
+	else {
+		moveTool.moveInDir(current, getMoveDir(current.getIntPos(), path[currentPathExecIndx]));
+	}
+
 }
 
 void AstarMovement::setStepResolution(CoordType res)
