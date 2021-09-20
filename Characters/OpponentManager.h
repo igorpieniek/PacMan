@@ -3,6 +3,7 @@
 #include "Opponent.h"
 #include "Player.h"
 #include "RandMove.h"
+#include "Astar/AstarMovement.h"
 #include "MapManager.h"
 #include "Mediator.h"
 #include "ConfigLoader.h"
@@ -35,9 +36,11 @@ private:
 	bool active = true;
 	float opponentSpeed{};
 	
-	using MoveAlg = RandMove;
+	using MoveAlgNormal = RandMove;
+	using MoveAlgCatched = AstarMovement;
+	const Position opponentBase{ 1,1 };
 
 	void createOpponents();
 	Position getRandPosition();
-	bool isPlayerPosReached(Position& pos);
+	std::vector<Opponent>::iterator isPlayerPosReached(Position& pos);
 };

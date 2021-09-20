@@ -10,11 +10,17 @@ void OpponentManager::createOpponents(){
 	ops.resize(numberOfOpponents);
 	for (int i = 0; i < numberOfOpponents; ++i) {
 		ops[i].setStartPosition(getRandPosition());
-		ops[i].setMoveAlgorithm(std::make_unique<MoveAlg>(opponentSpeed));
+		ops[i].setMoveAlgorithm(std::make_unique<MoveAlgNormal>(opponentSpeed));
 	}
 }
 
 void OpponentManager::updateAll() {
+	for (auto& op : ops) {
+		if (op.getPosition().getIntPos() == opponentBase) {
+			op.setMoveAlgorithm(std::make_unique<MoveAlgNormal>(opponentSpeed));
+			op.enable();
+		}
+	}
 	std::for_each(ops.begin(), ops.end(), [this](Opponent& op) { op.update(); });
 }
 
@@ -37,13 +43,13 @@ void OpponentManager::notify(Event evt){
 	switch (evt){
 	case Event::DISABLE_ALL_OPPONENTS:
 		std::cout << "OpponentManager: DISABLE ALL\n";
-		deactivateAll();
+		//deactivateAll();
 		active = false;
 		break;
 
 	case Event::ENABLE_ALL_OPPONENTS:
 		std::cout << "OpponentManager: ENABLE ALL\n";
-		activeteAll();
+		//activeteAll();
 		active = true;
 		break;
 
@@ -62,26 +68,25 @@ void OpponentManager::notify(Event evt){
 }
 
 void OpponentManager::notifyPlayerPosition(Position& pos){
-	static bool catchOnce = true;
-	if (isPlayerPosReached(pos)) {
+	auto opIter = isPlayerPosReached(pos);
+	if (opIter != ops.end()) {
 		if (active) {
 			mediator->notify(Event::PLAYER_CATCHED);
 		}
-		else if(catchOnce){
-			mediator->notify(Event::DISABLED_GHOST_CATCHED);
-			catchOnce = false;
+		else {
+			if (opIter->isEnable()) {
+				mediator->notify(Event::DISABLED_GHOST_CATCHED);
+				opIter->setMoveAlgorithm(std::make_unique<MoveAlgCatched>(opponentSpeed, opponentBase));
+				opIter->disable();
+			}
+			
 		}
-	}
-	else {
-		catchOnce = true;
 	}
 }
 
-bool OpponentManager::isPlayerPosReached(Position& pos){
-	for (const auto& op : ops) {
-		if (op.getPosition().getIntPos() == pos.getIntPos()) return true;
-	}
-	return false;
+std::vector<Opponent>::iterator OpponentManager::isPlayerPosReached(Position& pos){
+	return std::find_if(ops.begin(), ops.end(),
+		[&pos](const Opponent& op) {return op.getPosition().getIntPos() == pos.getIntPos(); });
 }
 
 Position OpponentManager::getRandPosition() {

@@ -1,7 +1,9 @@
 #include "AstarMovement.h"
 
-AstarMovement::AstarMovement(CoordType speed, Position stopBase): stopPos(stopBase){
-	moveTool.setStepSize(speed);
+
+
+
+AstarMovement::AstarMovement(CoordType speed, Position stopBase): stopPos(stopBase), stepSize(speed){
 	sizex = static_cast<int>(MapManager::instance().getMapXSize());
 	sizey = static_cast<int>(MapManager::instance().getMapYSize());
 	map.reserve(sizex*sizey);
@@ -24,27 +26,48 @@ void AstarMovement::update(Position& current){
 		}
 		else {
 			for (const auto& pt : astar.getPath()) {
+				if (path.size() != 0) {
+					CoordType xdiff = pt->x - path.back().getX();
+					CoordType ydiff = pt->y - path.back().getY();
+					int maxcnt = (1/stepSize)-1;
+					while (maxcnt > 0) {
+
+						if (std::abs(xdiff) > std::abs(ydiff)) {
+							if (xdiff > 0) {
+								path.push_back({ path.back().getX() + stepSize, (float)pt->y });
+							}
+							else {
+								path.push_back({ path.back().getX() - stepSize, (float)pt->y });
+							}
+						}
+						else {
+							if (ydiff > 0) {
+								path.push_back({ (float)pt->x , path.back().getY() + stepSize });
+							}
+							else {
+								path.push_back({ (float)pt->x , path.back().getY() + stepSize });
+							}
+
+						}
+						--maxcnt;
+
+					}
+				}
 				path.push_back({ (float)pt->x, (float)pt->y });
 			}
-			if (path.size() > 2) {
-				currentPathExecIndx = path.size() - 2;
+			if (path.size() > 1) {
+				currentPathExecIndx = path.size() - 1;
 			}
 		}
 	}
+	current = path[currentPathExecIndx];
+	currentPathExecIndx--;
 
-	//////////////
-	if (currentPathExecIndx == 0) {} // do smth to inform that ghost is already in base OR  do nothing
-	else if (current.getIntPos() == path[currentPathExecIndx]) {
-		currentPathExecIndx--;
-	}
-	else {
-		moveTool.moveInDir(current, getMoveDir(current.getIntPos(), path[currentPathExecIndx]));
-	}
 
 }
 
-void AstarMovement::setStepResolution(CoordType res)
-{
+void AstarMovement::setStepResolution(CoordType res){
+	stepSize = res;
 }
 
 void AstarMovement::createAstarMap(){

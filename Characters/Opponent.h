@@ -17,6 +17,7 @@ public:
 
 	void disable();
 	void enable();
+	bool isEnable()const { return active; };
 
 private:
 	bool active = true;

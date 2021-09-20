@@ -10,7 +10,7 @@ public:
 	AstarMovement(CoordType speed, Position stopBase);
 	void update(Position& current) override;
 	void setStepResolution(CoordType res) override;
-
+	void reset()override {};
 private:
 	Astar astar{};
 	Position stopPos{};
@@ -18,6 +18,7 @@ private:
 	std::vector<Position> path{};
 	int currentPathExecIndx{};
 	SafeMovement moveTool;
+	CoordType stepSize{};
 
 	int sizex{}, sizey{};
 

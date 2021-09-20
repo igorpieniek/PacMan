@@ -50,7 +50,7 @@ struct CellAstar {
 
 class Astar{
 public:
-	Astar() {};
+
 	bool calculate(int sizex, int sizey, std::vector<CellAstar>* map);
 	std::vector<BoardIter> getPath();
 	void enableDiagonalPath()  { isDiagonalPathEnable = true; };
