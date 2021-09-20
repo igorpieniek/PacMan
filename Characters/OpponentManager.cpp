@@ -16,7 +16,7 @@ void OpponentManager::createOpponents(){
 
 void OpponentManager::updateAll() {
 	for (auto& op : ops) {
-		if (op.getPosition().getIntPos() == opponentBase
+		if (op.getPosition() == opponentBase
 			&& op.getState() == Opponent::Mode::DEFEATED) {
 			op.setMoveAlgorithm(std::make_unique<MoveAlgNormal>(opponentSpeed));
 			op.setState(Opponent::Mode::ACTIVE);

@@ -28,28 +28,26 @@ void AstarMovement::update(Position& current){
 		else {
 			auto pathRaw = astar.getPath();
 			for (const auto& pt : pathRaw) {
-				Position pos{ (float)pt->x, (float)pt->y };
-				if (path.size() != 0) {
-					Direction dir = getMoveDir(path.back(), pos);
-					int maxcnt = (1/stepSize)-1;
-					while (maxcnt > 0) {
-						Position temp = path.back();
-						moveTool.moveInDir(temp, dir);
-						path.push_back(temp);
-						--maxcnt;
-					}
-				}
-				path.push_back(pos);
+				path.push_back({ (float)pt->x, (float)pt->y });
 			}
+
 			if (path.size() > 1) {
 				currentPathExecIndx = path.size() - 1;
 			}
+			
 		}
 	}
+
+
+
 	if (path.size() > 0 && currentPathExecIndx >= 0) {
-		current = path[currentPathExecIndx];
-		currentPathExecIndx--;
+		Direction dir = getMoveDir(current, path[currentPathExecIndx]);
+		moveTool.moveInDir(current, dir);
+		if (current == path[currentPathExecIndx]) {
+			currentPathExecIndx--;
+		}
 	}
+
 
 
 }
