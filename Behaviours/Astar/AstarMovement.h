@@ -5,7 +5,7 @@
 #include "Astar/Astar.h"
 
 
-class AstarMovement: public MoveAlgorithm{
+class AstarMovement : public MoveAlgorithm {
 public:
 	AstarMovement(CoordType speed, Position stopBase);
 	void update(Position& current) override;
@@ -17,8 +17,9 @@ private:
 	std::vector<CellAstar> map{};
 	std::vector<Position> path{};
 	int currentPathExecIndx{};
-	SafeMovement moveTool;
 	CoordType stepSize{};
+	bool isPathCreated{ false };
+	Movement moveTool{};
 
 	int sizex{}, sizey{};
 

@@ -58,6 +58,7 @@ bool Astar::dereferencePath(){
 		temp = temp->parent;
 		temp->cat = AstarCellCategory::PATH;
 	}
+	path.push_back(startIter);
 	startIter->cat = AstarCellCategory::START;
 	return true;
 }

@@ -16,20 +16,29 @@ void OpponentManager::createOpponents(){
 
 void OpponentManager::updateAll() {
 	for (auto& op : ops) {
-		if (op.getPosition().getIntPos() == opponentBase) {
+		if (op.getPosition().getIntPos() == opponentBase
+			&& op.getState() == Opponent::Mode::DEFEATED) {
 			op.setMoveAlgorithm(std::make_unique<MoveAlgNormal>(opponentSpeed));
-			op.enable();
+			op.setState(Opponent::Mode::ACTIVE);
 		}
 	}
 	std::for_each(ops.begin(), ops.end(), [this](Opponent& op) { op.update(); });
 }
 
 void OpponentManager::deactivateAll(){
-	std::for_each(ops.begin(), ops.end(), [this](Opponent& op) { op.disable(); });
+	for (auto& op : ops) {
+		if (op.getState() == Opponent::Mode::ACTIVE) {
+			op.setState(Opponent::Mode::DISABLE);
+		}
+	}
 }
 
 void OpponentManager::activeteAll(){
-	std::for_each(ops.begin(), ops.end(), [this](Opponent& op) { op.enable(); });
+	for (auto& op : ops) {
+		if (op.getState() == Opponent::Mode::DISABLE) {
+			op.setState(Opponent::Mode::ACTIVE);
+		}
+	}
 }
 
 Position OpponentManager::getOpponentXposition(int index){
@@ -43,14 +52,12 @@ void OpponentManager::notify(Event evt){
 	switch (evt){
 	case Event::DISABLE_ALL_OPPONENTS:
 		std::cout << "OpponentManager: DISABLE ALL\n";
-		//deactivateAll();
-		active = false;
+		deactivateAll();
 		break;
 
 	case Event::ENABLE_ALL_OPPONENTS:
 		std::cout << "OpponentManager: ENABLE ALL\n";
-		//activeteAll();
-		active = true;
+		activeteAll();
 		break;
 
 	case Event::RESTART_POSITIONS:
@@ -70,16 +77,13 @@ void OpponentManager::notify(Event evt){
 void OpponentManager::notifyPlayerPosition(Position& pos){
 	auto opIter = isPlayerPosReached(pos);
 	if (opIter != ops.end()) {
-		if (active) {
+		if (opIter->getState() == Opponent::Mode::ACTIVE) {
 			mediator->notify(Event::PLAYER_CATCHED);
 		}
-		else {
-			if (opIter->isEnable()) {
+		else if (opIter->getState() == Opponent::Mode::DISABLE) {
 				mediator->notify(Event::DISABLED_GHOST_CATCHED);
 				opIter->setMoveAlgorithm(std::make_unique<MoveAlgCatched>(opponentSpeed, opponentBase));
-				opIter->disable();
-			}
-			
+				opIter->setState(Opponent::Mode::DEFEATED);
 		}
 	}
 }

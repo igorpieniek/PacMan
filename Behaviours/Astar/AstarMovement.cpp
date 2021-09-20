@@ -4,6 +4,7 @@
 
 
 AstarMovement::AstarMovement(CoordType speed, Position stopBase): stopPos(stopBase), stepSize(speed){
+	moveTool.setStepSize(speed);
 	sizex = static_cast<int>(MapManager::instance().getMapXSize());
 	sizey = static_cast<int>(MapManager::instance().getMapYSize());
 	map.reserve(sizex*sizey);
@@ -15,9 +16,9 @@ AstarMovement::AstarMovement(CoordType speed, Position stopBase): stopPos(stopBa
 void AstarMovement::update(Position& current){
 	// create path only once!
 	// move using path
-	static bool firstTime = true;
-	if (firstTime) {
-		firstTime = false;
+
+	if (!isPathCreated) {
+		isPathCreated = true;
 		auto iter = std::find_if(map.begin(), map.end(),
 			[&current](const CellAstar& cell) {return cell.x == current.getIntPos().getX() && cell.y == current.getIntPos().getY(); });
 		if (iter != map.end()) iter->cat = AstarCellCategory::START;
@@ -25,49 +26,40 @@ void AstarMovement::update(Position& current){
 			std::cout << "Algorithm couldnt find the path to base" << std::endl;
 		}
 		else {
-			for (const auto& pt : astar.getPath()) {
+			auto pathRaw = astar.getPath();
+
+
+
+			for (const auto& pt : pathRaw) {
+				Position pos{ (float)pt->x, (float)pt->y };
 				if (path.size() != 0) {
-					CoordType xdiff = pt->x - path.back().getX();
-					CoordType ydiff = pt->y - path.back().getY();
+					Direction dir = getMoveDir(path.back(), pos);
 					int maxcnt = (1/stepSize)-1;
 					while (maxcnt > 0) {
-
-						if (std::abs(xdiff) > std::abs(ydiff)) {
-							if (xdiff > 0) {
-								path.push_back({ path.back().getX() + stepSize, (float)pt->y });
-							}
-							else {
-								path.push_back({ path.back().getX() - stepSize, (float)pt->y });
-							}
-						}
-						else {
-							if (ydiff > 0) {
-								path.push_back({ (float)pt->x , path.back().getY() + stepSize });
-							}
-							else {
-								path.push_back({ (float)pt->x , path.back().getY() + stepSize });
-							}
-
-						}
+						Position temp = path.back();
+						moveTool.moveInDir(temp, dir);
+						path.push_back(temp);
 						--maxcnt;
-
 					}
 				}
-				path.push_back({ (float)pt->x, (float)pt->y });
+				path.push_back(pos);
 			}
 			if (path.size() > 1) {
 				currentPathExecIndx = path.size() - 1;
 			}
 		}
 	}
-	current = path[currentPathExecIndx];
-	currentPathExecIndx--;
+	if (path.size() > 0 && currentPathExecIndx >= 0) {
+		current = path[currentPathExecIndx];
+		currentPathExecIndx--;
+	}
 
 
 }
 
 void AstarMovement::setStepResolution(CoordType res){
 	stepSize = res;
+	moveTool.setStepSize(res);
 }
 
 void AstarMovement::createAstarMap(){

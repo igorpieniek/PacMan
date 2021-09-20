@@ -33,7 +33,6 @@ public:
 private:
 	int numberOfOpponents{};
 	std::vector<Opponent> ops;
-	bool active = true;
 	float opponentSpeed{};
 	
 	using MoveAlgNormal = RandMove;

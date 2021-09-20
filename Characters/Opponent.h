@@ -9,17 +9,18 @@
 class Opponent: public Character{
 public:
 	Opponent() :Character({}) {};
-
+	enum class Mode {
+		ACTIVE, DISABLE, DEFEATED
+	};
 	void setStartPosition(Position&& pos);
 	void setMoveAlgorithm(std::unique_ptr<MoveAlgorithm>&& beh);
 
 	void update() override;
 
-	void disable();
-	void enable();
-	bool isEnable()const { return active; };
+	void setState(Mode m) { mode = m; };
+	Mode getState()const { return mode; };
 
 private:
-	bool active = true;
+	Mode mode{Mode::ACTIVE};
 	std::unique_ptr<MoveAlgorithm> behaviour{};
 };

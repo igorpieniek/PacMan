@@ -28,10 +28,14 @@ Direction getNextDirection(const Direction& dir) {
 Direction getMoveDir(const Position& prev, const Position& future){
 	CoordType xdiff = future.getX() - prev.getX();
 	CoordType ydiff = future.getY() - prev.getY();
-	if		(xdiff == 0 && ydiff > 0) return Direction::NORTH;
-	else if (xdiff == 0 && ydiff < 0) return Direction::SOUTH;
-	else if (xdiff > 0 && ydiff == 0) return Direction::EAST;
-	else if (xdiff < 0 && ydiff == 0) return Direction::WEST;
+	if (std::abs(xdiff) > std::abs(ydiff)) {
+		if (xdiff > 0)	{ return Direction::EAST; }
+		else			{ return Direction::WEST; }
+	}
+	else {
+		if (ydiff > 0) { return Direction::NORTH; }
+		else		   { return Direction::SOUTH; }
+	}
 }
 
 void printDirection(const Direction& dir){
