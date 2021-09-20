@@ -134,9 +134,7 @@ void GraphicGLManager::rawDrawGhosts(){
 			defeatGhost.draw(opPos);
 			break;
 		case Opponent::Mode::ACTIVE:
-			if (!isNearEnabledFlag) {
-				ghosts[i].draw(opPos);
-			}
+			ghosts[i].draw(opPos);
 			break;
 		case Opponent::Mode::DISABLE:
 			if (!isNearEnabledFlag) {
