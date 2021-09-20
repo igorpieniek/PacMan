@@ -17,13 +17,13 @@ private:
 	std::vector<CellAstar> map{};
 	std::vector<Position> path{};
 	int currentPathExecIndx{};
-	CoordType stepSize{};
 	bool isPathCreated{ false };
 	Movement moveTool{};
 
 	int sizex{}, sizey{};
 
 	void createAstarMap();
+	void calculateAndConvert(const Position& current);
 
 };
 
