@@ -71,6 +71,7 @@ private:
 	void drawGhosts();
 	void rawDrawGhostsEnabled();
 	void rawDrawGhostsDisabled();
+	void rawDrawGhosts();
 	void drawHealth();
 
 	std::string getnextGhostPath();

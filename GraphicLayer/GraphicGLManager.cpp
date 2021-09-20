@@ -105,34 +105,44 @@ void GraphicGLManager::drawGhosts() {
 			rawDrawGhostsEnabled();
 		}
 	}
-	else if (disabledFlag ) {
-		rawDrawGhostsDisabled();
-	}
-	else {
-		rawDrawGhostsEnabled();
-	}
-	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
-		if (opponents->getOpponentXmode(i) == Opponent::Mode::DEFEATED) {
-			Position opPos = opponents->getOpponentXposition(i);
-			defeatGhost.draw(opPos);
-		}
-	
-	}
+	rawDrawGhosts();
 }
 
 void GraphicGLManager::rawDrawGhostsEnabled(){
 	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
-		if (opponents->getOpponentXmode(i) == Opponent::Mode::DEFEATED) continue;
-		Position opPos = opponents->getOpponentXposition(i);
-		ghosts[i].draw(opPos);
+		if (opponents->getOpponentXmode(i) == Opponent::Mode::DISABLE) {
+			Position opPos = opponents->getOpponentXposition(i);
+			ghosts[i].draw(opPos);
+		}
 	}
 }
 
 void GraphicGLManager::rawDrawGhostsDisabled(){
 	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
-		if (opponents->getOpponentXmode(i) == Opponent::Mode::DEFEATED) continue;
+		if (opponents->getOpponentXmode(i) == Opponent::Mode::DISABLE) {
+			Position opPos = opponents->getOpponentXposition(i);
+			disabledGhost.draw(opPos);
+		}
+	}
+}
+
+void GraphicGLManager::rawDrawGhosts(){
+	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
 		Position opPos = opponents->getOpponentXposition(i);
-		disabledGhost.draw(opPos);
+		switch (opponents->getOpponentXmode(i)) {
+		case Opponent::Mode::DEFEATED:
+			defeatGhost.draw(opPos);
+			break;
+		case Opponent::Mode::ACTIVE:
+			if (!isNearEnabledFlag) {
+				ghosts[i].draw(opPos);
+			}
+			break;
+		case Opponent::Mode::DISABLE:
+			if (!isNearEnabledFlag) {
+				disabledGhost.draw(opPos);
+			}
+		}
 	}
 }
 
