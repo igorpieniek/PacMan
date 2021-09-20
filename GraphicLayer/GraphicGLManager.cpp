@@ -93,37 +93,28 @@ void GraphicGLManager::drawPlayer(){
 }
 
 void GraphicGLManager::drawGhosts() {
-	static int nearDisableEndCounter;
-	constexpr int maxCnt = 5;
 	if (isNearEnabledFlag) {
-		nearDisableEndCounter++;
-		if (nearDisableEndCounter < maxCnt) {
-			rawDrawGhostsDisabled();
-		}
-		else {
-			if (nearDisableEndCounter >= 2*maxCnt) nearDisableEndCounter = 0;
-			rawDrawGhostsEnabled();
-		}
+		rawDrawGhostsNearEnabledProcess();
 	}
 	rawDrawGhosts();
 }
 
-void GraphicGLManager::rawDrawGhostsEnabled(){
+void GraphicGLManager::rawDrawGhostsNearEnabledProcess(){
+	static int nearDisableEndCounter;
+	constexpr int maxCnt = 5;
+	nearDisableEndCounter++;
 	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
 		if (opponents->getOpponentXmode(i) == Opponent::Mode::DISABLE) {
 			Position opPos = opponents->getOpponentXposition(i);
-			ghosts[i].draw(opPos);
+			if (nearDisableEndCounter < maxCnt) {
+				disabledGhost.draw(opPos);
+			}
+			else {
+				ghosts[i].draw(opPos);
+			}
 		}
 	}
-}
-
-void GraphicGLManager::rawDrawGhostsDisabled(){
-	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
-		if (opponents->getOpponentXmode(i) == Opponent::Mode::DISABLE) {
-			Position opPos = opponents->getOpponentXposition(i);
-			disabledGhost.draw(opPos);
-		}
-	}
+	if (nearDisableEndCounter >= 2 * maxCnt) nearDisableEndCounter = 0;
 }
 
 void GraphicGLManager::rawDrawGhosts(){

@@ -70,8 +70,8 @@ private:
 	void drawStartCounterProcess();
 	void drawPlayer();
 	void drawGhosts();
-	void rawDrawGhostsEnabled();
-	void rawDrawGhostsDisabled();
+
+	void rawDrawGhostsNearEnabledProcess();
 	void rawDrawGhosts();
 	void drawHealth();
 
