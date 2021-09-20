@@ -20,7 +20,8 @@
 			"images/ghost3.png",
 			"images/ghost4.png"
 		],
-		"disabledGhostImg": "images/disabled.png"
+		"disabledGhostImg": "images/disabled.png",
+		"defeatedGhostImg": "images/defeat.png"
 	},
 	"other":{
 		"playerPosition": [8,1],

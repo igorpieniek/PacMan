@@ -32,6 +32,7 @@ public:
 
 	std::vector<std::string> getOpponentsImgPaths();
 	std::string getDisabledOpponentImgPath();
+	std::string getDefeatedOpponentImgPath();
 
 
 	// others
@@ -66,7 +67,8 @@ private:
 		{"pointImg",		&JsonVal::isString},
 		{"mapElementsImg",  &JsonVal::isObject},
 		{"ghostsImg",       &JsonVal::isArray},
-		{"disabledGhostImg",&JsonVal::isString}
+		{"disabledGhostImg",&JsonVal::isString},
+		{"defeatedGhostImg", &JsonVal::isString}
 	};
 	RequiredMap requiredMapElementsHeaders{
 		{"vertical",	&JsonVal::isString},

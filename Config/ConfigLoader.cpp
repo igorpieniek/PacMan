@@ -122,6 +122,10 @@ std::string ConfigLoader::getDisabledOpponentImgPath(){
 	return root["paths"]["disabledGhostImg"].asString();
 }
 
+std::string ConfigLoader::getDefeatedOpponentImgPath(){
+	return root["paths"]["defeatedGhostImg"].asString();
+}
+
 Position ConfigLoader::getPlayerInitialPosition(){
 	CoordType x = root["other"]["playerPosition"][0].asUInt();
 	CoordType y = root["other"]["playerPosition"][1].asUInt();

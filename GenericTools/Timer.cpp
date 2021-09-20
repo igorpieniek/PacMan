@@ -50,7 +50,7 @@ void Timer::executeCallback(){
         std::chrono::duration<double> elapsed_seconds = currentTime - startTime;
         if (elapsed_seconds.count() >= requiredTime) {
             isWaiting = false;
-            callback();
+            if(callback)callback();
         }
     }
 }

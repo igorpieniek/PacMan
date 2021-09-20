@@ -19,7 +19,7 @@ GraphicGLManager::GraphicGLManager(
 		ghosts.back().addImage(getnextGhostPath());
 	}
 	disabledGhost.addImage(disabledGhostPath);
-	defeatGhost.addImage("images/defeat.png");
+	defeatGhost.addImage(defeatedGhostPath);
 	plDrafter.addImage(playerPath);
 	cookieDrafter.addImage(cookiePath);
 	heartDrafter.addImage(heartPath);
