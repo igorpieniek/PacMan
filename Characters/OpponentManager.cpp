@@ -61,7 +61,7 @@ void OpponentManager::notify(Event evt){
 		break;
 
 	case Event::RESTART_POSITIONS:
-		std::for_each(ops.begin(), ops.end(), [this](Opponent& op) { op.restoreInitialPosition(); });
+		restartAll();
 		break;
 
 	case Event::ALLOW_MOTION:
@@ -91,6 +91,14 @@ void OpponentManager::notifyPlayerPosition(Position& pos){
 std::vector<Opponent>::iterator OpponentManager::isPlayerPosReached(Position& pos){
 	return std::find_if(ops.begin(), ops.end(),
 		[&pos](const Opponent& op) {return op.getPosition().getIntPos() == pos.getIntPos(); });
+}
+
+void OpponentManager::restartAll(){
+	for (auto& op : ops) {
+		op.setState(Opponent::Mode::ACTIVE);
+		op.restoreInitialPosition();
+		op.setMoveAlgorithm(std::make_unique<MoveAlgNormal>(opponentSpeed));	
+	}
 }
 
 Position OpponentManager::getRandPosition() {

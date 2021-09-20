@@ -42,4 +42,5 @@ private:
 	void createOpponents();
 	Position getRandPosition();
 	std::vector<Opponent>::iterator isPlayerPosReached(Position& pos);
+	void restartAll();
 };

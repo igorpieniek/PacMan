@@ -38,8 +38,6 @@ void AstarMovement::update(Position& current){
 		}
 	}
 
-
-
 	if (path.size() > 0 && currentPathExecIndx >= 0) {
 		Direction dir = getMoveDir(current, path[currentPathExecIndx]);
 		moveTool.moveInDir(current, dir);
