@@ -45,7 +45,14 @@ Position OpponentManager::getOpponentXposition(int index){
 	if (index >= 0 || index <= static_cast<int>(ops.size())) {
 		return ops[index].getPosition();
 	}
-	return Position{};
+	throw std::runtime_error("Bad opponent index!");
+}
+
+Opponent::Mode OpponentManager::getOpponentXmode(int index){
+	if (index >= 0 || index <= static_cast<int>(ops.size())) {
+		return ops[index].getState();
+	}
+	throw std::runtime_error("Bad opponent index!");
 }
 
 void OpponentManager::notify(Event evt){

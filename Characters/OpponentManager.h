@@ -24,6 +24,7 @@ public:
 	void deactivateAll();
 	void activeteAll();
 	Position getOpponentXposition(int index);
+	Opponent::Mode getOpponentXmode(int index);
 	int getAmountOfOpponents()const { return numberOfOpponents; };
 
 	void notify(Event evt) override;

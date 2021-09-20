@@ -43,6 +43,7 @@ private:
 
 	std::vector<Drafter> ghosts;
 	Drafter disabledGhost{};
+	Drafter defeatGhost{};
 	bool disabledFlag = false;
 	bool isNearEnabledFlag = false;
 

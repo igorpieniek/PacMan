@@ -19,6 +19,7 @@ GraphicGLManager::GraphicGLManager(
 		ghosts.back().addImage(getnextGhostPath());
 	}
 	disabledGhost.addImage(disabledGhostPath);
+	defeatGhost.addImage("images/defeat.png");
 	plDrafter.addImage(playerPath);
 	cookieDrafter.addImage(cookiePath);
 	heartDrafter.addImage(heartPath);
@@ -110,10 +111,18 @@ void GraphicGLManager::drawGhosts() {
 	else {
 		rawDrawGhostsEnabled();
 	}
+	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
+		if (opponents->getOpponentXmode(i) == Opponent::Mode::DEFEATED) {
+			Position opPos = opponents->getOpponentXposition(i);
+			defeatGhost.draw(opPos);
+		}
+	
+	}
 }
 
 void GraphicGLManager::rawDrawGhostsEnabled(){
 	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
+		if (opponents->getOpponentXmode(i) == Opponent::Mode::DEFEATED) continue;
 		Position opPos = opponents->getOpponentXposition(i);
 		ghosts[i].draw(opPos);
 	}
@@ -121,6 +130,7 @@ void GraphicGLManager::rawDrawGhostsEnabled(){
 
 void GraphicGLManager::rawDrawGhostsDisabled(){
 	for (int i = 0; i < opponents->getAmountOfOpponents(); i++) {
+		if (opponents->getOpponentXmode(i) == Opponent::Mode::DEFEATED) continue;
 		Position opPos = opponents->getOpponentXposition(i);
 		disabledGhost.draw(opPos);
 	}
