@@ -5,7 +5,9 @@
 #include <cmath>
 
 
+#define ZERO_MARGIN_VAL (0.001f)
 using CoordType = float;
+
 
 class Position{
 public:

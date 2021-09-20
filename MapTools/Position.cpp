@@ -31,7 +31,8 @@ bool Position::isYCoordInt() const{
 
 
 bool Position::operator==(const Position& pos){
-	return this->x == pos.x && this->y == pos.y;
+	return	   std::abs(this->x - pos.x) < ZERO_MARGIN_VAL
+		    && std::abs(this->y - pos.y) < ZERO_MARGIN_VAL;
 }
 
 bool Position::operator!=(const Position& pos) {

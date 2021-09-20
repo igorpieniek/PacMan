@@ -27,9 +27,6 @@ void AstarMovement::update(Position& current){
 		}
 		else {
 			auto pathRaw = astar.getPath();
-
-
-
 			for (const auto& pt : pathRaw) {
 				Position pos{ (float)pt->x, (float)pt->y };
 				if (path.size() != 0) {
