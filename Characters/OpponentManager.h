@@ -38,7 +38,7 @@ private:
 	
 	using MoveAlgNormal = RandMove;
 	using MoveAlgCatched = AstarMovement;
-	const Position opponentBase{ 1,1 };
+	Position opponentBase{1,1};
 
 	void createOpponents();
 	Position getRandPosition();

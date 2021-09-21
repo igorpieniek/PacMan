@@ -152,3 +152,9 @@ int ConfigLoader::getMainWindowHeight(){
 int ConfigLoader::getStartDelay_s(){
 	return root["other"]["startDelay_s"].asInt();
 }
+
+Position ConfigLoader::getGhostBasePosition(){
+	CoordType x = root["other"]["ghostBasePosition"][0].asUInt();
+	CoordType y = root["other"]["ghostBasePosition"][1].asUInt();
+	return Position(x, y);
+}

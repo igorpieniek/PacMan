@@ -42,6 +42,7 @@ public:
 	int getMainWindowWidth();
 	int getMainWindowHeight();
 	int getStartDelay_s();
+	Position getGhostBasePosition();
 
 
 
@@ -80,11 +81,12 @@ private:
 		{"cornerNW",	&JsonVal::isString}
 	};
 	RequiredMap requiredOtherHeaders{
-		{"playerPosition",		&JsonVal::isArray},
-		{"amountOfOpponents",	&JsonVal::isUInt},
+		{"playerPosition",		 &JsonVal::isArray},
+		{"amountOfOpponents",	 &JsonVal::isUInt},
 		{"amountOfSpecialPoints",&JsonVal::isUInt},
-		{"windowSize",			&JsonVal::isUInt}, //isArray (x,y) if scale problem will be resolved
-		{"startDelay_s",        &JsonVal::isUInt},	
+		{"windowSize",			 &JsonVal::isUInt}, //isArray (x,y) if scale problem will be resolved
+		{"startDelay_s",         &JsonVal::isUInt},
+		{"ghostBasePosition",    &JsonVal::isArray},
 	};
 
 	bool isJSONhaveRequiredFields();

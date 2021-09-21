@@ -25,6 +25,7 @@
 	},
 	"other":{
 		"playerPosition": [8,1],
+		"ghostBasePosition":[14,13],
 		"amountOfOpponents": 6,
 		"amountOfSpecialPoints": 8,
 		"startDelay_s": 4,

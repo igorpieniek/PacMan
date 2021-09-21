@@ -4,6 +4,10 @@
 
 OpponentManager::OpponentManager(float speed, int numberOfOps) : opponentSpeed(speed), numberOfOpponents(numberOfOps) {
 	createOpponents();
+	Position potBase = CONFIG.getGhostBasePosition();
+	if (!MapManager::instance().isOccupied(potBase)) {
+		opponentBase = potBase;
+	}
 }
 
 void OpponentManager::createOpponents(){
