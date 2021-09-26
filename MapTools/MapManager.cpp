@@ -50,6 +50,7 @@ Board MapManager::getNeighbours(Position& pos, int radius){
 	return std::move(resultMap);
 }
 
+/*
 bool MapManager::isCorner(Position& pos){
 	std::vector<Direction> possible = getAllPossibleDirections(pos);
 	if (possible.size() != 2) return false;
@@ -68,26 +69,7 @@ bool MapManager::isCorner(Position& pos){
 
 	return false;
 }
-
-std::vector<Direction> 
-MapManager::getAllPossibleDirections(Position& pos){
-	Position roundPos = pos.getIntPos();
-	std::vector<Direction> result;
-
-	for (auto const& x : directionTranslations) {
-		Position toFind{ roundPos + x.second };
-		size_t cellIndex = getMapBoardIndexPosition(toFind);
-
-		if (cellIndex >= mapBoard.size()) continue;
-
-		if (cellIndex < mapBoard.size()) {
-			if (!mapBoard[cellIndex].isObstacle()) {
-				result.push_back(x.first);
-			}
-		}
-	}
-	return std::move(result);
-}
+*/
 
 
 Board MapManager::readMapFromFile(std::string fileName){

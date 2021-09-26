@@ -14,7 +14,7 @@ public:
 	Position(CoordType xx = { }, CoordType yy = {}) : x(xx), y(yy) {};
 
 	void move(Position& pos);
-	double distance(Position& pos);
+	double distance(Position& pos)const;
 
 	CoordType getX()const { return x; };
 	CoordType getY()const { return y; };

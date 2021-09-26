@@ -16,9 +16,10 @@ public:
 
 	void moveInDir(Position& pos, Direction dir) override;
 
+	bool isNextPositionFree(const Position& pos, Direction dir);
+
 private:
-	bool isNextPositionFree(Position& pos, Direction dir);
-	bool isMoveInDirAllowed(Position& pos, Direction dir);
+	bool isMoveInDirAllowed(const Position& pos, Direction dir);
 	void moveInDirDanger(Position& pos, Direction dir);
 
 	Movement tempDangerMoveTool;

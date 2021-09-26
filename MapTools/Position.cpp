@@ -7,7 +7,7 @@ void Position::move(Position& pos){
 	y += pos.y;
 }
 
-double Position::distance(Position& pos){
+double Position::distance(Position& pos)const {
 	return sqrt(pow(x - pos.x, 2) + pow(y - pos.y, 2));
 }
 
@@ -20,13 +20,11 @@ bool Position::isIntPos() const{
 }
 
 bool Position::isXCoordInt() const{
-	Position intPos = getIntPos();
-	return std::round(x * 1000) / 1000 == intPos.getX();
+	return std::round(x * 1000) / 1000 == getIntPos().getX();
 }
 
 bool Position::isYCoordInt() const{
-	Position intPos = getIntPos();
-	return std::round(y * 1000) / 1000 == intPos.getY();
+	return std::round(y * 1000) / 1000 == getIntPos().getY();
 }
 
 

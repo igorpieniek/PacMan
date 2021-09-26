@@ -33,6 +33,7 @@ void OpponentManager::deactivateAll(){
 	for (auto& op : ops) {
 		if (op.getState() == Opponent::Mode::ACTIVE) {
 			op.setState(Opponent::Mode::DISABLE);
+			op.setMoveAlgorithm(std::make_unique<MoveAlgNormal>(opponentSpeed*0.5f));
 		}
 	}
 }
@@ -41,6 +42,7 @@ void OpponentManager::activeteAll(){
 	for (auto& op : ops) {
 		if (op.getState() == Opponent::Mode::DISABLE) {
 			op.setState(Opponent::Mode::ACTIVE);
+			//op.setMoveAlgorithm(std::make_unique<MoveAlgNormal>(opponentSpeed));
 		}
 	}
 }

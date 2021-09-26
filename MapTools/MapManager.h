@@ -27,8 +27,6 @@ public:
 	Board& getAllMap();
 	Board getNeighbours(Position& pos, int radius);
 
-	bool isCorner(Position& pos);
-	std::vector<Direction> getAllPossibleDirections(Position& pos);
 
 	CoordType getMapXSize() const { return static_cast<CoordType>(width); };
 	CoordType getMapYSize() const { return static_cast<CoordType>(height); };

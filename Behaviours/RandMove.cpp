@@ -2,7 +2,6 @@
 
 void RandMove::update(Position& current){
     moveProcess(current);
-    isInitialized = true;
 }
 
 void RandMove::setStepResolution(CoordType res){
@@ -23,13 +22,16 @@ void RandMove::moveProcess(Position& pos) {
 
 
 Direction RandMove::getBestDirection(Position& center) {
-    if (center.isIntPos()) {
-        std::vector<Direction> directions = MapManager::instance().getAllPossibleDirections(center);
+    if (center.isIntPos() || !isInitialized) {
+        std::vector<Direction> directions = getAllPossibleDirecions(center);//MapManager::instance().getAllPossibleDirections(center);
 
         if (directions.size() == 1) return directions[0];
 
         if (isInitialized) {
             deleteCurrentDirection(directions);
+        }
+        else {
+            isInitialized = true;
         }
 
         int randIndex = getRandomValue(0, directions.size()-1);
@@ -38,6 +40,17 @@ Direction RandMove::getBestDirection(Position& center) {
     else {
         return currentDirection;
     }
+}
+
+std::vector<Direction> RandMove::getAllPossibleDirecions(const Position& pos){
+    std::vector<Direction> res;
+    res.reserve(4);
+    for (const auto& dir : allDirections) {
+        if (moveTool.isNextPositionFree(pos, dir)) {
+            res.push_back(dir);
+        }
+    }
+    return std::move(res);
 }
 
 void RandMove::deleteCurrentDirection(std::vector<Direction>& dir){
