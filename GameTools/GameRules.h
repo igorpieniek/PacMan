@@ -17,7 +17,7 @@ public:
 private:
 	std::vector<std::shared_ptr<GameMediatorComponent>> components;
 	int startDelay = CONFIG.getStartDelay_s();
-	const double disableTime = 2.0;
+	const double disableTime = 3.0;
 	// % of normal disable (rest of time should be indicated in some way)
 	const double normalDisableTime  = 0.75 * disableTime;
 	const double warningDisableTime = disableTime - normalDisableTime;

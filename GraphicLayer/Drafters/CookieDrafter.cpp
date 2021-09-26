@@ -4,7 +4,7 @@ void CookieDrafter::draw(Position pos, Direction dir){
 	normalize(pos);
 	trans.setTranslation(pos.getX(), pos.getY());
 	if (isSpecialPoint) {
-		trans.setScale(3.0f*scale);
+		trans.setScale(3.7f*scale);
 		isSpecialPoint = false;
 	}
 	else {
