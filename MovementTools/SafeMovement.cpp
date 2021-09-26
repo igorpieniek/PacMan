@@ -17,6 +17,7 @@ void SafeMovement::moveRight(Position& pos){
 }
 
 void SafeMovement::moveInDir(Position& pos, Direction dir){
+	pos = pos.roundTo(stepSize);
 	if (isNextPositionFree(pos, dir)) {
 		moveInDirDanger(pos, dir);
 	}

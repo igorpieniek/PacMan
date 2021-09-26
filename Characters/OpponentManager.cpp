@@ -42,7 +42,7 @@ void OpponentManager::activeteAll(){
 	for (auto& op : ops) {
 		if (op.getState() == Opponent::Mode::DISABLE) {
 			op.setState(Opponent::Mode::ACTIVE);
-			//op.setMoveAlgorithm(std::make_unique<MoveAlgNormal>(opponentSpeed));
+			op.setMoveAlgorithm(std::make_unique<MoveAlgNormal>(opponentSpeed));
 		}
 	}
 }
@@ -95,7 +95,7 @@ void OpponentManager::notifyPlayerPosition(Position& pos){
 		}
 		else if (opIter->getState() == Opponent::Mode::DISABLE) {
 				mediator->notify(Event::DISABLED_GHOST_CATCHED);
-				opIter->setMoveAlgorithm(std::make_unique<MoveAlgCatched>(opponentSpeed, opponentBase));
+				opIter->setMoveAlgorithm(std::make_unique<MoveAlgCatched>(opponentSpeed*2, opponentBase));
 				opIter->setState(Opponent::Mode::DEFEATED);
 		}
 	}

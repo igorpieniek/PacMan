@@ -24,6 +24,8 @@ public:
 	bool isXCoordInt()const;
 	bool isYCoordInt()const;
 
+	Position roundTo(float gridSize);
+
 
 	bool operator==(const Position& pos);
 	bool operator!=(const Position& pos);
@@ -37,4 +39,6 @@ private:
 	CoordType x{};
 	CoordType y{};
 	friend std::ostream& operator<<(std::ostream& os, const Position& pos);
+
+	void roundCoord(CoordType& coord, const float& gridSize);
 };

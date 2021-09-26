@@ -27,6 +27,25 @@ bool Position::isYCoordInt() const{
 	return std::round(y * 1000) / 1000 == getIntPos().getY();
 }
 
+Position Position::roundTo(float gridSize){
+	CoordType xx = this->x;
+	CoordType yy = this->y;
+	roundCoord(xx, gridSize);
+	roundCoord(yy, gridSize);
+
+	return Position(xx,yy);
+}
+
+void Position::roundCoord(CoordType& coord, const float& gridSize){
+	int div = coord / gridSize;
+	float rest = coord - (div * gridSize);
+	if (rest > (0.5f * gridSize)) {
+		coord = (div + 1) * gridSize;
+		return;
+	}
+	coord= div * gridSize;
+}
+
 
 bool Position::operator==(const Position& pos){
 	return	   std::abs(this->x - pos.x) < ZERO_MARGIN_VAL

@@ -18,7 +18,7 @@ private:
 	std::vector<Position> path{};
 	int currentPathExecIndx{};
 	bool isPathCreated{ false };
-	Movement moveTool{};
+	SafeMovement moveTool{};
 
 	int sizex{}, sizey{};
 
