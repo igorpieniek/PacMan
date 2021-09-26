@@ -126,7 +126,7 @@ Position OpponentManager::getRandPosition() {
 		Position pos{ static_cast<CoordType>(randX),
 				      static_cast<CoordType>(randY) };
 		if (!MapManager::instance().isOccupied(pos) &&
-			pos.getIntPos() != CONFIG.getPlayerInitialPosition().getIntPos()) {
+			CONFIG.getPlayerInitialPosition().distance(pos) > 3.0f ) {
 			return pos;
 		}
 	}
