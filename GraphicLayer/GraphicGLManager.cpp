@@ -23,6 +23,7 @@ GraphicGLManager::GraphicGLManager(
 	plDrafter.addImage(playerPath);
 	cookieDrafter.addImage(cookiePath);
 	heartDrafter.addImage(heartPath);
+	baseForGhosts.addImage(ghostBasePath);
 
 	mapDrafter.addImage(mapPath);
 
@@ -33,6 +34,7 @@ void GraphicGLManager::draw(){
 	mapDrafter.draw();
 
 	drawCookies();
+	drawBaseForGhosts();
 	drawPlayer();
 	drawGhosts();
 	drawHealth();
@@ -97,6 +99,10 @@ void GraphicGLManager::drawGhosts() {
 		rawDrawGhostsNearEnabledProcess();
 	}
 	rawDrawGhosts();
+}
+
+void GraphicGLManager::drawBaseForGhosts(){
+	baseForGhosts.draw(ghostBasePos);
 }
 
 void GraphicGLManager::rawDrawGhostsNearEnabledProcess(){

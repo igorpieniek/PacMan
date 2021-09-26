@@ -35,8 +35,10 @@ private:
 	std::vector<std::string> ghostPaths = CONFIG.getOpponentsImgPaths();
 	std::string disabledGhostPath = CONFIG.getDisabledOpponentImgPath();
 	std::string defeatedGhostPath = CONFIG.getDefeatedOpponentImgPath();
+	std::string ghostBasePath	  = CONFIG.getGhostBaseImgPath();
+	const Position ghostBasePos = CONFIG.getGhostBasePosition();
 
-	std::string mapPath	 = CONFIG.getDynamicMapImgPath();
+	std::string mapPath	   = CONFIG.getDynamicMapImgPath();
 	std::string playerPath = CONFIG.getPlayerImgPath();
 	std::string cookiePath = CONFIG.getPointImgPath();
 	std::string heartPath  = CONFIG.getHeartImgPath();
@@ -45,6 +47,7 @@ private:
 	std::vector<Drafter> ghosts;
 	Drafter disabledGhost{};
 	Drafter defeatGhost{};
+	Drafter baseForGhosts{};
 	bool disabledFlag = false;
 	bool isNearEnabledFlag = false;
 
@@ -70,6 +73,7 @@ private:
 	void drawStartCounterProcess();
 	void drawPlayer();
 	void drawGhosts();
+	void drawBaseForGhosts();
 
 	void rawDrawGhostsNearEnabledProcess();
 	void rawDrawGhosts();
