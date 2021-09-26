@@ -19,8 +19,9 @@ void PointsManager::createCellPointArray(){
 
 	int divider = (int)(MapManager::instance().getFreePosAmount() / specialPointsAmount);
 	Position playerInitPos = CONFIG.getPlayerInitialPosition();
+	Position ghostBasePos = CONFIG.getGhostBasePosition();
 	for (auto const& cell : MapManager::instance().getAllMap()) {
-		if (!cell.isObstacle()) {
+		if (!cell.isObstacle() && (ghostBasePos != cell)) {
 			counter++;
 			Position pos = static_cast<Position>(cell);
 			if (counter % divider == 0 && pos != playerInitPos) {
