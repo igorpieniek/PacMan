@@ -168,9 +168,6 @@
     <ClCompile Include="src\Vendor\imgui\imgui_widgets.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="src\Vendor\imgui\main.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="src\Vendor\json\json_reader.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>

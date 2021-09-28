@@ -200,7 +200,6 @@
     <ClCompile Include="src\Vendor\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\Vendor\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\Vendor\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="src\Vendor\imgui\main.cpp" />
     <ClCompile Include="src\Vendor\json\json_reader.cpp" />
     <ClCompile Include="src\Vendor\json\json_value.cpp" />
     <ClCompile Include="src\Vendor\json\json_writer.cpp" />
