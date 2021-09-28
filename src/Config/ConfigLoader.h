@@ -35,6 +35,9 @@ public:
 	std::string getDefeatedOpponentImgPath();
 	std::string getGhostBaseImgPath();
 
+	std::string get2DFragmentShaderPath();
+	std::string get2DVertexShaderPath();
+
 
 	// others
 	Position getPlayerInitialPosition();
@@ -71,7 +74,9 @@ private:
 		{"ghostsImg",       &JsonVal::isArray},
 		{"disabledGhostImg",&JsonVal::isString},
 		{"defeatedGhostImg",&JsonVal::isString},
-		{"ghostBaseImg",    &JsonVal::isString}
+		{"ghostBaseImg",    &JsonVal::isString},
+		{"2DfragmentShader",&JsonVal::isString},
+		{"2DvertexShader",  &JsonVal::isString}
 	};
 	RequiredMap requiredMapElementsHeaders{
 		{"vertical",	&JsonVal::isString},

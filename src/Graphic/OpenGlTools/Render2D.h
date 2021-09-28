@@ -7,6 +7,8 @@
 #include "VertexBufferLayout.h"
 #include "Renderer.h"
 
+#include "ConfigLoader.h"
+
 #include <vector>
 #include "GL/glew.h"
 

@@ -130,6 +130,14 @@ std::string ConfigLoader::getGhostBaseImgPath(){
 	return root["paths"]["ghostBaseImg"].asString();
 }
 
+std::string ConfigLoader::get2DFragmentShaderPath(){
+	return root["paths"]["2DfragmentShader"].asString();
+}
+
+std::string ConfigLoader::get2DVertexShaderPath(){
+	return root["paths"]["2DvertexShader"].asString();
+}
+
 Position ConfigLoader::getPlayerInitialPosition(){
 	CoordType x = root["other"]["playerPosition"][0].asUInt();
 	CoordType y = root["other"]["playerPosition"][1].asUInt();
