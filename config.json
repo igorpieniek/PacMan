@@ -1,6 +1,6 @@
 {
 	"paths":{
-		"mapTxt": "mapTemplate.txt",
+		"mapTxt": "maps/mapTemplate.txt",
 		"dynamicMapImg": "images/newDynamicMap.png",
 		"playerImg":"images/pacman.png",
 		"heartImg":"images/heart.png",

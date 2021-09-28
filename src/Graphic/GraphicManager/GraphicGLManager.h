@@ -1,7 +1,7 @@
 #pragma once
 #include <algorithm>
 
-#include "GraphicManagerInterface.h"
+#include "GraphicManager/GraphicManagerInterface.h"
 
 #include "Mediator.h"
 #include "Render2D.h"

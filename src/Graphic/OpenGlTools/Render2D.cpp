@@ -36,8 +36,8 @@ void Render2D::init(){
 
         ib = std::make_shared<IndexBuffer>(indices);
 
-        shader = std::make_shared<Shader>("GraphicLayer/OpenGlTools/shaders/pos2D.vert",
-                                          "GraphicLayer/OpenGlTools/shaders/color2D.frag");
+        shader = std::make_shared<Shader>("src/Graphic/OpenGlTools/shaders/pos2D.vert",
+                                          "src/Graphic/OpenGlTools/shaders/color2D.frag");
 
         ib->unbind();
         vb->unbind();

@@ -16,7 +16,7 @@
 #include "GameRules.h"
 #include "PointsManager.h"
 
-#include "GraphicLayer/GraphicGLManager.h"
+#include "GraphicGLManager.h"
 
 #include "ConfigLoader.h"
 
