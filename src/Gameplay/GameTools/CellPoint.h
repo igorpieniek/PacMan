@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MapCell.h"
+#include "Position.h"
 
 enum class PointCat : int {
 	ZER0  = 0,
@@ -9,9 +9,9 @@ enum class PointCat : int {
 	GHOST_CATCH =200 
 };
 
-class CellPoint : public MapCell{
+class CellPoint : public Position{
 public:
-	CellPoint(Position pos, PointCat points) : MapCell(pos, Category::FREE),
+	CellPoint(Position pos, PointCat points) : Position(pos),
 										  point(points) {};
 	
 	PointCat getPointClass() const;
