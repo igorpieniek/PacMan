@@ -29,7 +29,7 @@ public:
 	void draw() override;
 	void notify(Event evt) override;
 private:
-	void notifyPlayerPosition(Position& pos)override {};
+	void notifyPlayerPosition(const Position& pos)override {};
 
 
 	std::vector<std::string> ghostPaths = CONFIG.getOpponentsImgPaths();

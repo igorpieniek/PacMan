@@ -87,7 +87,7 @@ void OpponentManager::notify(Event evt){
 	}
 }
 
-void OpponentManager::notifyPlayerPosition(Position& pos){
+void OpponentManager::notifyPlayerPosition(const Position& pos){
 	auto opIter = isPlayerPosReached(pos);
 	if (opIter != ops.end()) {
 		if (opIter->getState() == Opponent::Mode::ACTIVE) {
@@ -101,7 +101,7 @@ void OpponentManager::notifyPlayerPosition(Position& pos){
 	}
 }
 
-std::vector<Opponent>::iterator OpponentManager::isPlayerPosReached(Position& pos){
+std::vector<Opponent>::iterator OpponentManager::isPlayerPosReached(const Position& pos){
 	return std::find_if(ops.begin(), ops.end(),
 		[&pos](const Opponent& op) {return op.getPosition().getIntPos() == pos.getIntPos(); });
 }

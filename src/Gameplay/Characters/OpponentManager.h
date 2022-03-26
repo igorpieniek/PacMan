@@ -28,7 +28,7 @@ public:
 	int getAmountOfOpponents()const { return numberOfOpponents; };
 
 	void notify(Event evt) override;
-	void notifyPlayerPosition(Position& pos) override;
+	void notifyPlayerPosition(const Position& pos) override;
 
 
 private:
@@ -42,6 +42,6 @@ private:
 
 	void createOpponents();
 	Position getRandPosition();
-	std::vector<Opponent>::iterator isPlayerPosReached(Position& pos);
+	std::vector<Opponent>::iterator isPlayerPosReached(const Position& pos);
 	void restartAll();
 };

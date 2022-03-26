@@ -64,7 +64,7 @@ void GameRules::notify(Event evt){
 	}
 }
 
-void GameRules::notifyPlayerPosition(Position& playerPos){
+void GameRules::notifyPlayerPosition(const Position& playerPos){
 	std::for_each(components.begin(), components.end(), 
 				  [&playerPos](std::weak_ptr<GameMediatorComponent> comp) { comp.lock()->notifyPlayerPosition(playerPos); });
 }

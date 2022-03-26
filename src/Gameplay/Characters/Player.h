@@ -22,7 +22,7 @@ public:
 	int getAmountOfLifes()const { return numberOfLifes; };
 
 	//unused but have to exist
-	void notifyPlayerPosition(Position& playerPos) override {};
+	void notifyPlayerPosition(const Position& playerPos) override {};
 
 private:
 	std::shared_ptr<MoveAlgorithm> moveManag{};

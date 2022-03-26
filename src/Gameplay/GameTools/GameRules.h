@@ -12,7 +12,7 @@ public:
 	GameRules(std::vector<std::shared_ptr<GameMediatorComponent>> comp);
 
 	void notify(Event evt) override;
-	void notifyPlayerPosition(Position& playerPos) override;
+	void notifyPlayerPosition(const Position& playerPos) override;
 
 private:
 	std::vector<std::shared_ptr<GameMediatorComponent>> components;

@@ -34,7 +34,7 @@ void PointsManager::createCellPointArray(){
 	}
 }
 
-void PointsManager::notifyPlayerPosition(Position& pos) {
+void PointsManager::notifyPlayerPosition(const Position& pos) {
 	if (isAllPointsReached() && !lockPlayerPosNotify) {
 		lockPlayerPosNotify = true;
 		mediator->notify(Event::ALL_POINTS_COLLECTED);
@@ -53,7 +53,7 @@ bool PointsManager::isAllPointsReached()const {
 	return cellPoints.empty();
 }
 
-PointsManager::CellPointIter PointsManager::getCellPointIter(Position& pos) {
+PointsManager::CellPointIter PointsManager::getCellPointIter(const Position& pos) {
 	return std::find(cellPoints.begin(), cellPoints.end(), pos.getIntPos());
 }
 
