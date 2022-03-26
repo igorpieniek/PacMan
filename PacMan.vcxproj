@@ -179,7 +179,6 @@
     <ClCompile Include="src\Graphic\Menu\SimpleMenu.cpp" />
     <ClCompile Include="src\Graphic\Menu\StartCounter.cpp" />
     <ClCompile Include="src\Graphic\Menu\StartMenu.cpp" />
-    <ClCompile Include="src\Graphic\OpenGlTools\Buffers\AdditionalTools.cpp" />
     <ClCompile Include="src\Graphic\OpenGlTools\Buffers\IndexBuffer.cpp" />
     <ClCompile Include="src\Graphic\OpenGlTools\Buffers\Renderer.cpp" />
     <ClCompile Include="src\Graphic\OpenGlTools\Buffers\shaderTools.cpp" />
@@ -248,7 +247,7 @@
     <ClInclude Include="src\Graphic\Menu\SimpleMenu.h" />
     <ClInclude Include="src\Graphic\Menu\StartCounter.h" />
     <ClInclude Include="src\Graphic\Menu\StartMenu.h" />
-    <ClInclude Include="src\Graphic\OpenGlTools\Buffers\AdditionalTools.h" />
+    <ClInclude Include="src\Graphic\OpenGlTools\Buffers\Color.h" />
     <ClInclude Include="src\Graphic\OpenGlTools\Buffers\GLBuffer.h" />
     <ClInclude Include="src\Graphic\OpenGlTools\Buffers\IndexBuffer.h" />
     <ClInclude Include="src\Graphic\OpenGlTools\Buffers\Renderer.h" />
