@@ -8,6 +8,8 @@ OpponentManager::OpponentManager(float speed, int numberOfOps) : opponentSpeed(s
 	if (!MapManager::instance().isOccupied(potBase)) {
 		opponentBase = potBase;
 	}
+	additionalDisableTimer.setCallback(std::bind(&OpponentManager::nearEnableAllCb, this));
+	mainDisableTimer.setCallback(std::bind(&OpponentManager::enableAllTimerCb, this));
 }
 
 void OpponentManager::createOpponents(){
@@ -66,6 +68,7 @@ void OpponentManager::notify(Event evt){
 	case Event::DISABLE_ALL_OPPONENTS:
 		std::cout << "OpponentManager: DISABLE ALL\n";
 		deactivateAll();
+		setGhostDisableTimer();
 		break;
 
 	case Event::ENABLE_ALL_OPPONENTS:
@@ -75,6 +78,12 @@ void OpponentManager::notify(Event evt){
 
 	case Event::RESTART_POSITIONS:
 		restartAll();
+		break;
+
+	case Event::RESET_OPPONENTS_STATE:
+		additionalDisableTimer.reset();
+		mainDisableTimer.reset();
+		currentGhostDisableTime = 0;
 		break;
 
 	case Event::ALLOW_MOTION:
@@ -131,4 +140,30 @@ Position OpponentManager::getRandPosition() {
 		}
 	}
 	return Position{};
+}
+
+void OpponentManager::setGhostDisableTimer() {
+	if (currentGhostDisableTime == 0) {
+		additionalDisableTimer.startPeriodElapse(normalDisableTime);
+	}
+	currentGhostDisableTime += normalDisableTime;
+}
+
+void OpponentManager::nearEnableAllCb() {
+	currentGhostDisableTime -= normalDisableTime;
+	std::cout << "Current disable time " << currentGhostDisableTime << std::endl;
+	if (currentGhostDisableTime == 0) {
+		mediator->notify(Event::WARNING_NEAR_ENABLE_ALL_OPPONENTS);
+		mainDisableTimer.startPeriodElapse(warningDisableTime);
+	}
+	else {
+		deactivateAll();
+		additionalDisableTimer.startPeriodElapse(normalDisableTime);
+	}
+}
+
+void OpponentManager::enableAllTimerCb() {
+	if (currentGhostDisableTime == 0) {
+		activeteAll();
+	}
 }
