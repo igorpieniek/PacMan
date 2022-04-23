@@ -19,8 +19,6 @@ public:
 	void reset() override;
 
 private:
-	SafeMovement moveTool{};
-
 	bool isFirst = true;
 	Position lastPosition{};
 	Direction currentDir{};

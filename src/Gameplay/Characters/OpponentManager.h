@@ -7,6 +7,7 @@
 #include "MapManager.h"
 #include "Mediator.h"
 #include "ConfigLoader.h"
+#include "Timer.h"
 #include <vector>
 #include <map>
 #include <cstdlib>
@@ -28,7 +29,7 @@ public:
 	int getAmountOfOpponents()const { return numberOfOpponents; };
 
 	void notify(Event evt) override;
-	void notifyPlayerPosition(Position& pos) override;
+	void notifyPlayerPosition(const Position& pos) override;
 
 
 private:
@@ -40,8 +41,21 @@ private:
 	using MoveAlgCatched = AstarMovement;
 	Position opponentBase{1,1};
 
+	const double disableTime = 2.5;
+	// % of normal disable (rest of time should be indicated in some way)
+	const double normalDisableTime = 0.75 * disableTime;
+	const double warningDisableTime = disableTime - normalDisableTime;
+	double currentGhostDisableTime = 0;
+
+	Timer additionalDisableTimer{};
+	Timer mainDisableTimer{};
+
+	void setGhostDisableTimer();
+	void nearEnableAllCb();
+	void enableAllTimerCb();
+
 	void createOpponents();
 	Position getRandPosition();
-	std::vector<Opponent>::iterator isPlayerPosReached(Position& pos);
+	std::vector<Opponent>::iterator isPlayerPosReached(const Position& pos);
 	void restartAll();
 };

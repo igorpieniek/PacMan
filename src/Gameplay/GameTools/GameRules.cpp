@@ -4,8 +4,6 @@ GameRules::GameRules(std::vector<std::shared_ptr<GameMediatorComponent>> comp) :
 					components(comp), GameMediator()
 {
 	setComponentsMediator();
-	smallOpponentEnableTimer.setCallback(std::bind(&GameRules::nearEnableOpponentCb, this));
-	mainOpponentEnableTimer.setCallback(std::bind(&GameRules::enableOpponentCb, this));
 	motionTimer.setCallback(std::bind(&GameRules::enableMotionCb, this));
 
 	notifyAll(Event::STOP_MOTION);
@@ -26,7 +24,6 @@ void GameRules::notify(Event evt){
 		std::cout << "GameRules: SPECIAL_POINT_REACHED:\n";
 		notifyAll(evt);
 		notifyAll(Event::DISABLE_ALL_OPPONENTS);
-		setGhostDisableTimer();
 		break;
 
 	case Event::ALL_POINTS_COLLECTED:
@@ -57,6 +54,9 @@ void GameRules::notify(Event evt){
 		notifyAll(Event::RESTART_POSITIONS);
 		notifyAll(Event::RESET_GAME);
 		break;
+	case Event::WARNING_NEAR_ENABLE_ALL_OPPONENTS:
+		notifyAll(evt);
+		break;
 
 	default:
 		//usused events
@@ -64,7 +64,7 @@ void GameRules::notify(Event evt){
 	}
 }
 
-void GameRules::notifyPlayerPosition(Position& playerPos){
+void GameRules::notifyPlayerPosition(const Position& playerPos){
 	std::for_each(components.begin(), components.end(), 
 				  [&playerPos](std::weak_ptr<GameMediatorComponent> comp) { comp.lock()->notifyPlayerPosition(playerPos); });
 }
@@ -89,34 +89,6 @@ void GameRules::enableMotionCb(){
 }
 
 void GameRules::reset(){
-	smallOpponentEnableTimer.reset();
-	mainOpponentEnableTimer.reset();
+	notifyAll(Event::RESET_OPPONENTS_STATE);
 	motionTimer.reset();
-	currentGhostDisableTime = 0;
-}
-
-void GameRules::setGhostDisableTimer(){
-	if (currentGhostDisableTime == 0) {
-		smallOpponentEnableTimer.startPeriodElapse(normalDisableTime);
-	}
-	currentGhostDisableTime += normalDisableTime;
-}
-
-void GameRules::nearEnableOpponentCb(){
-	currentGhostDisableTime -= normalDisableTime;
-	std::cout << "Current disable time " << currentGhostDisableTime << std::endl;
-	if (currentGhostDisableTime == 0) {
-		notifyAll(Event::WARNING_NEAR_ENABLE_ALL_OPPONENTS);
-		mainOpponentEnableTimer.startPeriodElapse(warningDisableTime);
-	}
-	else {
-		notifyAll(Event::DISABLE_ALL_OPPONENTS);
-		smallOpponentEnableTimer.startPeriodElapse(normalDisableTime);
-	}
-}
-
-void GameRules::enableOpponentCb(){
-	if (currentGhostDisableTime == 0) {
-		notifyAll(Event::ENABLE_ALL_OPPONENTS);
-	}
 }

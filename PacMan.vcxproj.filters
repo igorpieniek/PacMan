@@ -111,9 +111,6 @@
     <ClCompile Include="src\Graphic\Menu\StartMenu.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="src\Graphic\OpenGlTools\Buffers\AdditionalTools.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphic\OpenGlTools\Buffers\IndexBuffer.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -314,7 +311,7 @@
     <ClInclude Include="src\Graphic\Menu\StartMenu.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="src\Graphic\OpenGlTools\Buffers\AdditionalTools.h">
+    <ClInclude Include="src\Graphic\OpenGlTools\Buffers\Color.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="src\Graphic\OpenGlTools\Buffers\GLBuffer.h">

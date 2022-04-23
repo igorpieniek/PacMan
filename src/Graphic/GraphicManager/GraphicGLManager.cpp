@@ -90,7 +90,6 @@ void GraphicGLManager::drawStartCounterProcess(){
 
 
 void GraphicGLManager::drawPlayer(){
-	plDrafter.updateIsMoving(player->isMoving());
 	plDrafter.draw(player->getPosition(), player->getCurrentDirection());
 }
 

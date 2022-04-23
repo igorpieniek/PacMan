@@ -10,6 +10,7 @@ enum class Event {
 	DISABLE_ALL_OPPONENTS,
 	ENABLE_ALL_OPPONENTS,
 	WARNING_NEAR_ENABLE_ALL_OPPONENTS,
+	RESET_OPPONENTS_STATE,
 	DISABLED_GHOST_CATCHED,
 	PLAYER_CATCHED,
 	END_OF_LIVES,
@@ -27,11 +28,10 @@ public:
 };
 
 
-class MediatorComponent {
+class MediatorComponent: public Mediator {
 public:
 	MediatorComponent(Mediator* med = nullptr) : mediator(med) {};
 	void setMediator(Mediator* med) { mediator = med; };
-	virtual void notify(Event evt) = 0;
 
 protected:
 	Mediator* mediator;
@@ -41,7 +41,7 @@ protected:
 
 class PlayerPositionPropagator {
 public:
-	virtual void notifyPlayerPosition(Position& pos) = 0;
+	virtual void notifyPlayerPosition(const Position& pos) = 0;
 };
 
 class GameMediator : public Mediator, 

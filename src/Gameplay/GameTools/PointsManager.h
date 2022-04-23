@@ -13,7 +13,7 @@ public:
 	bool isAllPointsReached()const;
 
 	void notify(Event evt) override;
-	void notifyPlayerPosition(Position& pos) override;
+	void notifyPlayerPosition(const Position& pos) override;
 
 	const std::vector<CellPoint>& getPointsData()const { return cellPoints; };
 	
@@ -30,7 +30,7 @@ private:
 	void addPoints(CellPointIter& it);
 	void removeCellPoint(CellPointIter& it);
 	void checkSpecialPoint(CellPointIter& it);
-	CellPointIter getCellPointIter(Position& pos);
+	CellPointIter getCellPointIter(const Position& pos);
 
 };
 

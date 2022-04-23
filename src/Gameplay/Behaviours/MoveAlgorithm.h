@@ -2,6 +2,7 @@
 
 #include "Position.h"
 #include "MapCell.h"
+#include "SafeMovement.h"
 
 
 class MoveAlgorithm{
@@ -12,5 +13,6 @@ public:
 	virtual ~MoveAlgorithm() {};
 
 protected:
+	SafeMovement moveTool{};
 	MoveAlgorithm(){};
 };

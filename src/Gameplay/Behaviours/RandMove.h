@@ -1,7 +1,6 @@
 #pragma once
 
 #include "MoveAlgorithm.h"
-#include "SafeMovement.h"
 #include "MapManager.h"
 #include <cstdlib>
 #include <vector>
@@ -12,7 +11,9 @@
 
 class RandMove: public MoveAlgorithm{
 public:
-	RandMove(CoordType step = { 1 }) : moveTool(step) {};
+	RandMove(CoordType step = { 1 }) {
+		moveTool.setStepSize(step);
+	};
 
 	void update(Position& current) override;
 	void setStepResolution(CoordType res) override;
@@ -28,7 +29,6 @@ private:
 	void moveProcess(Position& pos);
 
 	Direction currentDirection{};
-	SafeMovement moveTool;
 	bool isInitialized = false;
 
 	std::random_device rd;

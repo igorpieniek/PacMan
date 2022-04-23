@@ -2,7 +2,7 @@
 
 #include "stb_image/stb_image.h"
 
-#include "AdditionalTools.h"
+#include "Color.h"
 #include <GL/glew.h>
 #include <string>
 #include <iostream>

@@ -13,12 +13,10 @@ void PlayerDrafter::draw(Position pos, Direction dir){
 	trans.setScale(playerScale);
 	Render2D::instance().addToDraw(text, trans);
 	
-	if (isMoving) {
+	if (previousPosition != pos) {
 		currentAngle += rotationStep;
 		if (currentAngle >= maxRotationAngle || currentAngle <= 0) rotationStep *= -1;
 	}
+	previousPosition = pos;
 }
 
-void PlayerDrafter::updateIsMoving(bool movingFlag){
-	isMoving = movingFlag;
-}
